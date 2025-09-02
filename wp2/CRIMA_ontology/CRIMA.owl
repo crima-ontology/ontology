@@ -1,0 +1,479 @@
+@prefix : <http://www.semanticweb.org/CRIMA#> .
+@prefix db: <https://w3id.org/DOLCE/OWL/DOLCEbasic> .
+@prefix deo: <http://knowwheregraph/ontology/deo#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix hip: <https://undrr-hip.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/DerivedUnit> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/CRIMA> .
+
+<http://www.semanticweb.org/CRIMA> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://www.semanticweb.org/CRIMA/1.0> ;
+                                    <http://purl.org/dc/elements/1.1/creator> "Alessandro Mosca" ,
+                                                                              "Greta Adamo" ;
+                                    <http://purl.org/dc/elements/1.1/description> "The CRIMA ontology..." ;
+                                    <http://purl.org/dc/elements/1.1/title> "Evicedence-Based Management of Climate Risks (CRIMA) ontology" ;
+                                    owl:versionInfo 1.0 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://knowwheregraph/ontology/deo#hazardType
+deo:hazardType rdf:type owl:ObjectProperty ;
+               rdfs:domain :Hazard ;
+               rdfs:range hip:HazardType .
+
+
+###  http://www.semanticweb.org/CRIMA#from
+:from rdf:type owl:ObjectProperty ,
+               owl:FunctionalProperty ;
+      rdfs:comment "[Connection --from--> ICFactor]"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#hasResult
+:hasResult rdf:type owl:ObjectProperty ,
+                    owl:FunctionalProperty ;
+           rdfs:domain sosa:Observation ;
+           rdfs:range sosa:Result ;
+           rdfs:comment sosa:hasResult .
+
+
+###  http://www.semanticweb.org/CRIMA#isAbout
+:isAbout rdf:type owl:ObjectProperty ;
+         rdfs:range :ICFactor ,
+                    :ICconnection ;
+         rdfs:isDefinedBy <https://repository.ifla.org/rest/api/core/bitstreams/3016edd2-d431-4d27-84f9-33d6821f5203/content> ,
+                          """\"Definition of FRBROO A Conceptual Model for Bibliographic Information in Object-Oriented Formalism\"
+
+Prepared by: Working Group on FRBR/CRM Dialogue (also referred to as: International Working Group on
+FRBR and CIDOC CRM Harmonisation), affiliated to the IFLA FRBR Review Group, reporting to the IFLA Cataloguing Section
+
+Edited by:
+Chryssoula Bekiari, Martin Doerr, Patrick Le Bœuf, Pat Riva
+
+With contributions from:
+Trond Aalberg, Jérôme Barthélémy, Chryssoula Bekiari, Guillaume Boutard, Martin Doerr, Günther Görz, Dolores Iorizzo, Max Jacob, Carlos Lamsfus, Patrick Le Bœuf, Mika Nyman, João Oliveira, Christian Emil Ore, Allen H. Renear, Pat Riva, Richard Smiraglia, Stephen Stead, Maja Žumer, and others"""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#participates
+:participates rdf:type owl:ObjectProperty ;
+              rdfs:domain db:Endurant ;
+              rdfs:range db:Perdurant .
+
+
+###  http://www.semanticweb.org/CRIMA#to
+:to rdf:type owl:ObjectProperty ,
+             owl:FunctionalProperty ;
+    rdfs:comment "[ICconnections --to--> ICFactor]"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:ObjectProperty ;
+             rdfs:domain hip:HazardCluster ;
+             rdfs:range hip:HazardType ;
+             rdfs:comment skos:broader .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+              rdfs:domain hip:HazardType ,
+                          hip:SpecificHazard ;
+              rdfs:range hip:HazardClassification .
+
+
+###  http://www.w3.org/2004/02/skos/core#mappingRelation
+skos:mappingRelation rdf:type owl:ObjectProperty ;
+                     rdfs:domain hip:HazardType ;
+                     rdfs:range hip:SpecificHazard ;
+                     rdfs:comment skos:mappingRelation .
+
+
+###  http://www.w3.org/ns/sosa/isFeatureOfInterestOf
+sosa:isFeatureOfInterestOf rdf:type owl:ObjectProperty ;
+                           rdfs:domain sosa:FeatureOfInterest ;
+                           rdfs:range sosa:Observation ;
+                           rdfs:comment sosa:isFeatureOfInterestOf .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+sosa:observedProperty rdf:type owl:ObjectProperty ;
+                      rdfs:domain sosa:Observation ;
+                      rdfs:range sosa:ObservableProperty ;
+                      rdfs:comment sosa:observedProperty .
+
+
+###  http://www.w3.org/ns/ssn/isPropertyOf
+ssn:isPropertyOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain ssn:Property ;
+                 rdfs:range sosa:FeatureOfInterest ;
+                 rdfs:comment ssn:isPropertyOf .
+
+
+###  https://w3id.org/DOLCE/OWL/DOLCEbasicpartOf
+db:partOf rdf:type owl:ObjectProperty ;
+          rdfs:domain db:Perdurant ;
+          rdfs:range db:Perdurant .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/bibliographicCitation
+<http://purl.org/dc/elements/1.1/bibliographicCitation> rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/elements/1.1/identifier
+<http://purl.org/dc/elements/1.1/identifier> rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://knowwheregraph/ontology/deo#HazardObservation
+deo:HazardObservation rdf:type owl:Class ;
+                      rdfs:subClassOf sosa:Observation ;
+                      rdfs:comment "From DEO" ;
+                      rdfs:label "Hazard Observation"@en .
+
+
+###  http://knowwheregraph/ontology/deo#HazardProperty
+deo:HazardProperty rdf:type owl:Class ;
+                   rdfs:subClassOf sosa:ObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#Affects
+:Affects rdf:type owl:Class ;
+         rdfs:subClassOf :ICconnection ;
+         rdfs:label "Affects"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Exposure
+:Exposure rdf:type owl:Class ;
+          rdfs:subClassOf db:Endurant ;
+          rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ;
+          rdfs:label "Exposure"@en ;
+          skos:definition "IPCC AR6 « WGI,WGIII,WGII »: \"The presence of people; livelihoods; species or ecosystems; environmental functions, services, and resources; infrastructure; or economic, social, or cultural assets in places and settings that could be adversely affected.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Hazard
+:Hazard rdf:type owl:Class ;
+        rdfs:subClassOf db:Perdurant ;
+        rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ,
+                         "https://www.preventionweb.net/news/disasters-z"@en ;
+        rdfs:label "Hazard"@en ;
+        skos:definition "IPCC AR6: \"The potential occurrence of a natural or human-induced physical event or trend that may cause loss of life, injury, or other health impacts, as well as damage and loss to property, infrastructure, livelihoods, service provision, ecosystems and environmental resources.\""@en ,
+                        "UNDRR: \"A process, phenomenon or human activity that may cause loss of life, injury or other health impacts, property damage, social and economic disruption or environmental degradation (UNDRR, 2017). Hazards are often categorized by whether they are natural (sometimes termed physical) or technological (sometimes called man-made or human-induced). The term 'peril' is sometimes used instead of hazard, particularly in the insurance industry.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Heatwave
+:Heatwave rdf:type owl:Class ;
+          rdfs:subClassOf :Hazard .
+
+
+###  http://www.semanticweb.org/CRIMA#ICAdaptationFactor
+:ICAdaptationFactor rdf:type owl:Class ;
+                    rdfs:subClassOf :ICFactor ;
+                    rdfs:comment "Impact Chain adaptation factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICDriverFactor
+:ICDriverFactor rdf:type owl:Class ;
+                rdfs:subClassOf :ICFactor ;
+                rdfs:comment "Impact Chain driver factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICExposureFactor
+:ICExposureFactor rdf:type owl:Class ;
+                  rdfs:subClassOf :ICFactor ;
+                  rdfs:comment "Impact Chain exposure factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICFactor
+:ICFactor rdf:type owl:Class ;
+          rdfs:subClassOf skos:Concept ;
+          rdfs:comment "Impact Chain factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICHazardFactor
+:ICHazardFactor rdf:type owl:Class ;
+                rdfs:subClassOf :ICFactor ;
+                rdfs:comment "Impact Chain hazard factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICImpactFactor
+:ICImpactFactor rdf:type owl:Class ;
+                rdfs:subClassOf :ICFactor ;
+                rdfs:comment "Impact Chain impact factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICRiskFactor
+:ICRiskFactor rdf:type owl:Class ;
+              rdfs:subClassOf :ICFactor ;
+              rdfs:comment "Impact Chain risk factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICVulnerabilityFactor
+:ICVulnerabilityFactor rdf:type owl:Class ;
+                       rdfs:subClassOf :ICFactor ;
+                       rdfs:comment "Impact Chain vulnerability factor" .
+
+
+###  http://www.semanticweb.org/CRIMA#ICconnection
+:ICconnection rdf:type owl:Class ;
+              rdfs:subClassOf skos:Concept .
+
+
+###  http://www.semanticweb.org/CRIMA#Impact
+:Impact rdf:type owl:Class ;
+        rdfs:subClassOf db:Perdurant ;
+        skos:definition "IPCC AR6 (« WGIII,WGII »): \"The consequences of realised risks on natural and human systems, where risks result from the interactions of climate-related hazards (including extreme weather/climate events), exposure, and vulnerability. Impacts generally refer to effects on lives, livelihoods, health and well-being, ecosystems and species, economic, social and cultural assets, services (including ecosystem services), and infrastructure. Impacts may be referred to as consequences or outcomes, and can be adverse or beneficial.)The consequences of realised risks on natural and human systems, where risks result from the interactions of climate-related hazards (including extreme weather/climate events), exposure, and vulnerability. Impacts generally refer to effects on lives, livelihoods, health and well-being, ecosystems and species, economic, social and cultural assets, services (including ecosystem services), and infrastructure. Impacts may be referred to as consequences or outcomes, and can be adverse or beneficial.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#ImpactProperty
+:ImpactProperty rdf:type owl:Class ;
+                rdfs:subClassOf sosa:ObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#ImpactsOn
+:ImpactsOn rdf:type owl:Class ;
+           rdfs:subClassOf :ICconnection ;
+           rdfs:label "Impacts on"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#LeadsTo
+:LeadsTo rdf:type owl:Class ;
+         rdfs:subClassOf :ICconnection ;
+         rdfs:label "Leads to"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Mitigates
+:Mitigates rdf:type owl:Class ;
+           rdfs:subClassOf :ICconnection ;
+           rdfs:label "Mitigates"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Vulnerability
+:Vulnerability rdf:type owl:Class ;
+               rdfs:subClassOf sosa:ObservableProperty ;
+               rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ,
+                                "https://www.preventionweb.net/news/disasters-z"@en ;
+               rdfs:label "Vulnerability"@en ;
+               skos:definition "IPCC AR6 («WGI,WGIII,WGII »): \"The propensity or predisposition to be adversely affected. Vulnerability encompasses a variety of concepts and elements, including sensitivity or susceptibility to harm and lack of capacity to cope and adapt.\""@en ,
+                               "UNDRR: The conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards (UNDRR, 2017). Vulnerability is the human dimension of disasters and is the result of the range of economic, social, cultural, institutional, political and psychological factors that shape people’s lives and the environment that they live in."@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Wildfire
+:Wildfire rdf:type owl:Class ;
+          rdfs:subClassOf :Hazard .
+
+
+###  http://www.w3.org/2004/02/skos/core#Collection
+skos:Collection rdf:type owl:Class ;
+                rdfs:comment skos:Collection ;
+                rdfs:label "Collection"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+             rdfs:comment skos:Concept ;
+             rdfs:label "Concept"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+                   rdfs:comment skos:ConceptScheme ;
+                   rdfs:label "Concept Scheme"@en .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest rdf:type owl:Class ;
+                       rdfs:comment sosa:FeatureOfInterest ,
+                                    "" .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+sosa:ObservableProperty rdf:type owl:Class ;
+                        rdfs:subClassOf ssn:Property ;
+                        rdfs:comment sosa:ObservableProperty ;
+                        rdfs:label "Observable Property"@en .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+sosa:Observation rdf:type owl:Class ;
+                 rdfs:comment sosa:Observation ;
+                 rdfs:label "Observation"@en .
+
+
+###  http://www.w3.org/ns/sosa/Result
+sosa:Result rdf:type owl:Class ;
+            rdfs:comment sosa:Result ;
+            rdfs:label "Result"@en .
+
+
+###  http://www.w3.org/ns/ssn/Property
+ssn:Property rdf:type owl:Class ;
+             rdfs:comment ssn:Property ;
+             rdfs:label "Property"@en .
+
+
+###  https://undrr-hip.org/BI
+hip:BI rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Biological Hazard" .
+
+
+###  https://undrr-hip.org/CH
+hip:CH rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Chemical Hazard" .
+
+
+###  https://undrr-hip.org/EN
+hip:EN rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Environmental Hazard" .
+
+
+###  https://undrr-hip.org/ET
+hip:ET rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Extraterrestrial Hazard" .
+
+
+###  https://undrr-hip.org/GH
+hip:GH rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Geological Hazard" .
+
+
+###  https://undrr-hip.org/HazardClassification
+hip:HazardClassification rdf:type owl:Class ;
+                         rdfs:subClassOf skos:ConceptScheme ;
+                         rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+                         rdfs:label "Hazard Classification"@en .
+
+
+###  https://undrr-hip.org/HazardCluster
+hip:HazardCluster rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Collection ;
+                  rdfs:label "Hazard Cluster"@en .
+
+
+###  https://undrr-hip.org/HazardType
+hip:HazardType rdf:type owl:Class ;
+               rdfs:subClassOf skos:Concept ;
+               rdfs:comment "From HIP ontology" ;
+               rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+               rdfs:label "Hazard Type"@en .
+
+
+###  https://undrr-hip.org/MC
+hip:MC rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Hydrological and Meteorological Hazard" .
+
+
+###  https://undrr-hip.org/SO
+hip:SO rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "From HIP ontology" ,
+                  "Societal Hazard" .
+
+
+###  https://undrr-hip.org/SpecificHazard
+hip:SpecificHazard rdf:type owl:Class ;
+                   rdfs:subClassOf skos:Concept ;
+                   rdfs:comment "From HIP ontology" ;
+                   rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+                   rdfs:label "Spacific Hazard"@en .
+
+
+###  https://undrr-hip.org/TL
+hip:TL rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Technological Hazard" .
+
+
+###  https://w3id.org/DOLCE/OWL/DOLCEbasicEndurant
+db:Endurant rdf:type owl:Class ;
+            rdfs:subClassOf sosa:FeatureOfInterest ;
+            owl:disjointWith db:Perdurant ;
+            rdfs:comment <https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant> .
+
+
+###  https://w3id.org/DOLCE/OWL/DOLCEbasicPerdurant
+db:Perdurant rdf:type owl:Class ;
+             rdfs:subClassOf sosa:FeatureOfInterest ;
+             rdfs:comment <https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Affects
+                :ImpactsOn
+                :LeadsTo
+                :Mitigates
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( skos:Collection
+                skos:Concept
+                skos:ConceptScheme
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
