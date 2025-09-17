@@ -1,0 +1,1134 @@
+@prefix : <http://www.semanticweb.org/CRIMA#> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix db: <https://w3id.org/DOLCE/OWL/DOLCEbasic#> .
+@prefix deo: <http://knowwheregraph/ontology/deo#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix hip: <https://undrr-hip.org/> .
+@prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ssn: <http://www.w3.org/ns/ssn/> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix impch: <http://www.semanticweb.org/CRIMA/ImpactChain#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/CRIMA#> .
+
+<http://www.semanticweb.org/CRIMA> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://www.semanticweb.org/CRIMA/1.0> ;
+                                    owl:imports <https://w3id.org/DOLCE/OWL/DOLCEbasic/3.5> ;
+                                    <http://purl.org/dc/elements/1.1/creator> "Alessandro Mosca" ,
+                                                                              "Greta Adamo" ;
+                                    <http://purl.org/dc/elements/1.1/description> "The CRIMA ontology..." ;
+                                    <http://purl.org/dc/elements/1.1/title> "Evicedence-Based Management of Climate Risks (CRIMA) ontology" ;
+                                    owl:versionInfo 1.0 .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/creator
+<http://purl.org/dc/elements/1.1/creator> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/description
+<http://purl.org/dc/elements/1.1/description> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/elements/1.1/title
+<http://purl.org/dc/elements/1.1/title> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/hasVersion
+dcterms:hasVersion rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/source
+dcterms:source rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/domainIncludes
+<http://schema.org/domainIncludes> rdf:type owl:AnnotationProperty .
+
+
+###  http://schema.org/rangeIncludes
+<http://schema.org/rangeIncludes> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#changeNote
+skos:changeNote rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+skos:editorialNote rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#note
+skos:note rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+skos:prefLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+skos:scopeNote rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.linkedmodel.org/schema/dtype#numericUnion
+dtype:numericUnion rdf:type rdfs:Datatype ;
+                   skos:definition "A datatype that is the union of numeric xsd data types. \"dtype:numericUnion\" is equivalent to the xsd specification that uses an xsd:union of memberTypes=\"xsd:decimal xsd:double xsd:float xsd:integer\"."@en .
+
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+geo:wktLiteral rdf:type rdfs:Datatype ;
+               skos:definition "A Well-known Text serialization of a Geometry object."@en ;
+               skos:prefLabel "Well-known Text literal"@en .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://knowwheregraph/ontology/deo#hasHazardOfInterest
+deo:hasHazardOfInterest rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
+                        <http://schema.org/domainIncludes> "'Hazard Observation'" ;
+                        <http://schema.org/rangeIncludes> "Hazard" ;
+                        rdfs:label "has hazard of interest" .
+
+
+###  http://knowwheregraph/ontology/deo#hasImpactOfInterest
+deo:hasImpactOfInterest rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf sosa:hasFeatureOfInterest ;
+                        <http://schema.org/domainIncludes> "'Impact Observation'" ;
+                        <http://schema.org/rangeIncludes> "'Disaster Impact'" ;
+                        rdfs:label "has impact of Interest" .
+
+
+###  http://knowwheregraph/ontology/deo#hazardType
+deo:hazardType rdf:type owl:ObjectProperty ;
+               rdfs:domain :Hazard ;
+               rdfs:range hip:HazardType .
+
+
+###  http://purl.org/dc/terms/subject
+dcterms:subject rdf:type owl:ObjectProperty ;
+                rdfs:domain dcat:Resource ;
+                dcterms:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."@en-us ;
+                dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subjectT-001> ;
+                dcterms:issued "2008-01-14" ;
+                dcterms:modified "2008-01-14" ;
+                rdfs:comment "The topic of the resource."@en-us ;
+                rdfs:isDefinedBy dcterms: ;
+                rdfs:label "Subject"@en-us ;
+                skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us .
+
+
+###  http://qudt.org/schema/qudt/hasUnit
+qudt:hasUnit rdf:type owl:ObjectProperty ;
+             rdfs:range qudt:Unit ;
+             rdfs:label "has unit" ,
+                        "hasUnit" ;
+             skos:definition "This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."@en .
+
+
+###  http://www.opengis.net/ont/geosparql#hasGeometry
+geo:hasGeometry rdf:type owl:ObjectProperty ;
+                rdfs:domain geo:Feature ;
+                rdfs:range geo:Geometry ;
+                rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/feature-properties> ,
+                                 <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/feature-properties> ;
+                skos:definition "A spatial representation for a given Feature."@en ;
+                skos:prefLabel "has geometry"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#hasSpatialExtent
+:hasSpatialExtent rdf:type owl:ObjectProperty ;
+                  rdfs:range geo:SpatialObject .
+
+
+###  http://www.semanticweb.org/CRIMA#hasTemporalExtent
+:hasTemporalExtent rdf:type owl:ObjectProperty ;
+                   owl:equivalentProperty time:hasTime .
+
+
+###  http://www.semanticweb.org/CRIMA#notDisjoint
+:notDisjoint rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#source
+:source rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#target
+:target rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#usedForObservation
+:usedForObservation rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf sosa:usedForExecution ;
+                    owl:inverseOf sosa:hasResult .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#isAbout
+impch:isAbout rdf:type owl:ObjectProperty ;
+              rdfs:range impch:ImpactChainConnection ,
+                         impch:ImpactChainFactor ;
+              rdfs:isDefinedBy <https://repository.ifla.org/rest/api/core/bitstreams/3016edd2-d431-4d27-84f9-33d6821f5203/content> ,
+                               """\"Definition of FRBROO A Conceptual Model for Bibliographic Information in Object-Oriented Formalism\"
+
+Prepared by: Working Group on FRBR/CRM Dialogue (also referred to as: International Working Group on
+FRBR and CIDOC CRM Harmonisation), affiliated to the IFLA FRBR Review Group, reporting to the IFLA Cataloguing Section
+
+Edited by:
+Chryssoula Bekiari, Martin Doerr, Patrick Le Bœuf, Pat Riva
+
+With contributions from:
+Trond Aalberg, Jérôme Barthélémy, Chryssoula Bekiari, Guillaume Boutard, Martin Doerr, Günther Görz, Dolores Iorizzo, Max Jacob, Carlos Lamsfus, Patrick Le Bœuf, Mika Nyman, João Oliveira, Christian Emil Ore, Allen H. Renear, Pat Riva, Richard Smiraglia, Stephen Stead, Maja Žumer, and others"""@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#source
+impch:source rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:comment "[ICconnection --source--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its first argument."@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#target
+impch:target rdf:type owl:ObjectProperty ,
+                      owl:FunctionalProperty ;
+             rdfs:comment "[ICconnections --target--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its secoond argument."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:ObjectProperty ;
+             rdfs:domain hip:HazardCluster ;
+             rdfs:range hip:HazardType ;
+             rdfs:comment skos:broader .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty ;
+              rdfs:domain hip:HazardType ,
+                          hip:SpecificHazard ;
+              rdfs:range hip:HazardClassification .
+
+
+###  http://www.w3.org/2004/02/skos/core#mappingRelation
+skos:mappingRelation rdf:type owl:ObjectProperty ;
+                     rdfs:domain hip:HazardType ;
+                     rdfs:range hip:SpecificHazard ;
+                     rdfs:comment skos:mappingRelation .
+
+
+###  http://www.w3.org/2006/time#hasBeginning
+time:hasBeginning rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf time:hasTime ;
+                  rdfs:domain time:TemporalEntity ;
+                  rdfs:range time:Instant ;
+                  rdfs:label "has beginning"@en ;
+                  skos:definition "Beginning of a temporal entity."@en .
+
+
+###  http://www.w3.org/2006/time#hasEnd
+time:hasEnd rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf time:hasTime ;
+            rdfs:domain time:TemporalEntity ;
+            rdfs:range time:Instant ;
+            rdfs:label "has end"@en ;
+            skos:definition "End of a temporal entity."@en .
+
+
+###  http://www.w3.org/2006/time#hasTime
+time:hasTime rdf:type owl:ObjectProperty ;
+             rdfs:range time:TemporalEntity ;
+             rdfs:label "has time"@en ;
+             skos:definition "Supports the association of a temporal entity (instant or interval) to any thing"@en .
+
+
+###  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+sosa:hasFeatureOfInterest rdf:type owl:ObjectProperty ;
+                          owl:inverseOf sosa:isFeatureOfInterestOf .
+
+
+###  http://www.w3.org/ns/sosa/hasInput
+sosa:hasInput rdf:type owl:ObjectProperty ;
+              owl:inverseOf sosa:inputFor ;
+              rdfs:domain sosa:Procedure ;
+              rdfs:label "has input"@en ;
+              skos:definition "relation from a Procedure to an input required for its execution"@en ;
+              skos:note "This property will typically describe the type of the inputs required to execute the Procedure."@en ;
+              skos:scopeNote "An input might be a calibration or conditioning parameter, or the output of a previous procedure within an extended processing chain."@en .
+
+
+###  http://www.w3.org/ns/sosa/hasOutput
+sosa:hasOutput rdf:type owl:ObjectProperty ;
+               owl:inverseOf sosa:outputFor ;
+               rdfs:domain sosa:Procedure ;
+               rdfs:label "has output"@en ;
+               skos:definition "relation from a Procedure to an output of its execution"@en ;
+               skos:note "This property will typically describe the type of the result from executing the Procedure."@en .
+
+
+###  http://www.w3.org/ns/sosa/hasProcedure
+sosa:hasProcedure rdf:type owl:ObjectProperty ;
+                  rdfs:label "has procedure"@en ;
+                  skos:definition "relation from a Property to a Procedure that can observe or act on it"@en .
+
+
+###  http://www.w3.org/ns/sosa/hasResult
+sosa:hasResult rdf:type owl:ObjectProperty ,
+                        owl:FunctionalProperty ;
+               rdfs:domain sosa:Observation ;
+               rdfs:range sosa:Result ;
+               rdfs:comment sosa:hasResult ,
+                            "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."@en ;
+               rdfs:label "has result"@en ,
+                          "hasResult"@en ;
+               skos:definition "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."@en .
+
+
+###  http://www.w3.org/ns/sosa/hosts
+sosa:hosts rdf:type owl:ObjectProperty ;
+           owl:inverseOf sosa:isHostedBy ;
+           rdfs:domain sosa:Platform ;
+           rdfs:range [ rdf:type owl:Class ;
+                        owl:unionOf ( sosa:Platform
+                                      sosa:System
+                                    )
+                      ] .
+
+
+###  http://www.w3.org/ns/sosa/inputFor
+sosa:inputFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/isFeatureOfInterestOf
+sosa:isFeatureOfInterestOf rdf:type owl:ObjectProperty ;
+                           rdfs:domain sosa:FeatureOfInterest ;
+                           rdfs:range sosa:Observation ;
+                           rdfs:comment sosa:isFeatureOfInterestOf .
+
+
+###  http://www.w3.org/ns/sosa/isHostedBy
+sosa:isHostedBy rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( sosa:Platform
+                                            sosa:System
+                                          )
+                            ] ;
+                rdfs:range sosa:Platform ;
+                rdfs:label "is hosted by"@en ;
+                skos:definition "relation from an asset (System or Platform), to a Platform that it is mounted on or hosted by"@en .
+
+
+###  http://www.w3.org/ns/sosa/isObservedBy
+sosa:isObservedBy rdf:type owl:ObjectProperty ;
+                  owl:inverseOf sosa:observes ;
+                  rdfs:domain sosa:ObservableProperty ;
+                  rdfs:range sosa:Sensor ;
+                  rdfs:label "is observed by"@en ;
+                  skos:definition "relation from a Property to a Sensor that is able to observe it"@en .
+
+
+###  http://www.w3.org/ns/sosa/madeBySensor
+sosa:madeBySensor rdf:type owl:ObjectProperty ;
+                  owl:inverseOf sosa:madeObservation ;
+                  rdfs:domain sosa:Observation ;
+                  rdfs:range sosa:Sensor ;
+                  rdfs:label "made by sensor or observer"@en ;
+                  skos:definition "relation from an Observation or ObservationCollection to the Sensor that made it"@en .
+
+
+###  http://www.w3.org/ns/sosa/madeObservation
+sosa:madeObservation rdf:type owl:ObjectProperty ;
+                     rdfs:domain sosa:Sensor ;
+                     rdfs:range sosa:Observation ;
+                     rdfs:label "made observation"@en ;
+                     skos:definition "relation from a Sensor to an Observation or ObservationCollection it has made"@en .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+sosa:observedProperty rdf:type owl:ObjectProperty ;
+                      rdfs:domain sosa:Observation ;
+                      rdfs:range sosa:ObservableProperty ;
+                      rdfs:comment sosa:observedProperty .
+
+
+###  http://www.w3.org/ns/sosa/observes
+sosa:observes rdf:type owl:ObjectProperty ;
+              rdfs:domain sosa:Sensor ;
+              rdfs:range sosa:ObservableProperty ;
+              rdfs:label "observes"@en ;
+              skos:definition "relation from a Sensor to a Property that it is capable of sensing"@en .
+
+
+###  http://www.w3.org/ns/sosa/outputFor
+sosa:outputFor rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/ns/sosa/usedForExecution
+sosa:usedForExecution rdf:type owl:ObjectProperty ;
+                      rdfs:domain sosa:Procedure ;
+                      rdfs:range sosa:Observation ;
+                      rdfs:label "used for execution"@en ;
+                      skos:definition "relation from a Procedure to an Execution or ExecutionCollection made using it"@en .
+
+
+###  http://www.w3.org/ns/sosa/usedProcedure
+sosa:usedProcedure rdf:type owl:ObjectProperty ;
+                   rdfs:domain sosa:Observation ;
+                   rdfs:range sosa:Procedure ;
+                   rdfs:label "used procedure"@en ;
+                   skos:definition "relation from an Execution or ExecutionCollection to a Procedure used to make it"@en .
+
+
+###  http://www.w3.org/ns/ssn/isPropertyOf
+ssn:isPropertyOf rdf:type owl:ObjectProperty ;
+                 rdfs:domain ssn:Property ;
+                 rdfs:range sosa:FeatureOfInterest ;
+                 rdfs:comment ssn:isPropertyOf .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/terms/bibliographicCitation
+dcterms:bibliographicCitation rdf:type owl:DatatypeProperty .
+
+
+###  http://purl.org/dc/terms/identifier
+dcterms:identifier rdf:type owl:DatatypeProperty .
+
+
+###  http://qudt.org/schema/qudt/numericValue
+qudt:numericValue rdf:type owl:DatatypeProperty ;
+                  rdfs:range dtype:numericUnion ;
+                  rdfs:label "numeric value" .
+
+
+###  http://www.opengis.net/ont/geosparql#asWKT
+geo:asWKT rdf:type owl:DatatypeProperty ;
+          rdfs:subPropertyOf geo:hasSerialization ;
+          rdfs:domain geo:Geometry ;
+          rdfs:range geo:wktLiteral ;
+          skos:definition "The WKT serialization of a Geometry."@en ;
+          skos:prefLabel "as WKT"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#hasSerialization
+geo:hasSerialization rdf:type owl:DatatypeProperty ;
+                     rdfs:domain geo:Geometry ;
+                     rdfs:range rdfs:Literal ;
+                     skos:definition "Connects a Geometry object with its text-based serialization."@en ;
+                     skos:prefLabel "has serialization"@en .
+
+
+###  https://www.w3.org/ns/activitystreams#latitude
+as:latitude rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf geo:hasSerialization ;
+            rdf:type owl:FunctionalProperty ;
+            rdfs:domain as:Place ;
+            rdfs:range xsd:float ;
+            rdfs:comment "The latitude"@en ;
+            rdfs:label "latitude"@en .
+
+
+###  https://www.w3.org/ns/activitystreams#longitude
+as:longitude rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf geo:hasSerialization ;
+             rdf:type owl:FunctionalProperty ;
+             rdfs:domain as:Place ;
+             rdfs:range xsd:float ;
+             rdfs:comment "The longitude"@en ;
+             rdfs:label "longitude"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://knowwheregraph/ontology/deo#HazardObservation
+deo:HazardObservation rdf:type owl:Class ;
+                      rdfs:subClassOf :IntensityObservation ;
+                      rdfs:comment "From DEO" ;
+                      rdfs:label "Hazard Observation"@en .
+
+
+###  http://knowwheregraph/ontology/deo#HazardProperty
+deo:HazardProperty rdf:type owl:Class ;
+                   rdfs:subClassOf sosa:ObservableProperty .
+
+
+###  http://qudt.org/schema/qudt/QuantityValue
+qudt:QuantityValue rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty qudt:hasUnit ;
+                                     owl:maxCardinality "1"^^xsd:nonNegativeInteger
+                                   ] ;
+                   rdfs:comment "A Quantity Value expresses the magnitude and kind of a quantity and is given by the product of a numerical value n and a unit of measure U. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to (http://physics.nist.gov/Pubs/SP811/sec07.html) NIST SP 811 section 7 for more on quantity values."@en ;
+                   rdfs:label "Quantity value" .
+
+
+###  http://qudt.org/schema/qudt/Unit
+qudt:Unit rdf:type owl:Class ;
+          rdfs:label "Unit" ;
+          skos:definition "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  $Q = nU$."@en .
+
+
+###  http://qudt.org/vocab/unit/DEG_C
+unit:DEG_C rdf:type owl:Class ;
+           rdfs:subClassOf qudt:Unit ;
+           rdfs:label "degree Celsius"@en ,
+                      "grado celsius"@it ;
+           skos:definition "The unit Celsius, also known as centigrade, is a scale and unit of measurement for temperature. It can refer to a specific temperature on the Celsius scale as well as a unit to indicate a temperature interval,  a difference between two temperatures or an uncertainty. This definition fixes the magnitude of both the degree Celsius and the kelvin as precisely 1 part in 273.16 (approximately 0.00366) of the difference between absolute zero and the triple point of water. Thus, it sets the magnitude of one degree Celsius and that of one kelvin as exactly the same. Additionally, it establishes the difference between the two scales' null points as being precisely 273.15."@en .
+
+
+###  http://www.opengis.net/ont/geosparql#Feature
+geo:Feature rdf:type owl:Class ;
+            owl:equivalentClass as:Place ;
+            rdfs:subClassOf geo:SpatialObject ;
+            owl:disjointWith geo:Geometry ;
+            rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/core/feature-class> ,
+                             <http://www.opengis.net/spec/geosparql/1.1/req/core/feature-class> ,
+                             : ;
+            skos:definition "A discrete spatial phenomenon in a universe of discourse."@en ;
+            skos:note "A Feature represents a uniquely identifiable phenomenon, for example a river or an apple. While such phenomena (and therefore the Features used to represent them) are bounded, their boundaries may be crisp (e.g., the declared boundaries of a state), vague (e.g., the delineation of a valley versus its neighboring mountains), and change with time (e.g., a storm front). While discrete in nature, Features may be created from continuous observations, such as an isochrone that determines the region that can be reached by ambulance within 5 minutes."@en ;
+            skos:prefLabel "Feature"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+geo:Geometry rdf:type owl:Class ;
+             rdfs:subClassOf geo:SpatialObject ;
+             rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-class> ,
+                              <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/geometry-class> ;
+             skos:definition "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+             skos:note "Geometry can be used as a representation of the shape, extent or location of a Feature and may exist as a self-contained entity."@en ;
+             skos:prefLabel "Geometry"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#SpatialObject
+geo:SpatialObject rdf:type owl:Class ;
+                  rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/core/spatial-object-class> ,
+                                   <http://www.opengis.net/spec/geosparql/1.1/req/core/spatial-object-class> ;
+                  skos:definition "Anything spatial (being or having a shape, position or an extent)."@en ;
+                  skos:note "Subclasses of this class are expected to be used for instance data."@en ;
+                  skos:prefLabel "Spatial Object"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Drought
+:Drought rdf:type owl:Class ;
+         rdfs:subClassOf :Hazard .
+
+
+###  http://www.semanticweb.org/CRIMA#DroughtObservableProperty
+:DroughtObservableProperty rdf:type owl:Class ;
+                           rdfs:subClassOf deo:HazardProperty ;
+                           rdfs:seeAlso """• Drought Observatory, no date. Drought: The Phenomenon. https://drought.climateservices.it/en/drought Accessed 25 March
+2021.
+• European Drought Observatory, 2019. Combined Drought Indicator (CDI). https://edo.jrc.ec.europa.eu/documents/factsheets/
+factsheet_combinedDroughtIndicator.pdf#:~:text=The%20Combined%20Drought%20Indicator%20%28CDI%29%20that%20
+is%20implemented,and%20areas%20with%20the%20potential%20to%20be%20affected Accessed 25 March 2021.
+• NOAA, no date a. Local and National Drought Information. National Weather Service, National Oceanic and Atmospheric Administration (NOAA). www.weather.gov/fgf/fgfdrought Accessed on 19 November 2019.
+• NOAA, no date b. Definition of Drought. National Centers for Environmental Information, National Oceanic and Atmospheric
+Administration (NOAA). www.ncdc.noaa.gov/monitoring-references/dyk/drought-definition Accessed 19 November 2019.
+• NOAA, no date c. Measuring Drought. National Centers for Environmental Information, National Oceanic and Atmospheric
+Administration (NOAA). www.ncdc.noaa.gov/monitoring-references/dyk/measuring-drought Accessed 19 November 2019.
+• Stanke, C., M. Kerac, C. Prudhomme, J. Medlock and V. Murray, 2013. Health effects of drought: a systematic review of the
+evidence. PLoS Currents, doi: 10.1371/currents.dis.7a2cee9e980f91ad7697b570bcc4b004.
+• UNCCD, 1994. United Nations Convention To Combat Desertification In Those Countries Experiencing Serious Drought and/or Desertification, Particularly In Africa. www.unccd.int/sites/default/files/relevant-links/2017-01/UNCCD_Convention_ENG_0.pdf
+• UNCCD, 2017. The future strategic framework of the Convention. • ICCD/COP(13)/L.18. United Nations Convention to Combat
+Desertification (UNCCD). www.unccd.int/sites/default/files/inline-files/ICCD_COP%2813%29_L.18-1716078E_0.pdf Accessed 7= October 2020.
+• United Nations, 1997. Convention on the Law of the Non-Navigational Uses of International Watercourses. https://treaties.
+un.org/doc/Treaties/1998/09/19980925%2006-30%20PM/Ch_XXVII_12p.pdf Accessed 7 October 2020.
+• WHO, no date a. Drought. World Health Organization (WHO). www.who.int/health-topics/drought#tab=tab_1 Accessed 7 October 2020.
+• WHO, no date b. DROUGHT: Technical Hazard Sheet - Natural Disaster Profiles. World Health Organization (WHO). www.who.
+int/hac/techguidance/ems/drought/en Accessed 7 October 2020."""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#EconomicVulnerability
+:EconomicVulnerability rdf:type owl:Class ;
+                       rdfs:subClassOf :Vulnerability ;
+                       skos:definition "\"The propensity of economic assets and processes to be harmed by exogenous shocks (Cardona et al. 2012), such as the potential impacts of natural and man-made hazards (i.e., business interruption, secondary effects such as increased poverty and job loss).\" [DV 5.2.1 - Risk-oriented taxonomy and ontology of urban subsystems and functional models]"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#EnvironmentalVulnerability
+:EnvironmentalVulnerability rdf:type owl:Class ;
+                            rdfs:subClassOf :Vulnerability ;
+                            skos:definition "\"Potential natural resource depletion and resource degradation (destruction of forest, farmland, or crops, lower yields) following a hazardous event (United Nations Environment Programme 2011).\" [DV 5.2.1 - Risk-oriented taxonomy and ontology of urban subsystems and functional models]"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Exposure
+:Exposure rdf:type owl:Class ;
+          rdfs:subClassOf db:Endurant ;
+          rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ;
+          rdfs:label "Exposure"@en ;
+          skos:definition "IPCC AR6 « WGI,WGIII,WGII »: \"The presence of people; livelihoods; species or ecosystems; environmental functions, services, and resources; infrastructure; or economic, social, or cultural assets in places and settings that could be adversely affected.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Hazard
+:Hazard rdf:type owl:Class ;
+        rdfs:subClassOf db:Perdurant ;
+        rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ,
+                         "https://www.preventionweb.net/news/disasters-z"@en ;
+        rdfs:label "Hazard"@en ;
+        skos:definition "IPCC AR6: \"The potential occurrence of a natural or human-induced physical event or trend that may cause loss of life, injury, or other health impacts, as well as damage and loss to property, infrastructure, livelihoods, service provision, ecosystems and environmental resources.\""@en ,
+                        "UNDRR: \"A process, phenomenon or human activity that may cause loss of life, injury or other health impacts, property damage, social and economic disruption or environmental degradation (UNDRR, 2017). Hazards are often categorized by whether they are natural (sometimes termed physical) or technological (sometimes called man-made or human-induced). The term 'peril' is sometimes used instead of hazard, particularly in the insurance industry.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Heatwave
+:Heatwave rdf:type owl:Class ;
+          rdfs:subClassOf :Hazard .
+
+
+###  http://www.semanticweb.org/CRIMA#Impact
+:Impact rdf:type owl:Class ;
+        rdfs:subClassOf db:Perdurant ;
+        skos:definition "IPCC AR6 (« WGIII,WGII »): \"The consequences of realised risks on natural and human systems, where risks result from the interactions of climate-related hazards (including extreme weather/climate events), exposure, and vulnerability. Impacts generally refer to effects on lives, livelihoods, health and well-being, ecosystems and species, economic, social and cultural assets, services (including ecosystem services), and infrastructure. Impacts may be referred to as consequences or outcomes, and can be adverse or beneficial.)The consequences of realised risks on natural and human systems, where risks result from the interactions of climate-related hazards (including extreme weather/climate events), exposure, and vulnerability. Impacts generally refer to effects on lives, livelihoods, health and well-being, ecosystems and species, economic, social and cultural assets, services (including ecosystem services), and infrastructure. Impacts may be referred to as consequences or outcomes, and can be adverse or beneficial.\""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#ImpactProperty
+:ImpactProperty rdf:type owl:Class ;
+                rdfs:subClassOf sosa:ObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#InstitutionalVulnerability
+:InstitutionalVulnerability rdf:type owl:Class ;
+                            rdfs:subClassOf :Vulnerability ;
+                            skos:definition "\"The institutional dimension relates to the attributes of institutions and governance systems that influence the predisposition of a system, communities, or individuals to withstand, cope and recover from being adversely affected by the impact of a natural hazard (Papathoma-Köhle et al., 2021). This dimension is connected to the decision-making power across society and the ability of institutions/governments to implement policies related to disaster risk and climate change adaptation on the ground.\" [DV 5.2.1 - Risk-oriented taxonomy and ontology of urban subsystems and functional models]"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#IntensityObservation
+:IntensityObservation rdf:type owl:Class ;
+                      rdfs:subClassOf sosa:Observation ;
+                      rdfs:comment """Intensity is the strength of a hazard. (Source: P. J. Schneider, B. A. Schauer, Hazus—its development and its future, Natural Hazards
+Review 7 (2006) 40–44)."""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#NationalLandDataAssimilationSystem
+:NationalLandDataAssimilationSystem rdf:type owl:Class ;
+                                    rdfs:subClassOf :DroughtObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#PalmerDroughtIndex
+:PalmerDroughtIndex rdf:type owl:Class ;
+                    rdfs:subClassOf :DroughtObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#PhysicalVulnerability
+:PhysicalVulnerability rdf:type owl:Class ;
+                       rdfs:subClassOf :Vulnerability ;
+                       skos:definition """\"The propensity of the built environment (e.g., buildings and infrastructure) built-up areas, infrastructure, and open spaces to suffer the physical impact of hazardous events (Douglas 2007; Birkmann et al. 2013).\"
+[DV 5.2.1 - Risk-oriented taxonomy and ontology of urban subsystems and functional models]"""@en .
+
+
+###  http://www.semanticweb.org/CRIMA#SeverityObservation
+:SeverityObservation rdf:type owl:Class ;
+                     rdfs:subClassOf sosa:Observation ;
+                     rdfs:comment "Severity is a measure of the adverse effects of a disaster on a community or an environment (Source: H. J. Caldera, S. Wirasinghe, A universal severity classification for natural disasters, Natural hazards 111 (2022) 1533–1573)."@en .
+
+
+###  http://www.semanticweb.org/CRIMA#SocialVulnerability
+:SocialVulnerability rdf:type owl:Class ;
+                     rdfs:subClassOf :Vulnerability ;
+                     skos:definition "\"The social dimension refers to the propensity for human well-being to suffer harm due to disruptions to individual and collective social systems (Birkmann et al., 2013). This dimension addresses how the attributes of individuals and groups make them vulnerable in a particular context (e.g., gender, ethnicity, age, etc.), as well as how social relations across scales shape vulnerability (Singh, Eghdami, and Singh 2014).\" [DV 5.2.1 - Risk-oriented taxonomy and ontology of urban subsystems and functional models]"@en .
+
+
+###  http://www.semanticweb.org/CRIMA#StandardizedPrecipitationIndex
+:StandardizedPrecipitationIndex rdf:type owl:Class ;
+                                rdfs:subClassOf :DroughtObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#VegetationDroughtResponseIndex
+:VegetationDroughtResponseIndex rdf:type owl:Class ;
+                                rdfs:subClassOf :DroughtObservableProperty .
+
+
+###  http://www.semanticweb.org/CRIMA#Vulnerability
+:Vulnerability rdf:type owl:Class ;
+               rdfs:subClassOf sosa:ObservableProperty ;
+               rdfs:isDefinedBy "https://apps.ipcc.ch/glossary/"@en ,
+                                "https://www.preventionweb.net/news/disasters-z"@en ;
+               rdfs:label "Vulnerability"@en ;
+               skos:definition "IPCC AR6 («WGI,WGIII,WGII »): \"The propensity or predisposition to be adversely affected. Vulnerability encompasses a variety of concepts and elements, including sensitivity or susceptibility to harm and lack of capacity to cope and adapt.\""@en ,
+                               "UNDRR: The conditions determined by physical, social, economic and environmental factors or processes which increase the susceptibility of an individual, a community, assets or systems to the impacts of hazards (UNDRR, 2017). Vulnerability is the human dimension of disasters and is the result of the range of economic, social, cultural, institutional, political and psychological factors that shape people’s lives and the environment that they live in."@en .
+
+
+###  http://www.semanticweb.org/CRIMA#Wildfire
+:Wildfire rdf:type owl:Class ;
+          rdfs:subClassOf :Hazard .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#AdaptationFactor
+impch:AdaptationFactor rdf:type owl:Class ;
+                       rdfs:subClassOf impch:ImpactChainFactor ;
+                       rdfs:comment "Impact Chain adaptation factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#Affects
+impch:Affects rdf:type owl:Class ;
+              rdfs:subClassOf impch:ImpactChainConnection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty impch:source ;
+                                owl:someValuesFrom impch:VulnerabilityFactor
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty impch:target ;
+                                owl:someValuesFrom impch:ImpactFactor
+                              ] ;
+              rdfs:label "Affects"@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#DriverFactor
+impch:DriverFactor rdf:type owl:Class ;
+                   rdfs:subClassOf impch:ImpactChainFactor ;
+                   rdfs:comment "Impact Chain driver factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#ExposureFactor
+impch:ExposureFactor rdf:type owl:Class ;
+                     rdfs:subClassOf impch:ImpactChainFactor ;
+                     rdfs:comment "Impact Chain exposure factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#HazardFactor
+impch:HazardFactor rdf:type owl:Class ;
+                   rdfs:subClassOf impch:ImpactChainFactor ;
+                   rdfs:comment "Impact Chain hazard factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#ImpactChainConnection
+impch:ImpactChainConnection rdf:type owl:Class ;
+                            rdfs:subClassOf skos:Concept .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#ImpactChainFactor
+impch:ImpactChainFactor rdf:type owl:Class ;
+                        rdfs:subClassOf skos:Concept ;
+                        rdfs:comment "Impact Chain factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#ImpactFactor
+impch:ImpactFactor rdf:type owl:Class ;
+                   rdfs:subClassOf impch:ImpactChainFactor ;
+                   rdfs:comment "Impact Chain impact factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#ImpactsOn
+impch:ImpactsOn rdf:type owl:Class ;
+                rdfs:subClassOf impch:ImpactChainConnection ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty impch:source ;
+                                  owl:someValuesFrom impch:ImpactFactor
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty impch:target ;
+                                  owl:someValuesFrom impch:ExposureFactor
+                                ] ;
+                rdfs:label "Impacts on"@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#LeadsTo
+impch:LeadsTo rdf:type owl:Class ;
+              rdfs:subClassOf impch:ImpactChainConnection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :source ;
+                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( :Hazard
+                                                                   :Impact
+                                                                 )
+                                                   ]
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :target ;
+                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( :Hazard
+                                                                   :Impact
+                                                                 )
+                                                   ]
+                              ] ;
+              rdfs:label "Leads to"@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#Mitigates
+impch:Mitigates rdf:type owl:Class ;
+                rdfs:subClassOf impch:ImpactChainConnection ;
+                rdfs:label "Mitigates"@en .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#RiskFactor
+impch:RiskFactor rdf:type owl:Class ;
+                 rdfs:subClassOf impch:ImpactChainFactor ;
+                 rdfs:comment "Impact Chain risk factor" .
+
+
+###  http://www.semanticweb.org/CRIMA/ImpactChain#VulnerabilityFactor
+impch:VulnerabilityFactor rdf:type owl:Class ;
+                          rdfs:subClassOf impch:ImpactChainFactor ;
+                          rdfs:comment "Impact Chain vulnerability factor" .
+
+
+###  http://www.w3.org/2004/02/skos/core#Collection
+skos:Collection rdf:type owl:Class ;
+                rdfs:comment skos:Collection ;
+                rdfs:label "Collection"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class ;
+             rdfs:comment skos:Concept ;
+             rdfs:label "Concept"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class ;
+                   rdfs:comment skos:ConceptScheme ;
+                   rdfs:label "Concept Scheme"@en .
+
+
+###  http://www.w3.org/2006/time#Instant
+time:Instant rdf:type owl:Class ;
+             rdfs:subClassOf time:TemporalEntity ;
+             rdfs:label "Time instant"@en ;
+             skos:definition "A temporal entity with zero extent or duration"@en .
+
+
+###  http://www.w3.org/2006/time#Interval
+time:Interval rdf:type owl:Class ;
+              rdfs:subClassOf time:TemporalEntity ;
+              rdfs:label "Time interval"@en ;
+              skos:definition "A temporal entity with an extent or duration"@en .
+
+
+###  http://www.w3.org/2006/time#TemporalEntity
+time:TemporalEntity rdf:type owl:Class ;
+                    rdfs:subClassOf owl:Thing ;
+                    rdfs:label "Temporal entity"@en ;
+                    skos:definition "A temporal interval or instant."@en .
+
+
+###  http://www.w3.org/ns/dcat#Dataset
+dcat:Dataset rdf:type owl:Class ;
+             rdfs:subClassOf dcat:Resource ;
+             rdfs:comment "1つのエージェントによって公開またはキュレートされ、1つ以上の形式でアクセスまたはダウンロードできるデータの集合。"@ja ,
+                          "A collection of data, published or curated by a single source, and available for access or download in one or more representations."@en ,
+                          "En samling af data, udgivet eller udvalgt og arrangeret af en enkelt kilde og som er til råde for adgang til eller download af i en eller flere repræsentationer."@da ,
+                          "Kolekce dat poskytovaná či řízená jedním zdrojem, která je k dispozici pro přístup či stažení v jednom či více formátech."@cs ,
+                          "Raccolta di dati, pubblicati o curati da un'unica fonte, disponibili per l'accesso o il download in uno o più formati."@it ,
+                          "Una colección de datos, publicados o conservados por una única fuente, y disponibles para ser accedidos o descargados en uno o más formatos."@es ,
+                          "Une collection de données, publiée ou élaborée par une seule source, et disponible pour accès ou téléchargement dans un ou plusieurs formats."@fr ,
+                          "Μία συλλογή από δεδομένα, δημοσιευμένη ή επιμελημένη από μία και μόνο πηγή, διαθέσιμη δε προς πρόσβαση ή μεταφόρτωση σε μία ή περισσότερες μορφές."@el ,
+                          "قائمة بيانات منشورة أو مجموعة من قبل مصدر ما و متاح الوصول إليها أو تحميلها"@ar ;
+             rdfs:isDefinedBy <http://www.w3.org/TR/vocab-dcat/> ;
+             rdfs:label "Conjunto de datos"@es ,
+                        "Dataset"@en ,
+                        "Dataset"@it ,
+                        "Datasæt"@da ,
+                        "Datová sada"@cs ,
+                        "Jeu de données"@fr ,
+                        "Σύνολο Δεδομένων"@el ,
+                        "قائمة بيانات"@ar ,
+                        "データセット"@ja ;
+             skos:altLabel "Datasamling"@da ;
+             skos:changeNote "2018-02 - odstraněno tvrzení o podtřídě dctype:Dataset, jelikož rozsah dcat:Dataset zahrnuje několik dalších typů ze slovníku dctype."@cs ,
+                             "2018-02 - se eliminó el axioma de subclase con dctype:Dataset porque el alcance de dcat:Dataset incluye muchos otros tipos del vocabulario dctype."@es ,
+                             "2018-02 - sottoclasse di dctype:Dataset rimosso perché l'ambito di dcat:Dataset include diversi altri tipi dal vocabolario dctype."@it ,
+                             "2018-02 - subclass of dctype:Dataset removed because scope of dcat:Dataset includes several other types from the dctype vocabulary."@en ,
+                             "2018-02 - subklasse af dctype:Dataset fjernet da scope af dcat:Dataset omfatter flere forskellige typer fra dctype-vokabularet."@da ;
+             skos:definition "1つのエージェントによって公開またはキュレートされ、1つ以上の形式でアクセスまたはダウンロードできるデータの集合。"@ja ,
+                             "A collection of data, published or curated by a single source, and available for access or download in one or more representations."@en ,
+                             "En samling a data, udgivet eller udvalgt og arrangeret af en enkelt kilde og som der er adgang til i en eller flere repræsentationer."@da ,
+                             "Kolekce dat poskytovaná či řízená jedním zdrojem, která je k dispozici pro přístup či stažení v jednom či více formátech."@cs ,
+                             "Raccolta di dati, pubblicati o curati da un'unica fonte, disponibili per l'accesso o il download in uno o più formati."@it ,
+                             "Una colección de datos, publicados o conservados por una única fuente, y disponibles para ser accedidos o descargados en uno o más formatos."@es ,
+                             "Une collection de données, publiée ou élaborée par une seule source, et disponible pour accès ou téléchargement dans un ou plusieurs formats."@fr ,
+                             "Μία συλλογή από δεδομένα, δημοσιευμένη ή επιμελημένη από μία και μόνο πηγή, διαθέσιμη δε προς πρόσβαση ή μεταφόρτωση σε μία ή περισσότερες μορφές."@el ,
+                             "قائمة بيانات منشورة أو مجموعة من قبل مصدر ما و متاح الوصول إليها أو تحميلها"@ar ;
+             skos:editorialNote "2020-03-16 A new scopenote added and need to be translated"@en ;
+             skos:scopeNote "Cette classe représente le jeu de données publié par le fournisseur de données. Dans les cas où une distinction est nécessaire entre le jeu de donénes et son entrée dans le catalogue, la classe registre de données peut être utilisée pour ce dernier."@fr ,
+                            "Denne klasse beskriver det konceptuelle datasæt. En eller flere repræsentationer kan være tilgængelige med forskellige skematiske opsætninger, formater eller serialiseringer."@da ,
+                            "Denne klasse repræsenterer det konkrete datasæt som det udgives af datasætleverandøren. I de tilfælde hvor det er nødvendigt at skelne mellem det konkrete datasæt og dets registrering i kataloget (fordi metadata såsom ændringsdato og vedligeholder er forskellige), så kan klassen katalogpost anvendes. "@da ,
+                            "Esta clase representa el conjunto de datos publicados. En los casos donde es necesario distinguir entre el conjunto de datos y su entrada en el catálogo de datos, se debe utilizar la clase 'registro del catálogo'."@es ,
+                            "Questa classe descrive il dataset dal punto di vista concettuale. Possono essere disponibili una o più rappresentazioni, con diversi layout e formati schematici o serializzazioni."@it ,
+                            "Questa classe rappresenta il dataset come pubblicato dall’editore. Nel caso in cui sia necessario operare  una distinzione fra i metadati originali del dataset e il record dei metadati ad esso associato nel catalogo (ad esempio, per distinguere la data di modifica del dataset da quella del dataset nel catalogo) si può impiegare la classe catalog record."@it ,
+                            "Tato třída reprezentuje datovou sadu tak, jak je publikována poskytovatelem dat. V případě potřeby rozlišení datové sady a jejího katalogizačního záznamu (jelikož metadata jako datum modifikace se mohou lišit) pro něj může být použita třída \"katalogizační záznam\"."@cs ,
+                            "The notion of dataset in DCAT is broad and inclusive, with the intention of accommodating resource types arising from all communities. Data comes in many forms including numbers, text, pixels, imagery, sound and other multi-media, and potentially other types, any of which might be collected into a dataset."@en ,
+                            "This class describes the conceptual dataset. One or more representations might be available, with differing schematic layouts and formats or serializations."@en ,
+                            "This class represents the actual dataset as published by the dataset provider. In cases where a distinction between the actual dataset and its entry in the catalog is necessary (because metadata such as modification date and maintainer might differ), the catalog record class can be used for the latter."@en ,
+                            "Η κλάση αυτή αναπαριστά το σύνολο δεδομένων αυτό καθ'εαυτό, όπως έχει δημοσιευθεί από τον εκδότη. Σε περιπτώσεις όπου είναι απαραίτητος ο διαχωρισμός μεταξύ του συνόλου δεδομένων και της καταγραφής αυτού στον κατάλογο (γιατί μεταδεδομένα όπως η ημερομηνία αλλαγής και ο συντηρητής μπορεί να διαφέρουν) η κλάση της καταγραφής καταλόγου μπορεί να χρησιμοποιηθεί για το τελευταίο."@el ,
+                            "このクラスは、データセットの公開者が公開する実際のデータセットを表わします。カタログ内の実際のデータセットとそのエントリーとの区別が必要な場合（修正日と維持者などのメタデータが異なるかもしれないので）は、後者にcatalog recordというクラスを使用できます。"@ja .
+
+
+###  http://www.w3.org/ns/dcat#Resource
+dcat:Resource rdf:type owl:Class ;
+              rdfs:comment "Recurso publicado o curado por un agente único."@es ,
+                           "Resource published or curated by a single agent."@en ,
+                           "Ressource udgivet eller udvalgt og arrangeret af en enkelt aktør."@da ,
+                           "Risorsa pubblicata o curata da un singolo agente."@it ,
+                           "Zdroj publikovaný či řízený jediným činitelem."@cs ;
+              rdfs:isDefinedBy <https://www.w3.org/TR/vocab-dcat-2/> ;
+              rdfs:label "Catalogued resource"@en ,
+                         "Katalogiseret ressource"@da ,
+                         "Katalogizovaný zdroj"@cs ,
+                         "Recurso catalogado"@es ,
+                         "Risorsa catalogata"@it ;
+              skos:changeNote "New class added in DCAT 2"@en ,
+                              "Nová třída přidaná ve verzi DCAT 2"@cs ,
+                              "Nueva clase agregada en DCAT 2"@es ,
+                              "Nuova classe aggiunta in DCAT 2"@it ,
+                              "Ny klasse i DCAT 2"@da ;
+              skos:definition "Recurso publicado o curado por un agente único."@es ,
+                              "Resource published or curated by a single agent."@en ,
+                              "Ressource udgivet eller udvalgt og arrangeret af en enkelt aktør."@da ,
+                              "Risorsa pubblicata o curata da un singolo agente."@it ,
+                              "Zdroj publikovaný či řízený jediným činitelem."@cs ;
+              skos:editorialNote "2020-08-23 Scopenote updated  and needs to be translated"@en ;
+              skos:scopeNote "Klassen for alle katalogiserede ressourcer, den overordnede klasse for dcat:Dataset, dcat:DataService, dcat:Catalog og enhvert medlem af et dcat:Catalog. Denne klasse bærer egenskaber der gælder alle katalogiserede ressourcer, herunder dataset og datatjenester. Det anbefales kraftigt at mere specifikke subklasser oprettes. Når der beskrives ressourcer der ikke er dcat:Dataset eller dcat:DataService, anbefales det at oprette passende subklasser af dcat:Resource eller at dcat:Resource anvendes sammen med egenskaben dcterms:type til opmærkning med en specifik typeangivelse."@da ,
+                             "La clase de todos los recursos catalogados, la superclase de dcat:Dataset, dcat:DataService, dcat:Catalog y cualquier otro miembro de un dcat:Catalog. Esta clase tiene propiedades comunes a todos los recursos catalogados, incluyendo conjuntos de datos y servicios de datos. Se recomienda fuertemente que se use una clase más específica. Cuando se describe un recurso que no es un dcat:Dataset o dcat:DataService, se recomienda crear una sub-clase apropiada de dcat:Resource, o usar dcat:Resource con la propiedad dcterms:type to indicar el tipo específico."@es ,
+                             "La classe di tutte le risorse catalogate, la Superclasse di dcat:Dataset, dcat:DataService, dcat:Catalog e qualsiasi altro membro di dcat:Catalog. Questa classe porta proprietà comuni a tutte le risorse catalogate, inclusi set di dati e servizi dati. Si raccomanda vivamente di utilizzare una sottoclasse più specifica. Quando si descrive una risorsa che non è un dcat:Dataset o dcat:DataService, si raccomanda di creare una sottoclasse di dcat:Resource appropriata, o utilizzare dcat:Resource con la proprietà dcterms:type per indicare il tipo specifico."@it ,
+                             "The class of all catalogued resources, the Superclass of dcat:Dataset, dcat:DataService, dcat:Catalog and any other member of a dcat:Catalog. This class carries properties common to all catalogued resources, including datasets and data services. The instances of this class SHOULD be included in a catalog. The instances of this class SHOULD be included in a catalog. It is strongly recommended to use a more specific sub-class. When describing a resource which is not a dcat:Dataset or dcat:DataService, it is recommended to create a suitable sub-class of dcat:Resource, or use dcat:Resource with the dcterms:type property to indicate the specific type."@en ,
+                             "Třída všech katalogizovaných zdrojů, nadtřída dcat:Dataset, dcat:DataService, dcat:Catalog a všech ostatních členů dcat:Catalog. Tato třída nese vlastnosti společné všem katalogizovaným zdrojům včetně datových sad a datových služeb. Je silně doporučeno používat specifičtější podtřídy, pokud je to možné. Při popisu zdroje, který není ani dcat:Dataset, ani dcat:DataService se doporučuje vytvořit odpovídající podtřídu dcat:Resrouce a nebo použít dcat:Resource s vlastností dcterms:type pro určení konkrétního typu."@cs ,
+                             "dcat:Resource er et udvidelsespunkt der tillader oprettelsen af enhver type af kataloger. Yderligere subklasser kan defineres i en DCAT-profil eller i en applikation til kataloger med andre typer af ressourcer."@da ,
+                             "dcat:Resource es un punto de extensión que permite la definición de cualquier tipo de catálogo. Se pueden definir subclases adicionales en perfil de DCAT o una aplicación para catálogos de otro tipo de recursos."@es ,
+                             "dcat:Resource is an extension point that enables the definition of any kind of catalog. Additional subclasses may be defined in a DCAT profile or application for catalogs of other kinds of resources."@en ,
+                             "dcat:Resource je bod pro rozšíření umožňující definici různých druhů katalogů. Další podtřídy lze definovat v profilech DCAT či aplikacích pro katalogy zdrojů jiných druhů."@cs ,
+                             "dcat:Resource è un punto di estensione che consente la definizione di qualsiasi tipo di catalogo. Sottoclassi aggiuntive possono essere definite in un profilo DCAT o in un'applicazione per cataloghi di altri tipi di risorse."@it .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+sosa:FeatureOfInterest rdf:type owl:Class ;
+                       rdfs:comment sosa:FeatureOfInterest ,
+                                    "" .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+sosa:ObservableProperty rdf:type owl:Class ;
+                        rdfs:subClassOf ssn:Property ;
+                        rdfs:comment sosa:ObservableProperty ;
+                        rdfs:label "Observable Property"@en .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+sosa:Observation rdf:type owl:Class ;
+                 rdfs:comment sosa:Observation ;
+                 rdfs:label "Observation"@en .
+
+
+###  http://www.w3.org/ns/sosa/Platform
+sosa:Platform rdf:type owl:Class ;
+              dcterms:source <https://inspire.ec.europa.eu/id/document/tg/ef> ;
+              rdfs:label "Platform or Host"@en ;
+              skos:altLabel "Host" ;
+              skos:definition "entity that hosts other entities, particularly Systems and other Platforms"@en ;
+              skos:example "A post, buoy, vehicle, ship, aircraft, satellite, cell-phone, human or animal may act as platforms for (technical or biological) sensors or actuators. An environmental monitoring facility. A platform that hosts a set of sensors. A team performing a survey, where each team member would be modeled as an Observer."@en ;
+              skos:prefLabel "Platform" ;
+              skos:scopeNote "The INSPIRE 'Environmental Monitoring Facility' may be implemented using SOSA by the OWL/RDFS class 'Platform'" .
+
+
+###  http://www.w3.org/ns/sosa/Procedure
+sosa:Procedure rdf:type owl:Class ;
+               rdfs:label "Procedure"@en ;
+               skos:definition """workflow, protocol, plan, algorithm, or computational method specifying how to make an Execution. A Procedure is re-usable, and might be applied in many Actuations, Observations, or Samplings. It explains the steps to be carried out to arrive at reproducible results.
+  """@en ;
+               skos:example "The measured wind speed differs depending on the height of the sensor above the surface, e.g., due to friction. Consequently, procedures for measuring wind speed define a standard height for anemometers above ground, typically 10m for meteorological measures and 2m in Agrometeorology. This definition of height, sensor placement, and so forth are defined by the Procedure."@en ;
+               skos:scopeNote "Procedure generalizes the ActuationProcedure, ObservationProcedure, and SamplingProcedure classes. It is included in the ontology to support the definition of a common pattern for executions and their properties."@en .
+
+
+###  http://www.w3.org/ns/sosa/Result
+sosa:Result rdf:type owl:Class ;
+            rdfs:comment sosa:Result ;
+            rdfs:label "Result"@en .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+sosa:Sensor rdf:type owl:Class ;
+            rdfs:subClassOf sosa:System ;
+            rdfs:label "Sensor or Observer"@en ;
+            skos:altLabel "Observer"@en ;
+            skos:definition "System that implements an ObservingProcedure to determine the value of an observable Property. This may be a device, a piece of infrastructure, an agent (including humans), or software (simulation). A Sensor responds to a stimulus, e.g., a change in the environment, or input data composed from the results of prior Observations."@en ;
+            skos:example "Accelerometers, gyroscopes, barometers, magnetometers, and so forth are Sensors that are typically mounted on a modern smartphone (which acts as Host or Platform). Other examples of Sensors include the human eyes."@en ;
+            skos:note "The UML class 'Observer' from ISO 19156:2023 is implemented in SOSA by the OWL/RDFS class 'Sensor'. The class name 'Sensor' is preferred for backward compatibility with existing SOSA deployments. " ;
+            skos:prefLabel "Sensor"@en .
+
+
+###  http://www.w3.org/ns/sosa/System
+sosa:System rdf:type owl:Class ;
+            rdfs:label "System"@en ;
+            skos:definition "entity that implements a Procedure in the context of an Execution"@en ;
+            skos:note "This may be a device, a piece of infrastructure, an agent (including humans), or software (simulation). Different Systems can implement the same (reusable) Procedure for different Executions. A System may have components, its sub-systems, which are other systems."@en ;
+            skos:scopeNote "Specific system types may be implemented as sub-classes of this class or its sub-classes. Their descriptions may capture the properties and characteristics of a whole class of systems, corresponding with the information typically found in a data-sheet. Individual system instances are members of this class or its sub-classes."@en ,
+                           "System generalizes the Actuator, Sensor, and Sampler classes. It is included in the ontology to support the definition of a common pattern for executions and their properties. System MUST be considered to be abstract, so any individual System SHOULD be declared to be an instance of a concrete sub-class, and not of the System class."@en ,
+                           "The association of a System (Actuator, Sensor, and Sampler) with a FeatureOfInterest is usually in the context of an Execution or a Deployment. A System can be hosted by a Platform. A System can be deployed for a specified time interval as part of a Deployment."@en .
+
+
+###  http://www.w3.org/ns/ssn/Property
+ssn:Property rdf:type owl:Class ;
+             rdfs:comment ssn:Property ;
+             rdfs:label "Property"@en .
+
+
+###  https://undrr-hip.org/BI
+hip:BI rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Biological Hazard" .
+
+
+###  https://undrr-hip.org/CH
+hip:CH rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Chemical Hazard" .
+
+
+###  https://undrr-hip.org/EN
+hip:EN rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Environmental Hazard" .
+
+
+###  https://undrr-hip.org/ET
+hip:ET rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Extraterrestrial Hazard" .
+
+
+###  https://undrr-hip.org/GH
+hip:GH rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Geological Hazard" .
+
+
+###  https://undrr-hip.org/HazardClassification
+hip:HazardClassification rdf:type owl:Class ;
+                         rdfs:subClassOf skos:ConceptScheme ;
+                         rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+                         rdfs:label "Hazard Classification"@en .
+
+
+###  https://undrr-hip.org/HazardCluster
+hip:HazardCluster rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Collection ;
+                  rdfs:label "Hazard Cluster"@en .
+
+
+###  https://undrr-hip.org/HazardType
+hip:HazardType rdf:type owl:Class ;
+               rdfs:subClassOf skos:Concept ;
+               rdfs:comment "From HIP ontology" ;
+               rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+               rdfs:label "Hazard Type"@en .
+
+
+###  https://undrr-hip.org/MC
+hip:MC rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Hydrological and Meteorological Hazard" .
+
+
+###  https://undrr-hip.org/SO
+hip:SO rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "From HIP ontology" ,
+                  "Societal Hazard" .
+
+
+###  https://undrr-hip.org/SpecificHazard
+hip:SpecificHazard rdf:type owl:Class ;
+                   rdfs:subClassOf skos:Concept ;
+                   rdfs:comment "From HIP ontology" ;
+                   rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
+                   rdfs:label "Spacific Hazard"@en .
+
+
+###  https://undrr-hip.org/TL
+hip:TL rdf:type owl:Class ;
+       rdfs:subClassOf hip:HazardType ;
+       rdfs:comment "From HIP ontology" ;
+       rdfs:isDefinedBy "UNDRR - https://www.undrr.org/publication/hazard-information-profiles-supplement-undrr-isc-hazard-definition-classification" ;
+       rdfs:label "Technological Hazard" .
+
+
+###  https://w3id.org/DOLCE/OWL/DOLCEbasic#Endurant
+db:Endurant rdfs:subClassOf sosa:FeatureOfInterest .
+
+
+###  https://w3id.org/DOLCE/OWL/DOLCEbasic#Perdurant
+db:Perdurant rdfs:subClassOf sosa:FeatureOfInterest .
+
+
+###  https://www.w3.org/ns/activitystreams#Place
+as:Place rdf:type owl:Class .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( impch:Affects
+                impch:ImpactsOn
+                impch:LeadsTo
+                impch:Mitigates
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( skos:Collection
+                skos:Concept
+                skos:ConceptScheme
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
