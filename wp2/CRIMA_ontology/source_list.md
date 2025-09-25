@@ -1,0 +1,14 @@
+[•] sources:
+--- the dbpedia ontology dev 2021.07.09-070001 : https://databus.dbpedia.org/ontologies/dbpedia.org/ontology--DEV/2021.07.09-070001
+--- dolce_basic.ttl : https://github.com/appliedontolab/DOLCE/tree/main
+--- dcterms.ttl : https://gist.github.com/baskaufs/6fdab74aaf2a755bd069; https://github.com/dcmi/vocabtool/blob/master/build/dcterms.ttl
+--- dcat3.ttl : https://github.com/w3c/dxwg/blob/gh-pages/dcat/rdf/dcat3.ttl
+--- frbr.ttl : https://github.com/SPAROntologies/frbr/blob/master/docs/current/frbr.ttl
+--- DOLCEbasic-3.5.owl : https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEbasic-3.5.owl (locally converted to .ttl)
+--- disaster-event-module-extensions.ttl (KnowWhereGraph/dmdo) : https://github.com/KnowWhereGraph/dmdo/blob/main/modules/disaster-event-module/disaster-event-module-extensions.ttl
+--- activitystreams2.owl : https://github.com/w3c/activitystreams/blob/main/vocabulary/activitystreams2.owl
+--- time.ttl : https://raw.githubusercontent.com/w3c/sdw/gh-pages/time/rdf/time.ttl
+--- geosparql : https://opengeospatial.github.io/ogc-geosparql/geosparql11/geo.ttl#
+--- sdw-sosa-ssn : https://github.com/w3c/sdw-sosa-ssn
+--- qudt-public-repo : https://github.com/qudt/qudt-public-repo (https://qudt.org/)
+--- dtype : http://www.linkedmodel.org
