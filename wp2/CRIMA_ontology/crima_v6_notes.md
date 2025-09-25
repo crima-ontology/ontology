@@ -1,4 +1,4 @@
---- {db:Endurant, db:Perdurant} --rdfs:subClassOf--> sosa:FeatureOfInterest
+--- db:Particular --subClassOf--> sosa:FeatureOfInterest
 --- sosa-common entities consistently applied (instead of a mixture of sosa and ssn)
 --- sosa:Observation --rdfs:subClassOf--> db:Event
 --- sosa:Propery --rdfs:subClassOf--> db:Quality
@@ -19,7 +19,6 @@
 ###  http://www.opengis.net/ont/geosparql#hasSize
 
 --- {dbo:ArchitecturalStructure, dbo:Place} --subClassOf--> geo:Feature
---- db:Particular --subClassOf--> sosa:FeatureOfInterest
 
 --- [???] geo:sfOverlaps --subClassOf--> db:constantlyOverlaps 
 --- [???] hip:SpecificHazard --subClassOf--> impch:HazardFactor
