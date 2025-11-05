@@ -412,8 +412,7 @@ impch:target rdf:type owl:ObjectProperty ,
 
 
 ###  http://www.w3.org/2004/02/skos/core#broader
-skos:broader rdf:type owl:ObjectProperty ;
-             rdfs:comment skos:broader .
+skos:broader rdf:type owl:ObjectProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#inScheme
@@ -422,8 +421,7 @@ skos:inScheme rdf:type owl:ObjectProperty ;
 
 
 ###  http://www.w3.org/2004/02/skos/core#mappingRelation
-skos:mappingRelation rdf:type owl:ObjectProperty ;
-                     rdfs:comment skos:mappingRelation .
+skos:mappingRelation rdf:type owl:ObjectProperty .
 
 
 ###  http://www.w3.org/2004/02/skos/core#member
@@ -509,8 +507,7 @@ sosa:hasResult rdf:type owl:ObjectProperty ,
                         owl:FunctionalProperty ;
                rdfs:domain sosa:Observation ;
                rdfs:range sosa:Result ;
-               rdfs:comment sosa:hasResult ,
-                            "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."@en ;
+               rdfs:comment "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."@en ;
                rdfs:label "has result"@en ,
                           "hasResult"@en ;
                skos:definition "Relation linking an Observation or Actuation or act of Sampling and a Result or Sample."@en .
@@ -535,7 +532,6 @@ sosa:inputFor rdf:type owl:ObjectProperty .
 sosa:isFeatureOfInterestOf rdf:type owl:ObjectProperty ;
                            rdfs:domain sosa:FeatureOfInterest ;
                            rdfs:range sosa:Observation ;
-                           rdfs:comment sosa:isFeatureOfInterestOf ;
                            rdfs:label "is feature of interest of"@en ;
                            skos:definition "relation from a FeatureOfInterest to an Execution, Execution Collection, or Deployment, operating on it i.e., to an Observation about it, to an Actuation acting on it, to an act of Sampling that sampled it, or to a Deployment for which it is the subject."@en .
 
@@ -565,7 +561,6 @@ sosa:isObservedBy rdf:type owl:ObjectProperty ;
 sosa:isPropertyOf rdf:type owl:ObjectProperty ;
                   rdfs:domain sosa:Property ;
                   rdfs:range sosa:FeatureOfInterest ;
-                  rdfs:comment sosa:isPropertyOf ;
                   rdfs:label "is property of"@en ;
                   skos:definition "relation from a Property to a FeatureOfInterest that it is a quality of"@en .
 
@@ -590,8 +585,7 @@ sosa:madeObservation rdf:type owl:ObjectProperty ;
 ###  http://www.w3.org/ns/sosa/observedProperty
 sosa:observedProperty rdf:type owl:ObjectProperty ;
                       rdfs:domain sosa:Observation ;
-                      rdfs:range sosa:ObservableProperty ;
-                      rdfs:comment sosa:observedProperty .
+                      rdfs:range sosa:ObservableProperty .
 
 
 ###  http://www.w3.org/ns/sosa/observes
@@ -4247,13 +4241,11 @@ skos:Collection rdf:type owl:Class .
 
 ###  http://www.w3.org/2004/02/skos/core#Concept
 skos:Concept rdf:type owl:Class ;
-             rdfs:comment skos:Concept ;
              rdfs:label "Concept"@en .
 
 
 ###  http://www.w3.org/2004/02/skos/core#ConceptScheme
 skos:ConceptScheme rdf:type owl:Class ;
-                   rdfs:comment skos:ConceptScheme ;
                    rdfs:label "Concept Scheme"@en .
 
 
@@ -4371,22 +4363,18 @@ dcat:Resource rdf:type owl:Class ;
 
 
 ###  http://www.w3.org/ns/sosa/FeatureOfInterest
-sosa:FeatureOfInterest rdf:type owl:Class ;
-                       rdfs:comment sosa:FeatureOfInterest ,
-                                    "" .
+sosa:FeatureOfInterest rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/sosa/ObservableProperty
 sosa:ObservableProperty rdf:type owl:Class ;
                         rdfs:subClassOf sosa:Property ;
-                        rdfs:comment sosa:ObservableProperty ;
                         rdfs:label "Observable Property"@en .
 
 
 ###  http://www.w3.org/ns/sosa/Observation
 sosa:Observation rdf:type owl:Class ;
                  rdfs:subClassOf db:Event ;
-                 rdfs:comment sosa:Observation ;
                  rdfs:label "Observation"@en .
 
 
@@ -4422,7 +4410,6 @@ sosa:Property rdf:type owl:Class ;
 
 ###  http://www.w3.org/ns/sosa/Result
 sosa:Result rdf:type owl:Class ;
-            rdfs:comment sosa:Result ;
             rdfs:label "Result"@en .
 
 
