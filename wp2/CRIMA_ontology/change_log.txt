@@ -1,0 +1,75 @@
+2026-02-10
+
+• <sosa-common.ttl> has been integrated (2025 edition)
+• <sosa-observation.ttl> has been integrated (2025 edition)
+• <dolce_basics.ttl> has been integrated [NO SPECIFIC ALIGNMENT FOR 'QUALITY', 'ATOM' AND 'ABSTRACT' YET]
+
+• sosa:FeatureOfInterest rdfs:subClassOf (db:Endurant or db:Perdurant)
+• ccor:Hazard rdfs:subClassOf (db:Event or db:Process)
+• ccor:Impact rdfs:subClassOf (db:Event or db:Process)
+• ccor:Exposure rdfs:subClassOf (db:AgentivePhysicalObject or db:NonAgentivePhysicalObject)
+
+• db:Concept rdfs:subClassOf db:NonAgentiveSocialObject [NO AXIOMS FOR 'CONCEPT'] 
+• skos:Concept rdfs:subClassOf db:Concept
+
+• ccor:classifies rdf:type owl:ObjectProperty; rdfs:domain hip:SpecificHazard; rdfs:range crima:Hazard
+
+• ccor:Vulnerability rdfs:subClassOf sosa:Property
+• ccor:ExtrinsicVulnerability rdfs:subClassOf ccor:Vulnerability
+• ccor:IntrinsicVulnerability rdfs:subClassOf ccor:Vulnerability
+• ccor:ExtrinsicVulnerability owl:disjointWith ccor:IntrinsicVulnerability
+
+• ccor:hasVulnerability rdf:type owl:ObjectProperty; rdfs:domain db:Endurant; rdfs:range ccor:Vulnerability
+• ccor:hasIntrinsicVulnerability rdfs:subPropertyOf ccor:hasVulnerability [obvious domain and range added]
+• ccor:hasExtrinsicVulnerability rdfs:subPropertyOf ccor:hasVulnerability [obvious domain and range added]
+
+• ccor:manifestedBy rdf:type owl:ObjectProperty; rdfs:domain ccor:Vulnerability; rdfs:range ccor:Impact 
+• ccor:inheresIn rdf:type owl:ObjectProperty; rdfs:domain ccor:IntrinsicVulnerability; rdfs:range db:Endurant 
+• ccor:externallyDependOn rdf:type owl:ObjectProperty; rdfs:domain ccor:ExtrinsicVulnerability; refs:range db:Endurant
+• ccor:proxyContentOf rdf:type owl:ObjectProperty; rdfs:domain sosa:Property; rdfs:range ccor:Vulnerability
+[not to be confused with sosa:isProxyFor; partially inspired by: Gabbrielle M. Johnson, "The hard proxy problem: proxies aren’t intentional; they’re intentional" Philosophical Studies (2025) 182:1383–1411, https://doi.org/10.1007/s11098-025-02333-9]
+
+• geo:hasGeometry rdfs:domain (geo:Feature or db:PhysicalEndurant or db:Perdurant) [ORIGINAL 'GEO:HASGEOMETRY' DOMAIN HAS BEEN EXTENDED TO ALSO INCLUDE 'DB:PHYSICALENDURANT' AND 'DB:PERDURANT']
+
+• The thirteen jointly exhaustive and pairwise disjoint binary relations of the Allen's Interval Algebra (as in the owl:time ontology) have been integrated, together with time:ProperInterval and time:DateTimeInterval classes
+
+• ccor:hasTemporalExtent rdf:type owl:ObjectProperty; rdfs:range time:TemporalEntity
+
+• @prefix ar6-impact: <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> . added
+• ipcc-wgII: Impact classification has been integrated:
+ar6-impact:ImpactType rdfs:subClassOf skos:Concept
+ar6-impact:ObservedImpacts rdfs:subClassOf skos:ConceptScheme
+
+• Corine Land Cover classification has been integrated:
+corine:LandCoverClass rdfs:subClassOf skos:Concept
+corine:CorineLandCover rdfs:subClassOf skos:ConceptScheme
+
+• ccor:ClimaticImpactDriver rdf:type owl:Class
+
+• ccor:MeteorologicalObservation [http://www.semanticweb.org/crima/crima-core#MeteorologicalObservation] rdfs:subClassOf sosa:Observation
+• ccor:MeteorologicalStation [http://www.semanticweb.org/crima/crima-core#MeteorologicalStation] rdfs:subClassOf sosa:Platform
+
+• sosa:Platform rdfs:subClassOf sosa:FeatureOfInterest, geo:Feature
+• dbo:ArchitecturalStructure sosa:FeatureOfInterest, geo:Feature
+• dbo:Place sosa:FeatureOfInterest, geo:Feature
+
+• unit:DEG_C [http://qudt.org/vocab/unit/DEG_C] rdf:type qudt:Unit
+• unit:MilliM [http://qudt.org/vocab/unit/MilliM] rdf:type qudt:Unit
+
+• @prefix cfsn: <http://vocab.nerc.ac.uk/collection/P07/current/> . added
+• cfsn:CFSN0023 ('air_temperature') rdf:type skos:Concept, sosa:Property, ccor:MeteorologicalVariable
+• cfsn:CFSN0452 ('precipitation_amount') rdf:type skos:Concept, sosa:Property, ccor:MeteorologicalVariable
+
+• ich:ConnectionTimeLag [http://www.semanticweb.org/crima/crima-impactchain#ConnectionTimeLag] rdfs:subClassOf skos:Concept . added
+• ich:timeLag [http://www.semanticweb.org/crima/crima-impactchain#timeLag] rdf:type owl:ObjectProperty; rdfs:domain ich:ImpactChainConnection; rdfs:range ich:ConnectionTimeLag
+• {minutesToHours, hoursToDays, daysToWeeks, weeksToMonths, monthsToYears} rdf:type ich:ich:ConnectionTimeLag
+
+///
+Source references (latest):
+• Agriculture Meteorology Sensor Network: https://www.w3.org/2005/Incubator/ssn/wiki/Agriculture_Meteorology_Sensor_Network.html
+• CF Standard Name Table (Version 78, 21 September 2021): https://cfconventions.org/Data/cf-standard-names/78/build/cf-standard-name-table.html
+• Climate and Forecast Standard Names Vocabulary (@MET Norway): https://vocab.met.no/CFSTDN/en/
+• Climate and Forecast Standard Names Vocabulary (@Natural Environment Research Council - NERC) : http://vocab.nerc.ac.uk/collection/P07/current/
+• WeKG Ontology: https://weakg.i3s.unice.fr/ontology/ (source: https://github.com/Wimmics/wekg-ontology)
+• WMO Code Registry: https://codes.wmo.int/common/_quantity-kind
+///
