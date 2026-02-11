@@ -6,6 +6,7 @@
 @prefix qk: <http://qudt.org/vocab/quantitykind/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix deo: <http://knowwheregraph/ontology/deo#> .
+@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix hip: <https://undrr-hip.org/> .
 @prefix iao: <http://purl.obolibrary.org/obo/iao.owl#> .
@@ -5084,6 +5085,51 @@ ccor:Vulnerability rdf:type owl:Class ;
                    skos:definition "Vulnerability The propensity or predisposition to be adversely affected. Vulnerability encompasses a variety of concepts and elements including sensitivity or susceptibility to harm and lack of capacity to cope and adapt. See also Exposure, Hazard and Risk." .
 
 
+###  http://www.semanticweb.org/crima/crima-ecv#EssentialClimaticVariables
+ecv:EssentialClimaticVariables rdf:type owl:Class ;
+                               rdfs:subClassOf skos:ConceptScheme ;
+                               dcterms:creator "World Meteorological Organization (WMO); Intergovernmental Oceanographic Commission of the United Nations Educational, Scientific and Cultural Organization (IOC-UNESCO); International Science Council (ISC); United Nations Environment Programme (UNEP); Copernicus Climate Change Service (C3S)" ;
+                               dcterms:source "https://library.wmo.int/records/item/58111-the-2022-gcos-ecvs-requirements?offset=8" ;
+                               rdfs:comment "An Essential Climate Variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth’s climate. GCOS currently specifies 55 ECVs. ECV datasets provide the empirical evidence needed to understand and predict the evolution of climate, to guide mitigation and adaptation measures, to assess risks and enable attribution of climate events to underlying causes, and to underpin climate services. They are required to support the work of the UNFCCC and the IPCC." ;
+                               rdfs:isDefinedBy """GCOS-245 \"The 2022 GCOS ECVs Requirements\"
+2022 edition - Updated in 2025""" .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#ecv-domain
+ecv:ecv-domain rdf:type owl:Class ;
+               rdfs:subClassOf skos:Collection ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty skos:inScheme ;
+                                 owl:allValuesFrom ecv:EssentialClimaticVariables
+                               ] .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#ecv-subdomain
+ecv:ecv-subdomain rdf:type owl:Class ;
+                  rdfs:subClassOf skos:Concept ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty skos:member ;
+                                    owl:someValuesFrom ecv:ecv-domain
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty skos:inScheme ;
+                                    owl:allValuesFrom ecv:EssentialClimaticVariables
+                                  ] .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#ecv-variable
+ecv:ecv-variable rdf:type owl:Class ;
+                 rdfs:subClassOf skos:Concept ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:broader ;
+                                   owl:someValuesFrom ecv:ecv-subdomain
+                                 ] ,
+                                 [ rdf:type owl:Restriction ;
+                                   owl:onProperty skos:inScheme ;
+                                   owl:allValuesFrom ecv:EssentialClimaticVariables
+                                 ] .
+
+
 ###  http://www.semanticweb.org/crima/crima-impactchain#AdaptationFactor
 ich:AdaptationFactor rdf:type owl:Class ;
                      rdfs:subClassOf ich:ImpactChainFactor ;
@@ -5387,7 +5433,6 @@ skos:Collection rdf:type owl:Class .
 
 ###  http://www.w3.org/2004/02/skos/core#Concept
 skos:Concept rdf:type owl:Class ;
-             rdfs:subClassOf db:Concept ;
              rdfs:label "Concept"@en .
 
 
@@ -8668,7 +8713,11 @@ hip:HazardCluster rdf:type owl:Class ;
 
 ###  https://undrr-hip.org/HazardInformationProfiles
 hip:HazardInformationProfiles rdf:type owl:Class ;
-                              rdfs:subClassOf skos:ConceptScheme ;
+                              rdfs:subClassOf skos:ConceptScheme ,
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty skos:inScheme ;
+                                                owl:allValuesFrom ecv:EssentialClimaticVariables
+                                              ] ;
                               rdfs:isDefinedBy "https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version" ;
                               rdfs:label "UNDRR Hazard Information Profiles"@en .
 
@@ -10284,10 +10333,10 @@ hip:TL0053 rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Abstract
 db:Abstract rdf:type owl:Class ;
             rdfs:subClassOf db:Particular ,
-                            _:genid837 ,
-                            _:genid839 ,
-                            _:genid841 ,
-                            _:genid844 ;
+                            _:genid843 ,
+                            _:genid845 ,
+                            _:genid847 ,
+                            _:genid850 ;
             owl:disjointWith db:Endurant ,
                              db:Perdurant ,
                              db:Quality ;
@@ -10296,20 +10345,20 @@ db:Abstract rdf:type owl:Class ;
             rdfs:comment "An Abstract entity is an entity that has neither spatial nor temporal qualities and is not a quality itself (examples: a number, a set, a quality space)." ;
             rdfs:label "Abstract" .
 
-_:genid837 rdf:type owl:Restriction ;
+_:genid843 rdf:type owl:Restriction ;
             owl:onProperty db:overlaps ;
             owl:allValuesFrom db:Abstract .
 
-_:genid839 rdf:type owl:Restriction ;
+_:genid845 rdf:type owl:Restriction ;
             owl:onProperty db:partOf ;
             owl:allValuesFrom db:Abstract .
 
-_:genid841 rdf:type owl:Restriction ;
+_:genid847 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:overlaps
                            ] ;
             owl:allValuesFrom db:Abstract .
 
-_:genid844 rdf:type owl:Restriction ;
+_:genid850 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:partOf
                            ] ;
             owl:allValuesFrom db:Abstract .
@@ -10324,7 +10373,7 @@ _:genid844 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Abstract ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid837 ;
+   owl:annotatedTarget _:genid843 ;
    rdfs:comment "Everything that is overlapped by an abstract is an abstract." ,
                 "from Dd15, Ad3"
  ] .
@@ -10332,7 +10381,7 @@ _:genid844 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Abstract ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid839 ;
+   owl:annotatedTarget _:genid845 ;
    rdfs:comment "Ad3 (half)" ,
                 "Everything that has an abstract as part is an abstract."
  ] .
@@ -10340,7 +10389,7 @@ _:genid844 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Abstract ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid841 ;
+   owl:annotatedTarget _:genid847 ;
    rdfs:comment "Everything that overlaps an abstract is an abstract." ,
                 "from Dd15, Ad3"
  ] .
@@ -10348,7 +10397,7 @@ _:genid844 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Abstract ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid844 ;
+   owl:annotatedTarget _:genid850 ;
    rdfs:comment "Ad3 (half)" ,
                 "Everything that is part of an abstract is an abstract."
  ] .
@@ -10378,8 +10427,8 @@ _:genid844 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#AbstractQuality
 db:AbstractQuality rdf:type owl:Class ;
                    rdfs:subClassOf db:Quality ,
-                                   _:genid851 ,
-                                   _:genid853 ;
+                                   _:genid857 ,
+                                   _:genid859 ;
                    owl:disjointWith db:PhysicalQuality ,
                                     db:TemporalQuality ;
                    ace_lexicon:CN_pl "abstract qualities" ;
@@ -10388,11 +10437,11 @@ db:AbstractQuality rdf:type owl:Class ;
                                 "Warning: Abstract qualities are not qualities of abstract entities, but of non-physical endurants" ;
                    rdfs:label "Abstract Quality" .
 
-_:genid851 rdf:type owl:Restriction ;
+_:genid857 rdf:type owl:Restriction ;
             owl:onProperty db:directQualityOf ;
             owl:allValuesFrom db:NonPhysicalEndurant .
 
-_:genid853 rdf:type owl:Restriction ;
+_:genid859 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantQualeOf
                            ] ;
             owl:allValuesFrom db:AbstractRegion .
@@ -10407,7 +10456,7 @@ _:genid853 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:AbstractQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid851 ;
+   owl:annotatedTarget _:genid857 ;
    rdfs:comment "Ad48 for dQt" ,
                 "Everything that has an abstract quality as direct quality is a non physical endurant."
  ] .
@@ -10415,7 +10464,7 @@ _:genid853 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:AbstractQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid853 ;
+   owl:annotatedTarget _:genid859 ;
    rdfs:comment "Everything that is constant quale of an abstract quality is an abstract region."
  ] .
 
@@ -10437,9 +10486,9 @@ _:genid853 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#AbstractRegion
 db:AbstractRegion rdf:type owl:Class ;
                   rdfs:subClassOf db:Region ,
-                                  _:genid859 ,
-                                  _:genid861 ,
-                                  _:genid863 ;
+                                  _:genid865 ,
+                                  _:genid867 ,
+                                  _:genid869 ;
                   owl:disjointWith db:PhysicalRegion ,
                                    db:TemporalRegion ;
                   ace_lexicon:CN_pl "abstract regions" ;
@@ -10447,15 +10496,15 @@ db:AbstractRegion rdf:type owl:Class ;
                   rdfs:comment "An Abstract Region is a region in the abstract quality space for abstract qualities (example: the conventional value of 1 Euro)." ;
                   rdfs:label "Abstract Region" .
 
-_:genid859 rdf:type owl:Restriction ;
+_:genid865 rdf:type owl:Restriction ;
             owl:onProperty db:constantQualeOf ;
             owl:allValuesFrom db:AbstractQuality .
 
-_:genid861 rdf:type owl:Restriction ;
+_:genid867 rdf:type owl:Restriction ;
             owl:onProperty db:partOf ;
             owl:allValuesFrom db:AbstractRegion .
 
-_:genid863 rdf:type owl:Restriction ;
+_:genid869 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:partOf
                            ] ;
             owl:allValuesFrom db:AbstractRegion .
@@ -10470,21 +10519,21 @@ _:genid863 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:AbstractRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid859 ;
+   owl:annotatedTarget _:genid865 ;
    rdfs:comment "Everything that has an abstract region as a constant quale is an abstract quality."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:AbstractRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid861 ;
+   owl:annotatedTarget _:genid867 ;
    rdfs:comment "Everything that has an abstract region as part is an abstract region."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:AbstractRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid863 ;
+   owl:annotatedTarget _:genid869 ;
    rdfs:comment "Everything that is part of an abstract region is an abstract region."
  ] .
 
@@ -10506,14 +10555,14 @@ _:genid863 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Accomplishment
 db:Accomplishment rdf:type owl:Class ;
                   rdfs:subClassOf db:Event ,
-                                  _:genid869 ;
+                                  _:genid875 ;
                   owl:disjointWith db:Achievement ;
                   ace_lexicon:CN_pl "accomplishments" ;
                   ace_lexicon:CN_sg "accomplishment" ;
                   rdfs:comment "An Accomplishment is an event which is mereologically non-atomic (examples: a conference, an ascent, a performance)." ;
                   rdfs:label "Accomplishment" .
 
-_:genid869 rdf:type owl:Class ;
+_:genid875 rdf:type owl:Class ;
             owl:complementOf [ rdf:type owl:Restriction ;
                                owl:onProperty db:temporallyLocatedAt ;
                                owl:someValuesFrom db:Atom
@@ -10529,7 +10578,7 @@ _:genid869 rdf:type owl:Class ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Accomplishment ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid869 ;
+   owl:annotatedTarget _:genid875 ;
    rdfs:comment "Every accomplishment is temporally located at a non-atomic temporal interval." ,
                 "From Ad76"
  ] .
@@ -10545,13 +10594,13 @@ _:genid869 rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Achievement
 db:Achievement rdf:type owl:Class ;
                rdfs:subClassOf db:Event ,
-                               _:genid874 ;
+                               _:genid880 ;
                ace_lexicon:CN_pl "achievements" ;
                ace_lexicon:CN_sg "achievement" ;
                rdfs:comment "An Achievement is an event which is mereologically atomic (examples: reaching the summit of K2, a departure, a death)." ;
                rdfs:label "Achievement" .
 
-_:genid874 rdf:type owl:Restriction ;
+_:genid880 rdf:type owl:Restriction ;
             owl:onProperty db:temporallyLocatedAt ;
             owl:someValuesFrom db:Atom .
 
@@ -10565,7 +10614,7 @@ _:genid874 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Achievement ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid874 ;
+   owl:annotatedTarget _:genid880 ;
    rdfs:comment "Every achievement is temporally located at some atomic time interval (atom)" ,
                 "From Ad75"
  ] .
@@ -10678,19 +10727,19 @@ db:ArbitrarySum rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Atom
 db:Atom rdf:type owl:Class ;
         rdfs:subClassOf db:Particular ,
-                        _:genid886 ,
-                        _:genid890 ;
+                        _:genid892 ,
+                        _:genid896 ;
         ace_lexicon:CN_pl "atoms" ;
         ace_lexicon:CN_sg "atom" ;
         rdfs:comment "Atom (atomic Abstract or Perdurant)" ;
         rdfs:label "Atom" .
 
-_:genid886 rdf:type owl:Class ;
+_:genid892 rdf:type owl:Class ;
             owl:unionOf ( db:Abstract
                           db:Perdurant
                         ) .
 
-_:genid890 rdf:type owl:Class ;
+_:genid896 rdf:type owl:Class ;
             owl:complementOf [ rdf:type owl:Restriction ;
                                owl:onProperty [ owl:inverseOf db:properPartOf
                                               ] ;
@@ -10707,14 +10756,14 @@ _:genid890 rdf:type owl:Class ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Atom ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid886 ;
+   owl:annotatedTarget _:genid892 ;
    rdfs:comment "Every atom is something that is an abstract or that is a perdurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Atom ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid890 ;
+   owl:annotatedTarget _:genid896 ;
    rdfs:comment "Dd16" ,
                 "No atom has a particular as proper part."
  ] .
@@ -10744,20 +10793,20 @@ db:ConstantAtom rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Endurant
 db:Endurant rdf:type owl:Class ;
             rdfs:subClassOf db:Particular ,
-                            _:genid898 ;
+                            _:genid904 ;
             owl:disjointWith db:Perdurant ,
                              db:Quality ;
-            owl:disjointUnionOf _:genid904 ;
+            owl:disjointUnionOf _:genid910 ;
             ace_lexicon:CN_pl "endurants" ;
             ace_lexicon:CN_sg "endurant" ;
             rdfs:comment "An Endurant is an entity wholly present, i.e., all its proper parts are present, at any time that it is present (examples: a person, a tree, an atom, an idea)." ;
             rdfs:label "Endurant" .
 
-_:genid898 rdf:type owl:Restriction ;
+_:genid904 rdf:type owl:Restriction ;
             owl:onProperty db:temporallyLocatedAt ;
             owl:someValuesFrom db:TimeInterval .
 
-_:genid904 rdf:type rdf:List ;
+_:genid910 rdf:type rdf:List ;
             rdf:first db:ArbitrarySum ;
             rdf:rest ( db:NonPhysicalEndurant
                        db:PhysicalEndurant
@@ -10773,7 +10822,7 @@ _:genid904 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Endurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid898 ;
+   owl:annotatedTarget _:genid904 ;
    rdfs:comment "Every endurant is temporally located at a time interval."
  ] .
 
@@ -10794,7 +10843,7 @@ _:genid904 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Endurant ;
    owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid904 ;
+   owl:annotatedTarget _:genid910 ;
    rdfs:comment "An endurant is either an arbitrary sum, a physical endurant or a non-physical endurant, and the classes ArbitrarySum, PhysicalEndurant and NonPhysicalEndurant are all disjoint."
  ] .
 
@@ -10850,14 +10899,14 @@ db:Feature rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#MentalObject
 db:MentalObject rdf:type owl:Class ;
                 rdfs:subClassOf db:NonPhysicalObject ,
-                                _:genid911 ;
+                                _:genid917 ;
                 owl:disjointWith db:SocialObject ;
                 ace_lexicon:CN_pl "mental objects" ;
                 ace_lexicon:CN_sg "mental object" ;
                 rdfs:comment "A Mental Object is a non-physical object which existentially depends on an agentive physical object (examples: a percept, a sense datum)." ;
                 rdfs:label "Mental Object" .
 
-_:genid911 rdf:type owl:Restriction ;
+_:genid917 rdf:type owl:Restriction ;
             owl:onProperty db:specificallyDependsOn ;
             owl:someValuesFrom db:AgentivePhysicalObject .
 
@@ -10871,7 +10920,7 @@ _:genid911 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:MentalObject ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid911 ;
+   owl:annotatedTarget _:genid917 ;
    rdfs:comment "Every mental object specifically depends on an agentive physical object."
  ] .
 
@@ -10924,31 +10973,31 @@ db:NonPhysicalEndurant rdf:type owl:Class ;
                                                             owl:someValuesFrom db:PhysicalEndurant
                                                           ]
                                        ] ,
-                                       _:genid919 ,
-                                       _:genid921 ,
-                                       _:genid924 ,
-                                       _:genid927 ;
+                                       _:genid925 ,
+                                       _:genid927 ,
+                                       _:genid930 ,
+                                       _:genid933 ;
                        owl:disjointWith db:PhysicalEndurant ;
                        ace_lexicon:CN_pl "non physical endurants" ;
                        ace_lexicon:CN_sg "non physical endurant" ;
                        rdfs:comment "A Non-Physical Endurant is an endurant with no direct spatial quality (examples: democracy, the United Nations, the general secretary of Amnesty International)." ;
                        rdfs:label "Non-Physical Endurant" .
 
-_:genid919 rdf:type owl:Restriction ;
+_:genid925 rdf:type owl:Restriction ;
             owl:onProperty db:constantConstituentOf ;
             owl:allValuesFrom db:NonPhysicalEndurant .
 
-_:genid921 rdf:type owl:Restriction ;
+_:genid927 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantConstituentOf
                            ] ;
             owl:allValuesFrom db:NonPhysicalEndurant .
 
-_:genid924 rdf:type owl:Restriction ;
+_:genid930 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantPartOf
                            ] ;
             owl:allValuesFrom db:NonPhysicalEndurant .
 
-_:genid927 rdf:type owl:Restriction ;
+_:genid933 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:directQualityOf
                            ] ;
             owl:allValuesFrom db:AbstractQuality .
@@ -10963,28 +11012,28 @@ _:genid927 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:NonPhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid919 ;
+   owl:annotatedTarget _:genid925 ;
    rdfs:comment "Everything that is constantly constituted by a non physical endurant is a non physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:NonPhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid921 ;
+   owl:annotatedTarget _:genid927 ;
    rdfs:comment "Everything that is constant constituent of a non physical endurant is a non physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:NonPhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid924 ;
+   owl:annotatedTarget _:genid930 ;
    rdfs:comment "Everything that is constant part of a non physical endurant is a non physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:NonPhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid927 ;
+   owl:annotatedTarget _:genid933 ;
    rdfs:comment "Approximation of Ad51" ,
                 "Everything that is direct quality of a non physical endurant is an abstract quality."
  ] .
@@ -11015,13 +11064,13 @@ db:NonPhysicalObject rdf:type owl:Class ;
 
 ###  https://w3id.org/dolce/owl/dolce-basic#Particular
 db:Particular rdf:type owl:Class ;
-              owl:disjointUnionOf _:genid935 ;
+              owl:disjointUnionOf _:genid941 ;
               ace_lexicon:CN_pl "particulars" ;
               ace_lexicon:CN_sg "particular" ;
               rdfs:comment "A Particular is an entity that cannot have instances, in this sense it is opposed to universals (examples: a person, a soccer game, a plan, the color red, a feeling, a fact, a theory, number forty-two)." ;
               rdfs:label "Particular" .
 
-_:genid935 rdf:type rdf:List ;
+_:genid941 rdf:type rdf:List ;
             rdf:first db:Abstract ;
             rdf:rest ( db:Endurant
                        db:Perdurant
@@ -11031,7 +11080,7 @@ _:genid935 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Particular ;
    owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid935 ;
+   owl:annotatedTarget _:genid941 ;
    rdfs:comment "A particular is either an abstract, an endurant, a perdurant, or a quality, and the classes Abstract, Endurant, Perdurant and Quality are all disjoint."
  ] .
 
@@ -11039,58 +11088,58 @@ _:genid935 rdf:type rdf:List ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Perdurant
 db:Perdurant rdf:type owl:Class ;
              rdfs:subClassOf db:Particular ,
-                             _:genid938 ,
-                             _:genid940 ,
-                             _:genid943 ,
-                             _:genid945 ,
-                             _:genid947 ,
+                             _:genid944 ,
+                             _:genid946 ,
                              _:genid949 ,
-                             _:genid952 ,
+                             _:genid951 ,
+                             _:genid953 ,
                              _:genid955 ,
-                             _:genid958 ;
+                             _:genid958 ,
+                             _:genid961 ,
+                             _:genid964 ;
              owl:disjointWith db:Quality ;
              ace_lexicon:CN_pl "perdurants" ;
              ace_lexicon:CN_sg "perdurant" ;
              rdfs:comment "A Perdurant is an entity that happens in time (examples: a person’s life, a soccer game, the reading of a book, the state of feeling happy). Some perdurants are temporally atomic (example: the change of a letter’s state due to the breaking of the seal)." ;
              rdfs:label "Perdurant" .
 
-_:genid938 rdf:type owl:Restriction ;
+_:genid944 rdf:type owl:Restriction ;
             owl:onProperty db:temporallyLocatedAt ;
             owl:someValuesFrom db:TimeInterval .
 
-_:genid940 rdf:type owl:Restriction ;
+_:genid946 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:directQualityOf
                            ] ;
             owl:someValuesFrom db:TemporalLocation .
 
-_:genid943 rdf:type owl:Restriction ;
+_:genid949 rdf:type owl:Restriction ;
             owl:onProperty db:constantConstituentOf ;
             owl:allValuesFrom db:Perdurant .
 
-_:genid945 rdf:type owl:Restriction ;
+_:genid951 rdf:type owl:Restriction ;
             owl:onProperty db:overlaps ;
             owl:allValuesFrom db:Perdurant .
 
-_:genid947 rdf:type owl:Restriction ;
+_:genid953 rdf:type owl:Restriction ;
             owl:onProperty db:partOf ;
             owl:allValuesFrom db:Perdurant .
 
-_:genid949 rdf:type owl:Restriction ;
+_:genid955 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantConstituentOf
                            ] ;
             owl:allValuesFrom db:Perdurant .
 
-_:genid952 rdf:type owl:Restriction ;
+_:genid958 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:directQualityOf
                            ] ;
             owl:allValuesFrom db:TemporalQuality .
 
-_:genid955 rdf:type owl:Restriction ;
+_:genid961 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:overlaps
                            ] ;
             owl:allValuesFrom db:Perdurant .
 
-_:genid958 rdf:type owl:Restriction ;
+_:genid964 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:partOf
                            ] ;
             owl:allValuesFrom db:Perdurant .
@@ -11105,14 +11154,14 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid938 ;
+   owl:annotatedTarget _:genid944 ;
    rdfs:comment "Every perdurant is temporally located at a time interval."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid940 ;
+   owl:annotatedTarget _:genid946 ;
    rdfs:comment "Ad49 for dQt" ,
                 "Every perdurant has a temporal location as direct quality."
  ] .
@@ -11120,14 +11169,14 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid943 ;
+   owl:annotatedTarget _:genid949 ;
    rdfs:comment "Everything that is constantly constituted by a perdurant is a perdurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid945 ;
+   owl:annotatedTarget _:genid951 ;
    rdfs:comment "Everything that is overlapped by a perdurant is a perdurant." ,
                 "from Dd15, Ad2"
  ] .
@@ -11135,7 +11184,7 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid947 ;
+   owl:annotatedTarget _:genid953 ;
    rdfs:comment "Ad2  (half)" ,
                 "Everything that has a perdurant as part is a perdurant."
  ] .
@@ -11143,14 +11192,14 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid949 ;
+   owl:annotatedTarget _:genid955 ;
    rdfs:comment "Everything that is constant constituent of a perdurant is a perdurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid952 ;
+   owl:annotatedTarget _:genid958 ;
    rdfs:comment "Ad49 for dQt" ,
                 "Everything that is direct quality of a perdurant is a temporal quality."
  ] .
@@ -11158,7 +11207,7 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid955 ;
+   owl:annotatedTarget _:genid961 ;
    rdfs:comment "Everything that overlaps a perdurant is a perdurant." ,
                 "from Dd15, Ad2"
  ] .
@@ -11166,7 +11215,7 @@ _:genid958 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Perdurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid958 ;
+   owl:annotatedTarget _:genid964 ;
    rdfs:comment "Ad2 (half)" ,
                 "Everything that is part of a perdurant is a perdurant."
  ] .
@@ -11182,36 +11231,36 @@ _:genid958 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#PhysicalEndurant
 db:PhysicalEndurant rdf:type owl:Class ;
                     rdfs:subClassOf db:Endurant ,
-                                    _:genid963 ,
-                                    _:genid966 ,
-                                    _:genid968 ,
-                                    _:genid971 ,
-                                    _:genid974 ;
+                                    _:genid969 ,
+                                    _:genid972 ,
+                                    _:genid974 ,
+                                    _:genid977 ,
+                                    _:genid980 ;
                     ace_lexicon:CN_pl "physical endurants" ;
                     ace_lexicon:CN_sg "physical endurant" ;
                     rdfs:comment "A Physical Endurant is an endurant with direct spatial quality (examples: a person, a tree, an atom, the water in a glass, a hole in a wall, the center of the Earth)." ;
                     rdfs:label "Physical Endurant" .
 
-_:genid963 rdf:type owl:Restriction ;
+_:genid969 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:directQualityOf
                            ] ;
             owl:someValuesFrom db:SpatialLocation .
 
-_:genid966 rdf:type owl:Restriction ;
+_:genid972 rdf:type owl:Restriction ;
             owl:onProperty db:constantConstituentOf ;
             owl:allValuesFrom db:PhysicalEndurant .
 
-_:genid968 rdf:type owl:Restriction ;
+_:genid974 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantConstituentOf
                            ] ;
             owl:allValuesFrom db:PhysicalEndurant .
 
-_:genid971 rdf:type owl:Restriction ;
+_:genid977 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantPartOf
                            ] ;
             owl:allValuesFrom db:PhysicalEndurant .
 
-_:genid974 rdf:type owl:Restriction ;
+_:genid980 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:directQualityOf
                            ] ;
             owl:allValuesFrom db:PhysicalQuality .
@@ -11226,7 +11275,7 @@ _:genid974 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid963 ;
+   owl:annotatedTarget _:genid969 ;
    rdfs:comment "Approximation of Ad50" ,
                 "Every physical endurant has a spatial location as direct quality."
  ] .
@@ -11234,28 +11283,28 @@ _:genid974 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid966 ;
+   owl:annotatedTarget _:genid972 ;
    rdfs:comment "Everything that is constantly constituted by a physical endurant is a physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid968 ;
+   owl:annotatedTarget _:genid974 ;
    rdfs:comment "Everything that is constant constituent of a physical endurant is a physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid971 ;
+   owl:annotatedTarget _:genid977 ;
    rdfs:comment "Everything that is constant part of a physical endurant is a physical endurant."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalEndurant ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid974 ;
+   owl:annotatedTarget _:genid980 ;
    rdfs:comment "Approximation of Ad50" ,
                 "Everything that is direct quality of a physical endurant is a physical quality."
  ] .
@@ -11264,13 +11313,13 @@ _:genid974 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#PhysicalObject
 db:PhysicalObject rdf:type owl:Class ;
                   rdfs:subClassOf db:PhysicalEndurant ;
-                  owl:disjointUnionOf _:genid979 ;
+                  owl:disjointUnionOf _:genid985 ;
                   ace_lexicon:CN_pl "physical objects" ;
                   ace_lexicon:CN_sg "physical object" ;
                   rdfs:comment "A Physical Object is a physical endurant with unity criterion (examples: a person, a human body, a house, a computer)." ;
                   rdfs:label "Physical Object" .
 
-_:genid979 rdf:type rdf:List ;
+_:genid985 rdf:type rdf:List ;
             rdf:first db:AgentivePhysicalObject ;
             rdf:rest ( db:NonAgentivePhysicalObject
                      ) .
@@ -11285,7 +11334,7 @@ _:genid979 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalObject ;
    owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid979 ;
+   owl:annotatedTarget _:genid985 ;
    rdfs:comment "The classes PhysicalObject, NonAgentivePhysicalObjectare all disjoint."
  ] .
 
@@ -11293,19 +11342,19 @@ _:genid979 rdf:type rdf:List ;
 ###  https://w3id.org/dolce/owl/dolce-basic#PhysicalQuality
 db:PhysicalQuality rdf:type owl:Class ;
                    rdfs:subClassOf db:Quality ,
-                                   _:genid982 ,
-                                   _:genid984 ;
+                                   _:genid988 ,
+                                   _:genid990 ;
                    owl:disjointWith db:TemporalQuality ;
                    ace_lexicon:CN_pl "physical qualities" ;
                    ace_lexicon:CN_sg "physical quality" ;
                    rdfs:comment "A Physical Quality is a quality that directly inheres to a physical endurant (examples: the weight of a pen, the color of an apple)." ;
                    rdfs:label "Physical Quality" .
 
-_:genid982 rdf:type owl:Restriction ;
+_:genid988 rdf:type owl:Restriction ;
             owl:onProperty db:directQualityOf ;
             owl:allValuesFrom db:PhysicalEndurant .
 
-_:genid984 rdf:type owl:Restriction ;
+_:genid990 rdf:type owl:Restriction ;
             owl:onProperty [ owl:inverseOf db:constantQualeOf
                            ] ;
             owl:allValuesFrom db:PhysicalRegion .
@@ -11320,7 +11369,7 @@ _:genid984 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid982 ;
+   owl:annotatedTarget _:genid988 ;
    rdfs:comment "Ad47 for dQt (together with the axiom \"Every quality is direct quality of a particular\")" ,
                 "Every physical quality is a direct quality of a physical endurant."
  ] .
@@ -11328,7 +11377,7 @@ _:genid984 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid984 ;
+   owl:annotatedTarget _:genid990 ;
    rdfs:comment "Everything that is constant quale of a physical quality is a physical region."
  ] .
 
@@ -11343,14 +11392,14 @@ _:genid984 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#PhysicalRegion
 db:PhysicalRegion rdf:type owl:Class ;
                   rdfs:subClassOf db:Region ,
-                                  _:genid989 ;
+                                  _:genid995 ;
                   owl:disjointWith db:TemporalRegion ;
                   ace_lexicon:CN_pl "physical regions" ;
                   ace_lexicon:CN_sg "physical region" ;
                   rdfs:comment "A Physical Region is a region in a quality space for physical qualities (examples: the physical space, an area in the color quality space, 80Kg)." ;
                   rdfs:label "Physical Region" .
 
-_:genid989 rdf:type owl:Restriction ;
+_:genid995 rdf:type owl:Restriction ;
             owl:onProperty db:constantQualeOf ;
             owl:allValuesFrom db:PhysicalQuality .
 
@@ -11364,7 +11413,7 @@ _:genid989 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:PhysicalRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid989 ;
+   owl:annotatedTarget _:genid995 ;
    rdfs:comment "Everything that has a physical region as constant quale is a physical quality."
  ] .
 
@@ -11403,34 +11452,27 @@ db:Process rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#Quality
 db:Quality rdf:type owl:Class ;
            rdfs:subClassOf db:Particular ,
-                           _:genid995 ,
-                           _:genid997 ;
-           owl:disjointUnionOf _:genid1001 ;
+                           _:genid1001 ,
+                           _:genid1003 ;
+           owl:disjointUnionOf _:genid1007 ;
            ace_lexicon:CN_pl "qualities" ;
            ace_lexicon:CN_sg "quality" ;
            rdfs:comment "A Quality is an entity that inheres in an endurant or a perdurant, and that can be perceived or measured (examples: the shape of a book, the color of a car, the size of a t-shirt, the electrical charge of a battery)." ;
            rdfs:label "Quality" .
 
-_:genid995 rdf:type owl:Restriction ;
-            owl:onProperty db:directQualityOf ;
-            owl:someValuesFrom db:Particular .
+_:genid1001 rdf:type owl:Restriction ;
+             owl:onProperty db:directQualityOf ;
+             owl:someValuesFrom db:Particular .
 
-_:genid997 rdf:type owl:Restriction ;
-            owl:onProperty db:temporallyLocatedAt ;
-            owl:someValuesFrom db:TimeInterval .
+_:genid1003 rdf:type owl:Restriction ;
+             owl:onProperty db:temporallyLocatedAt ;
+             owl:someValuesFrom db:TimeInterval .
 
-_:genid1001 rdf:type rdf:List ;
+_:genid1007 rdf:type rdf:List ;
              rdf:first db:AbstractQuality ;
              rdf:rest ( db:PhysicalQuality
                         db:TemporalQuality
                       ) .
-
-[ rdf:type owl:Axiom ;
-   owl:annotatedSource db:Quality ;
-   owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid1001 ;
-   rdfs:comment "A quality is either an abstract quality, a physical quality, or a temporal quality, and the classes AbstractQuality, PhysicalQuality, and TemporalQuality are all disjoint."
- ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Quality ;
@@ -11442,7 +11484,7 @@ _:genid1001 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Quality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid995 ;
+   owl:annotatedTarget _:genid1001 ;
    rdfs:comment "Every quality is direct quality of a particular." ,
                 "Q(x)→ ∃y DQT(x,y)"
  ] .
@@ -11450,21 +11492,28 @@ _:genid1001 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Quality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid997 ;
+   owl:annotatedTarget _:genid1003 ;
    rdfs:comment "Every quality is temporally located at a timeinterval."
+ ] .
+
+[ rdf:type owl:Axiom ;
+   owl:annotatedSource db:Quality ;
+   owl:annotatedProperty owl:disjointUnionOf ;
+   owl:annotatedTarget _:genid1007 ;
+   rdfs:comment "A quality is either an abstract quality, a physical quality, or a temporal quality, and the classes AbstractQuality, PhysicalQuality, and TemporalQuality are all disjoint."
  ] .
 
 
 ###  https://w3id.org/dolce/owl/dolce-basic#Region
 db:Region rdf:type owl:Class ;
           rdfs:subClassOf db:Abstract ;
-          owl:disjointUnionOf _:genid1006 ;
+          owl:disjointUnionOf _:genid1012 ;
           ace_lexicon:CN_pl "regions" ;
           ace_lexicon:CN_sg "region" ;
           rdfs:comment "A Region is an abstract entity classified by a quality type and with mereological structure, the sum of all the regions of a quality type is called a quality space (examples: the color red is a region in the quality space of color, the red of a rose is a (sub)region of the red region in the quality space of color, the commercial value of 1 Euro is a region in the quality space of commercial values)." ;
           rdfs:label "Region" .
 
-_:genid1006 rdf:type rdf:List ;
+_:genid1012 rdf:type rdf:List ;
              rdf:first db:AbstractRegion ;
              rdf:rest ( db:PhysicalRegion
                         db:TemporalRegion
@@ -11480,7 +11529,7 @@ _:genid1006 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:Region ;
    owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid1006 ;
+   owl:annotatedTarget _:genid1012 ;
    rdfs:comment "The classes Region, AbstractRegion, TemporalRegionare all disjoint."
  ] .
 
@@ -11512,13 +11561,13 @@ db:SocialAgent rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#SocialObject
 db:SocialObject rdf:type owl:Class ;
                 rdfs:subClassOf db:NonPhysicalObject ;
-                owl:disjointUnionOf _:genid1012 ;
+                owl:disjointUnionOf _:genid1018 ;
                 ace_lexicon:CN_pl "social objects" ;
                 ace_lexicon:CN_sg "social object" ;
                 rdfs:comment "A Social Object is a non-physical object which is generically dependent on a community of agents (examples: a person in the legal sense, a client, a law, an economic system)." ;
                 rdfs:label "Social Object" .
 
-_:genid1012 rdf:type rdf:List ;
+_:genid1018 rdf:type rdf:List ;
              rdf:first db:AgentiveSocialObject ;
              rdf:rest ( db:NonAgentiveSocialObject
                       ) .
@@ -11533,7 +11582,7 @@ _:genid1012 rdf:type rdf:List ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:SocialObject ;
    owl:annotatedProperty owl:disjointUnionOf ;
-   owl:annotatedTarget _:genid1012 ;
+   owl:annotatedTarget _:genid1018 ;
    rdfs:comment "The classes SocialObject, NonAgentiveSocialObjectare all disjoint."
  ] .
 
@@ -11557,23 +11606,23 @@ db:Society rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#SpaceRegion
 db:SpaceRegion rdf:type owl:Class ;
                rdfs:subClassOf db:PhysicalRegion ,
-                               _:genid1016 ,
-                               _:genid1018 ,
-                               _:genid1020 ;
+                               _:genid1022 ,
+                               _:genid1024 ,
+                               _:genid1026 ;
                ace_lexicon:CN_pl "space regions" ;
                ace_lexicon:CN_sg "space region" ;
                rdfs:comment "A Space Region is a physical region, possibly disconnected, for spatial locations (examples: the region occupied by Earth in this moment, the region where it snowed in the year 1900)." ;
                rdfs:label "Space Region" .
 
-_:genid1016 rdf:type owl:Restriction ;
+_:genid1022 rdf:type owl:Restriction ;
              owl:onProperty db:constantQualeOf ;
              owl:allValuesFrom db:SpatialLocation .
 
-_:genid1018 rdf:type owl:Restriction ;
+_:genid1024 rdf:type owl:Restriction ;
              owl:onProperty db:partOf ;
              owl:allValuesFrom db:SpaceRegion .
 
-_:genid1020 rdf:type owl:Restriction ;
+_:genid1026 rdf:type owl:Restriction ;
              owl:onProperty [ owl:inverseOf db:partOf
                             ] ;
              owl:allValuesFrom db:SpaceRegion .
@@ -11588,21 +11637,21 @@ _:genid1020 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:SpaceRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1016 ;
+   owl:annotatedTarget _:genid1022 ;
    rdfs:comment "Everything that has a space region as constant quale is a spatial location."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:SpaceRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1018 ;
+   owl:annotatedTarget _:genid1024 ;
    rdfs:comment "Everything that has a space region as part is a space region."
  ] .
 
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:SpaceRegion ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1020 ;
+   owl:annotatedTarget _:genid1026 ;
    rdfs:comment "Everything that is part of a space region is a space region."
  ] .
 
@@ -11626,13 +11675,13 @@ db:SpatialLocation rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#State
 db:State rdf:type owl:Class ;
          rdfs:subClassOf db:Stative ,
-                         _:genid1025 ;
+                         _:genid1031 ;
          ace_lexicon:CN_pl "states" ;
          ace_lexicon:CN_sg "state" ;
          rdfs:comment "A State is a stative perdurant such that all its parts are of the same type (examples: being sitting, being open, being happy, being red)." ;
          rdfs:label "State" .
 
-_:genid1025 rdf:type owl:Restriction ;
+_:genid1031 rdf:type owl:Restriction ;
              owl:onProperty [ owl:inverseOf db:partOf
                             ] ;
              owl:allValuesFrom db:State .
@@ -11647,7 +11696,7 @@ _:genid1025 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:State ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1025 ;
+   owl:annotatedTarget _:genid1031 ;
    rdfs:comment "Everything that is part of a state is a state."
  ] .
 
@@ -11671,13 +11720,13 @@ db:Stative rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#TemporalLocation
 db:TemporalLocation rdf:type owl:Class ;
                     rdfs:subClassOf db:TemporalQuality ,
-                                    _:genid1030 ;
+                                    _:genid1036 ;
                     ace_lexicon:CN_pl "temporal locations" ;
                     ace_lexicon:CN_sg "temporal location" ;
                     rdfs:comment "A Temporal Location is a temporal quality of a perdurant and is specific to that perdurant, that is, two concurrent perdurants have distinct temporal locations. The temporal location is the temporal quality which has as quale the unique time interval at which the perdurant is exactly located (examples: the temporal location of World War I, the temporal location of the Anderssen-Kieseritzky chess play in 1851, the temporal location of the summers of the 20th century)." ;
                     rdfs:label "Temporal Location" .
 
-_:genid1030 rdf:type owl:Restriction ;
+_:genid1036 rdf:type owl:Restriction ;
              owl:onProperty [ owl:inverseOf db:qualeOf
                             ] ;
              owl:someValuesFrom db:TimeInterval .
@@ -11692,7 +11741,7 @@ _:genid1030 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:TemporalLocation ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1030 ;
+   owl:annotatedTarget _:genid1036 ;
    rdfs:comment "Ad53" ,
                 "Every temporal location has some time interval as quale."
  ] .
@@ -11701,19 +11750,19 @@ _:genid1030 rdf:type owl:Restriction ;
 ###  https://w3id.org/dolce/owl/dolce-basic#TemporalQuality
 db:TemporalQuality rdf:type owl:Class ;
                    rdfs:subClassOf db:Quality ,
-                                   _:genid1034 ,
-                                   _:genid1037 ;
+                                   _:genid1040 ,
+                                   _:genid1043 ;
                    ace_lexicon:CN_pl "temporal qualities" ;
                    ace_lexicon:CN_sg "temporal quality" ;
                    rdfs:comment "A Temporal Quality is a quality that directly inheres to a perdurant (example: the duration of World War I, the starting time of the 2000 Olympics)." ;
                    rdfs:label "Temporal Quality" .
 
-_:genid1034 rdf:type owl:Restriction ;
+_:genid1040 rdf:type owl:Restriction ;
              owl:onProperty [ owl:inverseOf db:qualeOf
                             ] ;
              owl:someValuesFrom db:Particular .
 
-_:genid1037 rdf:type owl:Restriction ;
+_:genid1043 rdf:type owl:Restriction ;
              owl:onProperty db:directQualityOf ;
              owl:allValuesFrom db:Perdurant .
 
@@ -11727,7 +11776,7 @@ _:genid1037 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:TemporalQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1034 ;
+   owl:annotatedTarget _:genid1040 ;
    rdfs:comment "Ad55" ,
                 "Every temporal quality has some particular as quale."
  ] .
@@ -11735,7 +11784,7 @@ _:genid1037 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:TemporalQuality ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1037 ;
+   owl:annotatedTarget _:genid1043 ;
    rdfs:comment "Ad46 for dQt (together with the axiom \"Every quality is direct quality of a particular\")" ,
                 "Every temporal quality is a direct quality of a perdurant."
  ] .
@@ -11760,13 +11809,13 @@ db:TemporalRegion rdf:type owl:Class ;
 ###  https://w3id.org/dolce/owl/dolce-basic#TimeInterval
 db:TimeInterval rdf:type owl:Class ;
                 rdfs:subClassOf db:TemporalRegion ,
-                                _:genid1041 ;
+                                _:genid1047 ;
                 ace_lexicon:CN_pl "time intervals" ;
                 ace_lexicon:CN_sg "time interval" ;
                 rdfs:comment "A Time Interval is a temporal region which is an interval or a sum of intervals. A Time Interval can be atomic, i.e., instantaneous. (examples: the first second of your life,  the Cretaceous time period, the time interval of all winters of the third millennium)." ;
                 rdfs:label "Time Interval" .
 
-_:genid1041 rdf:type owl:Restriction ;
+_:genid1047 rdf:type owl:Restriction ;
              owl:onProperty [ owl:inverseOf db:partOf
                             ] ;
              owl:allValuesFrom db:TimeInterval .
@@ -11781,7 +11830,7 @@ _:genid1041 rdf:type owl:Restriction ;
 [ rdf:type owl:Axiom ;
    owl:annotatedSource db:TimeInterval ;
    owl:annotatedProperty rdfs:subClassOf ;
-   owl:annotatedTarget _:genid1041 ;
+   owl:annotatedTarget _:genid1047 ;
    rdfs:comment "Everything that is part of a time interval is a time interval."
  ] .
 
@@ -11828,6 +11877,426 @@ cfsn:CFSN0452 rdf:type owl:NamedIndividual ,
               dcterms:identifier "SDN:P07::CFSN0452" ;
               skos:definition "\"Amount\" means mass per unit area. \"Precipitation\" in the earth's atmosphere means precipitation of water in all phases."@en ;
               skos:prefLabel "precipitation_amount"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Above-GroundBiomass
+ecv:Above-GroundBiomass rdf:type owl:NamedIndividual ,
+                                 ecv:ecv-variable ;
+                        skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Aerosol
+ecv:Aerosol rdf:type owl:NamedIndividual ,
+                     ecv:ecv-variable ;
+            skos:broader ecv:AtmosphericComposition .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Albedo
+ecv:Albedo rdf:type owl:NamedIndividual ,
+                    ecv:ecv-variable ;
+           skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#AnthropogenicGreenhouseGasEmissions
+ecv:AnthropogenicGreenhouseGasEmissions rdf:type owl:NamedIndividual ,
+                                                 ecv:ecv-variable ;
+                                        skos:broader ecv:HumanUseOfNaturalResources .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#AnthropogenicWaterUse
+ecv:AnthropogenicWaterUse rdf:type owl:NamedIndividual ,
+                                   ecv:ecv-variable ;
+                          skos:broader ecv:HumanUseOfNaturalResources .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Atmosphere
+ecv:Atmosphere rdf:type owl:NamedIndividual ,
+                        ecv:ecv-domain .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#AtmosphericComposition
+ecv:AtmosphericComposition rdf:type owl:NamedIndividual ,
+                                    ecv:ecv-subdomain ;
+                           skos:member ecv:Atmosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Biogeochemical
+ecv:Biogeochemical rdf:type owl:NamedIndividual ,
+                            ecv:ecv-subdomain ;
+                   skos:member ecv:Ocean .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Biological-Ecosystems
+ecv:Biological-Ecosystems rdf:type owl:NamedIndividual ,
+                                   ecv:ecv-subdomain ;
+                          skos:member ecv:Ocean .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Biology
+ecv:Biology rdf:type owl:NamedIndividual ,
+                     ecv:ecv-subdomain ;
+            skos:member ecv:Land .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#CarbonDioxideMethaneAndOtherGreenhouseGases
+ecv:CarbonDioxideMethaneAndOtherGreenhouseGases rdf:type owl:NamedIndividual ,
+                                                         ecv:ecv-variable ;
+                                                skos:broader ecv:AtmosphericComposition .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Clouds
+ecv:Clouds rdf:type owl:NamedIndividual ,
+                    ecv:ecv-variable ;
+           skos:broader ecv:AtmosphericComposition .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Cryosphere
+ecv:Cryosphere rdf:type owl:NamedIndividual ,
+                        ecv:ecv-subdomain ;
+               skos:member ecv:Land .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#ECV-scheme
+ecv:ECV-scheme rdf:type owl:NamedIndividual ,
+                        ecv:EssentialClimaticVariables .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#EarthRadiationBudget
+ecv:EarthRadiationBudget rdf:type owl:NamedIndividual ,
+                                  ecv:ecv-variable ;
+                         skos:broader ecv:UpperAtmosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#EvaporationFromLand
+ecv:EvaporationFromLand rdf:type owl:NamedIndividual ,
+                                 ecv:ecv-variable ;
+                        skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Fire
+ecv:Fire rdf:type owl:NamedIndividual ,
+                  ecv:ecv-variable ;
+         skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#FractionOfAbsorbedPhotosyntheticallyActiveRadiation-FAPAR
+ecv:FractionOfAbsorbedPhotosyntheticallyActiveRadiation-FAPAR rdf:type owl:NamedIndividual ,
+                                                                       ecv:ecv-variable ;
+                                                              skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Glaciers
+ecv:Glaciers rdf:type owl:NamedIndividual ,
+                      ecv:ecv-variable ;
+             skos:broader ecv:Cryosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Groundwater
+ecv:Groundwater rdf:type owl:NamedIndividual ,
+                         ecv:ecv-variable ;
+                skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#HumanUseOfNaturalResources
+ecv:HumanUseOfNaturalResources rdf:type owl:NamedIndividual ,
+                                        ecv:ecv-subdomain ;
+                               skos:member ecv:Land .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Hydrology
+ecv:Hydrology rdf:type owl:NamedIndividual ,
+                       ecv:ecv-subdomain ;
+              skos:member ecv:Land .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#IceSheetsAndIceShelves
+ecv:IceSheetsAndIceShelves rdf:type owl:NamedIndividual ,
+                                    ecv:ecv-variable ;
+                           skos:broader ecv:Cryosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#InorganicCarbon
+ecv:InorganicCarbon rdf:type owl:NamedIndividual ,
+                             ecv:ecv-variable ;
+                    skos:broader ecv:Biogeochemical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Lakes
+ecv:Lakes rdf:type owl:NamedIndividual ,
+                   ecv:ecv-variable ;
+          skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Land
+ecv:Land rdf:type owl:NamedIndividual ,
+                  ecv:ecv-domain .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#LandCover
+ecv:LandCover rdf:type owl:NamedIndividual ,
+                       ecv:ecv-variable ;
+              skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#LandSurfaceTemperature
+ecv:LandSurfaceTemperature rdf:type owl:NamedIndividual ,
+                                    ecv:ecv-variable ;
+                           skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#LeafAreaIndex
+ecv:LeafAreaIndex rdf:type owl:NamedIndividual ,
+                           ecv:ecv-variable ;
+                  skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Lightning
+ecv:Lightning rdf:type owl:NamedIndividual ,
+                       ecv:ecv-variable ;
+              skos:broader ecv:UpperAtmosphere ;
+              skos:definition "Total number of detected strokes in the corresponding time interval and the space unit. The space unit ‭(grid box) should be on the order of the horizontal resolution and the accumulation time to the observing cycle." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#MarineHabitats
+ecv:MarineHabitats rdf:type owl:NamedIndividual ,
+                            ecv:ecv-variable ;
+                   skos:broader ecv:Biological-Ecosystems ;
+                   skos:definition "Extent of mangroves and species types in coastal environments ‭(percent or ha and number of species per area)." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#NitrousOxide
+ecv:NitrousOxide rdf:type owl:NamedIndividual ,
+                          ecv:ecv-variable ;
+                 skos:broader ecv:Biogeochemical ;
+                 skos:definition "Concentration of N₂O gas in the water column." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Nutrients
+ecv:Nutrients rdf:type owl:NamedIndividual ,
+                       ecv:ecv-variable ;
+              skos:broader ecv:Biogeochemical ;
+              skos:definition "Concentration of Si(OH)₄ in the water column." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Ocean
+ecv:Ocean rdf:type owl:NamedIndividual ,
+                   ecv:ecv-domain .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#OceanColour
+ecv:OceanColour rdf:type owl:NamedIndividual ,
+                         ecv:ecv-variable ;
+                skos:broader ecv:Biogeochemical ;
+                skos:definition "Concentration of chlorophyll-a pigment in the surface water." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#OceanSurfaceHeatFlux
+ecv:OceanSurfaceHeatFlux rdf:type owl:NamedIndividual ,
+                                  ecv:ecv-variable ;
+                         skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Oxygen
+ecv:Oxygen rdf:type owl:NamedIndividual ,
+                    ecv:ecv-variable ;
+           skos:broader ecv:Biogeochemical ;
+           skos:definition "Concentration of dissolved oxygen ‭(O₂) in the water column." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Ozone
+ecv:Ozone rdf:type owl:NamedIndividual ,
+                   ecv:ecv-variable ;
+          skos:broader ecv:AtmosphericComposition ;
+          skos:definition "‭2D field of total amount of O3 molecules per unit area in an atmospheric column extending from the Earth’s surface to the tropopause." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Permafrost
+ecv:Permafrost rdf:type owl:NamedIndividual ,
+                        ecv:ecv-variable ;
+               skos:broader ecv:Cryosphere ;
+               skos:definition "Permafrost is subsurface earth material that remains continuously at or below ‭0 ‭°C throughout at least two consecutive years, usually for extended time periods." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Physical
+ecv:Physical rdf:type owl:NamedIndividual ,
+                      ecv:ecv-subdomain ;
+             skos:member ecv:Ocean .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Plankton
+ecv:Plankton rdf:type owl:NamedIndividual ,
+                      ecv:ecv-variable ;
+             skos:broader ecv:Biological-Ecosystems ;
+             skos:definition "Number of species, functional traits, molecular biology groups ‭(Operational Taxonomic Unit/OUT, other) per unit seawater volume or unit sea surface area, or unit benthos area." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Precipitation
+ecv:Precipitation rdf:type owl:NamedIndividual ,
+                           ecv:ecv-variable ;
+                  skos:broader ecv:Surface ;
+                  skos:definition "Integration of solid and liquid precipitation rate reaching the ground over a time period defined in the metadata." .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#PrecursorsForAerosolsAndOzone
+ecv:PrecursorsForAerosolsAndOzone rdf:type owl:NamedIndividual ,
+                                           ecv:ecv-variable ;
+                                  skos:broader ecv:AtmosphericComposition .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#RiverDischarge
+ecv:RiverDischarge rdf:type owl:NamedIndividual ,
+                            ecv:ecv-variable ;
+                   skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SeaIce
+ecv:SeaIce rdf:type owl:NamedIndividual ,
+                    ecv:ecv-variable ;
+           skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SeaLevel
+ecv:SeaLevel rdf:type owl:NamedIndividual ,
+                      ecv:ecv-variable ;
+             skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SeaState
+ecv:SeaState rdf:type owl:NamedIndividual ,
+                      ecv:ecv-variable ;
+             skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SeaSurfaceSalinity
+ecv:SeaSurfaceSalinity rdf:type owl:NamedIndividual ,
+                                ecv:ecv-variable ;
+                       skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SeaSurfaceTemperature
+ecv:SeaSurfaceTemperature rdf:type owl:NamedIndividual ,
+                                   ecv:ecv-variable ;
+                          skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Snow
+ecv:Snow rdf:type owl:NamedIndividual ,
+                  ecv:ecv-variable ;
+         skos:broader ecv:Cryosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SoilCarbon
+ecv:SoilCarbon rdf:type owl:NamedIndividual ,
+                        ecv:ecv-variable ;
+               skos:broader ecv:Biology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SoilMoisture
+ecv:SoilMoisture rdf:type owl:NamedIndividual ,
+                          ecv:ecv-variable ;
+                 skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SubsurfaceCurrents
+ecv:SubsurfaceCurrents rdf:type owl:NamedIndividual ,
+                                ecv:ecv-variable ;
+                       skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SubsurfaceSalinity
+ecv:SubsurfaceSalinity rdf:type owl:NamedIndividual ,
+                                ecv:ecv-variable ;
+                       skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SubsurfaceTemperature
+ecv:SubsurfaceTemperature rdf:type owl:NamedIndividual ,
+                                   ecv:ecv-variable ;
+                          skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Surface
+ecv:Surface rdf:type owl:NamedIndividual ,
+                     ecv:ecv-subdomain ;
+            skos:member ecv:Atmosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceCurrents
+ecv:SurfaceCurrents rdf:type owl:NamedIndividual ,
+                             ecv:ecv-variable ;
+                    skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfacePressure
+ecv:SurfacePressure rdf:type owl:NamedIndividual ,
+                             ecv:ecv-variable ;
+                    skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceRadiationBudget
+ecv:SurfaceRadiationBudget rdf:type owl:NamedIndividual ,
+                                    ecv:ecv-variable ;
+                           skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceStress
+ecv:SurfaceStress rdf:type owl:NamedIndividual ,
+                           ecv:ecv-variable ;
+                  skos:broader ecv:Physical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceTemperature
+ecv:SurfaceTemperature rdf:type owl:NamedIndividual ,
+                                ecv:ecv-variable ;
+                       skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceWaterVapour
+ecv:SurfaceWaterVapour rdf:type owl:NamedIndividual ,
+                                ecv:ecv-variable ;
+                       skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#SurfaceWindSpeedAndDirection
+ecv:SurfaceWindSpeedAndDirection rdf:type owl:NamedIndividual ,
+                                          ecv:ecv-variable ;
+                                 skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#TerrestrialWaterStorage-TWS
+ecv:TerrestrialWaterStorage-TWS rdf:type owl:NamedIndividual ,
+                                         ecv:ecv-variable ;
+                                skos:broader ecv:Hydrology .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#TransientTracers
+ecv:TransientTracers rdf:type owl:NamedIndividual ,
+                              ecv:ecv-variable ;
+                     skos:broader ecv:Biogeochemical .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Upper-airWaterVapour
+ecv:Upper-airWaterVapour rdf:type owl:NamedIndividual ,
+                                  ecv:ecv-variable ;
+                         skos:broader ecv:UpperAtmosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#Upper-airWindSpeedASndDirection
+ecv:Upper-airWindSpeedASndDirection rdf:type owl:NamedIndividual ,
+                                             ecv:ecv-variable ;
+                                    skos:broader ecv:UpperAtmosphere .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#UpperAirTemperature
+ecv:UpperAirTemperature rdf:type owl:NamedIndividual ,
+                                 ecv:ecv-variable ;
+                        skos:broader ecv:Surface .
+
+
+###  http://www.semanticweb.org/crima/crima-ecv#UpperAtmosphere
+ecv:UpperAtmosphere rdf:type owl:NamedIndividual ,
+                             ecv:ecv-subdomain ;
+                    skos:member ecv:Atmosphere .
 
 
 ###  http://www.semanticweb.org/crima/crima-impactchain#daysToWeeks

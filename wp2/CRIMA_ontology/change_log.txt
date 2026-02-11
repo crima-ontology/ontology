@@ -1,3 +1,14 @@
+2026-02-11
+
+Essential Climate Variable (ECV)
+• https://gcos.wmo.int/site/global-climate-observing-system-gcos/essential-climate-variables
+• @prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+• ecv:EssentialClimaticVariables [http://www.semanticweb.org/crima/crima-ecv#EssentialClimaticVariables] rdfs:subClassOf skos:ConceptScheme
+• ecv:ecv-subdomain [http://www.semanticweb.org/crima/crima-ecv#ecv-subdomain] rdfs:subClassOf skos:Concept
+• ecv:ecv-variable [http://www.semanticweb.org/crima/crima-ecv#ecv-variable] rdfs:subClassOf skos:Concept
+• ecv:ecv-domain [http://www.semanticweb.org/crima/crima-ecv#ecv-domain] rdfs:subClassOf skos:Collection
+
+
 2026-02-10
 
 • <sosa-common.ttl> has been integrated (2025 edition)
