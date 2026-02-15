@@ -1,3 +1,19 @@
+2026-02-15
+• ecv:ecv-variable rdfs:subClassOf sosa:FeatureOfInterest, sosa:Property, skos:Concept
+• ecv:isProductOf [http://www.semanticweb.org/crima/crima-ecv#isProductOf] rdfs:subPropertyOf sosa:isPropertyOf; rdfs:domain ecv:ecv-product; rdfs:range ecv:ecv-variable
+• ecv:isProductOf assertions have been added to properly connect [ecv:ecv-product]individuals with [ecv:ecv-variable]individuals
+• qudt:hasUnit assertions have been added to properly connect [ecv:ecv-product]individuals with [qudt:Unit]individuals
+
+• @prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> (WIGOS Metadata Representation, for the WMO Integrated Global Observing System (WIGOS): https://codes.wmo.int/wmdr)
+• ccor:Unit added
+• qudt:Unit rdfs:subClassOf ccor:Unit
+• wmdr-unit:Unit rdfs:subClassOf ccor:Unit
+
+• @prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> (for those units that are neither in wmdr not in qudt:Unit)
+• Prefix ccor: renamed as ccore:
+• skos:Concept rdfs:subClassOf wol:Thing (detached from dolce_basic)
+
+
 2026-02-11
 
 Essential Climate Variable (ECV)
