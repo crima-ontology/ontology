@@ -1,5 +1,7 @@
 [•] sources:
 
+- bibo ontology: https://dcmi.github.io/bibo/
+
 - dbpedia.owl: https://databus.dbpedia.org/ontologies/dbpedia.org/ontology--DEV/2021.07.09-070001
 - dolce_basic.ttl: https://github.com/appliedontolab/DOLCE/tree/main
 - DOLCEbasic-3.5.owl : https://github.com/appliedontolab/DOLCE/blob/main/OWL/DOLCEbasic-3.5.owl
@@ -19,11 +21,6 @@
 - vocab_qudt-quantity-kinds-all.ttl: https://github.com/qudt/qudt-public-repo/blob/main/src/main/rdf/vocab/quantitykinds/VOCAB_QUDT-QUANTITY-KINDS-ALL.ttl
 - vocab_qudt-units-all.ttl: https://github.com/qudt/qudt-public-repo/blob/main/src/main/rdf/vocab/unit/VOCAB_QUDT-UNITS-ALL.ttl
 
-- wekg ontology: https://github.com/Wimmics/wekg-ontology/blob/main/ontology.ttl
-- Climate and Forecast Standard Names (single terms serialisation in turtle): http://vocab.nerc.ac.uk/collection/P07/current/
-
-
-- activitystreams2.owl: https://github.com/w3c/activitystreams/blob/main/vocabulary/activitystreams2.owl
 - time.ttl: https://raw.githubusercontent.com/w3c/sdw/gh-pages/time/rdf/time.ttl
 - geosparql: https://opengeospatial.github.io/ogc-geosparql/geosparql11/geo.ttl#
 

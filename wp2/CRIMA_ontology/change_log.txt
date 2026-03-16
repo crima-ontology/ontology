@@ -1,3 +1,19 @@
+
+///
+2026-03-16
+The current version of crima_last includes: 
+• the new 'core' module; 
+• the 2025 version of the HIP classification <hip:HIP-ClassificationSystem>; 
+• the Essential Climatic Variables (ECV - <ecv:EssentialClimaticVariables>) classification (and the necessary units of measurements <cunit:Unit>);
+• the IPCC ar6-based classification of Observed Impact <ar6-impact:ObservedImpacts>; 
+• the IPCC ar6-based classification of the Climatic Impact Drivers <ar6-cid:ClimaticImpactDriverList>;
+• the IPCC ar5-based classification of the Adaptation Options;
+• a minimal module based on BIBO to represent bibliographic information.
+
+• All external vocabularies have been implemented by reusing elements from the Simple Knowledge Organization System Reference (SKOS) ontology.
+
+
+///
 2026-02-15
 • ecv:ecv-variable rdfs:subClassOf sosa:FeatureOfInterest, sosa:Property, skos:Concept
 • ecv:isProductOf [http://www.semanticweb.org/crima/crima-ecv#isProductOf] rdfs:subPropertyOf sosa:isPropertyOf; rdfs:domain ecv:ecv-product; rdfs:range ecv:ecv-variable
@@ -14,8 +30,8 @@
 • skos:Concept rdfs:subClassOf wol:Thing (detached from dolce_basic)
 
 
+///
 2026-02-11
-
 Essential Climate Variable (ECV)
 • https://gcos.wmo.int/site/global-climate-observing-system-gcos/essential-climate-variables
 • @prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
