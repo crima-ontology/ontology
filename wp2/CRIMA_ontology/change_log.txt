@@ -1,3 +1,7 @@
+///
+2026-03-19
+• a schema for the EMDAT Classification Tree has been added. The scheme is named <http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification> and is structured into: [collection]groups, [collection]subgroups, [collection]types, and [concept]subtypes".
+
 
 ///
 2026-03-16
