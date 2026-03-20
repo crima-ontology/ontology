@@ -1,4 +1,10 @@
 ///
+2026-03-20
+• ccore:Adaptation ccore:reduces ccore:Exposure or ccore:Vulnerability, added.
+• ccore:threatPerdurant --> ccore:threateningPerdurant (temporary) (if an element is at risk, it is because of a certain perdurant and that perdurant is the entity the element is threatened by).
+
+
+///
 2026-03-19
 • a schema for the EMDAT Classification Tree has been added. The scheme is named <http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification> and is structured into: [collection]groups, [collection]subgroups, [collection]types, and [concept]subtypes".
 

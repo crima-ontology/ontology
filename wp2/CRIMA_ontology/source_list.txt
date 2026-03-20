@@ -26,4 +26,6 @@
 
 - dtype: http://www.linkedmodel.org/schema/dtype
 
+- skos: https://www.w3.org/TR/skos-reference/skos.rdf
+
  
