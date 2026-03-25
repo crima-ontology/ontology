@@ -1,4 +1,23 @@
 ///
+2026-03-25
+• ich:ImpactChainModel concept added
+• ich:contains rdfs:domain ich:ImpactChainModel; rdfs:range (ich:ImpactChainConnection or ich:ImpactChainFactor) added
+• ich:confidence rdf:type owl:ObjectProperty; rdfs:domain ich:ImpactChainConnection; rdfs:range ich:ConfidenceLevel added
+• {ich:low, ich:medium; ich:high} rdf:type owl:NamedIndividuals, ich:ConfidenceLevel added
+
+• ctlo:constantPartOf rdf:type owl:ObjectProperty; rdfs:domain ctlo:PhysicalEndurant; rdfs:range ctlo:PhysicalEndurant (borrowed from DOLCE) added
+• cplace:HealthRegion rdfs:subClassOf dbo:GovernmentalAdministrativeRegion added
+• cplace:inHealthDistrict rdf:type owl:ObjectProperty; rdfs:domain ctlo:PhysicalEndurant; rdfs:range cplace:HealthDistrict
+• cplace:inHealthRegion rdf:type owl:ObjectProperty; rdfs:domain ctlo:PhysicalEndurant; rdfs:range cplace:HealthRegion
+
+• crid: prefix <http://www.semanticweb.org/crima/crima-id#> (for identifiers) added
+• crid:istatCode rdf:type owl:DataProperty added
+• crid:cadastralCode rdf:type owl:DataProperty added
+• crid:zipCode rdf:type owl:DataProperty added
+ 
+
+
+///
 2026-03-20
 • ccore:Adaptation ccore:reduces ccore:Exposure or ccore:Vulnerability, added.
 • ccore:threatPerdurant --> ccore:threateningPerdurant (temporary) (if an element is at risk, it is because of a certain perdurant and that perdurant is the entity the element is threatened by).
@@ -37,7 +56,7 @@ The current version of crima_last includes:
 
 • @prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> (for those units that are neither in wmdr not in qudt:Unit)
 • Prefix ccor: renamed as ccore:
-• skos:Concept rdfs:subClassOf wol:Thing (detached from dolce_basic)
+• skos:Concept rdfs:subClassOf owl:Thing (detached from dolce_basic)
 
 
 ///
