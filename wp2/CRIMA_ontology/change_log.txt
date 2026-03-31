@@ -1,4 +1,12 @@
 ///
+2026-03-31
+• ich:directLeadsTo rdf:type owl:ObjectProperty; rdfs:domain ich:HazardFactor or ich:ImpactFactor; rdfs:range ich:HazardFactor or ich:ImpactFactor added
+• ich:saturatedLeadsTo rdf:type owl:ObjectProperty; rdfs:domain ich:HazardFactor or ich:ImpactFactor; rdfs:range ich:HazardFactor or ich:ImpactFactor added
+• Rule: ich:LeadsTo(?z), ich:source(?z, ?s), ich:target(?z, ?t) -> ich:directLeadsTo(?s, ?t) .
+(the rule has a documenting purpose mainly, since the properties ich:directLeadsTo and ich:leadsTosaturated will be managed programatically through suitable mapping assertions)
+
+
+///
 2026-03-25
 • ich:ImpactChainModel concept added
 • ich:contains rdfs:domain ich:ImpactChainModel; rdfs:range (ich:ImpactChainConnection or ich:ImpactChainFactor) added
