@@ -1,0 +1,7 @@
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+org: a owl:Ontology .
+
+org:Organization a owl:Class .
+

@@ -1,0 +1,357 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+
+<http://qudt.org/vocab/unit> a owl:Ontology ;
+    voaf:metadataVoc dcterms:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:reliesOn <http://qudt.org/schema/qudt> ;
+    owl:imports <http://qudt.org/schema/qudt> .
+
+unit:ATM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Standard Atmosphere",
+        "Standard Atmosphere"@en ;
+    dcterms:description """
+  The unit for $\\textit{Standard Atmosphere}$, symbol: $atm$, is an international reference pressure defined as $101.325 \\,kPa$ and formerly used as unit of pressure.
+  For practical purposes it has been replaced by the bar which is $100 kPa$. 
+  The difference of about 1% is not significant for many applications, and is within the error range of common pressure gauges.
+  """^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:CentiM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Centimetre",
+        "Centimetre"@en,
+        "Centimetro"@it ;
+    dcterms:description "A centimetre is a unit of length in the metric system, equal to one hundredth of a metre, which is the SI base unit of length. Centi is the SI prefix for a factor of $10^{-2}$.  The centimetre is the base unit of length in the now deprecated centimetre-gram-second (CGS) system of units."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:CentiM-PER-SEC a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Centimetre per Second",
+        "Centimetre per Second"@en,
+        "Centimetro per Secondo"@it ;
+    dcterms:description "\"Centimeter per Second\" is a C.G.S System unit for  'Linear Velocity' expressed as $cm/s$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:DAY a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Day",
+        "Day"@en ;
+    dcterms:description "Mean solar day"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:DEG a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Degree",
+        "Degree"@en ;
+    dcterms:description "A degree (in full, a degree of arc, arc degree, or arcdegree), usually denoted by $^\\circ$ (the degree symbol), is a measurement of plane angle, representing 1/360 of a full rotation; one degree is equivalent to  $2\\pi /360 rad$, $0.017453 rad$. It is not an SI unit, as the SI unit for angles is radian, but is an accepted SI unit."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:DEG_C a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Degree Celsius"@en,
+        "Grado Celsius"@it ;
+    dcterms:description "The unit Celsius, also known as centigrade, is a scale and unit of measurement for temperature. It can refer to a specific temperature on the Celsius scale as well as a unit to indicate a temperature interval, a difference between two temperatures or an uncertainty. This definition fixes the magnitude of both the degree Celsius and the kelvin as precisely 1 part in 273.16 (approximately 0.00366) of the difference between absolute zero and the triple point of water. Thus, it sets the magnitude of one degree Celsius and that of one kelvin as exactly the same." ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:FemtoMOL-PER-KiloGM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Femtomole per Kilogram",
+        "Femtomole per Kilogram"@en,
+        "Femtomole per Chilogrammo"@it ;
+    dcterms:description "A 10**15 part quantity of substance of the measurand per kilogram mass of matrix."@en ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:GM-PER-KiloGM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Gram per Kilogram",
+        "Gram per Kilogram"@en,
+        "Grammo per Chilogrammo"@it ;
+    dcterms:description "0,001 fold of the SI base unit kilogram divided by the SI base unit kilogram"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:HectoPA a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Hectopascal"@en,
+        "Ettopascal"@it ;
+    dcterms:description "Hectopascal is a unit of pressure. 1 Pa is approximately the pressure exerted by a 10-g mass resting on a 1-cm2 area. 1013 hPa = 1 atm. There are 100 pascals in 1 hectopascal."^^rdf:HTML ;
+    rdfs:comment "Hectopascal is commonly used in meteorology to report values for atmospheric pressure. It is equivalent to millibar." ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:K a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kelvin",
+        "Kelvin"@en,
+        "Kelvin"@it ;
+    dcterms:description "The unit $\\textit{Kelvin}$ is the SI base unit of temperature, previously called the degree Kelvin. One kelvin represents the same temperature difference as one degree Celsius. In 1967 the General Conference on Weights and Measures defined the temperature of the triple point of water (the temperature at which water exists simultaneously in the gaseous, liquid, and solid states) to be exactly 273.16 kelvins. Since this temperature is also equal to 0.01 u00b0C, the temperature in kelvins is always equal to 273.15 plus the temperature in degrees Celsius. The kelvin equals exactly 1.8 degrees Fahrenheit. The unit is named for the British mathematician and physicist William Thomson (1824-1907), later known as Lord Kelvin after he was named Baron Kelvin of Largs."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:KiloGM-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kilogram per Square Metre",
+        "Kilogram per Square Metre"@en,
+        "Chilogrammo per Metro Quadrato"@it,
+        "Chiliogramma per Metrum Quadratum"@la ;
+    dcterms:description "Kilogram Per Square Meter (kg/m2) is a unit in the category of Surface density. It is also known as kilograms per square meter, kilogram per square metre, kilograms per square metre, kilogram/square meter, kilogram/square metre. This unit is commonly used in the SI unit system. Kilogram Per Square Meter (kg/m2) has a dimension of ML-2 where $M$ is mass, and $L$ is length. This unit is the standard SI unit in this category."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:KiloGM-PER-M3 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kilogram per Cubic Metre",
+        "Kilogram per Cubic Metre"@en,
+        "Chilogrammo per Metro Cubo"@it ;
+    dcterms:description "Kilogram per cubic metre is an SI derived unit of density, defined by mass in kilograms divided by volume in cubic metres. The official SI symbolic abbreviation is $kg \\cdot m^{-3}$, or equivalently either $kg/m^3$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:KiloM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kilometre",
+        "Kilometre"@en,
+        "Chilometro"@it ;
+    dcterms:description "A common metric unit of length or distance. One kilometer equals exactly 1000 meters, about 0.621 371 19 mile, 1093.6133 yards, or 3280.8399 feet. Oddly, higher multiples of the meter are rarely used; even the distances to the farthest galaxies are usually measured in kilometers. "^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:KiloM-PER-DAY a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kilometre per Day",
+        "Kilometre per Day"@en ;
+    dcterms:description "A change in location of a distance of one thousand metres in an elapsed time of one day (86400 seconds)."@en ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:KiloM2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Square Kilometre",
+        "Square Kilometre"@en,
+        "Chilometro Quadrato"@it ;
+    dcterms:description "1,000,000-fold of the power of the SI base unit metre with the exponent 2" ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Metre",
+        "Metre"@en,
+        "Metro"@it ;
+    dcterms:description "The metric and SI base unit of distance.  The 17th General Conference on Weights and Measures in 1983 defined the meter as that distance that makes the speed of light in a vacuum equal to exactly 299 792 458 meters per second. The speed of light in a vacuum, $c$, is one of the fundamental constants of nature. The meter is equal to approximately 1.093 613 3 yards, 3.280 840 feet, or 39.370 079 inches."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M-PER-SEC a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Metre per Second",
+        "Metre per Second"@en,
+        "Metro per Secondo"@it ;
+    dcterms:description """Metre per second is an SI derived unit of both speed (scalar) and velocity (vector quantity which specifies both magnitude and a specific direction), defined by distance in metres divided by time in seconds.
+The official SI symbolic abbreviation is mu00b7s-1, or equivalently either m/s."""^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M-PER-YR a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Metre per Year",
+        "Metre per Year"@en ;
+    dcterms:description "A rate of change of SI standard unit length over a period of an average calendar year (365.25 days)."@en ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Square Metre",
+        "Square Metre"@en,
+        "Metro Quadrato"@it ;
+    dcterms:description "The S I unit of area is the square metre."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M2-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Square Metre per Square Metre",
+        "Square Metre per Square Metre"@en,
+        "Metro Quadrato per Metro Quadrato"@it ;
+    dcterms:description "A square metre unit of area per square metre"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M3-PER-M3 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Cubic Metre per Cubic Metre",
+        "Cubic Metre per Cubic Metre"@en,
+        "Metro Cubo per Metro Cubo"@it ;
+    dcterms:description "power of the SI base unit metre with the exponent 3 divided by the power of the SI base unit metre with the exponent 3"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:M3-PER-SEC a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Cubic Metre per Second",
+        "Cubic Metre per Second"@en,
+        "Metro Cubo per Secondo"@it ;
+    dcterms:description "A cubic metre per second ($m^{3}s^{-1}, m^{3}/s$), cumecs or cubic meter per second in American English) is a derived SI unit of flow rate equal to that of a stere or cube with sides of one metre ( u0303 39.37 in) in length exchanged or moving each second. It is popularly used for water flow, especially in rivers and streams, and fractions for HVAC values measuring air flow."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MegaGM-PER-HA a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Megagram per Hectare",
+        "Megagram per Hectare"@en ;
+    dcterms:description "1 000-fold of the SI base unit kilogram divided by the 10,000-fold of the power of the SI base unit metre with the exponent 2"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroGM-PER-L a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Microgram per Litre",
+        "Microgram per Litre"@en ;
+    dcterms:description "0.000000001-fold of the SI base unit kilogram divided by the unit litre"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroGM-PER-M3 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Microgram per Cubic Metre",
+        "Microgram per Cubic Metre"@en,
+        "Microgrammo per Metro Cubo"@it ;
+    dcterms:description "0.000000001-fold of the SI base unit kilogram divided by the power of the SI base unit metre with the exponent 3"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Micrometre",
+        "Micrometre"@en,
+        "Micrometro"@it ;
+    dcterms:description "\"Micrometer\" is a unit for  'Length' expressed as $microm$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroMOL-PER-KiloGM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Micromole per Kilogram",
+        "Micromole per Kilogram"@en,
+        "Micromole per Chilogrammo"@it ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroMOL-PER-M2-DAY a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Micromole per Square Metre Day",
+        "Micromole per Square Metre Day"@en ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MicroMOL-PER-MOL a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Micromole per Mole",
+        "Micromole per Mole"@en,
+        "Micromole per Mole"@it ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MilliGM-PER-L a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Milligram per Litre",
+        "Milligram per Litre"@en ;
+    dcterms:description "0.000001-fold of the SI base unit kilogram divided by the unit litre"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MilliGM-PER-M3 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Milligram per Cubic Metre",
+        "Milligram per Cubic Metre"@en,
+        "Milligrammo per Metro Cubo"@it ;
+    dcterms:description "0.000001-fold of the SI base unit kilogram divided by the power of the SI base unit metre with the exponent 3"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MilliM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Millimetre"@en,
+        "Millimetro"@it ;
+    dcterms:description "The millimetre (International spelling as used by the International Bureau of Weights and Measures) or millimeter (American spelling) (SI unit symbol mm) is a unit of length in the metric system, equal to one thousandth of a metre, which is the SI base unit of length. It is equal to 1000 micrometres or 1000000 nanometres. A millimetre is equal to exactly 5/127 (approximately 0.039370) of an inch." ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:MilliM-PER-YR a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Millimetre per Year",
+        "Millimetre per Year"@en ;
+    dcterms:description "0.001-fold of the SI base unit metre divided by the unit year"^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:N-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Newton per Square Metre",
+        "Newton per Square Metre"@en,
+        "Newton per Metro Quadrato"@it ;
+    dcterms:description "The SI unit of pressure. The pascal is the standard pressure unit in the MKS metric system, equal to one newton per square meter or one \"kilogram per meter per second per second.\" The unit is named for Blaise Pascal (1623-1662), French philosopher and mathematician, who was the first person to use a barometer to measure differences in altitude."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:NanoMOL-PER-KiloGM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Nanomole per Kilogram",
+        "Nanomole per Kilogram"@en,
+        "Nanomole per Chilogrammo"@it ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PER-KiloM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Reciprocal Kilometre",
+        "Reciprocal Kilometre"@en,
+        "Per Chilometro"@it ;
+    dcterms:description "Per Kilometer Unit is a denominator unit with dimensions $/km$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PERCENT a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Percent",
+        "Percent"@en ;
+    dcterms:description "\"Percent\" is a unit for  'Dimensionless Ratio' expressed as $\\%$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PERMILLE a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Permille",
+        "Permille"@en ;
+    dcterms:description "\"Permille\" is a unit for 'Dimensionless Ratio' analogous to Percent, but per thousand rather than per hundred."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PPB a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Parts per Billion",
+        "Parts per Billion"@en ;
+    dcterms:description "Dimensionless unit for concentration. Recommended practice is to use specific units such as $ug/l$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PPM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Parts per Million",
+        "Parts per Million"@en ;
+    dcterms:description "Dimensionless unit for concentration. Recommended practice is to use specific units such as $ug/l$."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PSU a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Practical Salinity Unit",
+        "Practical Salinity Unit"@en ;
+    dcterms:description "Practical salinity scale 1978 (PSS-78) is used for ionic content of seawater determined by electrical conductivity. Salinities measured using PSS-78 do not have units, but are approximately scaled to parts-per-thousand for the valid range. The suffix psu or PSU (denoting practical salinity unit) is sometimes added to PSS-78 measurement values. The addition of PSU as a unit after the value is \"formally incorrect and strongly discouraged\"."^^rdf:HTML ;
+    dcterms:source <https://unesdoc.unesco.org/ark:/48223/pf0000047932> ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:PicoMOL-PER-KiloGM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Picomole per Kilogram",
+        "Picomole per Kilogram"@en,
+        "Picomole per Chilogrammo"@it ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:W a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Watt"@en,
+        "Watt"@it ;
+    dcterms:description "The SI unit of power. Power is the rate at which work is done, or (equivalently) the rate at which energy is expended. One watt is equal to a power rate of one joule of work per second of time. This unit is used both in mechanics and in electricity, so it links the mechanical and electrical units to one another. In mechanical terms, one watt equals about 0.001 341 02 horsepower (hp) or 0.737 562 foot-pound per second (lbf/s). In electrical terms, one watt is the power produced by a current of one ampere flowing through an electric potential of one volt. The name of the unit honors James Watt (1736-1819), the British engineer whose improvements to the steam engine are often credited with igniting the Industrial Revolution."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:W-PER-M2 a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Watt per Square Metre",
+        "Watt per Square Metre"@en,
+        "Watt per Metro Quadrato"@it ;
+    dcterms:description "\"Watt per Square Meter} is a unit of irradiance defined as the power received per area. This is a unit in the category of Energy flux. It is also known as watts per square meter, watt per square metre, watts per square metre, watt/square meter, watt/square metre. This unit is commonly used in the SI unit system. Watt Per Square Meter ($W/m^2$) has a dimension of $MT^{-3\"$ where $M$ is mass, and $T$ is time. This unit is the standard SI unit in this category."^^qudt:LatexString ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+
+unit:W-PER-M2-MicroM a qudt:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Watt per Square Metre Micrometre",
+        "Watt per Square Metre Micrometre"@en,
+        "Watt per Metro Quadrato Micrometro"@it ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/vocab/unit> .
+

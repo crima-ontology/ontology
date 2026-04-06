@@ -1,0 +1,18 @@
+@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+clex: a owl:Ontology ;
+    vann:preferredNamespacePrefix "clex" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-lexicon#"^^xsd:anyURI ;
+    voaf:extends <http://www.w3.org/2004/02/skos/core> ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    owl:imports <http://www.w3.org/2004/02/skos/core> .
+
+clex:isMemberOf a owl:ObjectProperty ;
+    owl:inverseOf skos:member .
+

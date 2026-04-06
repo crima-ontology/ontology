@@ -1,0 +1,259 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+
+<http://www.w3.org/2006/time> a owl:Ontology ;
+    voaf:metadataVoc <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> .
+
+time:DateTimeInterval a owl:Class ;
+    rdfs:label "Date-time interval"@en ;
+    rdfs:subClassOf time:ProperInterval ;
+    skos:definition "DateTimeInterval is a subclass of ProperInterval, defined using the multi-element DateTimeDescription."@en ;
+    skos:note ":DateTimeInterval can only be used for an interval whose limits coincide with a date-time element aligned to the calendar and timezone indicated. For example, while both have a duration of one day, the 24-hour interval beginning at midnight at the beginning of 8 May in Central Europe can be expressed as a :DateTimeInterval, but the 24-hour interval starting at 1:30pm cannot."@en .
+
+time:hasBeginning a owl:ObjectProperty ;
+    rdfs:label "has beginning"@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant ;
+    rdfs:subPropertyOf time:hasTime ;
+    skos:definition "Beginning of a temporal entity."@en .
+
+time:hasEnd a owl:ObjectProperty ;
+    rdfs:label "has end"@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:Instant ;
+    rdfs:subPropertyOf time:hasTime ;
+    skos:definition "End of a temporal entity."@en .
+
+time:intervalAfter a owl:ObjectProperty ;
+    rdfs:label "interval after"@en,
+        "intervalo posterior"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:after,
+        time:intervalDisjoint ;
+    owl:inverseOf time:intervalBefore ;
+    skos:definition "If a proper interval T1 is intervalAfter another proper interval T2, then the beginning of T1 is after the end of T2."@en,
+        "Si un intervalo propio T1 es posterior a otro intervalo propio T2, entonces el principio de T1 está después que el final de T2."@es .
+
+time:intervalContains a owl:ObjectProperty ;
+    rdfs:label "interval contains"@en,
+        "intervalo contiene"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:hasInside ;
+    owl:inverseOf time:intervalDuring ;
+    skos:definition "If a proper interval T1 is intervalContains another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is after the end of T2."@en,
+        "Si un intervalo propio T1 contiene otro intervalo propio T2, entonces el principio de T1 está antes que el principio de T2, y el final de T1 está después del final de T2."@es .
+
+time:intervalEquals a owl:ObjectProperty ;
+    rdfs:label "interval equals"@en,
+        "intervalo igual"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:equals ;
+    skos:definition "If a proper interval T1 is intervalEquals another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2."@en,
+        "Si un intervalo propio T1 es igual a otro intervalo propio T2, entonces el principio de T1 coincide con el principio de T2, y el final de T1 coincide con el final de T2."@es .
+
+time:intervalFinishedBy a owl:ObjectProperty ;
+    rdfs:label "interval finished by"@en,
+        "intervalo terminado por"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:hasInside ;
+    owl:inverseOf time:intervalFinishes ;
+    skos:definition "If a proper interval T1 is intervalFinishedBy another proper interval T2, then the beginning of T1 is before the beginning of T2, and the end of T1 is coincident with the end of T2."@en,
+        "Si un intervalo propio T1 está terminado por otro intervalo propio T2, entonces el principio de T1 está antes que el principio de T2, y el final de T1 coincide con el final de T2."@es .
+
+time:intervalMeets a owl:ObjectProperty ;
+    rdfs:label "interval meets"@en,
+        "intervalo se encuentra"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    owl:inverseOf time:intervalMetBy ;
+    skos:definition "If a proper interval T1 is intervalMeets another proper interval T2, then the end of T1 is coincident with the beginning of T2."@en,
+        "Si un intervalo propio T1 se encuentra con otro intervalo propio T2, entonces el final de T1 coincide con el principio de T2."@es .
+
+time:intervalOverlappedBy a owl:ObjectProperty ;
+    rdfs:label "interval overlapped by"@en,
+        "intervalo solapado por"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    owl:inverseOf time:intervalOverlaps ;
+    skos:definition "If a proper interval T1 is intervalOverlappedBy another proper interval T2, then the beginning of T1 is after the beginning of T2, the beginning of T1 is before the end of T2, and the end of T1 is after the end of T2."@en,
+        "Si un intervalo propio T1 es 'intervalo solapado por' otro intervalo propio T2, entonces el principio de T1 es posterior al principio de T2, y el principio de T1 es anterior al final de T2, y el final de T1 es posterior al final de T2."@es .
+
+time:intervalStartedBy a owl:ObjectProperty ;
+    rdfs:label "interval started by"@en ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:hasInside ;
+    owl:inverseOf time:intervalStarts ;
+    skos:definition "If a proper interval T1 is intervalStarted another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is after the end of T2."@en,
+        "Si un intervalo propio T1 es empezado por otro intervalo propio T2, entonces el principio de T1 coincide con el principio de T2, y el final de T1 es posterior al final de T2."@es .
+
+time:Interval a owl:Class ;
+    rdfs:label "Time interval"@en ;
+    rdfs:subClassOf time:TemporalEntity ;
+    skos:definition "A temporal entity with an extent or duration"@en .
+
+time:after a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "is after"@en,
+        "después"@es ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    rdfs:subPropertyOf time:disjoint ;
+    owl:inverseOf time:before ;
+    skos:definition "Gives directionality to time. If a temporal entity T1 is after another temporal entity T2, then the beginning of T1 is after the end of T2."@en,
+        "Asume una dirección en el tiempo. Si una entidad temporal T1 está después de otra entidad temporal T2, entonces el principio de T1 está después del final de T2."@es .
+
+time:equals a owl:ObjectProperty ;
+    rdfs:label "equal time entity" ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    skos:definition "If a temporal entity T1 equals another temporal entity T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is coincident with the end of T2, and the beginning of T1 may be coincident with the end of T1."@en ;
+    skos:example """
+ex:JackWeddingDay :equals ex:AbbyBirthday2020 .
+""" .
+
+time:intervalBefore a owl:ObjectProperty ;
+    rdfs:label "interval before"@en,
+        "intervalo anterior"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:before,
+        time:intervalDisjoint ;
+    skos:definition "If a proper interval T1 is intervalBefore another proper interval T2, then the end of T1 is before the beginning of T2."@en,
+        "Si un intervalo propio T1 está antes que otro intervalo propio T2, entonces el final de T1 está antes que el principio de T2."@es .
+
+time:intervalDuring a owl:ObjectProperty ;
+    rdfs:label "interval during"@en,
+        "intervalo durante"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:intervalIn ;
+    skos:definition "If a proper interval T1 is intervalDuring another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en,
+        "Si un intervalo propio T1 está durante otro intervalo propio T2, entonces del principio de T1 está después del principio de T2, y el final de T1 está antes que el final de T2."@es .
+
+time:intervalFinishes a owl:ObjectProperty ;
+    rdfs:label "interval finishes"@en,
+        "intervalo termina"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:intervalIn ;
+    skos:definition "If a proper interval T1 is intervalFinishes another proper interval T2, then the beginning of T1 is after the beginning of T2, and the end of T1 is coincident with the end of T2."@en,
+        "Si un intervalo propio T1 termina otro intervalo propio T2, entonces del principio de T1 está después del principio de T2, y el final de T1 coincide con el final de T2."@es .
+
+time:intervalMetBy a owl:ObjectProperty ;
+    rdfs:label "interval met by"@en,
+        "intervalo encontrado por"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    skos:definition "If a proper interval T1 is intervalMetBy another proper interval T2, then the beginning of T1 is coincident with the end of T2."@en,
+        "Si un intervalo propio T1 es 'intervalo encontrado por' otro intervalo propio T2, entonces el principio de T1 coincide con el final de T2."@es .
+
+time:intervalOverlaps a owl:ObjectProperty ;
+    rdfs:label "interval overlaps"@en,
+        "intervalo se solapa"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    skos:definition "If a proper interval T1 is intervalOverlaps another proper interval T2, then the beginning of T1 is before the beginning of T2, the end of T1 is after the beginning of T2, and the end of T1 is before the end of T2."@en,
+        "Si un intervalo propio T1 se solapa con otro intervalo propio T2, entonces el principio de T1 es anterior al principio de T2, el final de T1 es posterior al principio de T2, y el final de T1 es anterior al final de T2."@es .
+
+time:intervalStarts a owl:ObjectProperty ;
+    rdfs:label "interval starts"@en,
+        "intervalo empieza"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:intervalIn ;
+    skos:definition "If a proper interval T1 is intervalStarts another proper interval T2, then the beginning of T1 is coincident with the beginning of T2, and the end of T1 is before the end of T2."@en,
+        "Si un intervalo propio T1 empieza otro intervalo propio T2, entonces del principio de T1 con el final de T2, y el final de T1 es anterior al final de T2."@es .
+
+time:Instant a owl:Class ;
+    rdfs:label "Time instant"@en ;
+    rdfs:subClassOf time:TemporalEntity ;
+    skos:definition "A temporal entity with zero extent or duration"@en .
+
+time:before a owl:ObjectProperty,
+        owl:TransitiveProperty ;
+    rdfs:label "is before"@en,
+        "antes"@es ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    rdfs:subPropertyOf time:disjoint ;
+    skos:definition "Gives directionality to time. If a temporal entity T1 is before another temporal entity T2, then the end of T1 is before the beginning of T2. Thus, \"before\" can be considered to be basic to instants and derived for intervals."@en,
+        "Asume una dirección en el tiempo. Si una entidad temporal T1 está antes que otra entidad temporal T2, entonces el final de T1 está antes que el principio de T2. Así, \"antes\" se puede considerar básica para instantes y derivada para intervalos."@es .
+
+time:hasTime a owl:ObjectProperty ;
+    rdfs:label "has time"@en ;
+    rdfs:comment "[new in the 2026 edition of Time Tntology: https://w3c.github.io/sdw/time/]" ;
+    rdfs:range time:TemporalEntity ;
+    skos:definition "Supports the association of a temporal entity (instant or interval) to any thing"@en .
+
+time:intervalDisjoint a owl:ObjectProperty ;
+    rdfs:label "interval disjoint"@en,
+        "intervalo disjunto"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:disjoint ;
+    skos:definition "If a proper interval T1 is intervalDisjoint another proper interval T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e., the intervals do not overlap in any way, but their ordering relationship is not known."@en,
+        "Si un intervalo propio T1 es disjunto con otro intervalo propio T2, entonces el principio de T1 está después del final de T2, o el final de T1 está antes que el principio de T2, es decir, los intervalos no se solapan de ninguna forma, aunque su relación de orden no se conozca."@es ;
+    skos:note "This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is defined in (T.3) as the union of :intervalBefore v :intervalAfter . However, that is outside OWL2 expressivity, so is implemented as an explicit property, with :intervalBefore , :intervalAfter as sub-properties"@en,
+        "Esta relación entre intervalos no estaba incluida en las 13 relaciones básicas definidas por Allen (1984), pero está definida en T.3 como la unión de 'intervalo anterior' con 'intervalo posterior'. Sin embargo, esto está fuera de la expresividad de OWL2, por tanto, está implementado como una propiedad explícita, con 'intervalo anterior' e 'intervalo posterior' como sub-propiedades."@es .
+
+time:disjoint a owl:ObjectProperty ;
+    rdfs:label "disjoint time entity" ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    skos:definition "If a temporal entity T1 is disjoint with another temporal entity T2, then the beginning of T1 is after the end of T2, or the end of T1 is before the beginning of T2, i.e. the two entities do not overlap or coincide in any way, but their ordering relationship is not known."@en ;
+    skos:example """
+ex:LunchTime :disjoint ex:NapTime .
+""" .
+
+time:hasInside a owl:ObjectProperty ;
+    rdfs:label "has time entity inside" ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    skos:definition "If a temporal entity T1 hasInside it another temporal entity T2, then the beginning of T1 is coincident with or before the beginning of T2, and the end of T1 is concident with or after the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2."@en ;
+    skos:example """
+ex:Class :hasInside ex:Quiz .
+""" .
+
+time:intervalIn a owl:ObjectProperty ;
+    rdfs:label "interval in"@en,
+        "intervalo interior"@es ;
+    rdfs:domain time:ProperInterval ;
+    rdfs:range time:ProperInterval ;
+    rdfs:subPropertyOf time:notDisjoint ;
+    skos:definition "If a proper interval T1 is intervalIn another proper interval T2, then the beginning of T1 is after the beginning of T2 or is coincident with the beginning of T2, and the end of T1 is before the end of T2, or is coincident with the end of T2, except that end of T1 may not be coincident with the end of T2 if the beginning of T1 is coincident with the beginning of T2."@en,
+        "Si un intervalo propio T1 es un intervalo interior a otro intervalo propio T2, entonces el principio de T1 está después del principio de T2 o coincide con el principio de T2, y el final de T1 está antes que el final de T2, o coincide con el final de T2, excepto que el final de T1 puede no coincidir con el final de T2 si el principio de T1 coincide con el principio de T2."@es ;
+    skos:note "This interval relation is not included in the 13 basic relationships defined in Allen (1984), but is referred to as 'an important relationship' in Allen and Ferguson (1997). It is the disjoint union of :intervalStarts v :intervalDuring v :intervalFinishes . However, that is outside OWL2 expressivity, so is implemented as an explicit property, with :intervalStarts , :intervalDuring , :intervalFinishes as sub-properties"@en,
+        "Esta relación entre intervalos no estaba incluida en las 13 relaciones básicas definidas por Allen (1984), pero se hace referencia a ella como \"una relación importante\" en Allen y Ferguson (1997). Es la unión disjunta de 'intervalo empieza', 'intervalo durante' y con 'intervalo termina'. Sin embargo, esto está fuera de la expresividad de OWL2, por tanto, se implementa como una propiedad explícita, con 'intervalo empieza', 'intervalo durante' e 'intervalo termina' como sub-propiedades."@es .
+
+time:notDisjoint a owl:ObjectProperty ;
+    rdfs:label "not disjoint with time entity" ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range time:TemporalEntity ;
+    skos:definition "If a temporal entity T1 is notDisjoint with another temporal entity T2, then the the two entities not overlap or coincide in some way, but their ordering relationship is not known. This relation is the complement of disjoint and the union of equals, hasInside, in, meets, metBy, overlaps, overlappedBy."@en .
+
+time:TemporalEntity a owl:Class ;
+    rdfs:label "Temporal entity"@en ;
+    rdfs:subClassOf owl:Thing ;
+    skos:definition "A temporal interval or instant."@en .
+
+time:ProperInterval a owl:Class ;
+    rdfs:label "Proper interval"@en,
+        "intervalo propio"@es ;
+    rdfs:subClassOf time:Interval ;
+    skos:definition "A temporal entity with non-zero extent or duration, i.e., for which the value of the beginning and end are different"@en .
+

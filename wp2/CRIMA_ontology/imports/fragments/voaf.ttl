@@ -1,0 +1,71 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+voaf:classNumber a rdf:Property ;
+    rdfs:label "number of classes"@en ;
+    rdfs:comment "The number of classes defined in the vocabulary namespace. Classes imported from other namespaces are not taken into account."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:range xsd:integer .
+
+voaf:extends a rdf:Property ;
+    rdfs:label "extends"@en ;
+    rdfs:comment "Indicates that the subject vocabulary extends the expressivity of the object vocabulary by declaring subsumption relationships, using object vocabulary class as domain or range of a subject vocabulary property, defining local restrictions etc ..."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:generalizes a rdf:Property ;
+    rdfs:label "generalizes"@en ;
+    rdfs:comment "Indicates that the subject vocabulary generalizes by some superclasses or superproperties the object vocabulary."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:hasDisjunctionsWith a rdf:Property ;
+    rdfs:label "has disjunctions with"@en ;
+    rdfs:comment "Indicates that the subject vocabulary contains some declaration of disjoint classes with the object vocabulary."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:hasEquivalencesWith a rdf:Property ;
+    rdfs:label "has equivalences with"@en ;
+    rdfs:comment "Indicates that the subject vocabulary declares some equivalent classes or properties with the object vocabulary."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:metadataVoc a rdf:Property ;
+    rdfs:label "metadata vocabulary"@en ;
+    rdfs:comment "Indicates that the subject vocabulary uses the object vocabulary in metadata at global vocabulary level or at element level"@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:propertyNumber a rdf:Property ;
+    rdfs:label "number of properties"@en ;
+    rdfs:comment "The number of properties defined in the vocabulary namespace. Properties imported from other namespaces are not taken into account."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:range xsd:integer .
+
+voaf:specializes a rdf:Property ;
+    rdfs:label "specializes"@en ;
+    rdfs:comment "Indicates that the subject vocabulary defines some subclasses or subproperties of the object vocabulary, or local restrictions on those."@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> ;
+    rdfs:subPropertyOf voaf:reliesOn .
+
+voaf:usedBy a rdf:Property ;
+    rdfs:label "used by"@en ;
+    rdfs:comment "Indicates that the subject vocabulary is used by the object vocabulary"@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> .
+
+voaf:reliesOn a rdf:Property ;
+    rdfs:label "relies on"@en ;
+    rdfs:comment "Indicates that the subject vocabulary uses or extends some class or property of the object vocabulary"@en ;
+    rdfs:isDefinedBy <http://purl.org/vocommons/voaf> .
+
+<http://purl.org/vocommons/voaf> a owl:Ontology ;
+    vann:preferredNamespacePrefix "voaf" ;
+    vann:preferredNamespaceUri "http://purl.org/vocommons/voaf#" ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> .
+

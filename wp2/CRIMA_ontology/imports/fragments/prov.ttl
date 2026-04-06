@@ -1,0 +1,11 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+
+prov:hadPrimarySource a owl:AnnotationProperty .
+
+prov:wasInfluencedBy a owl:AnnotationProperty .
+
+prov:wasQuotedFrom a owl:AnnotationProperty .
+
+<http://www.w3.org/ns/prov-o#> a owl:Ontology .
+

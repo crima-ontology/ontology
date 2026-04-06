@@ -1,0 +1,130 @@
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX ruleml: <http://www.w3.org/2003/11/swrl#>
+
+ruleml:Atom
+    a rdfs:Class ;
+    rdfs:comment "common superclass" ;
+.
+
+ruleml:Builtin
+    a rdfs:Class ;
+.
+
+ruleml:BuiltinAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of a builtin and a List of arguments" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:ClassAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of a classPredicate and argument1" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:DataRangeAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of a dataRange and argument1" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:DatavaluedPropertyAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of a propertyPredicate (owl:DatatypeProperty), argument1 (owl:Thing), and argument2 (rdfs:Literal)" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:DifferentIndividualsAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of argument1 (owl:Thing) and argument2 (owl:Thing)" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:Imp
+    a rdfs:Class ;
+    rdfs:comment "implication (rule)" ;
+.
+
+ruleml:IndividualPropertyAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of a propertyPredicate (owl:ObjectProperty), argument1 (owl:Thing), and argument2 (owl:Thing)" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:SameIndividualAtom
+    a rdfs:Class ;
+    rdfs:comment "consists of argument1 (owl:Thing) and argument2 (owl:Thing)" ;
+    rdfs:subClassOf ruleml:Atom ;
+.
+
+ruleml:Variable
+    a rdfs:Class ;
+    rdfs:comment "indicate that a URI is being used as a variable" ;
+.
+
+<http://www.w3.org/2003/11/swrl>
+    rdfs:comment "RDF Schema definition of the RDF Concrete Syntax for the Semantic Web Rule Language" ;
+    owl:versionInfo "$Id: swrl.rdf,v 1.1 2004/05/21 18:46:39 vivien Exp $" ;
+.
+
+ruleml:
+    a owl:Ontology ;
+.
+
+ruleml:argument1
+    a rdf:Property ;
+    rdfs:domain ruleml:Atom ;
+    rdfs:range rdfs:Resource ;
+.
+
+ruleml:argument2
+    a rdf:Property ;
+    rdfs:comment "can be a Literal or Resource" ;
+    rdfs:domain ruleml:Atom ;
+.
+
+ruleml:arguments
+    a rdf:Property ;
+    rdfs:domain ruleml:BuiltinAtom ;
+    rdfs:range rdf:List ;
+.
+
+ruleml:body
+    a rdf:Property ;
+    rdfs:comment "rule body (antecedent):  List of Atom" ;
+    rdfs:domain ruleml:Imp ;
+    rdfs:range rdf:List ;
+.
+
+ruleml:builtin
+    a rdf:Property ;
+    rdfs:domain ruleml:BuiltinAtom ;
+    rdfs:range ruleml:Builtin ;
+.
+
+ruleml:classPredicate
+    a rdf:Property ;
+    rdfs:domain ruleml:ClassAtom ;
+    rdfs:range rdfs:Class ;
+.
+
+ruleml:dataRange
+    a rdf:Property ;
+    rdfs:domain ruleml:DataRangeAtom ;
+    rdfs:range owl:DataRange ;
+.
+
+ruleml:head
+    a rdf:Property ;
+    rdfs:comment "rule head (consequent):  List of Atom" ;
+    rdfs:domain ruleml:Imp ;
+    rdfs:range rdf:List ;
+.
+
+ruleml:propertyPredicate
+    a rdf:Property ;
+    rdfs:domain ruleml:Atom ;
+    rdfs:range rdf:Property ;
+.

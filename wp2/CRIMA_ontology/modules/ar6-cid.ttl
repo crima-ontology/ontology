@@ -1,0 +1,230 @@
+@prefix ar6-cid: <http://www.semanticweb.org/crima/ipcc-ar6-cid#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ar6-cid: a owl:Ontology ;
+    vann:preferredNamespacePrefix "ar5-cid" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/ipcc-ar6-cid#"^^xsd:anyURI ;
+    voaf:extends <http://www.w3.org/2004/02/skos/core> ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports <http://www.w3.org/2004/02/skos/core> .
+
+ar6-cid:AirPollutionWeather a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Atmospheric conditions that increase the likelihood of high particulate matter or ozone concentrations or chemical processes generating air pollutants. Note: distinct from aerosol emissions or air pollution concentrations themselves." .
+
+ar6-cid:AtmosphericCO2AtSurface a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Concentration of atmospheric carbon dioxide (CO2) at the surface. Note: distinct from overall radiative effect of CO2 as greenhouse gas." .
+
+ar6-cid:Coastal a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:CoastalErosion,
+        ar6-cid:CoastalFlood,
+        ar6-cid:RelativeSeaLevel .
+
+ar6-cid:HeatAndCold a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:ColdSpell,
+        ar6-cid:ExtremeHeat,
+        ar6-cid:Frost,
+        ar6-cid:MeanAirTemperature .
+
+ar6-cid:LOceanSalinity a ar6-cid:CID-category,
+        owl:NamedIndividual .
+
+ar6-cid:OpenOcean a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:DissolvedOxygen,
+        ar6-cid:MarineHeatwave,
+        ar6-cid:MeanOceanTemperature,
+        ar6-cid:OceanAcidity,
+        ar6-cid:OceanSalinity .
+
+ar6-cid:Other a ar6-cid:CID-type,
+        owl:NamedIndividual .
+
+ar6-cid:RadiationAtSurface a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Balance of net shortwave, longwave and ultraviolet radiation at the Earth's surface and their diurnal and seasonal patterns." .
+
+ar6-cid:SnowAndIce a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:Hail,
+        ar6-cid:HeavySnowfallAndIceStorm,
+        ar6-cid:LakeRiverAndSeaIce,
+        ar6-cid:Permafrost,
+        ar6-cid:SnowAvalanche,
+        ar6-cid:SnowGlacierAndIceSheet .
+
+ar6-cid:WetAndDry a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:AgriculturalAndEcologicalDrought,
+        ar6-cid:Aridity,
+        ar6-cid:FireWeather,
+        ar6-cid:HeavyPrecipitationAndPluvialFlood,
+        ar6-cid:HydrologicalDrought,
+        ar6-cid:Landslide,
+        ar6-cid:MeanPrecipitation,
+        ar6-cid:RiverFlood .
+
+ar6-cid:Wind a ar6-cid:CID-type,
+        owl:NamedIndividual ;
+    skos:member ar6-cid:MeanWindSpeed,
+        ar6-cid:SandAndDustStorm,
+        ar6-cid:SevereWindStorm,
+        ar6-cid:TropicalCyclone .
+
+ar6-cid:climatic-impact-driver-list a ar6-cid:ClimaticImpactDriverList,
+        owl:NamedIndividual ;
+    rdfs:comment "The climatic impact-driver (CID) framework adopted in Chapter 12 allows for assessment of changing climate conditions that are relevant for regional impacts and risk assessment. CIDs are physical climate system conditions (e.g., means, events, extremes) that affect an element of society or ecosystems and are thus a priority for climate information provision. Depending on system tolerance, CIDs and their changes can be detrimental, beneficial, neutral or a mixture of each across interacting system elements, regions and society sectors. Each sector is affected by multiple CIDs and each CID affects multiple sectors. A CID can be measured by indices to represent related tolerance thresholds." ;
+    rdfs:isDefinedBy "Ranasinghe, R., A.C. Ruane, R. Vautard, N. Arnell, E. Coppola, F.A. Cruz, S. Dessai, A.S. Islam, M. Rahimi, D. Ruiz Carrascal, J. Sillmann, M.B. Sylla, C. Tebaldi, W. Wang, and R. Zaaboul, 2021: Climate Change Information for Regional Impact and for Risk Assessment. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 1767-1926, doi:10.1017/9781009157896.014." .
+
+ar6-cid:AgriculturalAndEcologicalDrought a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic combination of soil moisture supply deficit and atmospheric demand requirements that challenges the vegetation's ability to meet its water needs for transpiration and growth. Note: 'agricultural' vs. 'ecological' term depends on affected biome." .
+
+ar6-cid:Aridity a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Mean conditions of precipitation and evapotranspiration compared to potential atmospheric and surface water demand, resulting in low mean surface water, low soil moisture and/or low relative humidity." .
+
+ar6-cid:CoastalErosion a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Long term or episodic change in shoreline position caused by relative sea level rise, nearshore currents, waves and storm surge." .
+
+ar6-cid:CoastalFlood a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Flooding driven by episodic high coastal water levels that result from a combination of relative sea level rise, tides, storm surge and wave setup." .
+
+ar6-cid:ColdSpell a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic cold surface air temperature events potentially exacerbated by wind." .
+
+ar6-cid:DissolvedOxygen a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Profile of ocean water dissolved oxygen and episodic low oxygen events." .
+
+ar6-cid:ExtremeHeat a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic high surface air temperature events potentially exacerbated by humidity." .
+
+ar6-cid:FireWeather a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Weather conditions conducive to triggering and sustaining wildfires, usually based on a set of indicators and combinations of indicators including temperature, soil moisture, humidity and wind. Fire weather does not include the presence or absence of fuel load. Note: distinct from wildfire occurrence and area burned." .
+
+ar6-cid:Frost a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Freeze and thaw events near the land surface and their seasonality." .
+
+ar6-cid:Hail a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Storms producing solid hailstones." .
+
+ar6-cid:HeavyPrecipitationAndPluvialFlood a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "High rates of precipitation and resulting episodic, localized flooding of streams and flat lands." .
+
+ar6-cid:HeavySnowfallAndIceStorm a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "High snowfall and ice storm events including freezing rain and rain-on-snow conditions." .
+
+ar6-cid:HydrologicalDrought a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic combination of runoff deficit and evaporative demand that affects surface water or groundwater availability." .
+
+ar6-cid:LakeRiverAndSeaIce a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "The seasonality and characteristics of ice formations on the ocean and freshwater bodies of water." .
+
+ar6-cid:Landslide a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Ground and atmospheric conditions that lead to geological mass movements, including landslide, mudslide and rockfall." .
+
+ar6-cid:MarineHeatwave a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic extreme ocean temperatures." .
+
+ar6-cid:MeanAirTemperature a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Mean surface air temperature and its diurnal and seasonal cycles." .
+
+ar6-cid:MeanOceanTemperature a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Mean temperature profile of ocean through the seasons, including heat content at different depths and associated stratification." .
+
+ar6-cid:MeanPrecipitation a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Mean precipitation and its diurnal and seasonal cycles." .
+
+ar6-cid:MeanWindSpeed a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Mean wind speeds and transport patterns and their diurnal and seasonal cycles." .
+
+ar6-cid:OceanAcidity a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Profile of ocean water pH levels and accompanying concentrations of carbonate and bicarbonate ions." .
+
+ar6-cid:OceanSalinity a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Profile of ocean salinity and associated seasonal stratification. Note: distinct from salinization of freshwater resources" .
+
+ar6-cid:Permafrost a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Permanently frozen deep soil layers, their ice characteristics, and the characteristics of seasonally frozen soils above." .
+
+ar6-cid:RelativeSeaLevel a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "The local mean sea surface height relative to the local solid surface." .
+
+ar6-cid:RiverFlood a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic high water levels in streams and rivers driven by basin runoff and the expected seasonal cycle of flooding." .
+
+ar6-cid:SandAndDustStorm a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Storms causing the transport of soil and fine dust particles." .
+
+ar6-cid:SevereWindStorm a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Episodic severe storms including extratropical cyclone wind storms, thunderstorms, wind gusts, derechos and tornadoes." .
+
+ar6-cid:SnowAvalanche a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Cryospheric mass movements and the conditions of collapsing snowpack." .
+
+ar6-cid:SnowGlacierAndIceSheet a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Snowpack seasonality and characteristics of glaciers and ice sheets including calving events and meltwater" .
+
+ar6-cid:TropicalCyclone a ar6-cid:CID-category,
+        owl:NamedIndividual ;
+    skos:definition "Strong, rotating storm originating over tropical oceans accompanied by high winds, rainfall and storm surges." .
+
+ar6-cid:ClimaticImpactDriverList a owl:Class ;
+    rdfs:subClassOf skos:ConceptScheme .
+
+ar6-cid:CID-type a owl:Class ;
+    rdfs:comment "CIDs can be captured in seven main types: heat and cold; wet and dry; wind; snow and ice; coastal; oceanic and other. Table 12.1 provides an overview of the seven CID types and the CID categories associated with each type. The type 'Other' comprises additional CIDs that are not encompassed within the other six CID types, including air pollution weather (e.g., meteorological conditions that favour high concentrations of surface ozone, particulate matter or other air pollutants), near-surface atmospheric CO2 concentrations, and mean radiation forcing at the surface (which are, for example, relevant for plant growth). Icebergs, fog and lightning are also noted in this chapter but are not broadly assessed across all subsections.",
+        "Types of climatic impact-drivers." ;
+    rdfs:isDefinedBy "Ranasinghe, R., A.C. Ruane, R. Vautard, N. Arnell, E. Coppola, F.A. Cruz, S. Dessai, A.S. Islam, M. Rahimi, D. Ruiz Carrascal, J. Sillmann, M.B. Sylla, C. Tebaldi, W. Wang, and R. Zaaboul, 2021: Climate Change Information for Regional Impact and for Risk Assessment. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 1767-1926, doi:10.1017/9781009157896.014." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ar6-cid:ClimaticImpactDriverList ;
+            owl:onProperty skos:inScheme ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ar6-cid:CID-category ;
+            owl:onProperty skos:member ],
+        skos:Concept .
+
+ar6-cid:CID-category a owl:Class ;
+    rdfs:isDefinedBy "Ranasinghe, R., A.C. Ruane, R. Vautard, N. Arnell, E. Coppola, F.A. Cruz, S. Dessai, A.S. Islam, M. Rahimi, D. Ruiz Carrascal, J. Sillmann, M.B. Sylla, C. Tebaldi, W. Wang, and R. Zaaboul, 2021: Climate Change Information for Regional Impact and for Risk Assessment. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 1767-1926, doi:10.1017/9781009157896.014." ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ar6-cid:ClimaticImpactDriverList ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+

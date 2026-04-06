@@ -1,0 +1,63 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hip-schema: <https://undrr-hip.org/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+hip-schema:HazardCluster a owl:Class ;
+    rdfs:label "Hazard Cluster"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hip-schema:HazardType ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hip-schema:HIP-ClassificationSystem ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+hip-schema:Organization a owl:Class ;
+    rdfs:subClassOf org:Organization .
+
+hip-schema:SpecificHazard a owl:Class ;
+    rdfs:label "Specific Hazard"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hip-schema:HazardType ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom hip-schema:HIP-ClassificationSystem ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+
+hip-schema:definitionSource a owl:AnnotationProperty .
+
+<https://undrr-hip.org/hip-schema/> a owl:Ontology ;
+    vann:preferredNamespacePrefix "hip-schema" ;
+    vann:preferredNamespaceUri "https://undrr-hip.org/"^^xsd:anyURI ;
+    voaf:extends dcterms:,
+        <http://www.w3.org/2004/02/skos/core>,
+        org: ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes <http://www.w3.org/2004/02/skos/core>,
+        org: ;
+    owl:imports dcterms:,
+        <http://www.w3.org/2004/02/skos/core>,
+        org: .
+
+org:Organization rdfs:subClassOf dcterms:Agent .
+
+hip-schema:HazardType a owl:Class ;
+    rdfs:label "Hazard Type"@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom hip-schema:HIP-ClassificationSystem ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+
+hip-schema:HIP-ClassificationSystem a owl:Class ;
+    rdfs:label "UNDRR Hazard Information Profiles"@en ;
+    rdfs:isDefinedBy <https://www.undrr.org/publication/documents-and-publications/hazard-information-profiles-hips-2025-version> ;
+    rdfs:subClassOf skos:ConceptScheme .
+

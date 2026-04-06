@@ -1,0 +1,159 @@
+@prefix ar6-impact: <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> .
+@prefix clc: <http://www.w3.org/2015/03/corine#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ar6-impact: a owl:Ontology ;
+    vann:preferredNamespacePrefix "ar6-impact" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/ipcc-ar6-impacts#"^^xsd:anyURI ;
+    voaf:extends <http://www.w3.org/2004/02/skos/core>,
+        clc: ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports <http://www.w3.org/2004/02/skos/core>,
+        clc: .
+
+ar6-impact:AgriCropProduction a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnWaterScarcityAndFoodProduction .
+
+ar6-impact:AnimalAndLivestockHealthAndProductivity a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnWaterScarcityAndFoodProduction .
+
+ar6-impact:ChangesInFreshwaterEcosystem a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ChangesInEcosystemStructure .
+
+ar6-impact:ChangesInOceanEcosystem a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ChangesInEcosystemStructure .
+
+ar6-impact:ChangesInTerrestrialEcosystem a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ChangesInEcosystemStructure .
+
+ar6-impact:DamagesToInfrastructure a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnCitiesSettlementsInfrastructures .
+
+ar6-impact:DamagesToKeyEconomicInfrastructures a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnCitiesSettlementsInfrastructures .
+
+ar6-impact:Displacement a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnHealthAndWellbeing .
+
+ar6-impact:FisheriesAndAquacultureProduction a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnWaterScarcityAndFoodProduction .
+
+ar6-impact:FloodStormDamagesInCoastalAreas a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnCitiesSettlementsInfrastructures .
+
+ar6-impact:FreshwaterEcosystemPhenologyChanges a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:PhenologyChanges .
+
+ar6-impact:FreshwaterSpeciesShift a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:SpeciesRangeShift .
+
+ar6-impact:HealthMalnutritionAndOther a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnHealthAndWellbeing .
+
+ar6-impact:InfectiousDiseases a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnHealthAndWellbeing .
+
+ar6-impact:InlandFoodingAndAssociatedDamages a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnCitiesSettlementsInfrastructures .
+
+ar6-impact:MentalHealth a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnHealthAndWellbeing .
+
+ar6-impact:OceanEcosystemPhenologyChanges a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:PhenologyChanges .
+
+ar6-impact:OceanSpeciesShift a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:SpeciesRangeShift .
+
+ar6-impact:TerrestrialEcosystemPhenologyChanges a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:PhenologyChanges .
+
+ar6-impact:TerrestrialSpeciesShift a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:SpeciesRangeShift .
+
+ar6-impact:WaterScarcity a ar6-impact:Impact-specificType,
+        owl:NamedIndividual ;
+    skos:member ar6-impact:ImpactOnWaterScarcityAndFoodProduction .
+
+ar6-impact:observed-impacts-list a ar6-impact:ObservedImpacts,
+        owl:NamedIndividual .
+
+clc:LandCoverClass rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ar6-impact:ObservedImpacts ;
+            owl:onProperty skos:inScheme ] .
+
+ar6-impact:Impact-type a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ar6-impact:ObservedImpacts ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+
+ar6-impact:ChangesInEcosystemStructure a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnEcosystems .
+
+ar6-impact:ImpactOnEcosystems a ar6-impact:Impact-type,
+        owl:NamedIndividual .
+
+ar6-impact:ImpactOnHumanSystems a ar6-impact:Impact-type,
+        owl:NamedIndividual .
+
+ar6-impact:PhenologyChanges a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnEcosystems .
+
+ar6-impact:SpeciesRangeShift a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnEcosystems .
+
+ar6-impact:ImpactOnCitiesSettlementsInfrastructures a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnHumanSystems .
+
+ar6-impact:ImpactOnHealthAndWellbeing a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnHumanSystems .
+
+ar6-impact:ImpactOnWaterScarcityAndFoodProduction a ar6-impact:Impact-cluster,
+        owl:NamedIndividual ;
+    skos:broader ar6-impact:ImpactOnHumanSystems .
+
+ar6-impact:ObservedImpacts a owl:Class ;
+    rdfs:subClassOf skos:ConceptScheme .
+
+ar6-impact:Impact-cluster a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ar6-impact:ObservedImpacts ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+ar6-impact:Impact-specificType a owl:Class ;
+    rdfs:subClassOf skos:Concept .
+

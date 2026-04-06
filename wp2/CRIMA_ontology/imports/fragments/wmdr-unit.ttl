@@ -1,0 +1,32 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
+
+wmdr-unit: a owl:Ontology ;
+    voaf:metadataVoc dcterms:,
+        <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> .
+
+wmdr-unit:V2-m-2-Hz-1 a wmdr-unit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Volt squared per metre squared per Hertz" ;
+    dcterms:description "SI derived unit for electric field spectral density commonly used to describe Schumann Resonances. SI base unit equivalent: kg2.m2.s-5.A-2"@en ;
+    skos:notation "V2.m-2.Hz-1" .
+
+wmdr-unit:nmol-mol-1 a wmdr-unit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "nanomole per mole" ;
+    dcterms:description "SI derived unit of mole fraction; SI base unit equivalent: 1E-9"@en ;
+    skos:notation "nmol.mol-1" .
+
+wmdr-unit:pT2-Hz-1 a wmdr-unit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "picoTesla squared per Hertz" ;
+    dcterms:description "SI derived unit for magnetic power spectrum commonly used to describe Schumann Resonances. SI base unit equivalent: 1E-12 A.m-1.s"@en ;
+    skos:notation "pT2.Hz-1" .
+
+wmdr-unit:Unit a owl:Class .
+

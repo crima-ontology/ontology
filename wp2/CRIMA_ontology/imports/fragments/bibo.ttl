@@ -1,0 +1,112 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+bibo: a owl:Ontology .
+
+bibo:AcademicArticle a owl:Class ;
+    rdfs:label "Academic Article"@en ;
+    rdfs:comment "A scholarly academic article, typically published in a journal."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Article .
+
+bibo:Issue a owl:Class ;
+    rdfs:label "Issue"@en ;
+    rdfs:comment "Something that is printed or published and distributed, esp. a given number of a periodical"@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:Proceedings a owl:Class ;
+    rdfs:label "Proceedings"@en ;
+    rdfs:comment "A compilation of documents published from an event, such as a conference."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Book .
+
+bibo:Report a owl:Class ;
+    rdfs:label "Report"@en ;
+    rdfs:comment "A document describing an account or statement describing in detail an event, situation, or the like, usually as the result of observation, inquiry, etc.."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:Standard a owl:Class ;
+    rdfs:label "Standard"@en ;
+    rdfs:comment "A document describing a standard: a specification organized through a standards body."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Specification .
+
+bibo:Webpage a owl:Class ;
+    rdfs:label "Webpage"@en ;
+    rdfs:comment "A web page is an online document available (at least initially) on the world wide web. A web page is written first and foremost to appear on the web, as distinct from other online resources such as books, manuscripts or audio documents which use the web primarily as a distribution mechanism alongside other more traditional methods such as print."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:abstract a owl:DatatypeProperty ;
+    rdfs:label "abstract" ;
+    rdfs:comment "A summary of the resource." ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:range rdfs:Literal .
+
+bibo:authorList a owl:ObjectProperty ;
+    rdfs:label "list of authors"@en ;
+    rdfs:comment "An ordered list of authors. Normally, this list is seen as a priority list that order authors by importance."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subPropertyOf bibo:contributorList .
+
+bibo:doi a owl:AnnotationProperty,
+        owl:DatatypeProperty ;
+    rdfs:domain bibo:Document ;
+    rdfs:range rdfs:Literal .
+
+bibo:isbn a owl:AnnotationProperty,
+        owl:DatatypeProperty .
+
+bibo:pages a owl:DatatypeProperty ;
+    rdfs:label "pages"@en ;
+    rdfs:comment "A string of non-contiguous page spans that locate a Document within a Collection. Example: 23-25, 34, 54-56. For continuous page ranges, use the pageStart and pageEnd properties."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:range rdfs:Literal .
+
+bibo:uri a owl:AnnotationProperty,
+        owl:DatatypeProperty ;
+    rdfs:domain bibo:Document ;
+    rdfs:range rdfs:Literal .
+
+bibo:volume a owl:DatatypeProperty ;
+    rdfs:label "volume"@en ;
+    rdfs:comment "A volume number"@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:range rdfs:Literal .
+
+bibo:Article a owl:Class ;
+    rdfs:label "Article"@en ;
+    rdfs:comment "A written composition in prose, usually nonfiction, on a specific topic, forming an independent part of a book or other publication, as a newspaper or magazine."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:Book a owl:Class ;
+    rdfs:label "Book"@en ;
+    rdfs:comment "A written or printed work of fiction or nonfiction, usually on sheets of paper fastened or bound together within covers."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:Specification a owl:Class ;
+    rdfs:label "Specification"@en ;
+    rdfs:comment "A document describing a specification."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
+bibo:contributorList a owl:ObjectProperty ;
+    rdfs:label "list of contributors"@en ;
+    rdfs:comment "An ordered list of contributors. Normally, this list is seen as a priority list that order contributors by importance."@en ;
+    rdfs:domain bibo:Document ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI .
+
+bibo:Document a owl:Class ;
+    rdfs:label "Document"@en ;
+    rdfs:comment "A document (noun) is a bounded physical representation of body of information designed with the capacity (and usually intent) to communicate. A document may manifest symbolic, diagrammatic or sensory-representational information."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI .
+

@@ -1,0 +1,149 @@
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+
+<http://www.opengis.net/ont/geosparql> a owl:Ontology ;
+    voaf:metadataVoc <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range geo:wktLiteral ;
+    rdfs:subPropertyOf geo:hasSerialization ;
+    skos:definition "The WKT serialization of a Geometry."@en ;
+    skos:prefLabel "as WKT"@en .
+
+geo:hasGeometry a owl:ObjectProperty ;
+    rdfs:domain geo:Feature ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/feature-properties>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/feature-properties> ;
+    rdfs:range geo:Geometry ;
+    skos:definition "A spatial representation for a given Feature."@en ;
+    skos:prefLabel "has geometry"@en .
+
+geo:hasSize a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/spatial-object-properties>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/spatial-object-properties> ;
+    skos:definition "Subproperties of this property are used to indicate the size of a Spatial Object as a measurement or estimate of one or more dimensions of the Spatial Object's spatial presence."@en ;
+    skos:note "The recommended way to specify size is by using a subproperty of hasMetricSize. Subproperties of hasSize can be used if more complex expressions are necessary, for example if the unit of length can not be converted to meter, or if additional data are needed to describe the measurement or estimate."@en ;
+    skos:prefLabel "has size"@en .
+
+geo:sfContains a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/rcc8-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/rcc8-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject spatially contains the object SpatialObject. DE-9IM: T*****FF*"@en ;
+    skos:prefLabel "contains"@en .
+
+geo:sfCrosses a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject spatially crosses the object SpatialObject. DE-9IM: T*T******"@en ;
+    skos:prefLabel "crosses"@en .
+
+geo:sfDisjoint a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    owl:propertyDisjointWith geo:sfIntersects ;
+    skos:definition "States that the subject SpatialObject is spatially disjoint from the object SpatialObject. DE-9IM: FF*FF****"@en ;
+    skos:prefLabel "disjoint"@en .
+
+geo:sfEquals a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject spatially equals the object SpatialObject. DE-9IM: TFFFTFFFT"@en ;
+    skos:prefLabel "equals"@en .
+
+geo:sfOverlaps a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject spatially overlaps the object SpatialObject. DE-9IM: T*T***T**"@en ;
+    skos:prefLabel "overlaps"@en .
+
+geo:sfTouches a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject spatially touches the object SpatialObject. DE-9IM: FT******* ^ F**T***** ^ F***T****"@en ;
+    skos:prefLabel "touches"@en .
+
+geo:sfWithin a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject is spatially within the object SpatialObject. DE-9IM: T*F**F***"@en ;
+    skos:prefLabel "within"@en .
+
+geo:Feature a owl:Class ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/core/feature-class>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/core/feature-class> ;
+    rdfs:subClassOf geo:SpatialObject ;
+    owl:disjointWith geo:Geometry ;
+    skos:definition "A discrete spatial phenomenon in a universe of discourse."@en ;
+    skos:note "A Feature represents a uniquely identifiable phenomenon, for example a river or an apple. While such phenomena (and therefore the Features used to represent them) are bounded, their boundaries may be crisp (e.g., the declared boundaries of a state), vague (e.g., the delineation of a valley versus its neighboring mountains), and change with time (e.g., a storm front). While discrete in nature, Features may be created from continuous observations, such as an isochrone that determines the region that can be reached by ambulance within 5 minutes."@en ;
+    skos:prefLabel "Feature"@en .
+
+geo:hasSerialization a owl:DatatypeProperty ;
+    rdfs:domain geo:Geometry ;
+    rdfs:range rdfs:Literal ;
+    skos:definition "Connects a Geometry object with its text-based serialization."@en ;
+    skos:prefLabel "has serialization"@en .
+
+geo:sfIntersects a owl:ObjectProperty ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:isDefinedBy geo:,
+        <http://www.opengis.net/spec/geosparql/1.0/req/topology-vocab-extension/sf-spatial-relations>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/topology-vocab-extension/sf-spatial-relations> ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:seeAlso <http://dbpedia.org/resource/DE-9IM> ;
+    skos:definition "States that the subject SpatialObject is not spatially disjoint from the object SpatialObject. DE-9IM: T******** ^ *T******* ^ ***T***** ^ ****T****"@en ;
+    skos:prefLabel "intersects"@en .
+
+geo:wktLiteral a rdfs:Datatype ;
+    skos:definition "A Well-known Text serialization of a Geometry object."@en ;
+    skos:prefLabel "Well-known Text literal"@en .
+
+geo:Geometry a owl:Class ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/geometry-extension/geometry-class>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/geometry-class> ;
+    rdfs:subClassOf geo:SpatialObject ;
+    skos:definition "A coherent set of direct positions in space. The positions are held within a Spatial Reference System (SRS)."@en ;
+    skos:note "Geometry can be used as a representation of the shape, extent or location of a Feature and may exist as a self-contained entity."@en ;
+    skos:prefLabel "Geometry"@en .
+
+geo:SpatialObject a owl:Class ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.0/req/core/spatial-object-class>,
+        <http://www.opengis.net/spec/geosparql/1.1/req/core/spatial-object-class> ;
+    skos:definition "Anything spatial (being or having a shape, position or an extent)."@en ;
+    skos:note "Subclasses of this class are expected to be used for instance data."@en ;
+    skos:prefLabel "Spatial Object"@en .
+

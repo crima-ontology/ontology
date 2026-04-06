@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+    <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="as.ttl"/>
+    <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="bibo.ttl"/>
+    <uri id="cc" name="http://creativecommons.org/ns#" uri="cc.ttl"/>
+    <uri id="clc" name="http://www.w3.org/2015/03/corine#" uri="clc.ttl"/>
+    <uri id="dbo" name="http://dbpedia.org/ontology/" uri="dbo.ttl"/>
+    <uri id="dcat" name="http://www.w3.org/ns/dcat" uri="dcat.ttl"/>
+    <uri id="dcterms" name="http://purl.org/dc/terms/" uri="dcterms.ttl"/>
+    <uri id="dpo" name="http://knowwheregraph/ontology/dpo" uri="dpo.ttl"/>
+    <uri id="dtype" name="http://www.linkedmodel.org/schema/dtype" uri="dtype.ttl"/>
+    <uri id="foaf" name="http://xmlns.com/foaf/0.1/" uri="foaf.ttl"/>
+    <uri id="geo" name="http://www.opengis.net/ont/geosparql" uri="geo.ttl"/>
+    <uri id="org" name="http://www.w3.org/ns/org#" uri="org.ttl"/>
+    <uri id="prov" name="http://www.w3.org/ns/prov-o#" uri="prov.ttl"/>
+    <uri id="qudt-unit" name="http://qudt.org/vocab/unit" uri="qudt-unit.ttl"/>
+    <uri id="qudt" name="http://qudt.org/schema/qudt" uri="qudt.ttl"/>
+    <uri id="schema" name="http://schema.org/" uri="schema.ttl"/>
+    <uri id="skos" name="http://www.w3.org/2004/02/skos/core" uri="skos.ttl"/>
+    <uri id="sosa-common" name="http://www.w3.org/ns/sosa/common/" uri="sosa-common.ttl"/>
+    <uri id="sosa-obs" name="http://www.w3.org/ns/sosa/obs/" uri="sosa-obs.ttl"/>
+    <uri id="time" name="http://www.w3.org/2006/time" uri="time.ttl"/>
+    <uri id="vann" name="http://purl.org/vocab/vann/" uri="vann.ttl"/>
+    <uri id="voaf" name="http://purl.org/vocommons/voaf" uri="voaf.ttl"/>
+    <uri id="wmdr-unit" name="http://codes.wmo.int/wmdr/unit/" uri="wmdr-unit.ttl"/>
+    <uri id="xkos" name="http://rdf-vocabulary.ddialliance.org/xkos" uri="xkos.ttl"/>
+</catalog>

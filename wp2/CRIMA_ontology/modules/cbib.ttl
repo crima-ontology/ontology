@@ -1,0 +1,56 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:date skos:scopeNote "Use to link a bibliographic item to the date of an event. Check dcterms:created and other for proper specializations for this property"@en .
+
+dcterms:hasPart skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en .
+
+dcterms:isPartOf skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/).  As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en .
+
+dcterms:publisher skos:scopeNote "Used to link a bibliographic item to its publisher."@en .
+
+dcterms:subject dcterms:hasVersion <http://dublincore.org/usage/terms/history/#subjectT-001> ;
+    rdfs:domain dcat:Resource ;
+    skos:note "This term is intended to be used with non-literal values as defined in the DCMI Abstract Model (http://dublincore.org/documents/abstract-model/). As of December 2007, the DCMI Usage Board is seeking a way to express this intention with a formal range declaration."@en-us .
+
+bibo:Document rdfs:subClassOf dcterms:BibliographicResource .
+
+bibo:abstract rdfs:domain dcterms:BibliographicResource .
+
+bibo:doi rdfs:subPropertyOf dcterms:identifier .
+
+bibo:isbn rdfs:subPropertyOf dcterms:identifier .
+
+bibo:uri rdfs:subPropertyOf dcterms:identifier .
+
+<http://www.semanticweb.org/crima/crima-bib#> a owl:Ontology ;
+    vann:preferredNamespacePrefix "cbib" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-bib#"^^xsd:anyURI ;
+    voaf:extends dcterms:,
+        bibo:,
+        <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/ns/dcat> ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    owl:imports dcterms:,
+        bibo:,
+        <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/ns/dcat> .
+
+rdf:first a owl:ObjectProperty ;
+    rdfs:domain rdf:List .
+
+rdf:rest a owl:ObjectProperty ;
+    rdfs:domain rdf:List ;
+    rdfs:range rdf:List .
+
+rdf:List a owl:Class .
+

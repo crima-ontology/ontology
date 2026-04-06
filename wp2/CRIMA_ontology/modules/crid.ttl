@@ -1,0 +1,20 @@
+@prefix crid: <http://www.semanticweb.org/crima/crima-id#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+crid: a owl:Ontology ;
+    vann:preferredNamespacePrefix "crid" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-id#"^^xsd:anyURI ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> .
+
+crid:cadastralCode a owl:DatatypeProperty .
+
+crid:istatCode a owl:DatatypeProperty .
+
+crid:zipCode a owl:DatatypeProperty ;
+    rdfs:subPropertyOf owl:topDataProperty .
+

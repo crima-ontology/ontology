@@ -1,0 +1,26 @@
+@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ctlo: a owl:Ontology ;
+    vann:preferredNamespacePrefix "ctlo" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-tlo#"^^xsd:anyURI ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> .
+
+ctlo:Event a owl:Class .
+
+ctlo:Process a owl:Class .
+
+ctlo:Quality a owl:Class .
+
+ctlo:constantPartOf a owl:ObjectProperty ;
+    rdfs:comment "Borrowed from DOLCE ontology as: \"ConstantPartOf is the constant version of Temporary Parthood which is a ternary relation between two endurants x, y and a time interval t. The intended interpretation is that the endurant x is a part of the endurant y over the time interval t. In this constant version, the endurant x is part of the endurant y during the whole existence of y.\"" ;
+    rdfs:domain ctlo:PhysicalEndurant ;
+    rdfs:range ctlo:PhysicalEndurant .
+
+ctlo:PhysicalEndurant a owl:Class .
+

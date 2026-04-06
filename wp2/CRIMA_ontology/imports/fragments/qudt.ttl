@@ -1,0 +1,46 @@
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://qudt.org/schema/qudt> a owl:Ontology ;
+    voaf:extends <http://www.linkedmodel.org/schema/dtype> ;
+    voaf:metadataVoc <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports <http://www.linkedmodel.org/schema/dtype> .
+
+qudt:LatexString a rdfs:Datatype .
+
+qudt:QuantityKind a owl:Class ;
+    rdfs:label "Quantity Kind" ;
+    qudt:informativeReference "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
+    rdfs:comment "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity."^^rdf:HTML ;
+    rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/schema/qudt> .
+
+qudt:QuantityValue a owl:Class ;
+    rdfs:label "Quantity value" ;
+    rdfs:comment "A Quantity Value expresses the magnitude and kind of a quantity and is given by the product of a numerical value n and a unit of measure U. The number multiplying the unit is referred to as the numerical value of the quantity expressed in that unit. Refer to (http://physics.nist.gov/Pubs/SP811/sec07.html) NIST SP 811 section 7 for more on quantity values."@en ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
+            owl:onProperty qudt:hasUnit ] .
+
+qudt:informativeReference a owl:AnnotationProperty .
+
+qudt:numericValue a owl:DatatypeProperty ;
+    rdfs:label "numeric value" ;
+    rdfs:range dtype:numericUnion .
+
+qudt:Unit a owl:Class ;
+    rdfs:label "Unit" ;
+    skos:definition "A unit of measure, or unit, is a particular quantity value that has been chosen as a scale for measuring other quantities the same kind (more generally of equivalent dimension). For example, the meter is a quantity of length that has been rigorously defined and standardized by the BIPM (International Board of Weights and Measures). Any measurement of the length can be expressed as a number multiplied by the unit meter. More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as the scalar multiple of a real number (n) and U, as  $Q = nU$."@en .
+
+qudt:hasUnit a owl:ObjectProperty ;
+    rdfs:label "has unit",
+        "hasUnit" ;
+    rdfs:range qudt:Unit ;
+    skos:definition "This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."@en .
+

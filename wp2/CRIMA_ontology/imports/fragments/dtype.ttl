@@ -1,0 +1,13 @@
+@prefix dtype: <http://www.linkedmodel.org/schema/dtype#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+
+<http://www.linkedmodel.org/schema/dtype> a owl:Ontology ;
+    voaf:metadataVoc <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> .
+
+dtype:numericUnion a rdfs:Datatype ;
+    skos:definition "A datatype that is the union of numeric xsd data types. \"dtype:numericUnion\" is equivalent to the xsd specification that uses an xsd:union of memberTypes=\"xsd:decimal xsd:double xsd:float xsd:integer\"."@en .
+

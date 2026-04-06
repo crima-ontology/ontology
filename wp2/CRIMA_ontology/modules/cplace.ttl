@@ -1,0 +1,67 @@
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
+@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dbo:ArchitecturalStructure rdfs:subClassOf geo:Feature,
+        sosa:FeatureOfInterest .
+
+dbo:Place rdfs:subClassOf geo:Feature,
+        sosa:FeatureOfInterest .
+
+cplace: a owl:Ontology ;
+    vann:preferredNamespacePrefix "cplace" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-place#"^^xsd:anyURI ;
+    voaf:extends ctlo: ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes dbo:,
+        <http://www.opengis.net/ont/geosparql>,
+        ctlo:,
+        sosa-common: ;
+    owl:imports dbo:,
+        <http://www.opengis.net/ont/geosparql>,
+        ctlo:,
+        sosa-common: .
+
+cplace:CommunityDistrict a owl:Class ;
+    rdfs:comment "es. BURGRAVIATO, VALVENOSTA, BASSAATESINA,..." ;
+    rdfs:subClassOf dbo:District .
+
+cplace:DrainageBasin a owl:Class ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+cplace:MeteorologicalStation a owl:Class ;
+    rdfs:subClassOf sosa:Platform .
+
+cplace:inHealthDistrict a owl:ObjectProperty ;
+    rdfs:domain ctlo:PhysicalEndurant ;
+    rdfs:range cplace:HealthDistrict ;
+    rdfs:subPropertyOf ctlo:constantPartOf .
+
+cplace:inHealthRegion a owl:ObjectProperty ;
+    rdfs:domain ctlo:PhysicalEndurant ;
+    rdfs:range cplace:HealthRegion ;
+    rdfs:subPropertyOf ctlo:constantPartOf .
+
+as:latitude rdfs:subPropertyOf geo:hasSerialization .
+
+as:longitude rdfs:subPropertyOf geo:hasSerialization .
+
+cplace:HealthDistrict a owl:Class ;
+    rdfs:subClassOf dbo:District .
+
+cplace:HealthRegion a owl:Class ;
+    rdfs:comment "The sum of multiple contingous health districts (tentative)." ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+sosa:Platform rdfs:subClassOf geo:Feature .
+

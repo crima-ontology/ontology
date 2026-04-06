@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
+    <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="../../imports/full/as.ttl"/>
+    <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="../../imports/full/bibo.ttl"/>
+    <uri id="cc" name="http://creativecommons.org/ns#" uri="../../imports/full/cc.ttl"/>
+    <uri id="clc" name="http://www.w3.org/2015/03/corine" uri="../../imports/full/clc.ttl"/>
+    <uri id="dbo" name="http://dbpedia.org/ontology/" uri="../../imports/full/dbo.ttl"/>
+    <uri id="dcat" name="http://www.w3.org/ns/dcat" uri="../../imports/full/dcat.ttl"/>
+    <uri id="dcmitype" name="http://purl.org/dc/dcmitype/" uri="../../imports/full/dcmitype.ttl"/>
+    <uri id="dcterms" name="http://purl.org/dc/terms/" uri="../../imports/full/dcterms.ttl"/>
+    <uri id="dpo" name="http://knowwheregraph/ontology/dpo" uri="../../imports/full/dpo.ttl"/>
+    <uri id="dtype" name="http://www.linkedmodel.org/schema/dtype" uri="../../imports/full/dtype.ttl"/>
+    <uri id="foaf" name="http://xmlns.com/foaf/0.1/" uri="../../imports/full/foaf.ttl"/>
+    <uri id="geo" name="http://www.opengis.net/ont/geosparql" uri="../../imports/full/geo.ttl"/>
+    <uri id="org" name="http://www.w3.org/ns/org#" uri="../../imports/full/org.ttl"/>
+    <uri id="prov (1)" name="http://www.w3.org/ns/prov#" uri="../../imports/full/prov.ttl"/>
+    <uri id="prov (2)" name="http://www.w3.org/ns/prov-o#" uri="../../imports/full/prov.ttl"/>
+    <uri id="qudt-coords" name="http://qudt.org/schema/coordinateSystems" uri="../../imports/full/qudt-coords.ttl"/>
+    <uri id="qudt-datatype" name="http://qudt.org/schema/datatype" uri="../../imports/full/qudt-datatype.ttl"/>
+    <uri id="qudt-facade" name="http://qudt.org/schema/facade/qudt" uri="../../imports/full/qudt-facade.ttl"/>
+    <uri id="qudt-prefix" name="http://qudt.org/vocab/prefix" uri="../../imports/full/qudt-prefix.ttl"/>
+    <uri id="qudt-qkdv" name="http://qudt.org/vocab/dimensionvector" uri="../../imports/full/qudt-qkdv.ttl"/>
+    <uri id="qudt-quantitykind" name="http://qudt.org/vocab/quantitykind" uri="../../imports/full/qudt-quantitykind.ttl"/>
+    <uri id="qudt-soqk" name="http://qudt.org/vocab/soqk" uri="../../imports/full/qudt-soqk.ttl"/>
+    <uri id="qudt-sou" name="http://qudt.org/vocab/sou" uri="../../imports/full/qudt-sou.ttl"/>
+    <uri id="qudt-unit" name="http://qudt.org/vocab/unit" uri="../../imports/full/qudt-unit.ttl"/>
+    <uri id="qudt-usertest" name="http://qudt.org/collection/usertest" uri="../../imports/full/qudt-usertest.ttl"/>
+    <uri id="qudt" name="http://qudt.org/schema/qudt" uri="../../imports/full/qudt.ttl"/>
+    <uri id="schema" name="http://schema.org/" uri="../../imports/full/schema.ttl"/>
+    <uri id="skos" name="http://www.w3.org/2004/02/skos/core" uri="../../imports/full/skos.ttl"/>
+    <uri id="sosa-common" name="http://www.w3.org/ns/sosa/common/" uri="../../imports/full/sosa-common.ttl"/>
+    <uri id="sosa-obs" name="http://www.w3.org/ns/sosa/obs/" uri="../../imports/full/sosa-obs.ttl"/>
+    <uri id="sosa" name="http://www.w3.org/ns/sosa/" uri="../../imports/full/sosa.ttl"/>
+    <uri id="swrl" name="http://www.w3.org/2003/11/swrl#" uri="../../imports/full/swrl.ttl"/>
+    <uri id="time" name="http://www.w3.org/2006/time" uri="../../imports/full/time.ttl"/>
+    <uri id="vaem" name="http://www.linkedmodel.org/schema/vaem" uri="../../imports/full/vaem.ttl"/>
+    <uri id="vann" name="http://purl.org/vocab/vann/" uri="../../imports/full/vann.ttl"/>
+    <uri id="voaf" name="http://purl.org/vocommons/voaf" uri="../../imports/full/voaf.ttl"/>
+    <uri id="wmdr-unit" name="http://codes.wmo.int/wmdr/unit/" uri="../../imports/full/wmdr-unit.ttl"/>
+    <uri id="xkos" name="http://rdf-vocabulary.ddialliance.org/xkos" uri="../../imports/full/xkos.ttl"/>
+    <uri id="ar5-adapt" name="http://www.semanticweb.org/crima/ipcc-ar5-adaptation#" uri="../../modules/ar5-adapt.ttl"/>
+    <uri id="ar6-cid" name="http://www.semanticweb.org/crima/ipcc-ar6-cid#" uri="../../modules/ar6-cid.ttl"/>
+    <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="../../modules/ar6-impact.ttl"/>
+    <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="../../modules/cbib.ttl"/>
+    <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="../../modules/ccore.ttl"/>
+    <uri id="clex" name="http://www.semanticweb.org/crima/crima-lexicon#" uri="../../modules/clex.ttl"/>
+    <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="../../modules/cplace.ttl"/>
+    <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="../../modules/crid.ttl"/>
+    <uri id="ctlo" name="http://www.semanticweb.org/crima/crima-tlo#" uri="../../modules/ctlo.ttl"/>
+    <uri id="cunit" name="http://www.semanticweb.org/crima/crima-unit#" uri="../../modules/cunit.ttl"/>
+    <uri id="ecv-data" name="http://www.semanticweb.org/crima/crima-ecv-data#" uri="../../modules/ecv-data.ttl"/>
+    <uri id="ecv" name="http://www.semanticweb.org/crima/crima-ecv#" uri="../../modules/ecv.ttl"/>
+    <uri id="emdat" name="http://www.semanticweb.org/crima/emdat#" uri="../../modules/emdat.ttl"/>
+    <uri id="ex" name="http://example.org/ontology/" uri="../../modules/ex.ttl"/>
+    <uri id="hip-data" name="https://undrr-hip.org/hip-data/" uri="../../modules/hip-data.ttl"/>
+    <uri id="hip" name="https://undrr-hip.org/hip-schema/" uri="../../modules/hip.ttl"/>
+    <uri id="ich" name="http://www.semanticweb.org/crima/crima-impactchain#" uri="../../modules/ich.ttl"/>
+    <uri id="crima" name="http://www.semanticweb.org/crima" uri="crima.ttl"/>
+</catalog>

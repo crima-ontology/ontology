@@ -1,0 +1,124 @@
+@prefix ar5-adapt: <http://www.semanticweb.org/crima/ipcc-ar5-adaptation#> .
+@prefix ar6-cid: <http://www.semanticweb.org/crima/ipcc-ar6-cid#> .
+@prefix ar6-impact: <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> .
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
+@prefix clc: <http://www.w3.org/2015/03/corine#> .
+@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
+@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
+@prefix crid: <http://www.semanticweb.org/crima/crima-id#> .
+@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix emdat: <http://www.semanticweb.org/crima/emdat#> .
+@prefix ex: <http://example.org/ontology/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ich: <http://www.semanticweb.org/crima/crima-impactchain#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
+@prefix sosa-obs: <http://www.w3.org/ns/sosa/obs/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://www.semanticweb.org/crima> a owl:Ontology ;
+    dcterms:contributor "EFRE/FESR 1078 'CRIMA' project Knowledge Modelling Working Group (members from the In2Data lab, Free University of Bolzano, and the Institute of Cognitive Sciences and Technologies, Italian National Research Council)." ;
+    dcterms:created "2024-02-02"^^xsd:date ;
+    dcterms:creator "Alessandro Mosca",
+        "Greta Adamo" ;
+    dcterms:license <http://creativecommons.org/licenses/by-nc-sa/4.0/> ;
+    dcterms:title "CRIMA: The ontology for evidence-based climate risk management."^^rdfs:Literal ;
+    voaf:metadataVoc dcterms:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:reliesOn wmdr-unit:,
+        cc:,
+        dbo:,
+        <http://knowwheregraph/ontology/dpo>,
+        bibo:,
+        vann:,
+        <http://qudt.org/schema/qudt>,
+        <http://qudt.org/vocab/unit>,
+        <http://rdf-vocabulary.ddialliance.org/xkos>,
+        schema:,
+        <http://www.linkedmodel.org/schema/dtype>,
+        <http://www.opengis.net/ont/geosparql>,
+        <http://www.semanticweb.org/crima/crima-bib#>,
+        ccore:,
+        ecv:,
+        <http://www.semanticweb.org/crima/crima-ecv-data#>,
+        crid:,
+        ich:,
+        clex:,
+        cplace:,
+        ctlo:,
+        cunit:,
+        emdat:,
+        ar5-adapt:,
+        ar6-cid:,
+        ar6-impact:,
+        <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/2006/time>,
+        clc:,
+        <http://www.w3.org/ns/dcat>,
+        org:,
+        <http://www.w3.org/ns/prov-o#>,
+        sosa-common:,
+        sosa-obs:,
+        foaf:,
+        <https://undrr-hip.org/hip-data/>,
+        <https://undrr-hip.org/hip-schema/>,
+        as:,
+        ex: ;
+    rdfs:comment "The adaptation to climate change requires interdisciplinary knowledge, based on scientific literature, experts and empirical observations. This knowledge is not well enough structured yet, to allow for a systematic analysis of risks and their triggering factors taking into account different geographic and temporal dimensions. The planning of adaption to climate change requires solutions for the integration querying and processing of big earth observation data as well as data from meteorological models (https://crima.eurac.edu/index.html). The CRIMA ontology has been developed to be resused as the core artefact of decision support systems that integrates information from scientific literature with quantitative data. The ontology supports analysis to reduce the impact of climate risks and allows for better adaptive measures, combining the flexibility of ontology based data models for the representation of knowledge of risks with earth observation data management systems." ;
+    owl:imports wmdr-unit:,
+        cc:,
+        dbo:,
+        <http://knowwheregraph/ontology/dpo>,
+        dcterms:,
+        bibo:,
+        vann:,
+        <http://purl.org/vocommons/voaf>,
+        <http://qudt.org/schema/qudt>,
+        <http://qudt.org/vocab/unit>,
+        <http://rdf-vocabulary.ddialliance.org/xkos>,
+        schema:,
+        <http://www.linkedmodel.org/schema/dtype>,
+        <http://www.opengis.net/ont/geosparql>,
+        <http://www.semanticweb.org/crima/crima-bib#>,
+        ccore:,
+        ecv:,
+        <http://www.semanticweb.org/crima/crima-ecv-data#>,
+        crid:,
+        ich:,
+        clex:,
+        cplace:,
+        ctlo:,
+        cunit:,
+        emdat:,
+        ar5-adapt:,
+        ar6-cid:,
+        ar6-impact:,
+        <http://www.w3.org/2004/02/skos/core>,
+        <http://www.w3.org/2006/time>,
+        clc:,
+        <http://www.w3.org/ns/dcat>,
+        org:,
+        <http://www.w3.org/ns/prov-o#>,
+        sosa-common:,
+        sosa-obs:,
+        foaf:,
+        <https://undrr-hip.org/hip-data/>,
+        <https://undrr-hip.org/hip-schema/>,
+        as:,
+        ex: ;
+    owl:versionIRI <http://www.semanticweb.org/crima/1.0> ;
+    owl:versionInfo 1.0 .
+

@@ -1,0 +1,82 @@
+@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ecv: a owl:Ontology ;
+    vann:preferredNamespacePrefix "ecv" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-ecv#"^^xsd:anyURI ;
+    voaf:extends <http://qudt.org/schema/qudt>,
+        cunit:,
+        <http://www.w3.org/2004/02/skos/core> ;
+    voaf:metadataVoc dcterms:,
+        vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes <http://www.opengis.net/ont/geosparql>,
+        <http://www.w3.org/2004/02/skos/core>,
+        sosa-common: ;
+    owl:imports <http://qudt.org/schema/qudt>,
+        <http://www.opengis.net/ont/geosparql>,
+        cunit:,
+        <http://www.w3.org/2004/02/skos/core>,
+        sosa-common: .
+
+ecv:ECV-product a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onProperty qudt:hasUnit ;
+            owl:someValuesFrom cunit:Unit ],
+        [ a owl:Restriction ;
+            owl:onProperty ecv:isProductOf ;
+            owl:someValuesFrom ecv:ECV-variable ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ecv:EssentialClimaticVariables ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept,
+        sosa:Property .
+
+ecv:ECV-subdomain a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ecv:ECV-domain ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ecv:EssentialClimaticVariables ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+ecv:ECV-variable a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ecv:ECV-domain ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom ecv:EssentialClimaticVariables ;
+            owl:onProperty skos:inScheme ],
+        geo:Feature,
+        skos:Concept,
+        sosa:FeatureOfInterest .
+
+ecv:isProductOf a owl:ObjectProperty ;
+    rdfs:subPropertyOf sosa:isPropertyOf .
+
+ecv:ECV-domain a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom ecv:EssentialClimaticVariables ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+
+ecv:EssentialClimaticVariables a owl:Class ;
+    dcterms:creator "World Meteorological Organization (WMO); Intergovernmental Oceanographic Commission of the United Nations Educational, Scientific and Cultural Organization (IOC-UNESCO); International Science Council (ISC); United Nations Environment Programme (UNEP); Copernicus Climate Change Service (C3S)" ;
+    dcterms:source "https://library.wmo.int/records/item/58111-the-2022-gcos-ecvs-requirements?offset=8" ;
+    rdfs:comment "An Essential Climate Variable (ECV) is a physical, chemical or biological variable or a group of linked variables that critically contributes to the characterization of Earth's climate. GCOS currently specifies 55 ECVs. ECV datasets provide the empirical evidence needed to understand and predict the evolution of climate, to guide mitigation and adaptation measures, to assess risks and enable attribution of climate events to underlying causes, and to underpin climate services. They are required to support the work of the UNFCCC and the IPCC." ;
+    rdfs:isDefinedBy """GCOS-245 "The 2022 GCOS ECVs Requirements"
+2022 edition - Updated in 2025""" ;
+    rdfs:subClassOf skos:ConceptScheme .
+

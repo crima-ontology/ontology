@@ -1,0 +1,13 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+
+<http://rdf-vocabulary.ddialliance.org/xkos> a owl:Ontology .
+
+xkos:ExplanatoryNote a owl:Class .
+
+xkos:causedBy a owl:AnnotationProperty .
+
+xkos:causes a owl:AnnotationProperty .
+
+xkos:plainText a owl:AnnotationProperty .
+

@@ -1,0 +1,374 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix ex: <http://example.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ex: a owl:Ontology ;
+    vann:preferredNamespacePrefix "ex" ;
+    vann:preferredNamespaceUri "http://example.org/ontology/"^^xsd:anyURI ;
+    owl:imports dbo: , <http://www.w3.org/ns/prov-o#> ;
+    voaf:reliesOn dbo: , <http://www.w3.org/ns/prov-o#> ;
+    voaf:metadataVoc vann: , <http://purl.org/vocommons/voaf> .
+
+dbo:Agriculture a owl:Class .
+
+dbo:Climate a owl:Class .
+
+dbo:Climatology a owl:Class .
+
+dbo:Company a owl:Class .
+
+dbo:DrainageBasin a owl:Class .
+
+dbo:LandCover a owl:Class .
+
+dbo:Landslide a owl:Class .
+
+dbo:MeteoStation a owl:Class .
+
+dbo:Population a owl:Class .
+
+dbo:RoadSegment a owl:Class .
+
+dbo:Tourism a owl:Class .
+
+dbo:WaterDerivation a owl:Class .
+
+dbo:Watercourse a owl:Class .
+
+ex:HealthDistrict a owl:Class .
+
+ex:HealthRegion a owl:Class .
+
+ex:IFFICause a owl:Class ;
+    rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
+
+ex:LandCoverChange a owl:Class .
+
+ex:RoadNetwork a owl:Class .
+
+ex:accessHospitalAvg a rdf:Property .
+
+ex:accessHospitalMax a rdf:Property .
+
+ex:accessHospitalMin a rdf:Property .
+
+ex:accomodationCount a rdf:Property .
+
+ex:affectedPeopleCount a rdf:Property .
+
+ex:altitudeMax a rdf:Property .
+
+ex:altitudeMedian a rdf:Property .
+
+ex:altitudeMin a rdf:Property .
+
+ex:area a rdf:Property .
+
+ex:authorizedAmount a rdf:Property .
+
+ex:basinArea a rdf:Property .
+
+ex:belfioreCode a rdf:Property .
+
+ex:businessUnitEmployees a rdf:Property .
+
+ex:businessUnits a rdf:Property .
+
+ex:cattleCount a rdf:Property .
+
+ex:cattleFarmCount a rdf:Property .
+
+ex:causeDescription a rdf:Property .
+
+ex:causeGroup a rdf:Property .
+
+ex:changedArea a rdf:Property .
+
+ex:code a rdf:Property .
+
+ex:companiesCount a rdf:Property .
+
+ex:companyEmployees a rdf:Property .
+
+ex:consumerPriceIndex a rdf:Property .
+
+ex:corineCodeLevel1 a rdf:Property .
+
+ex:corineCodeLevel2 a rdf:Property .
+
+ex:corineCodeLevel3 a rdf:Property .
+
+ex:dischargeValue a rdf:Property .
+
+ex:distanceMinRoadHospitalAccess a rdf:Property .
+
+ex:districtID a rdf:Property .
+
+ex:drainageBasinCount a rdf:Property .
+
+ex:elderlyFacilities a rdf:Property .
+
+ex:elevation a rdf:Property .
+
+ex:endDay a rdf:Property .
+
+ex:endMonth a rdf:Property .
+
+ex:endYear a rdf:Property .
+
+ex:entryDate a rdf:Property .
+
+ex:eventOrigin a rdf:Property .
+
+ex:familiesCount a rdf:Property .
+
+ex:familiesSize1 a rdf:Property .
+
+ex:familiesSize2 a rdf:Property .
+
+ex:familiesSize3 a rdf:Property .
+
+ex:familiesSize4 a rdf:Property .
+
+ex:familiesSize5 a rdf:Property .
+
+ex:familiesSize6plus a rdf:Property .
+
+ex:familiesWithChildren a rdf:Property .
+
+ex:farmForestCount a rdf:Property .
+
+ex:farmsCount a rdf:Property .
+
+ex:farmsWithForest a rdf:Property .
+
+ex:farmsWithOtherLand a rdf:Property .
+
+ex:farmsWithUnusedLand a rdf:Property .
+
+ex:farmsWithUsedLand a rdf:Property .
+
+ex:fatalitiesCount a rdf:Property .
+
+ex:forestArea a rdf:Property .
+
+ex:goatFarmsCount a rdf:Property .
+
+ex:goatsCount a rdf:Property .
+
+ex:hasAssociatedHazardType a rdf:Property .
+
+ex:hasEndNode a rdf:Property .
+
+ex:hasParentWatercourse a rdf:Property .
+
+ex:hasStartNode a rdf:Property .
+
+ex:hazardCategory a rdf:Property .
+
+ex:hazardClassification a rdf:Property .
+
+ex:hazardDomain a rdf:Property .
+
+ex:hazardSubtype a rdf:Property .
+
+ex:hazardType a rdf:Property .
+
+ex:highwayType a rdf:Property .
+
+ex:hivesCount a rdf:Property .
+
+ex:hivesFarmsCount a rdf:Property .
+
+ex:homelessCount a rdf:Property .
+
+ex:hospitalsCount a rdf:Property .
+
+ex:id a rdf:Property .
+
+ex:inHealthRegion a rdf:ObjectProperty .
+
+ex:injuredPeopleCount a rdf:Property .
+
+ex:isDrainedBy a rdf:Property .
+
+ex:isLocatedOnWatercourse a rdf:Property .
+
+ex:isPartOf a rdf:Property .
+
+ex:isStateOwned a rdf:Property .
+
+ex:istatCode a rdf:Property .
+
+ex:key a rdf:Property .
+
+ex:lanes a rdf:Property .
+
+ex:lastUpdate a rdf:Property .
+
+ex:lenght a rdf:Property .
+
+ex:length a rdf:Property .
+
+ex:locatedInCountry a rdf:Property .
+
+ex:locatedInMunicipality a rdf:Property .
+
+ex:locatedInRegion a rdf:Property .
+
+ex:locationName a rdf:Property .
+
+ex:magnitude a rdf:Property .
+
+ex:magnitudeScale a rdf:Property .
+
+ex:month a rdf:Property .
+
+ex:mushroomArea a rdf:Property .
+
+ex:mushroomFarmsCount a rdf:Property .
+
+ex:nameDE a rdf:Property .
+
+ex:nameIT a rdf:Property .
+
+ex:nextClass a rdf:Property .
+
+ex:nextYear a rdf:Property .
+
+ex:nighttimePopulation a rdf:Property .
+
+ex:observationDate a rdf:Property .
+
+ex:oneWay a rdf:Property .
+
+ex:otherLandArea a rdf:Property .
+
+ex:people0to17Female a rdf:Property .
+
+ex:people0to17Male a rdf:Property .
+
+ex:people18to34Female a rdf:Property .
+
+ex:people18to34Male a rdf:Property .
+
+ex:people35to64Female a rdf:Property .
+
+ex:people35to64Male a rdf:Property .
+
+ex:people60plusLivingAlone a rdf:Property .
+
+ex:people65plusFemale a rdf:Property .
+
+ex:people65plusMale a rdf:Property .
+
+ex:pigCount a rdf:Property .
+
+ex:pigFarmsCount a rdf:Property .
+
+ex:populationCommuters a rdf:Property .
+
+ex:populationCount a rdf:Property .
+
+ex:populationDay a rdf:Property .
+
+ex:poultryCount a rdf:Property .
+
+ex:poultryFarmsCount a rdf:Property .
+
+ex:precipitation a rdf:Property .
+
+ex:precipitationRecordLength a rdf:Property .
+
+ex:precipitationSource a rdf:Property .
+
+ex:precipitationUsage a rdf:Property .
+
+ex:previousClass a rdf:Property .
+
+ex:previousYear a rdf:Property .
+
+ex:reference a rdf:Property .
+
+ex:residentialBuildings a rdf:Property .
+
+ex:roadAccess a rdf:Property .
+
+ex:roadType a rdf:Property .
+
+ex:settlementDensity a rdf:Property .
+
+ex:shapeLength a rdf:Property .
+
+ex:sheepCount a rdf:Property .
+
+ex:sheepFarmsCount a rdf:Property .
+
+ex:speedMax a rdf:Property .
+
+ex:startDay a rdf:Property .
+
+ex:startMonth a rdf:Property .
+
+ex:startYear a rdf:Property .
+
+ex:surveyYear a rdf:Property .
+
+ex:surveyedArea a rdf:Property .
+
+ex:temperatureMax a rdf:Property .
+
+ex:temperatureMean a rdf:Property .
+
+ex:temperatureMin a rdf:Property .
+
+ex:temperatureRecordLength a rdf:Property .
+
+ex:temperatureUsage a rdf:Property .
+
+ex:timberArea a rdf:Property .
+
+ex:timberFarmsCount a rdf:Property .
+
+ex:totalDamageKUSD a rdf:Property .
+
+ex:totalFlow a rdf:Property .
+
+ex:touristArrivals a rdf:Property .
+
+ex:touristOvernights a rdf:Property .
+
+ex:type a rdf:Property .
+
+ex:unusedLandArea a rdf:Property .
+
+ex:usedLandArea a rdf:Property .
+
+ex:waterBodyType a rdf:Property .
+
+ex:waterVolume a rdf:Property .
+
+ex:width a rdf:Property .
+
+ex:year a rdf:Property .
+
+ex:zipCode a rdf:Property .
+
+<http://knowwheregraph/ontology/deo#hazardType> a owl:ObjectProperty .
+
+<http://www.semanticweb.org/CRIMA#Avalanche> a owl:Class .
+
+<http://www.semanticweb.org/CRIMA#Hazard> a owl:Class .
+
+<http://www.semanticweb.org/CRIMA#Wildfire> a owl:Class .
+
+<http://www.semanticweb.org/crima/crima#in> a owl:FunctionalProperty, owl:ObjectProperty ;
+    rdfs:comment "[Factor --in--> ImpactChainModel]" .
+
+prov:Entity a owl:Class .

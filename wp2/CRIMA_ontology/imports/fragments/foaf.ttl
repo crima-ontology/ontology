@@ -1,0 +1,13 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+foaf: a owl:Ontology .
+
+foaf:PersonalProfileDocument a owl:AnnotationProperty .
+
+foaf:homepage a owl:AnnotationProperty .
+
+foaf:maker a owl:AnnotationProperty .
+
+foaf:name a owl:AnnotationProperty .
+

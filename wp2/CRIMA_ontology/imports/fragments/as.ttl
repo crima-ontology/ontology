@@ -1,0 +1,19 @@
+@prefix as: <https://www.w3.org/ns/activitystreams#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+as: a owl:Ontology .
+
+as:latitude a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "latitude"@en ;
+    rdfs:comment "The latitude"@en ;
+    rdfs:range xsd:float .
+
+as:longitude a owl:DatatypeProperty,
+        owl:FunctionalProperty ;
+    rdfs:label "longitude"@en ;
+    rdfs:comment "The longitude"@en ;
+    rdfs:range xsd:float .
+

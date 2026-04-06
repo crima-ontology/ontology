@@ -1,0 +1,98 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+dcterms:Agent a owl:Class ;
+    rdfs:label "Agent"@en ;
+    rdfs:comment "A resource that acts or has the power to act."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:accessRights a owl:AnnotationProperty .
+
+dcterms:bibliographicCitation a owl:DatatypeProperty .
+
+dcterms:conformsTo a owl:AnnotationProperty .
+
+dcterms:contributor a owl:AnnotationProperty ;
+    rdfs:label "Contributor"@en ;
+    dcterms:description "The guidelines for using names of persons or organizations as creators apply to contributors."@en ;
+    rdfs:comment "An entity responsible for making contributions to the resource."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:created a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:date a owl:AnnotationProperty ;
+    rdfs:label "Date"@en ;
+    dcterms:description "Date may be used to express temporal information at any level of granularity.  Recommended practice is to express the date, date/time, or period of time according to ISO 8601-1 [[ISO 8601-1](https://www.iso.org/iso-8601-date-and-time-format.html)] or a published profile of the ISO standard, such as the W3C Note on Date and Time Formats [[W3CDTF](https://www.w3.org/TR/NOTE-datetime)] or the Extended Date/Time Format Specification [[EDTF](http://www.loc.gov/standards/datetime/)].  If the full date is unknown, month and year (YYYY-MM) or just year (YYYY) may be used. Date ranges may be specified using ISO 8601 period of time specification in which start and end dates are separated by a '/' (slash) character.  Either the start or end date may be missing."@en ;
+    rdfs:comment "A point or period of time associated with an event in the lifecycle of the resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range rdfs:Literal .
+
+dcterms:description a owl:AnnotationProperty .
+
+dcterms:format a owl:AnnotationProperty .
+
+dcterms:hasPart a owl:AnnotationProperty ;
+    rdfs:label "Has Part"@en ;
+    rdfs:comment "A related resource that is included either physically or logically in the described resource."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:hasVersion a owl:AnnotationProperty .
+
+dcterms:identifier a owl:AnnotationProperty .
+
+dcterms:isPartOf a owl:AnnotationProperty ;
+    rdfs:label "Is Part Of"@en ;
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Has Part."@en ;
+    rdfs:comment "A related resource in which the described resource is physically or logically included."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:issued a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:modified a owl:AnnotationProperty .
+
+dcterms:publisher a owl:AnnotationProperty ;
+    rdfs:label "Publisher"@en ;
+    rdfs:comment "An entity responsible for making the resource available."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:references a owl:AnnotationProperty ;
+    rdfs:label "References"@en ;
+    dcterms:description "This property is intended to be used with non-literal values. This property is an inverse property of Is Referenced By."@en ;
+    rdfs:comment "A related resource that is referenced, cited, or otherwise pointed to by the described resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range dcterms:BibliographicResource .
+
+dcterms:relation a owl:AnnotationProperty .
+
+dcterms:rights a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+dcterms:subject a owl:AnnotationProperty ;
+    rdfs:label "Subject"@en-us ;
+    dcterms:description "Typically, the subject will be represented using keywords, key phrases, or classification codes. Recommended best practice is to use a controlled vocabulary. To describe the spatial or temporal topic of the resource, use the Coverage element."@en-us ;
+    rdfs:comment "The topic of the resource."@en-us ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms:title a owl:AnnotationProperty ;
+    rdfs:label "Title"@en ;
+    dcterms:issued "2008-01-14"^^xsd:date ;
+    rdfs:comment "A name given to the resource."@en ;
+    rdfs:isDefinedBy dcterms: ;
+    rdfs:range rdfs:Literal .
+
+dcterms:type a owl:AnnotationProperty .
+
+dcterms:BibliographicResource a owl:Class ;
+    rdfs:label "Bibliographic Resource"@en ;
+    rdfs:comment "A book, article, or other documentary resource."@en ;
+    rdfs:isDefinedBy dcterms: .
+
+dcterms: a owl:Ontology .
+

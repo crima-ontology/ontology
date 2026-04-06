@@ -1,0 +1,7 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+cc: a owl:Ontology .
+
+cc:license a owl:AnnotationProperty .
+

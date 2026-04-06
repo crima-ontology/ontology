@@ -1,0 +1,9 @@
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix schema: <http://schema.org/> .
+
+schema: a owl:Ontology .
+
+schema:domainIncludes a owl:AnnotationProperty .
+
+schema:rangeIncludes a owl:AnnotationProperty .
+

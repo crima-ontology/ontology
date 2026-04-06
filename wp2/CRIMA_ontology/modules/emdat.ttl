@@ -1,0 +1,63 @@
+@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
+@prefix emdat: <http://www.semanticweb.org/crima/emdat#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+emdat: a owl:Ontology ;
+    vann:preferredNamespacePrefix "emdat" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/emdat#"^^xsd:anyURI ;
+    voaf:extends clex:,
+        <http://www.w3.org/2004/02/skos/core> ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf> ;
+    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports clex:,
+        <http://www.w3.org/2004/02/skos/core> .
+
+emdat:emdat-disasters-classification a emdat:EMDAT-DisastersClassification,
+        owl:NamedIndividual ;
+    rdfs:comment "The main classification tree has four levels of depth, so disasters are divided into groups, subgroups, types, and subtypes, as presented in the EM-DAT Public Table columns. The two EM-DAT disaster groups are 'Natural' and 'Technological'. The table below shows the complete tree for the 'Natural' and 'Technological' groups, with the occurrence for each subtype. Their corresponding definitions are available in the Classification Glossary." ;
+    rdfs:isDefinedBy "https://doc.emdat.be/docs/data-structure-and-content/disaster-classification-system/" .
+
+emdat:emdat-subtype a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a owl:Class ;
+                    owl:unionOf ( emdat:emdat-group emdat:emdat-subgroup emdat:emdat-type ) ] ;
+            owl:onProperty clex:isMemberOf ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom emdat:EMDAT-DisastersClassification ;
+            owl:onProperty skos:inScheme ],
+        skos:Concept .
+
+emdat:emdat-type a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom emdat:emdat-subgroup ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom emdat:EMDAT-DisastersClassification ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+emdat:emdat-group a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom emdat:EMDAT-DisastersClassification ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+emdat:emdat-subgroup a owl:Class ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom emdat:emdat-group ;
+            owl:onProperty skos:broader ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom emdat:EMDAT-DisastersClassification ;
+            owl:onProperty skos:inScheme ],
+        skos:Collection .
+
+emdat:EMDAT-DisastersClassification a owl:Class ;
+    rdfs:subClassOf skos:ConceptScheme .
+

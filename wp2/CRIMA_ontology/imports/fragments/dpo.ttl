@@ -1,0 +1,25 @@
+@prefix dpo: <http://knowwheregraph/ontology/dpo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://knowwheregraph/ontology/dpo> a owl:Ontology .
+
+dpo:dependsOn a owl:ObjectProperty ;
+    owl:inverseOf dpo:determinesImpact .
+
+dpo:resultIn a owl:ObjectProperty ;
+    owl:inverseOf dpo:resultOf .
+
+dpo:determinesImpact a owl:ObjectProperty ;
+    rdfs:comment """dpo:determinesImpact(V, I) -->
+∃ O, P. PhysicalEndurant(O) ∨ EcosystemService(O), Vulnerability(V), Impact(I),
+inheresIn(V, O), manifestedBy(V, P), 
+impactsOn(I, O), dpo:resultOf(I, P) .
+
+dpo:determinesImpact(Exp, I) -->
+∃ O, P. PhysicalEndurant(O ∨ EcosystemService(O)), Vulnerability(V), Impact(I),
+exposedObject(Exp, O), exposedTo(Exp, P), 
+impactsOn(I, O), dpo:resultOf(I, P) .""" .
+
+dpo:resultOf a owl:ObjectProperty .
+

@@ -1,0 +1,87 @@
+@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+wmdr-unit:Unit rdfs:subClassOf cunit:Unit .
+
+qudt:Unit rdfs:subClassOf cunit:Unit .
+
+cunit: a owl:Ontology ;
+    vann:preferredNamespacePrefix "cunit" ;
+    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-unit#"^^xsd:anyURI ;
+    voaf:generalizes wmdr-unit:,
+        <http://qudt.org/schema/qudt> ;
+    voaf:metadataVoc vann:,
+        <http://purl.org/vocommons/voaf>,
+        <http://www.w3.org/2004/02/skos/core> ;
+    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
+    owl:imports wmdr-unit:,
+        <http://qudt.org/schema/qudt>,
+        <http://www.w3.org/2004/02/skos/core> .
+
+cunit:GigaM3-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Cubic gigametre per year",
+        "Cubic gigametre per year"@en .
+
+cunit:KiloGM-CO2-PER-M2-PER-SEC a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions",
+        "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions"@en .
+
+cunit:MegaGM-CH4-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Megagrams of Methane per year",
+        "Megagrams of Methane per year"@en .
+
+cunit:MegaGM-CO2-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Megagrams of Carbon Dioxide per year",
+        "Megagrams of Carbon Dioxide per year"@en .
+
+cunit:MegaGM-CO2eq-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Megagrams of carbon dioxide equivalent per year",
+        "Megagrams of carbon dioxide equivalent per year"@en .
+
+cunit:MegaGM-N2O-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Megagrams of nitrous oxide per year",
+        "Megagrams of nitrous oxide per year"@en .
+
+cunit:MoleculesPerSquareCentimeter a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Molecules per square centimeter" .
+
+cunit:NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Number of molecular biology groups per unit volume or area" .
+
+cunit:NumberOfSpeciesPerUnitVolumeOrArea a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Number of species per unit volume or area" .
+
+cunit:NumberOfTraitsPerUnitVolumeOrArea a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Number of traits per unit volume or area" .
+
+cunit:StrokesPerSquareKilometerPerYear a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:isDefinedBy """GCOS-245 "The 2022 GCOS ECVs Requirements"
+2022 edition - Updated in 2025""" ;
+    skos:notation "Strokes per km2 y-1" .
+
+cunit:kiloM3-PER-YR a cunit:Unit,
+        owl:NamedIndividual ;
+    rdfs:label "Cubic Kilometers per Year",
+        "Cubic Kilometers per Year"@en .
+
+cunit:Unit a owl:Class ;
+    rdfs:subClassOf skos:Concept .
+

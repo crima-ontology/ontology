@@ -1,0 +1,2009 @@
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+dbo: a owl:Ontology .
+
+dbo:Agglomeration a owl:Class ;
+    rdfs:label "Ballungsgebiet"@de,
+        "συσσώρευση"@el,
+        "agglomeration"@en,
+        "agglomération"@fr,
+        "aglomeración"@gl,
+        "agglomeratie"@nl,
+        "aglomeracja"@pl,
+        "جمع"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Airport a owl:Class ;
+    rdfs:label "lufthavn"@da,
+        "Flughafen"@de,
+        "αεροδρόμιο"@el,
+        "airport"@en,
+        "aeropuerto"@es,
+        "aéroport"@fr,
+        "aerfort"@ga,
+        "aeroporto"@gl,
+        "aeroporto"@it,
+        "空港"@ja,
+        "공항"@ko,
+        "luchthaven"@nl,
+        "lotnisko"@pl,
+        "aeroporto"@pt,
+        "аэропорт"@ru,
+        "ہوائی اڈہ"@ur,
+        "機場"@zh ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Archipelago a owl:Class ;
+    rdfs:label "Archipel"@de,
+        "αρχιπέλαγος"@el,
+        "archipelago"@en,
+        "archipiélago"@es,
+        "archipel"@fr,
+        "多島海"@ja,
+        "archipel"@nl,
+        "arquipélago"@pt,
+        "جزیرہ نما"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Arrondissement a owl:Class ;
+    rdfs:label "arrondissement"@de,
+        "arrondissement"@en,
+        "arrondissement"@fr,
+        "フランスの群"@ja,
+        "arrondissement"@nl,
+        "فرانس کا انتظامی ضلع"@ur ;
+    rdfs:comment "Das Wort Arrondissement dient zur Bezeichnung verschiedener Verwaltungsbezirke in Frankreich, Belgien, Kanada und anderen Ländern"@de,
+        "An administrative (France) or lawcourts (Netherlands) body governing a territorial unity on the intermediate level, between local and national level"@en,
+        "ایک انتظامی (فرانس) یا قانون کی عدالتیں (نیدرلینڈز) جو کہ علاقائی وحدت پر مقامی اور قومی سطح کے درمیان حکمرانی کرتی ہیں"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:Atoll a owl:Class ;
+    rdfs:label "Atoll"@de,
+        "ατόλη"@el,
+        "atoll"@en,
+        "atoll"@fr,
+        "atollo"@it,
+        "環礁"@ja,
+        "환초"@ko,
+        "atol"@nl,
+        "اڈل"@ur ;
+    rdfs:comment "مرجانی چٹانوں سے بنا ہواجزیرہ"@ur ;
+    rdfs:subClassOf dbo:Island .
+
+dbo:Bay a owl:Class ;
+    rdfs:label "Bucht"@de,
+        "bay"@en,
+        "baie"@fr,
+        "湾"@ja,
+        "baai"@nl,
+        "baía"@pt,
+        "خلیج"@ur ;
+    rdfs:subClassOf dbo:BodyOfWater .
+
+dbo:Beach a owl:Class ;
+    rdfs:label "platja"@ca,
+        "strand"@da,
+        "Strand"@de,
+        "beach"@en,
+        "playa"@es,
+        "plage"@fr,
+        "砂浜"@ja,
+        "strand"@nl,
+        "praia"@pt,
+        "ساحل_سمندر"@ur ;
+    rdfs:comment "The shore of a body of water, especially when sandy or pebbly."@en,
+        "Ribera del mar o de un río grande, formada de arenales en superficie casi plana."@es,
+        "پانی کے جسم کا ساحل ، خاص طور پر جب ریت بھرا یا کنکری"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Bridge a owl:Class ;
+    rdfs:label "সেতু"@bn,
+        "bro"@da,
+        "Brücke"@de,
+        "γέφυρα"@el,
+        "bridge"@en,
+        "pont"@fr,
+        "droichead"@ga,
+        "ponte"@it,
+        "橋"@ja,
+        "다리"@ko,
+        "brug"@nl,
+        "ponte"@pt,
+        "most"@sl,
+        "پل"@ur ;
+    rdfs:comment "A bridge is a structure built to span physical obstacles such as a body of water, valley, or road, for the purpose of providing passage over the obstacle (http://en.wikipedia.org/wiki/Bridge)."@en,
+        "ایک پل ایک ایسا ڈھانچہ ہے جو جسمانی رکاوٹوں جیسے پانی ، وادی یا سڑک کی راہ میں رکاوٹ کو عبور کرنے کے مقصد سے بنایا گیا ہے"@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:Canal a owl:Class ;
+    rdfs:label "Kanal"@de,
+        "κανάλι"@el,
+        "canal"@en,
+        "canal"@fr,
+        "canáil"@ga,
+        "canale"@it,
+        "運河"@ja,
+        "운하"@ko,
+        "kanaal"@nl,
+        "canal"@pt,
+        "نہر"@ur ;
+    rdfs:comment "ένα κανάλι για νερό φτιαγμένο από άνθρωπο"@el,
+        "a man-made channel for water"@en ;
+    rdfs:subClassOf dbo:Stream .
+
+dbo:Canton a owl:Class ;
+    rdfs:label "Kanton"@de,
+        "canton"@en,
+        "canton"@fr,
+        "スイス連邦の州またはフランスの群"@ja,
+        "kanton"@nl,
+        "ضِلَع"@ur ;
+    rdfs:comment "Das Wort Kanton dient zur Bezeichnung verschiedener (niederen) Verwaltungsbezirke in Frankreich, Belgien, Kanada und anderen Ländern"@de,
+        "An administrative (France) or lawcourts (Netherlands) body governing a territorial unity on the municipal level or somewhat above"@en,
+        "ایک انتظامی (فرانس) یا قانون کی عدالت (نیدرلینڈز) کا ادارہ جو علاقائی وحدت کا انتظام کرتا ہے بلدیاتی سطح پر یا اس سے کچھ اوپر"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:Cape a owl:Class ;
+    rdfs:label "cape"@en,
+        "cap"@fr,
+        "kaap"@nl,
+        "خشکی کا وہ حصہ جو سمندر کے اندر تک چلا گیا ہو"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Capital a owl:Class ;
+    rdfs:label "Hauptstadt"@de,
+        "Κεφάλαιο"@el,
+        "Capital"@en,
+        "Capitale"@fr,
+        "Capitale"@it,
+        "首都"@ja,
+        "hoofdstad"@nl,
+        "دارالحکومت"@ur ;
+    rdfs:comment "A municipality enjoying primary status in a state, country, province, or other region as its seat of government."@en,
+        "ایک بلدیہ جو کسی ریاست، ملک، صوبے، یا دوسرے علاقے میں اپنی حکومت کی نشست کے طور پر بنیادی حیثیت سے لطف اندوز ہوتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:City .
+
+dbo:CapitalOfRegion a owl:Class ;
+    rdfs:label "Hauptstadt der Region"@de,
+        "Capital of region"@en,
+        "Capitale régionale"@fr,
+        "hoofdstad van regio"@nl,
+        "علاقے کا دارالحکومت"@ur ;
+    rdfs:comment "seat of a first order administration division."@en,
+        "فرسٹ آرڈر ایڈمنسٹریشن ڈویژن کی نشست۔"@ur ;
+    rdfs:subClassOf dbo:City .
+
+dbo:Casino a owl:Class ;
+    rdfs:label "Kasino"@de,
+        "καζίνο"@el,
+        "casino"@en,
+        "casino"@es,
+        "casino"@fr,
+        "casinò"@it,
+        "カジノ"@ja,
+        "카지노"@ko,
+        "casino"@nl,
+        "رقص گاہ"@ur ;
+    rdfs:comment "To καζίνο είναι ένας χώρος στον οποίο μπορούμε να παίξουμε τυχερά παιχνίδια ποντάροντας χρήματα."@el,
+        "In modern English, a casino is a facility which houses and accommodates certain types of gambling activities."@en,
+        "Un casino est un lieu proposant des jeux d'argent et de hasard ou jeux de casino."@fr,
+        """جدید انگریزی میں ، جوئے بازی کی اڈہ ایک ایسی سہولت ہے جس میں جوئے کی سرگرمیوں کی مخصوص اقسام ہوتی ہیں۔
+."""@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Castle a owl:Class ;
+    rdfs:label "burg"@de,
+        "κάστρο"@el,
+        "castle"@en,
+        "château"@fr,
+        "caisleán"@ga,
+        "castello"@it,
+        "城"@ja,
+        "성 (건축)"@ko,
+        "kasteel"@nl,
+        "قلعہ"@ur ;
+    rdfs:comment "Castles often are, but need not be a military structure. They can serve for status, pleasure and hunt as well."@en,
+        "قلعے اکثر ہوتے ہیں، لیکن فوجی ڈھانچہ ہونے کی ضرورت نہیں ہے۔ وہ حیثیت، خوشی اور شکار کے لیے بھی خدمت کر سکتے ہیں۔"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Cave a owl:Class ;
+    rdfs:label "Höhle"@de,
+        "σπηλιά"@el,
+        "cave"@en,
+        "grotte"@fr,
+        "pluais"@ga,
+        "grotta"@it,
+        "洞窟"@ja,
+        "동굴"@ko,
+        "grot"@nl,
+        "caverna"@pt,
+        "غار"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Cemetery a owl:Class ;
+    rdfs:label "Friedhof"@de,
+        "νεκροταφείο"@el,
+        "cemetery"@en,
+        "cementerio"@es,
+        "cimetière"@fr,
+        "reilig"@ga,
+        "墓地"@ja,
+        "begraafplaats"@nl,
+        "قبرستان"@ur ;
+    rdfs:comment "Νεκροταφείο (ή Κοιμητήριο) ονομάζεται ο χώρος ο προορισμένος για την ταφή των νεκρών."@el,
+        "A burial place"@en,
+        "Un cimetière est un groupement de sépultures monumentales."@fr,
+        "ایک تدفین کی جگہ"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Church a owl:Class ;
+    rdfs:label "kirke"@da,
+        "Kirche"@de,
+        "εκκλησία"@el,
+        "church"@en,
+        "iglesia"@es,
+        "église"@fr,
+        "eaglais"@ga,
+        "chiesa"@it,
+        "教会"@ja,
+        "교회"@ko,
+        "kerk"@nl,
+        "kościół"@pl,
+        "igreja"@pt,
+        "گرجا"@ur ;
+    rdfs:comment "This is used for church buildings, not any other meaning of church."@en,
+        "یہ چرچ کی عمارتوں کے لیے استعمال ہوتا ہے ، چرچ کا کوئی دوسرا مطلب نہیں۔"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:Cinema a owl:Class ;
+    rdfs:label "Theater"@de,
+        "κινηματογράφος"@el,
+        "cinema (movie theater)"@en,
+        "cinéma"@fr,
+        "bioscoop"@nl,
+        "سنیما"@ur ;
+    rdfs:comment "A building for viewing films."@en,
+        "فلم دیکھنے کے لیے ایک عمارت۔"@ur ;
+    rdfs:subClassOf dbo:Venue .
+
+dbo:CityDistrict a owl:Class ;
+    rdfs:label "Stadtviertel"@de,
+        "city district"@en,
+        "quartier"@fr,
+        "stadswijk"@nl,
+        "شہر کا ضلع"@ur ;
+    rdfs:comment "District, borough, area or neighbourhood in a city or town"@en,
+        "کسی شہر یا قصبے میں ضلع کا علاقہ یا محلہ۔"@ur ;
+    rdfs:subClassOf dbo:Settlement .
+
+dbo:CoalPit a owl:Class ;
+    rdfs:label "Kohlengrube"@de,
+        "coal pit"@en,
+        "puits de charbon"@fr,
+        "steenkolenmijn"@nl,
+        "کوئلہ"@ur ;
+    rdfs:comment "A coal pit is a place where charcoal is or was extracted"@en,
+        "Un puits de charbon est un endroit d'où le charbon était - ou est encore - extrait"@fr,
+        "Een mijn is een plaats waar steenkool wordt of werd gewonnen"@nl,
+        "کوئلے کا گڑھا ایک ایسی جگہ ہے جہاں چارکول ہے یا نکالا جاتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:Mine .
+
+dbo:Community a owl:Class ;
+    rdfs:label "Community"@en,
+        "Communauté"@fr,
+        "برادری"@ur ;
+    rdfs:comment "Κοινότητα είναι μία ομάδα ζώντων οργανισμών, ανθρώπων, φυτών ή ζώων που ζουν σε ένα κοινό περιβάλλον."@el,
+        "A community is a group of living organisms, people, plants or animals that live in a common environment."@en,
+        "Une communauté est un groupe d'organismes vivants, de personnes, de plantes ou d'animaux qui vivent dans un environnement commun."@fr,
+        "کمیونٹی جانداروں، لوگوں، پودوں یا جانوروں کا ایک گروپ ہے جو ایک مشترکہ ماحول میں رہتے ہیں۔"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:ConcentrationCamp a owl:Class ;
+    rdfs:label "Konzentrationslager"@de,
+        "Concentration camp"@en,
+        "camp de concentration"@fr,
+        "concentratiekamp"@nl,
+        "حراستی کیمپ"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Continent a owl:Class ;
+    rdfs:label "Kontinent"@de,
+        "ήπειρος"@el,
+        "continent"@en,
+        "continente"@es,
+        "continent"@fr,
+        "ilchríoch"@ga,
+        "continente"@it,
+        "大陸"@ja,
+        "대륙"@ko,
+        "continent"@nl,
+        "براعظم"@ur ;
+    rdfs:comment "Un continente es una gran área de tierra emergida de la costra terrestre."@es,
+        "Un continente è una grande area di terra emersa della crosta terrestre, è anzi la più vasta delle ripartizioni con le quali si suddividono le terre emerse."@it,
+        "براعظم زمین کا ایک بڑا علاقہ ہے جو زمین کی پرت سے نکلا ہے ، درحقیقت یہ ان سب سے بڑی تقسیم ہے جس کے ساتھ ابھرتی ہوئی زمینیں تقسیم کی گئی ہیں۔"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:CountrySeat a owl:Class ;
+    rdfs:label "Landgut"@de,
+        "country estate"@en,
+        "buitenplaats"@nl,
+        "ملک کی نشست"@ur ;
+    rdfs:comment "A country seat is a rural patch of land owned by a land owner."@en,
+        "Een buitenplaats is een landgoed."@nl,
+        "یک کنٹری سیٹ زمین کا ایک دیہی پیچ ہے جو زمین کے مالک کی ملکیت ہے"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:CricketGround a owl:Class ;
+    rdfs:label "Cricketfeld"@de,
+        "cricket ground"@en,
+        "campo da cricket"@it,
+        "cricketveld"@nl,
+        "کرکٹ کا میدان"@ur ;
+    rdfs:subClassOf dbo:SportFacility .
+
+dbo:Dam a owl:Class ;
+    rdfs:label "Damm"@de,
+        "φράγμα"@el,
+        "dam"@en,
+        "barrage"@fr,
+        "damba"@ga,
+        "diga"@it,
+        "ダム"@ja,
+        "dam"@nl,
+        "ڈیم"@ur ;
+    rdfs:comment "Ένα φράγμα είναι μια κατασκευή που εμποδίζει, ανακατευθύνει ή επιβραδύνει την φυσική ροή υδάτων."@el,
+        "A dam is part of a landscape infrastructure, like waterworks (canals) or roads, much more than a building, though, of course, it has been built, too."@en,
+        "ڈیم ایک ایسا ڈھانچہ ہے جو پانی کے قدرتی بہاؤ کو روکتا، ری ڈائریکٹ یا سست کر دیتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Deanery a owl:Class ;
+    rdfs:label "Dekanat"@de,
+        "κοσμητεία"@el,
+        "deanery"@en,
+        "proosdij"@nl,
+        "عمید کا عہدہ"@ur ;
+    rdfs:comment "The intermediate level of a clerical administrative body between parish and diocese"@en,
+        "گرجا گھر کا حلقہ اور  بشپ کے دائرہ اختیار کا حلقہ کے مابین علمی انتظامی ادارے کی انٹرمیڈیٹ سطح۔"@ur ;
+    rdfs:subClassOf dbo:ClericalAdministrativeRegion .
+
+dbo:Desert a owl:Class ;
+    rdfs:label "Wüste"@de,
+        "Έρημος"@el,
+        "Desert"@en,
+        "Desierto"@es,
+        "Désert"@fr,
+        "gaineamhlach"@ga,
+        "砂漠"@ja,
+        "woestijn"@nl,
+        "deserto"@pt,
+        "صحرا"@ur ;
+    rdfs:comment "Barren land where there is less rain."@en,
+        "زمین کا بنجر علاقہ جہاں کم بارش ہوتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Dike a owl:Class ;
+    rdfs:label "dike"@en,
+        "levée"@fr,
+        "diga"@it,
+        "堤防"@ja,
+        "dijk"@nl,
+        "بند"@ur ;
+    rdfs:comment "A dike is an elongated naturally occurring ridge or artificially constructed fill or wall, which regulates water levels"@en,
+        "بند ایک لمبی قدرتی طور پر واقع رکاوٹ یا مصنوعی طور پر تعمیر شدہ ذخیرہ یا دیوار ہے ، جو پانی کی سطح کو کنٹرول کرتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Diocese a owl:Class ;
+    rdfs:label "Diözese"@de,
+        "επισκοπή"@el,
+        "diocese"@en,
+        "diocèse"@fr,
+        "deoise"@ga,
+        "教区"@ja,
+        "교구"@ko,
+        "bisdom"@nl,
+        "بشپ کے تحت حلقہ"@ur ;
+    rdfs:comment "District or see under the supervision of a bishop."@en,
+        "ڈسٹرکٹ یا ایک بشپ کی نگرانی میں دیکھیں۔"@ur ;
+    rdfs:subClassOf dbo:ClericalAdministrativeRegion .
+
+dbo:DistrictWaterBoard a owl:Class ;
+    rdfs:label "Bezirkwasserwirtschaftsamt"@de,
+        "district water board"@en,
+        "waterschap"@nl,
+        "پانی کا ضلعی اقتدار"@ur ;
+    rdfs:comment "Conservancy, governmental agency dedicated to surface water management"@en,
+        "تحفظ ،سطحی پانی کے انتظام کے لیے وقف سرکاری ایجنسی"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:ElectricalSubstation a owl:Class ;
+    rdfs:label "electrical substation"@en,
+        "poste électrique"@fr,
+        "transformatorhuisje"@nl,
+        "برقی ذیلی مرکز"@ur ;
+    rdfs:comment "Substations transform voltage from high to low, or the reverse."@en,
+        "poste de transformation abaisseur ou élévateur de tension."@fr,
+        "برقی ذیلی مرکز وولٹیج کو زیادہ سے کم، یا برعکس میں تبدیل کرتے ہیں۔"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Factory a owl:Class ;
+    rdfs:label "Fabrik"@de,
+        "εργοστάσιο"@el,
+        "factory"@en,
+        "usine"@fr,
+        "monarcha"@ga,
+        "fabbrica"@it,
+        "工場"@ja,
+        "공장"@ko,
+        "fabriek"@nl,
+        "کارخانه"@ur ;
+    rdfs:comment "Το εργοστάσιο είναι ένα κτίριο μέσα στο οποίο, με τη βοήθεια των μηχανημάτων και τη σημαντικότατη συνεισφορά εργασίας από τους εργάτες, παράγονται σήμερα όλα σχεδόν τα βιομηχανικά είδη, είτε αυτά χρειάζονται πάλι για την παραγωγή (όπως μηχανές κλπ.) είτε είναι καταναλωτικά αγαθά."@el,
+        "A factory (previously manufactory) or manufacturing plant is an industrial site, usually consisting of buildings and machinery, or more commonly a complex having several buildings, where workers manufacture goods or operate machines processing one product into another."@en,
+        "Une usine est un bâtiment ou un ensemble de bâtiments destinés à la production industrielle."@fr,
+        "ایک کارخانه (پہلے کارخانه) ایک صنعتی رقبہ ہے ، عام طور پر عمارتوں اور مشینری پر مشتمل ہوتی ہے ، یا زیادہ عام طور پر ایک  مرکب جس میں کئی عمارتیں ہوتی ہیں ، جہاں مزدور سامان تیار کرتے ہیں یا مشینیں چلاتے ہیں جو ایک مصنوعات کو دوسری پر پروسیسنگ کرتے ہیں۔"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Forest a owl:Class ;
+    rdfs:label "skov"@da,
+        "Wald"@de,
+        "forest"@en,
+        "forêt"@fr,
+        "bos"@nl,
+        "جنگل"@ur ;
+    rdfs:comment "A natural place more or less densely grown with trees"@en,
+        "ایک قدرتی جگہ جو کم و بیش درختوں کے ساتھ اگتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:FormerMunicipality a owl:Class ;
+    rdfs:label "ehemalige Gemeinde"@de,
+        "one-time municipality"@en,
+        "commune historique"@fr,
+        "voormalige gemeente"@nl,
+        "سابق بلدیہ"@ur ;
+    rdfs:comment "A municipality that has ceased to exist, and most of the time got incorporated (wholesale or partly) into another municipality"@en,
+        "ایک بلدیہ جس کا وجود ختم ہو گیا ہے، اور زیادہ تر وقت کسی دوسری بلدیہ میں (تھوک یا جزوی طور پر) شامل ہو گیا ہے"@ur ;
+    rdfs:subClassOf dbo:Municipality .
+
+dbo:Fort a owl:Class ;
+    rdfs:label "fort"@en,
+        "fort"@fr,
+        "fort"@nl,
+        "قلعہ"@ur ;
+    rdfs:comment "Fortified place, most of the time to protect traffic routes"@en,
+        "Endroit fortifié, la plupart du temps pour protéger des routes de trafic."@fr,
+        "مضبوط جگہ ، زیادہ تر وقت آمد و رفت کے راستوں کی حفاظت کے لیے"@ur ;
+    rdfs:subClassOf dbo:MilitaryStructure .
+
+dbo:Garden a owl:Class ;
+    rdfs:label "have"@da,
+        "Garten"@de,
+        "κήπος"@el,
+        "garden"@en,
+        "jardin"@fr,
+        "gáirdín"@ga,
+        "giardino"@it,
+        "庭園"@ja,
+        "tuin"@nl,
+        "باغ"@ur ;
+    rdfs:comment "A garden is a planned space, usually outdoors, set aside for the display, cultivation, and enjoyment of plants and other forms of nature. (http://en.wikipedia.org/wiki/Garden)"@en,
+        """باغ ایک منصوبہ بند جگہ ہے ، عام طور پر باہر ، ڈسپلے ، کاشت ، اور پودوں اور فطرت کی دیگر اقسام سے لطف اندوز ہونے کے لیے
+ (http://en.wikipedia.org/wiki/Garden)"""@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:GatedCommunity a owl:Class ;
+    rdfs:label "bewachte Wohnanlage / Siedlung"@de,
+        "Gated community"@en,
+        "Hofje / gebouw met woongemeenschap"@nl,
+        "مسدود برادری"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Glacier a owl:Class ;
+    rdfs:label "Gletscher"@de,
+        "παγετώνας"@el,
+        "glacier"@en,
+        "glacier"@fr,
+        "oighearshruth"@ga,
+        "ghiacciaio"@it,
+        "氷河"@ja,
+        "gletsjer"@nl,
+        "geleira"@pt,
+        "برف کا تودہ"@ur ;
+    rdfs:comment "Παγετώνες ονομάζονται μεγάλες μάζες πάγου συνήθως κινούμενες λόγω συμπίεσης του χιονιού."@el ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:GolfCourse a owl:Class ;
+    rdfs:label "Golfplatz"@de,
+        "γήπεδο γκολφ"@el,
+        "golf course"@en,
+        "terrain de golf"@fr,
+        "cúrsa gailf"@ga,
+        "campo da golf"@it,
+        "golfbaan"@nl,
+        "گالف کا میدان"@ur ;
+    rdfs:comment "Σε ένα γήπεδο γκολφ οι τρύπες συχνά κρύβουν κινδύνους, που ορίζονται ως ειδικές περιοχές για τις οποίες ισχύουν επιπρόσθετοι κανόνες διεξαγωγής του παιχνιδιού."@el,
+        "In a golf course, holes often carry hazards, defined as special areas to which additional rules of the game apply."@en,
+        "Dans un parcours de golf, les trous comportent souvent des dangers, définis comme des zones spéciales auxquelles s'appliquent des règles de jeu supplémentaires."@fr,
+        "زمین کا ایک علاقہ جس میں گولف کے لیے 9 یا 18 سوراخ ہوتے ہیں جن میں سے ہر ایک میں ٹی ، فیئر وے ، اور سبز اور اکثر ایک یا زیادہ قدرتی یا مصنوعی خطرات شامل ہیں۔ - جسے گولف لنکس بھی کہا جاتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:SportFacility .
+
+dbo:GraveMonument a owl:Class ;
+    rdfs:label "Grabdenkmal"@de,
+        "grave stone or grave monument"@en,
+        "pierre tombale ou monument funéraire"@fr,
+        "grafsteen of grafmonument"@nl,
+        "قبر کی یادگار"@ur ;
+    rdfs:comment "A monument erected on a tomb, or a memorial stone."@en,
+        "ایک یادگار ایک مقبرے پر کھڑی کی گئی ، یا ایک یادگار پتھر"@ur ;
+    rdfs:subClassOf dbo:Monument .
+
+dbo:HistoricalCountry a owl:Class ;
+    rdfs:label "historischer Land"@de,
+        "Historical country"@en,
+        "ancien pays"@fr,
+        "tír stairiúil"@ga,
+        "voormalig land"@nl,
+        "تاریخی ملک"@ur ;
+    rdfs:comment "ایک ایسی جگہ جو ایک ملک ہوا کرتی تھی۔"@en ;
+    rdfs:subClassOf dbo:Country .
+
+dbo:HistoricalDistrict a owl:Class ;
+    rdfs:label "historischer Kreis / Bezirk"@de,
+        "Historical district"@en,
+        "ancien département"@fr,
+        "ceantar stairiúil"@ga,
+        "voormalig kwartier of district"@nl,
+        "تاریخی ضلع"@ur ;
+    rdfs:comment "a place which used to be a district."@en,
+        "یک ایسی جگہ جو پہلے ضلع ہوتی تھی۔"@ur ;
+    rdfs:subClassOf dbo:District .
+
+dbo:HistoricalProvince a owl:Class ;
+    rdfs:label "historischer Provinz"@de,
+        "Historical province"@en,
+        "Ancienne province"@fr,
+        "cúige stairiúil"@ga,
+        "voormalige provincie"@nl,
+        "تاریخی صوبہ"@ur ;
+    rdfs:comment "A place which used to be a province."@en,
+        "یک ایسی جگہ جو ایک صوبہ ہوا کرتی تھی۔"@ur ;
+    rdfs:subClassOf dbo:Province .
+
+dbo:HistoricalRegion a owl:Class ;
+    rdfs:label "historischer Region"@de,
+        "Historical region"@en,
+        "Ancienne région"@fr,
+        "réigiún stairiúil"@ga,
+        "voormalige regio"@nl,
+        "تاریخی علاقہ"@ur ;
+    rdfs:comment "a place which used to be a region."@en,
+        "Lieu qui était autrefois une région."@fr,
+        "ایک ایسی جگہ جو ایک علاقہ ہوا کرتی تھی"@ur ;
+    rdfs:subClassOf dbo:Region .
+
+dbo:HistoricalSettlement a owl:Class ;
+    rdfs:label "historischer Siedlung"@de,
+        "Historical settlement"@en,
+        "ancien ville ou village"@fr,
+        "áit lonnaithe stairiúil"@ga,
+        "voormalige stad of dorp"@nl,
+        "تاریخی آبادکاری"@ur ;
+    rdfs:comment "A place which used to be a city or town or village."@en,
+        "وہ جگہ جو پہلے شہر یا قصبہ یا گاؤں ہوا کرتی تھی"@ur ;
+    rdfs:subClassOf dbo:Settlement .
+
+dbo:Hospital a owl:Class ;
+    rdfs:label "hospital"@da,
+        "Krankenhaus"@de,
+        "νοσοκομείο"@el,
+        "hospital"@en,
+        "hôpital"@fr,
+        "ospidéal"@ga,
+        "병원"@ko,
+        "ziekenhuis"@nl,
+        "hospital"@pt,
+        "ہسپتال"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:HotSpring a owl:Class ;
+    rdfs:label "heiße Quelle"@de,
+        "hot spring"@en,
+        "source d'eau chaude"@fr,
+        "foinse the"@ga,
+        "温泉"@ja,
+        "warmwaterbron"@nl,
+        "fonte termal"@pt,
+        "گرم موسم بہار"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Hotel a owl:Class ;
+    rdfs:label "hotel"@da,
+        "Hotel"@de,
+        "ξενοδοχείο"@el,
+        "hotel"@en,
+        "hôtel"@fr,
+        "óstán"@ga,
+        "albergo"@it,
+        "ホテル"@ja,
+        "호텔"@ko,
+        "hotel"@nl,
+        "سرائے"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Intercommunality a owl:Class ;
+    rdfs:label "Interkommunalität"@de,
+        "Intercommunality"@en,
+        "intercommunalité"@fr,
+        "فرقہ واریت"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Lake a owl:Class ;
+    rdfs:label "See"@de,
+        "λίμνη"@el,
+        "lake"@en,
+        "lac"@fr,
+        "loch"@ga,
+        "호수"@ja,
+        "호수"@ko,
+        "meer"@nl,
+        "jezioro"@pl,
+        "lago"@pt,
+        "озеро"@ru,
+        "جھیل"@ur ;
+    rdfs:subClassOf dbo:BodyOfWater .
+
+dbo:LaunchPad a owl:Class ;
+    rdfs:label "Startrampe"@de,
+        "ράμπα φορτώσεως"@el,
+        "launch pad"@en,
+        "rampe de lancement"@fr,
+        "ceap lainseála"@ga,
+        "lanceerbasis"@nl,
+        "میزائل چلانے کی جگہ"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Lighthouse a owl:Class ;
+    rdfs:label "Leuchtturm"@de,
+        "Φάρος"@el,
+        "lighthouse"@en,
+        "phare"@fr,
+        "teach solais"@ga,
+        "灯台"@ja,
+        "vuurtoren"@nl,
+        "روشنی کا مینار"@ur ;
+    rdfs:subClassOf dbo:Tower .
+
+dbo:Locality a owl:Class ;
+    rdfs:label "Gegend"@de,
+        "τόπος"@el,
+        "locality"@en,
+        "localité"@fr,
+        "ceantar"@ga,
+        "地域"@ja,
+        "streek"@nl,
+        "علاقہ"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Lock a owl:Class ;
+    rdfs:label "lås"@da,
+        "Schleuse"@de,
+        "κλειδαριά"@el,
+        "lock"@en,
+        "écluse"@fr,
+        "glas"@ga,
+        "錠"@ja,
+        "sluis"@nl,
+        "تالا"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:LunarCrater a owl:Class ;
+    rdfs:label "Mondkrater"@de,
+        "Σεληνιακός κρατήρας"@el,
+        "lunar crater"@en,
+        "cratère lunaire"@fr,
+        "cráitéar gealaí"@ga,
+        "maankrater"@nl,
+        "cratera lunar"@pt,
+        "قمری گڑھا"@ur ;
+    rdfs:subClassOf dbo:Crater .
+
+dbo:Manor a owl:Class ;
+    rdfs:label "Grundherrschaft"@de,
+        "Manor"@en,
+        "Seigneurie"@fr,
+        "Heerlijkheid"@nl,
+        "جاگیر"@ur ;
+    rdfs:comment "Estate and/or (cluster of) lands that are under the jurisdiction of a feudal lord. Hence it is also the shorthand expression for the physical estate itself: a manor is a stately house in the countryside with the surrounding grounds"@en ;
+    rdfs:subClassOf dbo:HistoricalAreaOfAuthority .
+
+dbo:Memorial a owl:Class ;
+    rdfs:label "Denkmal"@de,
+        "μνημείο"@el,
+        "memorial"@en,
+        "mémorial"@fr,
+        "記念碑"@ja,
+        "gedenkteken"@nl,
+        "یادگار"@ur ;
+    rdfs:comment "A monument erected to commemorate a person, an event and/or group. In the case of a person, this might be a grave or tomb."@en,
+        "ایک قسم کا ڈھانچہ (ایک مجسمہ یا آرٹ آبجیکٹ) کسی شخص یا اہم واقعہ کی یاد میں بنایا گیا ، ضروری نہیں کہ تباہ کن نوعیت کا ہو"@ur ;
+    rdfs:subClassOf dbo:Monument .
+
+dbo:MetroStation a owl:Class ;
+    rdfs:label "U-Bahn Station"@de,
+        "στάση μετρό"@el,
+        "subway station"@en,
+        "station de métro"@fr,
+        "metrostation"@nl,
+        "زمین دوز برقی ریل کا اڈہ"@ur ;
+    rdfs:comment "Η στάση μετρό χρησιμοποιείται συνήθως για μια τοποθεσία ή σημείο όπου σταματάει το μεταφορικό μέσο μετρό"@el ;
+    rdfs:subClassOf dbo:Station .
+
+dbo:MicroRegion a owl:Class ;
+    rdfs:label "Mikroregion"@de,
+        "μικρο-περιφέρεια"@el,
+        "micro-region"@en,
+        "micro-région"@fr,
+        "microregio"@nl,
+        "microrregiao"@pt,
+        "چھوٹاعلاقہ"@ur ;
+    rdfs:comment "Η μικρο-περιφέρεια χρησιμοποιείται για να περιγράψει, κυρίως στατιστικά, μια περιοχή στη Βραζιλία σε διοικητικό επίπεδο μεταξύ μίας μεσο-περιφέρειας και μίας κοινότητα"@el,
+        "A microregion is a - mainy statistical - region in Brazil, at an administrative level between a meso-region and a community"@en,
+        "Une microrégion est - principalement du point de vue statistique - une région du Brésil, qui se trouve à un niveau administratif entre la mésorégion et la communauté"@fr,
+        "مائیکرو ریجن برازیل میں ایک - بنیادی شماریاتی - خطہ ہے، انتظامی سطح پر ایک میسو ریجن اور کمیونٹی کے درمیان"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:Monastery a owl:Class ;
+    rdfs:label "monestir"@ca,
+        "kloster"@da,
+        "Kloster"@de,
+        "μοναστήρι"@el,
+        "monastery"@en,
+        "monastère"@fr,
+        "mainistir"@ga,
+        "僧院"@ja,
+        "klooster"@nl,
+        "klasztor"@pl,
+        "خانقاہ"@ur ;
+    rdfs:comment "Un monestir és un tipus d'edificació per a la reclusió dels religiosos, que hi viuen en comú. Originàriament un monestir era la cel·la d'un sol monjo, dit en aquest cas ermità o anacoreta."@ca,
+        "Μονή υποδηλώνει το κτίριο ή συγκρότημα κτιρίων, που αποτελείται από τις εγχώρια τρίμηνα και στο χώρο εργασίας (ες) των μοναχών, αν οι μοναχοί ή μοναχές, και αν ζουν στην κοινότητα ή μεμονωμένα (ερημίτες). Η μονή περιλαμβάνει γενικά ένα χώρο που προορίζεται για την προσευχή που μπορεί να είναι ένα παρεκκλήσι, εκκλησία ή ναό, και μπορεί επίσης να χρησιμεύσει ως μια ρητορική."@el,
+        "Monastery denotes the building, or complex of buildings, comprising the domestic quarters and workplace(s) of monastics, whether monks or nuns, and whether living in community or alone (hermits). The monastery generally includes a place reserved for prayer which may be a chapel, church or temple, and may also serve as an oratory."@en,
+        "Le monastère est un ensemble de bâtiments où habite une communauté religieuse de moines ou de moniales.."@fr,
+        "Is pobal manaigh ina gcónaí faoi móideanna reiligiúnach í mainistir."@ga,
+        "Een klooster (van het Latijnse claustrum, afgesloten ruimte) is een gebouw of een samenstel van gebouwen dat dient tot huisvesting van een groep of gemeenschap van mannen of vrouwen, vaak monniken of monialen genoemd, die zich uit de wereld heeft teruggetrokken om een godsdienstig leven te leiden."@nl,
+        "Klasztor - budynek lub zespół budynków, w którym mieszkają wspólnoty religijne zakonników albo zakonnic."@pl,
+        "خانقاہ عمارت، یا عمارتوں کے کمپلیکس کی نشاندہی کرتی ہے، جس میں خانقاہوں کے گھریلو کوارٹرز اور کام کی جگہیں شامل ہیں، چاہے وہ راہب ہوں یا راہبائیں، اور چاہے وہ برادری میں رہ رہے ہوں یا اکیلے (حرمت والے)۔ خانقاہ میں عام طور پر نماز کے لیے مخصوص جگہ شامل ہوتی ہے جو ایک چیپل، گرجا گھر یا مندر ہو سکتا ہے، اور ایک تقریر کے طور پر بھی کام کر سکتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:Mosque a owl:Class ;
+    rdfs:label "Moschee"@de,
+        "τζαμί"@el,
+        "mosque"@en,
+        "mezquita"@es,
+        "mosquée"@fr,
+        "mosc"@ga,
+        "モスク"@ja,
+        "moskee"@nl,
+        "meczet"@pl,
+        "مسجد"@ur ;
+    rdfs:comment "Το τζαμί είναι ο τόπος λατρείας των Μουσουλμάνων."@el,
+        "A mosque, sometimes spelt mosk, is a place of worship for followers of Islam."@en,
+        "Une mosquée est un lieu de culte où se rassemblent les musulmans pour les prières communes."@fr,
+        "Is áit adhartha na Moslamach, lucht leanúna an reiligiúin Ioslam, é mosc"@ga,
+        "Meczet - miejsce kultu muzułmańskiego"@pl,
+        "ایک مسجد اسلام کے پیروکاروں کے لیے عبادت گاہ ہے۔"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:Mountain a owl:Class ;
+    rdfs:label "ተራራ"@am,
+        "Berg"@de,
+        "Βουνό"@el,
+        "mountain"@en,
+        "montagne"@fr,
+        "sliabh"@ga,
+        "山"@ja,
+        "산"@ko,
+        "berg"@nl,
+        "montanha"@pt,
+        "پہاڑ"@ur,
+        "山"@zh ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:MountainPass a owl:Class ;
+    rdfs:label "Bergpass"@de,
+        "Πέρασμα βουνού"@el,
+        "mountain pass"@en,
+        "col de montagne"@fr,
+        "峠"@ja,
+        "bergpas"@nl,
+        "desfiladeiro"@pt,
+        "درہ"@ur ;
+    rdfs:comment "a path that allows the crossing of a mountain chain. It is usually a saddle point in between two areas of higher elevation"@en,
+        "ایک راستہ جو پہاڑی سلسلہ کو عبور کرنے کی اجازت دیتا ہے۔ یہ عام طور پر اونچی اونچائی کے دو علاقوں کے درمیان ایک سیڈل پوائنٹ ہوتا ہے"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:MountainRange a owl:Class ;
+    rdfs:label "Bergkette"@de,
+        "Οροσειρά"@el,
+        "mountain range"@en,
+        "chaîne de montagne"@fr,
+        "산맥"@ko,
+        "bergketen"@nl,
+        "cadeia montanhosa"@pt,
+        "پہاڑی سلسلہ"@ur ;
+    rdfs:comment "a chain of mountains bordered by highlands or separated from other mountains by passes or valleys."@en,
+        "پہاڑوں کی ایک زنجیر جو پہاڑوں سے متصل ہے یا دوسرے پہاڑوں سے راستوں یا وادیوں سے الگ ہے۔."@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Museum a owl:Class ;
+    rdfs:label "Museum"@de,
+        "μουσείο"@el,
+        "museum"@en,
+        "musée"@fr,
+        "músaem"@ga,
+        "博物館"@ja,
+        "박물관"@ko,
+        "museum"@nl,
+        "muzeum"@pl,
+        "museu"@pt,
+        "عجائب گھر"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:NaturalRegion a owl:Class ;
+    rdfs:label "Naturraum"@de,
+        "φυσική περιοχή"@el,
+        "natural region"@en,
+        "région naturelle"@fr,
+        "natuurlijke regio"@nl,
+        "قدرتی علاقہ"@ur ;
+    rdfs:comment "H φυσική περιοχή χρησιμοποιείται για να περιγράψει την έκταση μιας γεωγραφικής περιοχής στην οποία η ανθρωπογενής παρέμβαση είναι ανύπαρκτη μέχρι ελάχιστη"@el,
+        "قدرتی رقبہ کا استعمال کسی جغرافیائی علاقے کی حد کو بیان کرنے کے لیے کیا جاتا ہے جس میں بشریات کی مداخلت کم از کم موجود نہیں ہوتی"@ur ;
+    rdfs:subClassOf dbo:Region .
+
+dbo:NuclearPowerStation a owl:Class ;
+    rdfs:label "Kernkraftwerk"@de,
+        "Πυρηνικός Σταθμός Παραγωγής Ενέργειας"@el,
+        "Nuclear Power plant"@en,
+        "centrale nucléaire"@fr,
+        "stáisiún núicléach"@ga,
+        "kernenergiecentrale"@nl,
+        "ایٹمی بجلی گھر"@ur ;
+    rdfs:subClassOf dbo:PowerStation .
+
+dbo:Ocean a owl:Class ;
+    rdfs:label "Ozean"@de,
+        "Ωκεανός"@el,
+        "Ocean"@en,
+        "Océan"@fr,
+        "aigéan"@ga,
+        "大洋"@ja,
+        "oceaan"@nl,
+        "oceano"@pt,
+        "سمندر"@ur ;
+    rdfs:comment "Μάζα αλμυρού νερού που αποτελεί σημαντικό μέρος της υδρόσφαιρας ενός πλανήτη."@el,
+        "A body of saline water that composes much of a planet's hydrosphere."@en,
+        "نمکین پانی کا ایک جسم جو سیارے کے ہائیڈروسفیئر کا زیادہ تر حصہ بناتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:BodyOfWater .
+
+dbo:OldTerritory a owl:Class ;
+    rdfs:label "alten Länder"@de,
+        "old territory"@en,
+        "ancien territoire"@fr,
+        "پرانا علاقہ"@ur ;
+    rdfs:subClassOf dbo:Territory .
+
+dbo:OverseasDepartment a owl:Class ;
+    rdfs:label "Übersee-Departement"@de,
+        "overseas department"@en,
+        "département outre mer"@fr,
+        "overzees departement"@nl,
+        "بیرون ملک کے محکمے"@ur ;
+    rdfs:subClassOf dbo:Department .
+
+dbo:Parish a owl:Class ;
+    rdfs:label "Gemeinde"@de,
+        "ενορία"@el,
+        "parish"@en,
+        "paroisse"@fr,
+        "paróiste"@ga,
+        "小教区"@ja,
+        "parochie"@nl,
+        "پادری کا علاقہ"@ur ;
+    rdfs:comment "Είναι η μικρότερη μονάδα στην διοικητική ιερατική δομή."@el,
+        "The smallest unit of a clerical administrative body"@en,
+        "علما کے انتظامی ادارے کی سب سے چھوٹی اکائی"@ur ;
+    rdfs:subClassOf dbo:ClericalAdministrativeRegion .
+
+dbo:Park a owl:Class ;
+    rdfs:label "Park"@de,
+        "πάρκο"@el,
+        "park"@en,
+        "parc"@fr,
+        "páirc"@ga,
+        "公園"@ja,
+        "공원"@ko,
+        "park"@nl,
+        "parque"@pt,
+        "تفریح گاہ"@ur ;
+    rdfs:comment "A park is an area of open space provided for recreational use. http://en.wikipedia.org/wiki/Park"@en,
+        "پارک کھلی جگہ کا ایک علاقہ ہے جو تفریحی استعمال کے لیے فراہم کی جاتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Port a owl:Class ;
+    rdfs:label "Hafen"@de,
+        "Port"@en,
+        "Port"@fr,
+        "caladh"@ga,
+        "港湾"@ja,
+        "haven"@nl,
+        "بندرگاہ"@ur ;
+    rdfs:comment "a location on a coast or shore containing one or more harbors where ships can dock and transfer people or cargo to or from land."@en,
+        "ساحل یا ساحل پر ایک مقام جس میں ایک یا زیادہ بندرگاہیں ہوں جہاں بحری جہاز لوگوں یا سامان کو زمین پر یا اس سے منتقل کر سکتے ہیں"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Prefecture a owl:Class ;
+    rdfs:label "Präfektur"@de,
+        "νομαρχία"@el,
+        "prefecture"@en,
+        "préfecture"@fr,
+        "県"@ja,
+        "prefectuur"@nl,
+        "دائرہ اختيارات"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:Prison a owl:Class ;
+    rdfs:label "gefängnis"@de,
+        "φυλακή"@el,
+        "prison"@en,
+        "prison"@fr,
+        "príosún"@ga,
+        "prigione"@it,
+        "刑務所"@ja,
+        "gevangenis"@nl,
+        "جیل"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:ProtectedArea a owl:Class ;
+    rdfs:label "Schutzgebiet"@de,
+        "προστατευμένη περιοχή"@el,
+        "protected area"@en,
+        "aire protégée"@fr,
+        "保護地区"@ja,
+        "beschermd gebied"@nl,
+        "محفوظ علاقہ"@ur ;
+    rdfs:comment "This class should be used for protected nature. For enclosed neighbourhoods there is now class GatedCommunity"@en,
+        "Deze klasse duidt gebieden aan met de status 'beschermd'. Is dus eigenlijk ook geen klasse, maar zou een attribuut moeten zijn"@nl,
+        "یہ طبقہ 'محفوظ' حیثیت والے علاقوں کو ظاہر کرتا ہے"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Pyramid a owl:Class ;
+    rdfs:label "Pyramide"@de,
+        "Pyramid"@en,
+        "Pyramide"@fr,
+        "pirimid"@ga,
+        "ピラミッド"@ja,
+        "pyramide"@nl,
+        "مخروطی مصری مینار"@ur ;
+    rdfs:comment "a structure whose shape is roughly that of a pyramid in the geometric sense."@en,
+        "ایک ڈھانچہ جس کی شکل ہندسی معنوں میں تقریبا ایک اہرام کی ہے۔"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Racecourse a owl:Class ;
+    rdfs:label "Rennbahn"@de,
+        "ιππόδρομος"@el,
+        "racecourse"@en,
+        "ráschúrsa"@ga,
+        "ippodromo"@it,
+        "競馬場"@ja,
+        "renbaan"@nl,
+        "بھاگنے والا رستہ"@ur ;
+    rdfs:comment "Ο ιππόδρομος,εναλλακτικός όρος για την πίστα διεξαγωγής αγώνων μεταξύ ίππων,συναντάται σε χώρες όπως η Αγγλία, Αυστραλία, Χονγκ Κονγκ και τα Ηνωμένα Αραβικά Εμιράτα."@el,
+        "A racecourse is an alternate term for a horse racing track, found in countries such as the United Kingdom, Australia, Hong Kong, and the United Arab Emirates."@en,
+        "ریس کورس ہارس ریسنگ ٹریک کے لیے ایک متبادل اصطلاح ہے، جو برطانیہ، آسٹریلیا، ہانگ کانگ اور متحدہ عرب امارات جیسے ممالک میں پائی جاتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:RaceTrack .
+
+dbo:RailwayLine a owl:Class ;
+    rdfs:label "Eisenbahnlinie"@de,
+        "σιδηρόδρομος"@el,
+        "railway line"@en,
+        "lígne de chemin de fer"@fr,
+        "líne iarnróid"@ga,
+        "spoorlijn"@nl,
+        "ریلوے لائن"@ur ;
+    rdfs:comment "Eine Eisenbahnlinie im Verkehrswesen ist die regelmäßige Bedienung einer bestimmten Eisenbahnstrecke durch öffentliche Verkehrsmittel."@de,
+        "O σιδηρόδρομος είναι μια υπηρεσία μεταφοράς επιβατών ή εμπορευμάτων με τρένα που παρέχονται από έναν οργανισμό. Δεν πρέπει να συγχέεται με τη σιδηροδρομική γραμμή, τη δομή που αποτελείται από τις ράγες. Στη Βικιπαίδεια δε γίνεται σαφής διαφοροποίηση μεταξύ των δύο, έτσι υπάρχει ένα κουτί πληροφοριών που περιγράφει ράγες και γραμμές"@el,
+        "A railway line is a transport service by trains that pull passengers or freight provided by an organization. Not to be mistaken for railway track, which is the structure consisting of the rails. Wikipedia do not clearly differentiate between both, so there is one infobox describing tracks and lines."@en,
+        "Une ligne de chemin de fer est un service de transport par train qui achemine des passagers ou du fret fourni par une organisation. A ne pas confondre avec le réseau ferré qui est la structure formée par les rails. Wikipedia ne fait pas vraiement la différence entre les deux, il n'y a donc qu'une boîte d'information en même temps pour les lignes et le réseau."@fr,
+        "ریلوے لائن ٹرینوں کے ذریعہ ایک ٹرانسپورٹ سروس ہے جو مسافروں کو کھینچتی ہے یا کسی تنظیم کے ذریعہ فراہم کردہ سامان۔ ریلوے ٹریک کے لیے غلطی نہ کی جائے، جو کہ ریلوں پر مشتمل ڈھانچہ ہے۔ ویکیپیڈیا واضح طور پر دونوں کے درمیان فرق نہیں کرتا، اس لیے ٹریک اور لائنوں کو بیان کرنے والا ایک انفو باکس ہے."@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:RailwayStation a owl:Class ;
+    rdfs:label "Bahnhof"@de,
+        "σιδηροδρομικός σταθμός"@el,
+        "train station"@en,
+        "gare"@fr,
+        "stáisiún traenach"@ga,
+        "stazione ferroviaria"@it,
+        "鉄道駅"@ja,
+        "treinstation"@nl,
+        "ریلوےسٹیشن"@ur ;
+    rdfs:subClassOf dbo:Station .
+
+dbo:RailwayTunnel a owl:Class ;
+    rdfs:label "Eisenbahntunnel"@de,
+        "σιδηροδρομική σήραγγα"@el,
+        "railway tunnel"@en,
+        "tollán iarnróid"@ga,
+        "spoorwegtunnel"@nl,
+        "ریلوے سرنگ"@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:Regency a owl:Class ;
+    rdfs:label "Regentschaft"@de,
+        "αντιβασιλεία"@el,
+        "regency"@en,
+        "kabupaten"@in,
+        "摂政"@ja,
+        "regentschap (regering)"@nl,
+        "ریجنسی/نائب حکمرانی"@ur ;
+    rdfs:comment "bagian wilayah administratif dibawah provinsi"@in,
+        "صوبے کے تحت انتظامی علاقے کا حصہ"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:RestArea a owl:Class ;
+    rdfs:label "Rasthof"@de,
+        "rest area"@en,
+        "aire de repos"@fr,
+        "rustplaats"@nl,
+        "آرام گاہ"@ur ;
+    rdfs:comment "A rest area is part of a Road, meant to stop and rest. More often than not, there is a filling station"@en,
+        "Une aire de repos fait partie d'une route, destinée à s'arrêter et à se reposer. Le plus souvent, il y a une station-service"@fr,
+        "آرام گاہ ایک سڑک کا حصہ ہے، جس کا مقصد رکنا اور آرام کرنا ہے"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Restaurant a owl:Class ;
+    rdfs:label "Restaurant"@de,
+        "εστιατόριο"@el,
+        "restaurant"@en,
+        "restaurant"@fr,
+        "bialann"@ga,
+        "レストラン"@ja,
+        "restaurant"@nl,
+        "restauracja"@pl,
+        "ریستوراں"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:River a owl:Class ;
+    rdfs:label "ወንዝ"@am,
+        "Fluss"@de,
+        "ποτάμι"@el,
+        "river"@en,
+        "rivière"@fr,
+        "abhainn"@ga,
+        "川"@ja,
+        "강"@ko,
+        "rivier"@nl,
+        "rio"@pt,
+        "دریا"@ur ;
+    rdfs:comment "a large natural stream"@en,
+        "ایک بڑی قدرتی ندی"@ur ;
+    rdfs:subClassOf dbo:Stream .
+
+dbo:Road a owl:Class ;
+    rdfs:label "carretera"@ca,
+        "Straße"@de,
+        "δρόμος"@el,
+        "road"@en,
+        "carretera"@es,
+        "route"@fr,
+        "bóthar"@ga,
+        "道路"@ja,
+        "도로"@ko,
+        "weg"@nl,
+        "droga"@pl,
+        "سڑک"@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:RoadJunction a owl:Class ;
+    rdfs:label "Straßenkreuzung"@de,
+        "road junction"@en,
+        "carrefour"@fr,
+        "acomhal bóithre"@ga,
+        "wegkruising"@nl,
+        "وہ جگہ جہاں دو یا دو سے زیادہ راستے ملتے ہیں"@ur ;
+    rdfs:comment "Eine Straßenkreuzung ist eine Stelle, an der sich zwei oder mehrere Straßen kreuzen (http://de.wikipedia.org/wiki/Stra%C3%9Fenkreuzung)."@de,
+        "A road junction is a location where vehicular traffic going in different directions can proceed in a controlled manner designed to minimize accidents. In some cases, vehicles can change between different routes or directions of travel (http://en.wikipedia.org/wiki/Junction_%28road%29)."@en,
+        "Un carrefour est un endroit où le trafic automobile allant dans différentes directions, peut se réaliser d'une manière contrôlée conçue pour minimiser les accidents. Dans certains cas, les véhicules peuvent changer de route ou la direction de leur parcours (http://en.wikipedia.org/wiki/Junction_%28road%29)."@fr,
+        "روڈ جنکشن ایک ایسی جگہ ہے جہاں مختلف سمتوں میں جانے والی گاڑیوں کی ٹریفک حادثات کو کم کرنے کے لیے بنائے گئے کنٹرول کے انداز میں آگے بڑھ سکتی ہے۔ بعض صورتوں میں، گاڑیاں مختلف راستوں یا سفر کی سمتوں کے درمیان بدل سکتی ہیں۔ (http://en.wikipedia.org/wiki/Junction_%28road%29)."@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:RoadTunnel a owl:Class ;
+    rdfs:label "Straßentunnel"@de,
+        "Οδική σήραγγα"@el,
+        "road tunnel"@en,
+        "tunnel routier"@fr,
+        "tollán bóthair"@ga,
+        "wegtunnel"@nl,
+        "سڑک کی سرنگ"@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:RollerCoaster a owl:Class ;
+    rdfs:label "Achterbahn"@de,
+        "τρενάκι σε λούνα παρκ"@el,
+        "roller coaster"@en,
+        "rollchóstóir"@ga,
+        "montagne russe"@it,
+        "achtbaan"@nl,
+        "رولر کوسٹر"@ur ;
+    rdfs:subClassOf dbo:AmusementParkAttraction .
+
+dbo:RouteStop a owl:Class ;
+    rdfs:label "Haltestelle"@de,
+        "route stop"@en,
+        "étape"@fr,
+        "halte"@nl,
+        "رکنے کی جگہ"@ur ;
+    rdfs:comment "Betriebsstelle im öffentlichen Verkehr, an denen Fahrgäste ein- und aussteigen"@de,
+        "designated place where vehicles stop for passengers to board or alight"@en,
+        "une étape ou un arrêt sur une route"@fr ;
+    rdfs:subClassOf dbo:Station .
+
+dbo:Sea a owl:Class ;
+    rdfs:label "Meer"@de,
+        "θάλασσα"@el,
+        "sea"@en,
+        "mer"@fr,
+        "farraige"@ga,
+        "海"@ja,
+        "zee"@nl,
+        "mar"@pt,
+        "سمندر"@ur ;
+    rdfs:comment "Masse d'eau salée qui constitue la majeure partie de l'hydrosphère de la planète."@fr,
+        "نمکین پانی کا ایک جسم جو سیارے کے ہائیڈروسفیئر کا زیادہ تر حصہ بناتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:BodyOfWater .
+
+dbo:ShoppingMall a owl:Class ;
+    rdfs:label "Einkaufszentrum"@de,
+        "εμπορικό κέντρο"@el,
+        "shopping mall"@en,
+        "centre commercial"@fr,
+        "ionad siopadóireachta"@ga,
+        "ショッピングモール"@ja,
+        "쇼핑몰"@ko,
+        "winkelcentrum"@nl,
+        "shopping"@pt,
+        "خریداری کرنے کے لیے مختص جگہ"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Shrine a owl:Class ;
+    rdfs:label "schrein"@de,
+        "βωμός"@el,
+        "shrine"@en,
+        "sanctuaire"@fr,
+        "santuario"@it,
+        "神社"@ja,
+        "heiligdom"@nl,
+        "مزار"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:SiteOfSpecialScientificInterest a owl:Class ;
+    rdfs:label "wissenschaftliche Interessenvertretung für Denkmalschutz"@de,
+        "Τοποθεσία Ειδικού Επιστημονικού Ενδιαφέροντος"@el,
+        "Site of Special Scientific Interest"@en,
+        "site d'intérêt scientifique particulier"@fr,
+        "Láithreán Sainspéis Eolaíochta"@ga,
+        "自然保護協会特別指定地区"@ja,
+        "plaats met bijzonder wetenschappelijk belang"@nl,
+        "خصوصی سائنسی دلچسپی کی سائٹ"@ur ;
+    rdfs:comment "A Site of Special Scientific Interest (SSSI) is a conservation designation denoting a protected area in the United Kingdom. SSSIs are the basic building block of site-based nature conservation legislation and most other legal nature/geological conservation designations in Great Britain are based upon them, including National Nature Reserves, Ramsar Sites, Special Protection Areas, and Special Areas of Conservation."@en,
+        "خصوصی سائنسی دلچسپی کی سائٹ (SSSI) ایک تحفظ کا عہدہ ہے جو برطانیہ میں ایک محفوظ علاقے کی نشاندہی کرتا ہے۔ SSSIs سائٹ پر مبنی فطرت کے تحفظ سے متعلق قانون سازی کا بنیادی تعمیراتی حصہ ہیں اور برطانیہ میں بیشتر دیگر قانونی نوعیت/ارضیاتی تحفظ کے عہدہ ان پر مبنی ہیں، بشمول نیشنل نیچر ریزرو، رامسر سائٹس، خصوصی تحفظ کے علاقے، اور تحفظ کے خصوصی علاقے"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:SkiResort a owl:Class ;
+    rdfs:label "Skigebiet"@de,
+        "θέρετρο σκι"@el,
+        "ski resort"@en,
+        "station de ski"@fr,
+        "baile sciála"@ga,
+        "skioord"@nl,
+        "پھسلن کھیل کا میدان"@ur ;
+    rdfs:comment "Το θέρετρο σκι χρησιμοποιείται για να περιγράψει έναν τόπο διακοπών με τις απαραίτητες εγκαταστάσεις διαμονής και εξάσκησης του χειμερινού αθλήματος της χιονοδρομίας"@el,
+        "پھسلن کھیل میدان کا استعمال چھٹیوں کے مقام کو بیان کرنے کے لیے کیا جاتا ہے جس میں قیام اور اسکیئنگ کے موسم سرما کے کھیل کی مشق کے لیے ضروری سہولیات موجود ہیں"@ur ;
+    rdfs:subClassOf dbo:SkiArea .
+
+dbo:Skyscraper a owl:Class ;
+    rdfs:label "Hochhaus"@de,
+        "ουρανοξύστης"@el,
+        "skyscraper"@en,
+        "gratte-ciel"@fr,
+        "ilstórach"@ga,
+        "超高層建築物"@ja,
+        "초고층 건물"@ko,
+        "wolkenkrabber"@nl,
+        "فلک بوس عمارت"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:Square a owl:Class ;
+    rdfs:label "Platz"@de,
+        "square"@en,
+        "place"@fr,
+        "cearnóg"@ga,
+        "正方形"@ja,
+        "plein"@nl,
+        "چوکور"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:State a owl:Class ;
+    rdfs:label "ስቴት"@am,
+        "Staat"@de,
+        "πολιτεία"@el,
+        "state"@en,
+        "état"@fr,
+        "州"@ja,
+        "staat"@nl,
+        "ریاست"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Street a owl:Class ;
+    rdfs:label "Straße"@de,
+        "Οδός"@el,
+        "street"@en,
+        "straat"@fr,
+        "sráid"@ga,
+        "ストリート"@ja,
+        "rue"@nl ;
+    rdfs:comment "A Street is different from a Road in as far as the infrastructure aspect is much less important here. A Street is a social and architectural ensemble much more than the connection between two geographic points."@en ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:SubMunicipality a owl:Class ;
+    rdfs:label "Teilgemeinde"@de,
+        "borough"@en,
+        "parroquia"@gl,
+        "deelgemeente"@nl,
+        "ذیلی بلدیہ"@ur ;
+    rdfs:comment "An administrative body governing a territorial unity on the lowest level, administering part of a municipality"@en,
+        "ایک انتظامی ادارہ جو ایک علاقائی اتحاد کو نچلی سطح پر چلاتا ہے، بلدیہ کے حصے کا انتظام کرتا ہے"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:Synagogue a owl:Class ;
+    rdfs:label "Synagoge"@de,
+        "συναγωγή"@el,
+        "synagogue"@en,
+        "sinagoga"@es,
+        "synagogue"@fr,
+        "sionagóg"@ga,
+        "シナゴーグ"@ja,
+        "synagoge"@nl,
+        "synagoga"@pl,
+        "یہودیوں کی عبادت گاہ"@ur ;
+    rdfs:comment "A synagogue, sometimes spelt synagog, is a Jewish or Samaritan house of prayer."@en,
+        "Une synagogue est un lieu de culte juif."@fr,
+        "یہودیوں کی عبادت گاہ، ایک یہودی یا سامری نماز کا گھر ہے۔"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:Temple a owl:Class ;
+    rdfs:label "tempel"@de,
+        "ναός"@el,
+        "temple"@en,
+        "temple"@fr,
+        "teampall"@ga,
+        "tempio"@it,
+        "寺"@ja,
+        "tempel"@nl,
+        "مندر"@ur ;
+    rdfs:subClassOf dbo:ReligiousBuilding .
+
+dbo:Theatre a owl:Class ;
+    rdfs:label "Theater"@de,
+        "θέατρο"@el,
+        "theatre"@en,
+        "théâtre"@fr,
+        "amharclann"@ga,
+        "劇場"@ja,
+        "schouwburg"@nl,
+        "تماشا گاہ"@ur ;
+    rdfs:comment "A theater or theatre (also a playhouse) is a structure where theatrical works or plays are performed or other performances such as musical concerts may be produced."@en,
+        "ایک تھیٹر یا تھیٹر (ایک پلے ہاؤس بھی) ایک ڈھانچہ ہے جہاں تھیٹر کے کام یا ڈرامے پیش کیے جاتے ہیں یا دیگر پرفارمنس جیسے میوزیکل کنسرٹ تیار کیے جا سکتے ہیں"@ur ;
+    rdfs:subClassOf dbo:Venue .
+
+dbo:Town a owl:Class ;
+    rdfs:label "Stadt"@de,
+        "πόλη"@el,
+        "town"@en,
+        "ville"@fr,
+        "baile"@ga,
+        "नगर"@hi,
+        "町"@ja,
+        "stad"@nl,
+        "miasteczko"@pl,
+        "قصبہ"@ur ;
+    rdfs:comment "a settlement ranging from a few hundred to several thousand (occasionally hundreds of thousands). The precise meaning varies between countries and is not always a matter of legal definition. Usually, a town is thought of as larger than a village but smaller than a city, though there are exceptions to this rule."@en,
+        "چند سو سے لے کر کئی ہزار (کبھی کبھار سیکڑوں ہزاروں) تک کی تصفیہ۔ درست معنی ممالک کے درمیان مختلف ہوتے ہیں اور یہ ہمیشہ قانونی تعریف کا معاملہ نہیں ہوتا ہے۔ عام طور پر، ایک قصبہ کو گاؤں سے بڑا لیکن شہر سے چھوٹا سمجھا جاتا ہے، حالانکہ اس اصول میں مستثنیات ہیں"@ur ;
+    rdfs:subClassOf dbo:Settlement .
+
+dbo:TramStation a owl:Class ;
+    rdfs:label "Straßenbahnhaltestelle"@de,
+        "tram station"@en,
+        "station de tramway"@fr,
+        "tramhalte"@nl,
+        "ٹرام گاڑی کا اڈا"@ur ;
+    rdfs:subClassOf dbo:Station .
+
+dbo:Treadmill a owl:Class ;
+    rdfs:label "Tretmühle"@de,
+        "Μύλος"@el,
+        "Treadmill"@en,
+        "トレッドミル"@ja,
+        "Rosmolen"@nl,
+        "ڈھینکلی"@ur ;
+    rdfs:comment "A mill driven by the tractive power of horses, donkeys or even people"@en,
+        "گھوڑوں، گدھوں یا یہاں تک کہ لوگوں کی کشش طاقت سے چلنے والی چکی"@ur ;
+    rdfs:subClassOf dbo:Mill .
+
+dbo:Tunnel a owl:Class ;
+    rdfs:label "Tunnel"@de,
+        "τούνελ"@el,
+        "tunnel"@en,
+        "tunnel"@fr,
+        "tollán"@ga,
+        "トンネル"@ja,
+        "터널"@ko,
+        "tunnel"@nl,
+        "سرنگ"@ur ;
+    rdfs:comment "Ein Tunnel (auch Tunell) ist eine künstliche Passage, die Berge, Gewässer oder andere Hindernisse (in der Regel als Verkehrsweg) unterquert (http://de.wikipedia.org/wiki/Tunnel)."@de,
+        "Ένα τούνελ μπορεί να είναι για πεζούς ή για αυτοκινητόδρομους,για σιδηρόδρομους,ή για κανάλια στο νερό.Μερικά τούνελ είναι υδραγωγεία για να παρέχουν νερό προς κατανάλωση ή για υδροηλεκτικούς σταθμούς ή είναι υπόνομοι."@el,
+        "A tunnel may be for foot or vehicular road traffic, for rail traffic, or for a canal. Some tunnels are aqueducts to supply water for consumption or for hydroelectric stations or are sewers (http://en.wikipedia.org/wiki/Tunnel)."@en,
+        "Un tunnel est une galerie souterraine livrant passage à une voie de communication (chemin de fer, canal, route, chemin piétonnier). Sont apparentés aux tunnels par leur mode de construction les grands ouvrages hydrauliques souterrains, tels que les aqueducs, collecteurs et émissaires destinés soit à l'amenée, soit à l'évacuation des eaux des grands centres et certaines conduites établies en liaison avec les barrages et usines hydro-électriques.  (http://fr.wikipedia.org/wiki/Tunnel)."@fr,
+        "ایک سرنگ پیدل یا گاڑیوں کی سڑک کے لیے، ریل ٹریفک کے لیے، یا نہر کے لیے ہو سکتی ہے۔ کچھ سرنگیں پانی کی کھپت یا ہائیڈرو الیکٹرک اسٹیشنوں کے لیے پانی کی فراہمی کے لیے آبی راستے ہیں یا گٹر ہیں"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Valley a owl:Class ;
+    rdfs:label "tal"@de,
+        "Κοιλάδα"@el,
+        "valley"@en,
+        "vallée"@fr,
+        "gleann"@ga,
+        "valle"@it,
+        "谷"@ja,
+        "vallei"@nl,
+        "vale"@pt,
+        "وادی"@ur ;
+    rdfs:comment "a depression with predominant extent in one direction"@en,
+        "پہاڑیوں یا پہاڑوں کے درمیان زمین کا ایک نچلا علاقہ، عام طور پر اس میں سے دریا یا ندی بہتی ہے"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Village a owl:Class ;
+    rdfs:label "dorf"@de,
+        "χωριό"@el,
+        "village"@en,
+        "village"@fr,
+        "sráidbhaile"@ga,
+        "lugar"@gl,
+        "गाँव"@hi,
+        "desa"@in,
+        "村"@ja,
+        "dorp"@nl,
+        "wieś"@pl,
+        "گاؤں"@ur ;
+    rdfs:comment "a clustered human settlement or community, usually smaller a town"@en,
+        "Núcleo pequeno de poboación en que se divide unha parroquia, con poucos veciños e de carácter rural."@gl,
+        "ایک انسانی بستی یا برادری کا جھنڈ ، عام طور پر ایک چھوٹا قصبہ"@ur ;
+    rdfs:subClassOf dbo:Settlement .
+
+dbo:Volcano a owl:Class ;
+    rdfs:label "Vulkan"@de,
+        "ηφαίστειο"@el,
+        "volcano"@en,
+        "volcan"@fr,
+        "bolcán"@ga,
+        "火山"@ja,
+        "vulkaan"@nl,
+        "vulcão"@pt,
+        "آتش فشاں"@ur ;
+    rdfs:comment "Το ηφαίστειο είναι υποκατηγορία φυσικών καταστάσεων, αλλά μπορεί επίσης να θεωρηθεί και βουνό."@el,
+        "A volcano is currently subclass of naturalplace, but it might also be considered a mountain."@en,
+        "آتش فشاں فی الحال قدرتی جگہ کا ذیلی طبقہ ہے، لیکن اسے پہاڑ بھی سمجھا جا سکتا ہے"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:WaterRide a owl:Class ;
+    rdfs:label "Wasserbahn"@de,
+        "water ride"@en,
+        "marcaíocht uisce"@ga,
+        "waterbaan"@nl,
+        "پانی کی سواری"@ur ;
+    rdfs:subClassOf dbo:AmusementParkAttraction .
+
+dbo:WaterTower a owl:Class ;
+    rdfs:label "Wasserturm"@de,
+        "πύργος νερού"@el,
+        "Water tower"@en,
+        "Château d'eau"@fr,
+        "Serbatoio idrico a torre"@it,
+        "Watertoren"@nl,
+        "بُرج آب"@ur ;
+    rdfs:comment "μια κατασκευή σχεδιασμένη για αποθήκευση μεγάλων ποσοτήτων νερού σε μέρος με κάποια ανύψωση, ώστε να διατηρήσει πίεση στο σύστημα παροχής νερού"@el,
+        "a construction designed to store larger quantities of water at a place of some elevation in order to keep pressure on the water provision system"@en,
+        "une construction destinée à entreposer l'eau, et placée en général sur un sommet géographique pour permettre de la distribuer sous pression"@fr,
+        "پانی کی فراہمی کے نظام پر دباؤ برقرار رکھنے کے لیے کچھ بلندی کی جگہ پر پانی کی بڑی مقدار کو ذخیرہ کرنے کے لیے ڈیزائن کیا گیا ایک تعمیر"@ur ;
+    rdfs:subClassOf dbo:Tower .
+
+dbo:Watermill a owl:Class ;
+    rdfs:label "Wassermühle"@de,
+        "Νερόμυλος"@el,
+        "Watermill"@en,
+        "Moulin à eau"@fr,
+        "muileann uisce"@ga,
+        "mulino ad acqua"@it,
+        "水車小屋"@ja,
+        "Watermolen"@nl,
+        "پن چکی"@ur ;
+    rdfs:comment "A watermill is a structure that uses a water wheel or turbine to drive a mechanical process such as flour, lumber or textile production, or metal shaping (rolling, grinding or wire drawing)"@en,
+        "واٹر مل ایک ایسا ڈھانچہ ہے جو پانی کے پہیے یا ٹربائن کا استعمال مکینیکل عمل کو چلانے کے لیے کرتا ہے جیسے آٹا، لکڑی یا ٹیکسٹائل کی پیداوار، یا دھات کی تشکیل (رولنگ، پیسنا یا تار ڈرائنگ)"@ur ;
+    rdfs:subClassOf dbo:Mill .
+
+dbo:WaterwayTunnel a owl:Class ;
+    rdfs:label "Kanaltunnel"@de,
+        "waterway tunnel"@en,
+        "tunnel de voie navigable"@fr,
+        "tollán uiscebhealaigh"@ga,
+        "kanaaltunnel"@nl,
+        "آبی گزرگاہ کی سرنگ"@ur ;
+    rdfs:subClassOf dbo:RouteOfTransportation .
+
+dbo:WindMotor a owl:Class ;
+    rdfs:label "Windkraft"@de,
+        "Wind motor"@en,
+        "éolienne"@fr,
+        "Roosmolen"@nl,
+        "پَوَن چکّی کی طرح کی کّل"@ur ;
+    rdfs:comment "A wind-driven turbine that adapts itself to wind direction and to wind-force. Is considered to be a class in its own, despite the wind as common factor with Windmill."@en,
+        "ہوا سے چلنے والی ٹربائن جو خود کو ہوا کی سمت اور ہوا کی طاقت کے مطابق ڈھال لیتی ہے۔ ونڈ مل کے ساتھ عام فیکٹر کے طور پر ہوا کے باوجود، اپنی ذات میں ایک طبقہ سمجھا جاتا ہے"@ur ;
+    rdfs:subClassOf dbo:Mill .
+
+dbo:Windmill a owl:Class ;
+    rdfs:label "vindmølle"@da,
+        "Windmühle"@de,
+        "Ανεμόμυλος"@el,
+        "Windmill"@en,
+        "Molinos de viento"@es,
+        "moulin à vent"@fr,
+        "muileann gaoithe"@ga,
+        "mulino a vento"@it,
+        "風車"@ja,
+        "Windmolen"@nl,
+        "ہوا کی چکی"@ur ;
+    rdfs:comment "A windmill is a machine that converts the energy of wind into rotational energy by means of vanes called sails"@en,
+        "Le moulin à vent est un dispositif qui transforme l'énergie éolienne (énergie cinétique du vent) en mouvement rotatif au moyen d'ailes ajustables."@fr,
+        "ہوا کی چکی ایک مشین ہے جو ہوا کی توانائی کو سیل نامی وینز کے ذریعے گردشی توانائی میں تبدیل کرتی ہے"@ur ;
+    rdfs:subClassOf dbo:Mill .
+
+dbo:WineRegion a owl:Class ;
+    rdfs:label "Weinregion"@de,
+        "wine region"@en,
+        "région viticole"@fr,
+        "ワイン産地"@ja,
+        "wijnstreek"@nl,
+        "شراب کا علاقہ"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:WorldHeritageSite a owl:Class ;
+    rdfs:label "Weltkulturerbe"@de,
+        "Μνημείο Παγκόσμιας Πολιτιστικής Κληρονομιάς (Πληροφορίες ΠΠΚ)"@el,
+        "World Heritage Site"@en,
+        "site du patrimoine mondial"@fr,
+        "Láithreán Oidhreachta Domhanda"@ga,
+        "世界遺産"@ja,
+        "세계유산"@ko,
+        "werelderfgoed"@nl,
+        "عالمی ثقافتی ورثہ"@ur ;
+    rdfs:comment "A UNESCO World Heritage Site is a site (such as a forest, mountain, lake, desert, monument, building, complex, or city) that is on the list that is maintained by the international World Heritage Programme administered by the UNESCO World Heritage Committee, composed of 21 state parties which are elected by their General Assembly for a four-year term. A World Heritage Site is a place of either cultural or physical significance."@en,
+        "یونیسکو کی عالمی ثقافتی ورثہ سائٹ ایک ایسی جگہ ہے (جیسے جنگل، پہاڑ، جھیل، صحرا، یادگار، عمارت، کمپلیکس، یا شہر) جو اس فہرست میں شامل ہے جسے یونیسکو کی عالمی ثقافتی ورثہ کمیٹی کے زیر انتظام بین الاقوامی عالمی ثقافتی ورثہ پروگرام کے ذریعے برقرار رکھا جاتا ہے۔ 21 ریاستی پارٹیوں پر مشتمل ہے جنہیں ان کی جنرل اسمبلی چار سال کی مدت کے لیے منتخب کرتی ہے۔ عالمی ثقافتی ورثہ کی جگہ ثقافتی یا جسمانی اہمیت کی حامل جگہ ہے"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Zoo a owl:Class ;
+    rdfs:label "zoo"@da,
+        "Zoo"@de,
+        "ζωολογικός κήπος"@el,
+        "zoo"@en,
+        "zoo"@fr,
+        "zú"@ga,
+        "動物園"@ja,
+        "dierentuin"@nl,
+        "چڑیا گھر"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Country a owl:Class ;
+    rdfs:label "ሀገር"@am,
+        "land"@da,
+        "Staat"@de,
+        "χώρα"@el,
+        "country"@en,
+        "país"@es,
+        "pays"@fr,
+        "tír"@ga,
+        "国"@ja,
+        "나라"@ko,
+        "land"@nl,
+        "Государство"@ru,
+        "država"@sl,
+        "ملک"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Crater a owl:Class ;
+    rdfs:label "Krater"@de,
+        "κρατήρας"@el,
+        "crater"@en,
+        "cratère"@fr,
+        "cráitéar"@ga,
+        "cratere"@it,
+        "クレーター"@ja,
+        "krater"@nl,
+        "cratera"@pt,
+        "دہانه"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Department a owl:Class ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:District a owl:Class ;
+    rdfs:label "Bezirk"@de,
+        "περιοχή"@el,
+        "district"@en,
+        "arrondissement"@fr,
+        "ceantar"@ga,
+        "kecamatan"@in,
+        "地区"@ja,
+        "구"@ko,
+        "district"@nl,
+        "ضلع"@ur ;
+    rdfs:comment "bagian wilayah administratif dibawah kabupaten"@in,
+        "ضلع کے تحت انتظامی علاقے کا حصہ"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:HistoricalAreaOfAuthority a owl:Class ;
+    rdfs:label "ancient area of jurisdiction of a person (feudal) or of a governmental body"@en,
+        "gebied dat vroeger onder het gezag viel van een heer of vrouwe of een instelling van kerk of staat"@nl,
+        "کسی شخص (جاگیردار) یا سرکاری ادارے کے دائرہ اختیار کا قدیم علاقہ"@ur ;
+    rdfs:comment "Mostly for feudal forms of authority, but can also serve for historical forms of centralised authority"@en,
+        "زیادہ تر اختیارات کی جاگیردارانہ شکلوں کے لیے ، لیکن مرکزی اختیار کی تاریخی شکلوں کے لیے بھی کام کر سکتا ہے"@ur ;
+    rdfs:subClassOf dbo:AdministrativeRegion .
+
+dbo:Island a owl:Class ;
+    rdfs:label "ø"@da,
+        "Insel"@de,
+        "νησί"@el,
+        "island"@en,
+        "Isla"@es,
+        "île"@fr,
+        "oileán"@ga,
+        "島"@ja,
+        "섬"@ko,
+        "eiland"@nl,
+        "wyspa"@pl,
+        "ilha"@pt,
+        "جزیرہ"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:MilitaryStructure a owl:Class ;
+    rdfs:label "militärisches Bauwerk"@de,
+        "Στρατιωτική Δομή"@el,
+        "military structure"@en,
+        "structure militaire"@fr,
+        "군사 건축물"@ko,
+        "militair bouwwerk"@nl,
+        "فوجی ڈھانچہ"@ur ;
+    rdfs:comment "A military structure such as a Castle, Fortress, Wall, etc."@en,
+        "Une structure miltaire telle qu'un château, une forteresse, des remparts, etc."@fr,
+        "ایک فوجی ڈھانچہ جیسے قلعہ اور دیوار وغیرہ"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Mine a owl:Class ;
+    rdfs:label "Mine (Bergwerk)"@de,
+        "mine"@en,
+        "mine"@fr,
+        "鉱山"@ja,
+        "mijn (delfstoffen))"@nl,
+        "کان"@ur ;
+    rdfs:comment "A mine is a place where mineral resources are or were extracted"@en,
+        "Une mine est un endroit où des ressources minérales sont, ou ont été extraites."@fr,
+        "Een mijn is een plaats waar delfstoffen worden of werden gewonnen"@nl,
+        "کان ایک ایسی جگہ ہے جہاں معدنی وسائل ہیں یا نکالے گئے ہیں۔"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:Municipality a owl:Class ;
+    rdfs:label "Gemeinde"@de,
+        "δήμος"@el,
+        "municipality"@en,
+        "municipio"@es,
+        "commune"@fr,
+        "基礎自治体"@ja,
+        "gemeente"@nl,
+        "بلدیہ"@ur ;
+    rdfs:comment "Δήμος ονομάζεται μία οντότητα της δημόσιας διοίκησης, η οποία στα περισσότερα κράτη αποτελεί τη βασική αυτοδιοικητική μονάδα και κατά κανόνα περιλαμβάνει μια πόλη ή κωμόπολη και τα γύρω χωριά της."@el,
+        "An administrative body governing a territorial unity on the lower level, administering one or a few more settlements"@en,
+        "Un Municipio es el ente local definido en el artículo 140 de la Constitución española y la entidad básica de la organización territorial del Estado según el artículo 1 de la Ley 7/1985, de 2 de abril, Reguladora de las Bases del Régimen Local. Tiene personalidad jurídica y plena capacidad para el cumplimiento de sus fines. La delimitación territorial de Municipio está recogida del REgistro Central de Cartografía del IGN"@es,
+        "ایک انتظامی ادارہ جو نچلی سطح پر علاقائی اتحاد کو کنٹرول کرتا ہے، ایک یا چند مزید بستیوں کا انتظام کرتا ہے"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:PowerStation a owl:Class ;
+    rdfs:label "Kraftwerk"@de,
+        "σταθμός παραγωγής ενέργειας"@el,
+        "power station"@en,
+        "central eléctrica"@es,
+        "centrale électrique"@fr,
+        "stáisiún cumhachta"@ga,
+        "発電所"@ja,
+        "Elektriciteitscentrale"@nl,
+        "بجلی گھر"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:Province a owl:Class ;
+    rdfs:label "Provinz"@de,
+        "επαρχία"@el,
+        "province"@en,
+        "province"@fr,
+        "cúige"@ga,
+        "英語圏の行政区画"@ja,
+        "provincie"@nl,
+        "صوبہ"@ur ;
+    rdfs:comment "Είναι διοικητική δομή του κράτους που διοικεί μια περιοχή που είναι σε έκταση μεγαλύτερη από τοπικό επίπεδο και μικρότερη από εθνικό επίπεδο."@el,
+        "An administrative body governing a territorial unity on the intermediate level, between local and national level"@en,
+        "Entité administrative en charge d'une unité territoriale se situant entre le niveau local et national; ex: Province Nord (Nouvelle-Calédonie)"@fr,
+        "ایک انتظامی ادارہ جو مقامی اور قومی سطح کے درمیان انٹرمیڈیٹ سطح پر علاقائی وحدت کا انتظام کرتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+
+dbo:RaceTrack a owl:Class ;
+    rdfs:label "Rennstrecke"@de,
+        "πίστα αγώνων"@el,
+        "race track"@en,
+        "circuit de course"@fr,
+        "rásraon"@ga,
+        "サーキットのコース"@ja,
+        "racecircuit"@nl,
+        "راستہ جس پر دوڑ لگائی جاتی ہیں۔"@ur ;
+    rdfs:subClassOf dbo:SportFacility .
+
+dbo:SkiArea a owl:Class ;
+    rdfs:label "Skigebiet"@de,
+        "Περιοχή Χιονοδρομίας"@el,
+        "ski area"@en,
+        "domaine skiable"@fr,
+        "láthair sciála"@ga,
+        "スキー場"@ja,
+        "اسکی  کاعلاقہ"@ur ;
+    rdfs:subClassOf dbo:SportFacility .
+
+dbo:Territory a owl:Class ;
+    rdfs:label "Territorium"@de,
+        "περιοχή"@el,
+        "territory"@en,
+        "Territoire"@fr,
+        "国土"@ja,
+        "territorium"@nl,
+        "ماتحت علاقہ"@ur ;
+    rdfs:comment "A territory may refer to a country subdivision, a non-sovereign geographic region."@en,
+        "Un territoire peut désigner une subdivision de pays, une région géographique non souveraine."@fr,
+        "ایک ماتحت علاقہ کسی ملک کی ذیلی تقسیم، ایک غیر خودمختار جغرافیائی خطہ کا حوالہ دے سکتا ہے۔"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:AmusementParkAttraction a owl:Class ;
+    rdfs:label "Vergnügungsparkattraktion"@de,
+        "δραστηριότητα λούνα πάρκ"@el,
+        "amusement park attraction"@en,
+        "parc d'attractions"@fr,
+        "atracción de parque de atraccións"@gl,
+        "pretparkattractie"@nl,
+        "تفریحی پارک کی کشش"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:City a owl:Class ;
+    rdfs:label "by"@da,
+        "Stadt"@de,
+        "πόλη"@el,
+        "city"@en,
+        "ciudad"@es,
+        "ville"@fr,
+        "cathair"@ga,
+        "cidade"@gl,
+        "शहर"@hi,
+        "città"@it,
+        "市"@ja,
+        "도시"@ko,
+        "stad"@nl,
+        "miasto"@pl,
+        "cidade"@pt,
+        "شہر"@ur ;
+    rdfs:comment "a relatively large and permanent settlement, particularly a large urban settlement"@en,
+        "un asentamiento permanente y relativamente grande, especialmente un gran asentamiento urbano"@es,
+        "Actualmente considérase como unha entidade urbana con alta densidade de poboación na que predominan fundamentalmente a industria e os servizos."@gl,
+        "ایک نسبتا  بڑی اور مستقل آبادی ، خاص طور پر ایک بڑی شہری بستی"@ur ;
+    rdfs:subClassOf dbo:Settlement .
+
+dbo:Monument a owl:Class ;
+    rdfs:label "Denkmal"@de,
+        "μνημείο"@el,
+        "monument"@en,
+        "monument"@fr,
+        "séadchomhartha"@ga,
+        "モニュメント"@ja,
+        "monument"@nl,
+        "یادگار"@ur ;
+    rdfs:comment "A type of structure (a statue or an art object) created to commemorate a person or important event, not necessarily of a catastrophic nature."@en,
+        "ایک قسم کا ڈھانچہ (ایک مجسمہ یا آرٹ آبجیکٹ) کسی شخص یا اہم واقعہ کی یاد میں بنایا گیا ، ضروری نہیں کہ تباہ کن نوعیت کا ہو۔"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Stream a owl:Class ;
+    rdfs:label "Bach"@de,
+        "ρέμα"@el,
+        "stream"@en,
+        "ruisseau"@fr,
+        "sruthán"@ga,
+        "ruscello"@it,
+        "河川"@ja,
+        "stroom"@nl,
+        "curso d'água"@pt,
+        "ندی"@ur ;
+    rdfs:comment "a flowing body of water with a current, confined within a bed and stream banks"@en,
+        "پانی کا بہتا ہوا کرنٹ ، ایک بستر اور ندی کے کناروں میں محدود ہے۔"@ur ;
+    rdfs:subClassOf dbo:BodyOfWater .
+
+dbo:Tower a owl:Class ;
+    rdfs:label "Turm"@de,
+        "πύργος"@el,
+        "tower"@en,
+        "tour"@fr,
+        "túr"@ga,
+        "塔"@ja,
+        "toren"@nl,
+        "مینار"@ur ;
+    rdfs:comment "A Tower is a kind of structure (not necessarily a building) that is higher than the rest"@en,
+        "مینار ایک قسم کا ڈھانچہ ہے (ضروری نہیں کہ کوئی عمارت) جو باقی سے اونچی ہو"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Venue a owl:Class ;
+    rdfs:label "Veranstaltungsort"@de,
+        "τόπος συνάντησης"@el,
+        "venue"@en,
+        "lieu"@fr,
+        "ionad"@ga,
+        "경기장"@ko,
+        "پنڈال"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:AdministrativeRegion a owl:Class ;
+    rdfs:label "Verwaltungsregion"@de,
+        "διοικητική περιφέρεια"@el,
+        "administrative region"@en,
+        "région administrative"@fr,
+        "réigiún riaracháin"@ga,
+        "rexión administrativa"@gl,
+        "regione amministrativa"@it,
+        "行政区画"@ja,
+        "관리 지역"@ko,
+        "bestuurlijk gebied"@nl,
+        "انتظامی علاقہ"@ur,
+        "行政區"@zh ;
+    rdfs:comment "A PopulatedPlace under the jurisdiction of an administrative body. This body may administer either a whole region or one or more adjacent Settlements (town administration)"@en,
+        "(نتظامی علاقہ)انتظامی ادارے کے دائرہ اختیار میں ایک آبادی والی جگہ۔ یہ ادارہ یا تو ایک پورے علاقے یا ایک یا اس سے ملحقہ بستیوں کا انتظام کر سکتا ہے"@ur ;
+    rdfs:subClassOf dbo:Region .
+
+dbo:ClericalAdministrativeRegion a owl:Class ;
+    rdfs:label "klerikale Verwaltungsregion"@de,
+        "clerical administrative region"@en,
+        "région administrative dans une église"@fr,
+        "사무 관리 지역"@ko,
+        "kerkelijk bestuurlijk gebied"@nl,
+        "علمی انتظامی علاقہ"@ur ;
+    rdfs:comment "An administrative body governing some territorial unity, in this case a clerical administrative body"@en,
+        "ایک علمی انتظامی معاملات میں ایک انتظامی ادارہ جو کچھ علاقائی وحدت کو کنٹرول کرتا ہے"@ur ;
+    rdfs:subClassOf dbo:AdministrativeRegion .
+
+dbo:Region a owl:Class ;
+    rdfs:label "Region"@de,
+        "περιοχή"@el,
+        "region"@en,
+        "région"@fr,
+        "réigiún"@ga,
+        "地域"@ja,
+        "regio"@nl,
+        "علاقہ"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:Mill a owl:Class ;
+    rdfs:label "mølle"@da,
+        "Mühle"@de,
+        "Μύλος"@el,
+        "Mill"@en,
+        "Moulin"@fr,
+        "muileann"@ga,
+        "mulino"@it,
+        "粉砕機"@ja,
+        "Molen"@nl,
+        "چکی"@ur ;
+    rdfs:comment "a unit operation designed to break a solid material into smaller pieces"@en,
+        "ایک یونٹ آپریشن جو ٹھوس مواد کو چھوٹے ٹکڑوں میں توڑنے کے لیے ڈیزائن کیا گیا ہے۔"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:SportFacility a owl:Class ;
+    rdfs:label "Sportanlage"@de,
+        "αθλητικές εγκαταστάσεις"@el,
+        "sport facility"@en,
+        "installation sportive"@fr,
+        "sportfaciliteit"@nl,
+        "کھیل کی سہولت"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Station a owl:Class ;
+    rdfs:label "Bahnhof"@de,
+        "Σταθμός"@el,
+        "station"@en,
+        "estación"@es,
+        "gare"@fr,
+        "stáisiún"@ga,
+        "駅"@ja,
+        "station"@nl,
+        "estação"@pt,
+        "станция"@ru,
+        "اڈا"@ur ;
+    rdfs:comment "Public transport station (eg. railway station, metro station, bus station)."@en,
+        "Остановка общественного транспорта (например: железнодорожная станция, станция метро, автостанция)."@ru,
+        "پبلک ٹرانسپورٹ اسٹیشن (مثلاً ریلوے اسٹیشن، میٹرو اسٹیشن، بس اسٹیشن)"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:BodyOfWater a owl:Class ;
+    rdfs:label "Gewässer"@de,
+        "ύδατα"@el,
+        "body of water"@en,
+        "Cuerpo de agua"@es,
+        "étendue d'eau"@fr,
+        "distesa d'acqua"@it,
+        "水域"@ja,
+        "수역"@ko,
+        "watervlakte"@nl,
+        "extensão d'água"@pt,
+        "اجسامِ آب"@ur ;
+    rdfs:comment "Συγκεντρωμένες, συνήθως μεγάλες ποσότητες νερού (π.χ. ωκεανοί) που βρίσκονται στη Γη ή σε οποιονδήποτε άλλο πλανήτη. Ο όρος χρησιμοποιείται και για υδάτινους σχηματισμούς όπου υπάρχει κίνηση του νερού, όπως ποταμοί, ρεύματα ή κανάλια."@el,
+        "مرکوز ، عام طور پر پانی کی بڑی مقدار (جیسے سمندر) جو زمین یا کسی دوسرے سیارے پر پائے جاتے ہیں۔ یہ اصطلاح آبی شکلوں کے لیے بھی استعمال ہوتی ہے جہاں پانی کی نقل و حرکت ہوتی ہے ، جیسے دریا ، نہریں یا نہریں"@ur ;
+    rdfs:subClassOf dbo:NaturalPlace .
+
+dbo:Settlement a owl:Class ;
+    rdfs:label "Siedlung"@de,
+        "οικισμός"@el,
+        "settlement"@en,
+        "zone peuplée"@fr,
+        "bardas"@ga,
+        "居住地"@ja,
+        "nederzetting"@nl,
+        "بستی"@ur ;
+    rdfs:subClassOf dbo:PopulatedPlace .
+
+dbo:ReligiousBuilding a owl:Class ;
+    rdfs:label "religiøs bygning"@da,
+        "religiöses Gebäude"@de,
+        "θρησκευτικό κτίριο"@el,
+        "religious building"@en,
+        "edificio religioso"@es,
+        "édifice religieux"@fr,
+        "edificio religioso"@it,
+        "宗教建築"@ja,
+        "종교 건물"@ko,
+        "cultusgebouw"@nl,
+        "مذہبی عمارت"@ur ;
+    rdfs:subClassOf dbo:Building .
+
+dbo:RouteOfTransportation a owl:Class ;
+    rdfs:label "Transportweg"@de,
+        "route of transportation"@en,
+        "Vía de transporte"@es,
+        "نقل و حمل کا راستہ"@ur ;
+    rdfs:comment "Unter Transportwegen (Verkehrswegen) versteht man Verkehrswege, auf denen Güter oder Personen transportiert werden. Dabei unterscheidet man zwischen Transportwegen zu Luft, zu Wasser und zu Lande, die dann für die unterschiedliche Verkehrsarten genutzt werden (http://de.wikipedia.org/wiki/Transportweg)."@de,
+        "A route of transportation (thoroughfare) may refer to a public road, highway, path or trail or a route on water from one place to another for use by a variety of general traffic (http://en.wikipedia.org/wiki/Thoroughfare)."@en,
+        "نقل و حمل کا ایک راستہ (مکمل راستہ) ایک عام سڑک ، شاہراہ ، راستہ یا راستے پر پانی سے ایک جگہ سے دوسری جگہ پر جانے کا حوالہ دے سکتا ہے"@ur ;
+    rdfs:subClassOf dbo:Infrastructure .
+
+dbo:GovernmentalAdministrativeRegion a owl:Class ;
+    rdfs:label "staatliche Verwaltungsregion"@de,
+        "governmental administrative region"@en,
+        "région administrative d'état"@fr,
+        "gebied onder overheidsbestuur"@nl,
+        "حکومتی انتظامی علاقہ"@ur ;
+    rdfs:comment "An administrative body governing some territorial unity, in this case a governmental administrative body"@en,
+        "ایک انتظامی ادارہ جو کچھ علاقائی وحدت کو کنٹرول کرتا ہے ، اس صورت میں ایک سرکاری انتظامی ادارہ ہے۔"@ur ;
+    rdfs:subClassOf dbo:AdministrativeRegion .
+
+dbo:Infrastructure a owl:Class ;
+    rdfs:label "infrastruktur"@da,
+        "Infrastruktur"@de,
+        "Υποδομή"@el,
+        "infrastructure"@en,
+        "infrastructure"@fr,
+        "インフラストラクチャー"@ja,
+        "infrastructure"@nl,
+        "بنیادی ڈھانچہ"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:ArchitecturalStructure a owl:Class ;
+    rdfs:label "Bauwerk"@de,
+        "αρχιτεκτονική κατασκευή"@el,
+        "architectural structure"@en,
+        "estructura arquitectural"@es,
+        "structure architecturale"@fr,
+        "struchtúr ailtireachta"@ga,
+        "struttura architettonica"@it,
+        "構造物"@ja,
+        "건축 구조"@ko,
+        "bouwsel"@nl,
+        "تعمیراتی ڈھانچے"@ur ;
+    rdfs:comment "Ein Bauwerk ist eine von Menschen errichtete Konstruktion mit ruhendem Kontakt zum Untergrund. Es ist in der Regel für eine langfristige Nutzungsdauer konzipiert (http://de.wikipedia.org/wiki/Bauwerk)."@de,
+        "Μια αρχιτεκτονική κατασκευή είναι μια ανθρώπινη κατασκευή, επιδαπέδια, ακίνητη κατασκευή (http://en.wikipedia.org/wiki/Architectural_structure)."@el,
+        "An architectural structure is a human-made, free-standing, immobile outdoor construction (http://en.wikipedia.org/wiki/Architectural_structure)."@en,
+        "Une structure architecturale est une construction extérieure immobile, autonome et construite par l'homme (http://en.wikipedia.org/wiki/Architectural_structure)."@fr,
+        "یہ تعمیراتی ڈھانچے مواد سے بنے ہیں۔، آزادانہ ، غیر مستحکم بیرونی تعمیر۔"@ur .
+
+dbo:Building a owl:Class ;
+    rdfs:label "bygning"@da,
+        "Gebäude"@de,
+        "κτίριο"@el,
+        "building"@en,
+        "edificio"@es,
+        "bâtiment"@fr,
+        "foirgneamh"@ga,
+        "edificio"@it,
+        "建築物"@ja,
+        "건축물"@ko,
+        "gebouw"@nl,
+        "stavba"@sl,
+        "عمارت"@ur ;
+    rdfs:comment "Ein Gebäude, umgangssprachlich auch oft als Haus bezeichnet, ist ein Bauwerk, das Räume umschließt, betreten werden kann und zum Schutz von Menschen, Tieren oder Sachen dient (http://de.wikipedia.org/wiki/Geb%C3%A4ude)."@de,
+        "Building is defined as a Civil Engineering structure such as a house, worship center, factory etc. that has a foundation, wall, roof etc. that protect human being and their properties from direct harsh effect of weather like rain, wind, sun etc. (http://en.wikipedia.org/wiki/Building)."@en,
+        "عمارت کو سول انجینئرنگ ڈھانچے سے تعبیر کیا جاتا ہے جیسے مکان ، عبادت گاہ ، فیکٹری وغیرہ جس کی بنیاد ، دیوار ، چھت وغیرہ ہوتی ہے جو انسان اور ان کی خصوصیات کو موسم کے براہ راست سخت اثرات جیسے بارش ، ہوا ، سورج وغیرہ سے محفوظ رکھتی ہے۔"@ur ;
+    rdfs:subClassOf dbo:ArchitecturalStructure .
+
+dbo:Place a owl:Class ;
+    rdfs:label "ቦታ"@am,
+        "مكان"@ar,
+        "lloc"@ca,
+        "sted"@da,
+        "Ort"@de,
+        "περιοχή"@el,
+        "place"@en,
+        "lugar"@es,
+        "lekua"@eu,
+        "lieu"@fr,
+        "áit"@ga,
+        "立地"@ja,
+        "plaats"@nl,
+        "miejsce"@pl,
+        "lugar"@pt,
+        "جگہ"@ur ;
+    rdfs:comment "uma localização"@pt,
+        "غیر متحرک چیزیں یا مقامات۔"@ur .
+
+dbo:PopulatedPlace a owl:Class ;
+    rdfs:label "تجمع سكاني"@ar,
+        "befolket sted"@da,
+        "bewohnter Ort"@de,
+        "πυκνοκατοικημένη περιοχή"@el,
+        "populated place"@en,
+        "lieu habité"@fr,
+        "bebouwde omgeving"@nl,
+        "آبادی والی جگہ"@ur ;
+    rdfs:comment "Πυκνοκατοικημένη περιοχή, είναι η περιοχή ή το μέρος με μεγάλο αριθμό κτιρίων και μεγάλο μόνιμο πληθυσμό, σε σύγκριση με την γεωγραφική περιοχή που καταλαμβάνει (μεγαλούπολη, πόλη ή χωριό)."@el,
+        "As defined by the United States Geological Survey, a populated place is a place or area with clustered or scattered buildings and a permanent human population (city, settlement, town, or village) referenced with geographic coordinates (http://en.wikipedia.org/wiki/Populated_place)."@en,
+        "Selon la définition du United States Geological Survey, un lieu peuplé est un lieu ou une zone avec des bâtiments regroupés ou dispersés et une population humaine permanente (agglomération, colonie, ville ou village) référencée par des coordonnées géographiques (http://en.wikipedia. org/wiki/Populated_place)."@fr,
+        "جیسا کہ امریکہ نے بیان کیا ہے۔ ارضیاتی سروے ، ایک آبادی والی جگہ وہ جگہ یا علاقہ ہے جہاں گروہ یا بکھرے ہوئے عمارتیں اور مستقل انسانی آبادی (شہر ، بستی ، قصبہ یا گاؤں) ہو۔"@ur ;
+    rdfs:subClassOf dbo:Place .
+
+dbo:NaturalPlace a owl:Class ;
+    rdfs:label "natürlicher Ort"@de,
+        "φυσική θέση"@el,
+        "natural place"@en,
+        "lieu naturel"@fr,
+        "natuurgebied"@nl,
+        "lugar natural"@pt,
+        "قدرتی جگہ"@ur ;
+    rdfs:comment "Der natürlicher Ort beinhaltet alle Orte die natürlicherweise im Universum existieren."@de,
+        "Η φυσική θέση ερμηνεύει όλα τα σημεία που απαντώνται φυσικά στο σύμπαν"@el,
+        "The natural place encompasses all places occurring naturally in universe."@en,
+        "قدرتی جگہ کائنات میں قدرتی طور پر پائے جانے والے تمام مقامات پر محیط ہے۔"@ur ;
+    rdfs:subClassOf dbo:Place .
+

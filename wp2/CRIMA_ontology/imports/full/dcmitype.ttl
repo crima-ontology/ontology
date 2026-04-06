@@ -1,0 +1,135 @@
+PREFIX dcam: <http://purl.org/dc/dcam/>
+PREFIX dcmitype: <http://purl.org/dc/dcmitype/>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
+dcmitype:Collection
+    a rdfs:Class ;
+    rdfs:label "Collection"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "A collection is described as a group; its parts may also be separately described."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "An aggregation of resources."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Dataset
+    a rdfs:Class ;
+    rdfs:label "Dataset"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include lists, tables, and databases.  A dataset may be useful for direct machine processing."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "Data encoded in a defined structure."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Event
+    a rdfs:Class ;
+    rdfs:label "Event"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Metadata for an event provides descriptive information that is the basis for discovery of the purpose, location, duration, and responsible agents associated with an event. Examples include an exhibition, webcast, conference, workshop, open day, performance, battle, trial, wedding, tea party, conflagration."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A non-persistent, time-based occurrence."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Image
+    a rdfs:Class ;
+    rdfs:label "Image"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include images and photographs of physical objects, paintings, prints, drawings, other images and graphics, animations and moving pictures, film, diagrams, maps, musical notation.  Note that Image may include both electronic and physical representations."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A visual representation other than text."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:InteractiveResource
+    a rdfs:Class ;
+    rdfs:label "Interactive Resource"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include forms on Web pages, applets, multimedia learning objects, chat services, or virtual reality environments."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A resource requiring interaction from the user to be understood, executed, or experienced."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:MovingImage
+    a rdfs:Class ;
+    rdfs:label "Moving Image"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include animations, movies, television programs, videos, zoetropes, or visual output from a simulation.  Instances of the type Moving Image must also be describable as instances of the broader type Image."@en ;
+    dcterms:issued "2003-11-18"^^xsd:date ;
+    rdfs:comment "A series of visual representations imparting an impression of motion when shown in succession."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+    rdfs:subClassOf dcmitype:Image ;
+.
+
+dcmitype:PhysicalObject
+    a rdfs:Class ;
+    rdfs:label "Physical Object"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Note that digital representations of, or surrogates for, these objects should use Image, Text or one of the other types."@en ;
+    dcterms:issued "2002-07-13"^^xsd:date ;
+    rdfs:comment "An inanimate, three-dimensional object or substance."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Service
+    a rdfs:Class ;
+    rdfs:label "Service"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include a photocopying service, a banking service, an authentication service, interlibrary loans, a Z39.50 or Web server."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A system that provides one or more functions."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Software
+    a rdfs:Class ;
+    rdfs:label "Software"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include a C source file, MS-Windows .exe executable, or Perl script."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A computer program in source or compiled form."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:Sound
+    a rdfs:Class ;
+    rdfs:label "Sound"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include a music playback file format, an audio compact disc, and recorded speech or sounds."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A resource primarily intended to be heard."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:StillImage
+    a rdfs:Class ;
+    rdfs:label "Still Image"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include paintings, drawings, graphic designs, plans and maps. Recommended best practice is to assign the type Text to images of textual materials. Instances of the type Still Image must also be describable as instances of the broader type Image."@en ;
+    dcterms:issued "2003-11-18"^^xsd:date ;
+    rdfs:comment "A static visual representation."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+    rdfs:subClassOf dcmitype:Image ;
+.
+
+dcmitype:Text
+    a rdfs:Class ;
+    rdfs:label "Text"@en ;
+    dcam:memberOf dcterms:DCMIType ;
+    dcterms:description "Examples include books, letters, dissertations, poems, newspapers, articles, archives of mailing lists. Note that facsimiles or images of texts are still of the genre Text."@en ;
+    dcterms:issued "2000-07-11"^^xsd:date ;
+    rdfs:comment "A resource consisting primarily of words for reading."@en ;
+    rdfs:isDefinedBy dcmitype: ;
+.
+
+dcmitype:
+    a owl:Ontology ;
+    dcterms:modified "2012-06-14"^^xsd:date ;
+    dcterms:publisher <http://purl.org/dc/aboutdcmi#DCMI> ;
+    dcterms:title "DCMI Type Vocabulary"@en ;
+.
