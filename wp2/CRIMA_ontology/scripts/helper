@@ -12,6 +12,7 @@ from itertools import chain
 from collections import defaultdict
 from collections.abc import Generator
 from dataclasses import dataclass, field
+from string import Template
 from textwrap import dedent
 from os import path
 from pathlib import Path
@@ -726,6 +727,174 @@ def _cli_mermaid(inputs: list[str], output_file: str = "-", extra_content: tuple
 
     with sys.stdout if output_file == "-" else open(output_file, "wt") as f:
         f.write(diagram)
+
+
+@_cli.command(name="ecv")
+@click.argument("input", metavar="INPUT_FILE")
+@click.option("-o", "--output-prefix", default="ecv", help="base name of generated files")
+@click.option("-s", "--sql-prefix", default="", help="prefix of generated SQL tables (default: '')")
+def _cli_ecv(input: str, output_prefix: str = "ecv", sql_prefix: str = "") -> None:
+
+    def emit_csv(graph: Graph, output_file: str, query: str) -> None:
+        results = graph.query(query)
+        csv_content = results.serialize(format="csv")
+        with open(output_file, "wb") as f:
+            f.write(csv_content)
+
+    graph = create_graph()
+    rdf_read(graph, input)
+
+    with open(output_prefix + ".sql", "wt") as f:
+        f.write(dedent(ECV_SQL_TEMPLATE.substitute(tbl_prefix=sql_prefix)).lstrip())
+
+    with open(output_prefix + ".obda", "wt") as f:
+        f.write(dedent(ECV_OBDA_TEMPLATE.substitute(tbl_prefix=sql_prefix)).lstrip())
+
+    emit_csv(graph, output_prefix + ".domain.csv", """
+        SELECT ?id ?label {
+            ?iri a ecv:ECV-domain ; rdfs:label ?label
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+        } ORDER BY ?id
+    """)
+
+    emit_csv(graph, output_prefix + ".subdomain.csv", """
+        SELECT ?id ?domain_id ?label {
+            ?iri a ecv:ECV-subdomain ; skos:broader ?domain ; rdfs:label ?label
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+            BIND(STRAFTER(STR(?domain), STR(ecv:)) AS ?domain_id)
+        } ORDER BY ?id
+    """)
+
+    emit_csv(graph, output_prefix + ".variable.csv", """
+        SELECT ?id ?subdomain_id ?label ?definition {
+            ?iri a ecv:ECV-variable ; clex:isMemberOf ?subdomain ; rdfs:label ?label
+            OPTIONAL { ?iri skos:definition ?definition }
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+            BIND(STRAFTER(STR(?subdomain), STR(ecv:)) AS ?subdomain_id)
+        } ORDER BY ?id
+    """)
+
+    emit_csv(graph, output_prefix + ".product.csv", """
+        SELECT DISTINCT ?id ?label ?definition ?note ?unit_note {
+            ?iri a ecv:ECV-product ; rdfs:label ?label ; skos:definition ?definition
+            OPTIONAL { ?iri skos:note ?note FILTER(!STRSTARTS(?note, "Unit: ")) }
+            OPTIONAL { ?iri skos:note ?n FILTER(STRSTARTS(?n, "Unit: ")) BIND(STRAFTER(?n, "Unit: ") AS ?unit_note)}
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+        } ORDER BY ?id
+    """)
+
+    emit_csv(graph, output_prefix + ".product_variable.csv", """
+        SELECT ?product_id ?variable_id {
+            ?iri a ecv:ECV-product ; ecv:isProductOf ?variable
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?product_id)
+            BIND(STRAFTER(STR(?variable), STR(ecv:)) AS ?variable_id)
+        } ORDER BY ?product_id ?variable_id
+    """)
+
+    emit_csv(graph, output_prefix + ".product_unit.csv", """
+        SELECT DISTINCT ?id ?unit_id ?unit_ns {
+            ?iri a ecv:ECV-product ; qudt:hasUnit ?unit
+            BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+            BIND(REPLACE(REPLACE(REPLACE(STR(?unit), STR(cunit:), "cunit:"), STR(unit:), "unit:"), STR("wmdr-unit"), "wmdr-unit:") AS ?uqn)
+            BIND(STRAFTER(?uqn, ":") AS ?unit_id)
+            BIND(STRBEFORE(?uqn, ":") AS ?unit_ns)
+        } ORDER BY ?id ?unit_id ?unit_ns
+    """)
+
+
+ECV_SQL_TEMPLATE = Template("""
+    CREATE TABLE ${tbl_prefix}domain (
+        id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE ${tbl_prefix}subdomain (
+        id VARCHAR NOT NULL,
+        domain_id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (domain_id) REFERENCES ${tbl_prefix}domain(id)
+    );
+
+    CREATE TABLE ${tbl_prefix}variable (
+        id VARCHAR NOT NULL,
+        subdomain_id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        definition VARCHAR,
+        PRIMARY KEY (id),
+        FOREIGN KEY (subdomain_id) REFERENCES ${tbl_prefix}subdomain(id)
+    );
+
+    CREATE TABLE ${tbl_prefix}product (
+        id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        definition VARCHAR,
+        note VARCHAR,
+        unit_note VARCHAR
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE ${tbl_prefix}product_unit (
+        product_id VARCHAR NOT NULL,
+        unit_id VARCHAR NOT NULL,
+        unit_ns VARCHAR NOT NULL,
+        PRIMARY KEY (product_id, unit_id, unit_ns),
+        FOREIGN KEY (product_id) REFERENCES ${tbl_prefix}product(id)
+    );
+
+    CREATE TABLE ${tbl_prefix}product_variable (
+        product_id VARCHAR NOT NULL,
+        variable_id VARCHAR NOT NULL,
+        PRIMARY KEY (product_id, variable_id),
+        FOREIGN KEY (product_id) REFERENCES ${tbl_prefix}product(id)
+    );
+""")
+
+ECV_OBDA_TEMPLATE = Template("""
+    [PrefixDeclaration]
+    rdfs:       http://www.w3.org/2000/01/rdf-schema#
+    skos:       http://www.w3.org/2004/02/skos/core#
+    qudt:       http://qudt.org/schema/qudt#
+    ecv:        http://www.semanticweb.org/crima/crima-ecv#
+    cunit:      http://www.semanticweb.org/crima/crima-unit#
+    unit:       http://qudt.org/vocab/unit/
+    wmdr-unit:  http://codes.wmo.int/wmdr/unit/
+
+    [MappingDeclaration] @collection [[
+    mappingId   ${tbl_prefix}domain
+    target      ecv:{id} a ecv:ECV-domain ; rdfs:label "{label}"@en .
+    source      SELECT * FROM ${tbl_prefix}domain
+
+    mappingId   ${tbl_prefix}subdomain
+    target      ecv:{id} a ecv:ECV-subdomain ; skos:broader ecv:{domain_id} ; rdfs:label "{label}"@en .
+    source      SELECT * FROM ${tbl_prefix}subdomain
+
+    mappingId   ${tbl_prefix}variable
+    target      ecv:{id} a ecv:ECV-variable ; clex:isMemberOf ecv:{subdomain_id} ; rdfs:label "from string import Template{label}"@en ; skos:definition "{definition}"@en .
+    source      SELECT * FROM ${tbl_prefix}variable
+
+    mappingId   ${tbl_prefix}product
+    target      ecv:{id} a ecv:ECV-product ; rdfs:label "{label}"@en ; skos:definition "{definition}"@en ; skos:note "{note}"@en , "{unit_note_lit}"@en .
+    source      SELECT *, CONCAT('Unit: ', unit_note) AS unit_note_lit FROM ${tbl_prefix}product
+
+    mappingId   ${tbl_prefix}product_variable
+    target      ecv:{product_id} ecv:isProductOf ecv:{variable_id} .
+    source      SELECT * FROM ${tbl_prefix}product_variable
+
+    mappingId   ${tbl_prefix}product_unit_cunit
+    target      ecv:{product_id} qudt:hasUnit cunit:{unit_id} .
+    source      SELECT * FROM ${tbl_prefix}product_unit WHERE unit_ns = 'cunit'
+
+    mappingId   ${tbl_prefix}product_unit_unit
+    target      ecv:{product_id} qudt:hasUnit unit:{unit_id} .
+    source      SELECT * FROM ${tbl_prefix}product_unit WHERE unit_ns = 'unit'
+
+    mappingId   ${tbl_prefix}product_unit_wmdr_unit
+    target      ecv:{product_id} qudt:hasUnit wmdr-unit:{unit_id} .
+    source      SELECT * FROM ${tbl_prefix}product_unit WHERE unit_ns = 'wmdr-unit'
+    ]]
+""")
 
 
 if __name__ == "__main__":
