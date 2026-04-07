@@ -1,0 +1,152 @@
+@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
+@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix qudt: <http://qudt.org/schema/qudt/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix : <http://www.semanticweb.org/crima/crima-ecv#> .
+
+ecv:ResourceShape a sh:NodeShape ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """SELECT DISTINCT ?this { ?this ?p ?o }"""
+    ] ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-ecv(-data#|#[A-Za-z0-9_-]*)$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+        sh:in ( ecv:ECV-domain ecv:ECV-subdomain ecv:ECV-variable ecv:ECV-product ecv:EssentialClimaticVariables owl:Ontology owl:NamedIndividual ) ;
+        sh:qualifiedValueShape [ sh:in ( ecv:ECV-domain ecv:ECV-subdomain ecv:ECV-variable ecv:ECV-product ecv:EssentialClimaticVariables owl:Ontology ) ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
+    ] .
+
+ecv:OntologyShape a sh:NodeShape ;
+    sh:targetClass owl:Ontology ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( owl:Ontology )
+    ] , [
+        sh:path owl:imports ;
+        sh:nodeKind sh:IRI
+    ] , [
+        sh:path vann:preferredNamespacePrefix ;
+        sh:datatype xsd:string
+    ] , [
+        sh:path vann:preferredNamespaceUri ;
+        sh:datatype xsd:anyURI
+    ] , [
+        sh:path voaf:reliesOn ;
+        sh:nodeKind sh:IRI
+    ] , [
+        sh:path voaf:metadataVoc ;
+        sh:nodeKind sh:IRI
+    ] .
+
+ecv:EssentialClimaticVariables a sh:Nodeshape ;
+    sh:targetClass ecv:EssentialClimaticVariables ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] .
+
+ecv:ECV-domain a sh:NodeShape ;
+    sh:targetClass ecv:ECV-domain ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] .
+
+ecv:ECV-subdomain a sh:NodeShape ;
+    sh:targetClass ecv:ECV-subdomain ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path skos:broader ;
+        sh:class ecv:ECV-domain ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
+
+ecv:ECV-variable a sh:NodeShape ;
+    sh:targetClass ecv:ECV-variable ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path clex:isMemberOf ;
+        sh:class ecv:ECV-subdomain ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:definition ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:maxCount 1
+    ] .
+
+ecv:ECV-product a sh:NodeShape ;
+    sh:targetClass ecv:ECV-product ;
+    sh:closed true ;
+    sh:property [
+        sh:path rdf:type
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path ecv:isProductOf ;
+        sh:class ecv:ECV-variable ;
+        sh:minCount 1 ;
+        sh:maxCount 2
+    ] , [
+        sh:path qudt:hasUnit
+    ] , [
+        sh:path skos:definition ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:note ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:maxCount 2
+    ] , [
+        sh:path skos:note ;
+        sh:qualifiedValueShape [ sh:pattern "^(?!Unit: ).*" ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:note ;
+        sh:qualifiedValueShape [ sh:pattern "^Unit: " ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] .
