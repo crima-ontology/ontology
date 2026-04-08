@@ -7,6 +7,8 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 
 ex: a owl:Ontology ;
     vann:preferredNamespacePrefix "ex" ;
@@ -14,6 +16,163 @@ ex: a owl:Ontology ;
     owl:imports dbo: , <http://www.w3.org/ns/prov-o#> ;
     voaf:reliesOn dbo: , <http://www.w3.org/ns/prov-o#> ;
     voaf:metadataVoc vann: , <http://purl.org/vocommons/voaf> .
+
+#### Begin Davide ####
+##############
+# IFFICause
+##############
+ex:IFFICause rdf:type owl:Class ;
+             rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
+
+ex:IFFICause rdfs:subClassOf skos:Concept .
+
+ex:hasCause a owl:ObjectProperty ;
+    rdfs:label "has cause"@en ;
+    rdfs:domain ex:IffiLandslide ;
+    rdfs:range ex:IFFICause .
+
+ex:shpCode a owl:DatatypeProperty ;
+    rdfs:label "shapefile code"@en ;
+    rdfs:comment "textual identifier associated to the landslide cause, from the landslide shapefile";
+    rdfs:domain ex:IFFICause ;
+    rdfs:range xsd:string .
+
+ex:causeGroup a owl:DatatypeProperty ;
+    rdfs:label "cause group"@en ;
+    rdfs:comment "group this landslide cause belongs to: 'intrinsic', 'physical', 'geomorphological', 'anthropogenic', or 'nd'";
+    rdfs:domain ex:IFFICause ;
+    rdfs:range xsd:string .
+### ###
+
+###############
+# IFFILandslide
+###############
+
+ex:IFFILandslide a owl:Class ;
+    rdfs:label "IFFI landslide"@en ;
+    rdfs:comment "Landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point corresponding to the highest initiation point (PIFF)."@en .
+
+ex:IFFILandslide rdfs:subClassOf ccore:Hazard .
+
+ex:dateReliability a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Flag indicating reliability of the event date; mostly null and not clearly correlated with completeness of year/month/day."@en .
+
+# Quantitative properties
+ex:areaM2 a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:double ;
+    rdfs:comment "Total area affected by the landslide (m^2); derived from area_calc if available, otherwise from area."@en .
+
+ex:volumeM3 a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:double ;
+    rdfs:comment "Final volume of displaced material (m^3), computed or estimated."@en .
+
+# Movement
+ex:movementTypeL1 a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary movement type (1st level classification) describing the landslide mechanism."@en .
+
+ex:movementTypeL2Primary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary value of the second-level movement classification (more detailed mechanism)."@en .
+
+ex:movementTypeL2Secondary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Secondary value of the second-level movement classification."@en .
+
+ex:style a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Style of the landslide, representing combinations or repetitions of movement mechanisms within the same event."@en .
+
+# Materials
+ex:materialPrimary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary material involved in the landslide, referring to its pre-event condition."@en .
+
+ex:materialSecondary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Secondary material involved in the landslide."@en .
+
+# Activity/state
+ex:activityStateL1 a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Landslide state (1st level classification)."@en .
+
+ex:activityStateL2 a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "More detailed landslide state (2nd level classification)."@en .
+
+# Velocity
+ex:velocityPrimary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary velocity class, based on IUGS/WGL (1995) movement intensity scale."@en .
+
+ex:velocitySecondary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Secondary velocity class."@en .
+
+# Water content
+ex:waterContentPrimary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary water content classification of the material prior to movement."@en .
+
+ex:waterContentSecondary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Secondary water content classification."@en .
+
+# Environment / geology
+ex:landUse a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Land use of the affected slope area, including agricultural, forestry, or anthropogenic use."@en .
+
+ex:lithology a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Dominant lithological composition of the units involved in the landslide."@en .
+
+ex:lithotechnics a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Geomechanical behavior of the material involved in the landslide."@en .
+
+ex:structure a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Internal structural organization of the rock mass."@en .
+
+# Methods
+ex:assessmentMethodPrimary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Primary methodology used for landslide assessment."@en .
+
+ex:assessmentMethodSecondary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Secondary methodology used for landslide assessment."@en .
+
+ex:assessmentMethodTertiary a owl:DatatypeProperty ;
+    rdfs:domain ex:IFFILandslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Additional methodology used for landslide assessment."@en .
+### ###
+#### End Davide ####
 
 dbo:Agriculture a owl:Class .
 
@@ -26,8 +185,6 @@ dbo:Company a owl:Class .
 dbo:DrainageBasin a owl:Class .
 
 dbo:LandCover a owl:Class .
-
-dbo:Landslide a owl:Class .
 
 dbo:MeteoStation a owl:Class .
 
@@ -361,12 +518,6 @@ ex:year a rdf:Property .
 ex:zipCode a rdf:Property .
 
 <http://knowwheregraph/ontology/deo#hazardType> a owl:ObjectProperty .
-
-<http://www.semanticweb.org/CRIMA#Avalanche> a owl:Class .
-
-<http://www.semanticweb.org/CRIMA#Hazard> a owl:Class .
-
-<http://www.semanticweb.org/CRIMA#Wildfire> a owl:Class .
 
 <http://www.semanticweb.org/crima/crima#in> a owl:FunctionalProperty, owl:ObjectProperty ;
     rdfs:comment "[Factor --in--> ImpactChainModel]" .
