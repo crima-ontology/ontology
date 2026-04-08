@@ -1,3 +1,0 @@
-click==8.3.1
-requests==2.32.5
-rdflib==7.6.0
