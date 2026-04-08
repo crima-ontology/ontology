@@ -1099,7 +1099,7 @@ ecv:SpecificHumidityInTheFreeTroposphere a ecv:ECV-product,
     skos:definition "3D field of the specific humidity in the free troposphere. The specific humidity is the ratio between the mass of water vapour and the mass of moist air."@en ;
     skos:note "McCarthy 2007 notes significant spatial heterogeneity related to latitude of the observation."@en .
 
-ecv:SpectralAndBroadband-DHR-BHR6-BRDF a ecv:ECV-product,
+ecv:SpectralAndBroadband-DHR-BHR-BRDF a ecv:ECV-product,
         owl:NamedIndividual ;
     rdfs:label "spectral and broadband (visible, near infrared and shortwave) DHR & BHR with associated spectral bidirectional reflectance distribution function (BRDF) parameters"@en ;
     ecv:isProductOf ecv:Albedo ;

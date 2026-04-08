@@ -72,7 +72,9 @@ ecv:ECV-domain a sh:NodeShape ;
     ] , [
         sh:path rdfs:label ;
         sh:datatype rdf:langString ;
-        sh:languageIn ( "en" )
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
     ] .
 
 ecv:ECV-subdomain a sh:NodeShape ;
@@ -83,7 +85,9 @@ ecv:ECV-subdomain a sh:NodeShape ;
     ] , [
         sh:path rdfs:label ;
         sh:datatype rdf:langString ;
-        sh:languageIn ( "en" )
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
     ] , [
         sh:path skos:broader ;
         sh:class ecv:ECV-domain ;
@@ -99,7 +103,9 @@ ecv:ECV-variable a sh:NodeShape ;
     ] , [
         sh:path rdfs:label ;
         sh:datatype rdf:langString ;
-        sh:languageIn ( "en" )
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
     ] , [
         sh:path clex:isMemberOf ;
         sh:class ecv:ECV-subdomain ;
@@ -120,14 +126,17 @@ ecv:ECV-product a sh:NodeShape ;
     ] , [
         sh:path rdfs:label ;
         sh:datatype rdf:langString ;
-        sh:languageIn ( "en" )
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
     ] , [
         sh:path ecv:isProductOf ;
         sh:class ecv:ECV-variable ;
         sh:minCount 1 ;
         sh:maxCount 2
     ] , [
-        sh:path qudt:hasUnit
+        sh:path qudt:hasUnit ;
+        sh:nodeKind sh:IRI
     ] , [
         sh:path skos:definition ;
         sh:datatype rdf:langString ;
