@@ -19,7 +19,7 @@ ex: a owl:Ontology ;
 
 #### Begin Davide ####
 ##############
-# IFFICause
+# IFFICausek
 ##############
 ex:IFFICause rdf:type owl:Class ;
              rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
