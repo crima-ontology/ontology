@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools >= 77.0.3", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "crima-vkg-tool"
+version = "0.1.0"
+description = "Python tool for various maintainance tasks related to the CRIMA ontology and mappings"
+readme = "README.md"
+requires-python = ">=3.13.2"
+dependencies = [
+    "click == 8.3.1",
+    "requests == 2.32.5",
+    "rdflib == 7.6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff >= 0.11.6"
+]
+
+[project.scripts]
+crima-vkg-tool = "crima_vkg_tool.__main__:cli"
+
+[tool.setuptools]
+include-package-data = true
+packages.find.where = ["."]
+packages.find.include = ["*"]
+package-data."*" = ["*.ttl"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py313"
+format.skip-magic-trailing-comma = true
+lint.select = ["ALL"]
+lint.ignore = [ # see https://docs.astral.sh/ruff/rules/
+    "A",   # flake8-builtins on builtin shadowing
+    "COM", # flake8-commas on trailing commas
+    "D100", "D101", "D102", "D103", "D104", "D105", "D106", "D107",  # mandatory docstrings
+    "D203", # dropped in favor of D211, which forbids blank lines between a class and its docstring
+    "D212", # dropped in favor of D213 ("""\nDocstring...)
+    "E741", # ambiguous variable name (e.g., l)
+    "ANN401" # typing.Any disallowed
+]
+lint.isort.split-on-trailing-comma = false

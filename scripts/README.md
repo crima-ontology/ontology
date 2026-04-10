@@ -1,56 +1,76 @@
-# Utility Scripts for Maintaining the CRIMA Ontology
+# Utility Scripts for Maintaining the CRIMA Ontology and Mappings
 
-This directory contains Python scripts to carry out various ontology maintenance tasks. They depend on external libraries (e.g., rdflib) that need to be installed in a *virtual environment*:
+This directory contains the `crima-vkg-tool` Python tool for carrying out various ontology maintenance tasks. It comes as a regular Python project (see `pyproject.toml`) depending on external libraries (e.g., rdflib), and is meant to be installed in a *virtual environment*. The most straightforward way to do that is reported next, although any Python tools for managing virtual environments and installing packages can be used:
 ```bash
 cd scripts                        # move to the scripts/ directory, if not already there
 python3 -m venv .venv             # create a virtual environment in folder .venv (name it whatever you like)
 source .venv/bin/activate         # activate the environment
 pip install -U pip                # upgrade pip
-pip install -r requirements.txt   # install all libraries listed in file requirements.txt
-./helper --help                   # test whether scripts work (no error raised and the help message should be displayed)
+pip install -e .                  # install the 'crima-vkg-tool' project in editable mode, along with its dependencies
+crima-vkg-tool --help             # test whether scripts work (work in any directory as long as environment is activated)
 ```
 
-Once done, run `deactivate` to deactivate the environment, or simply close the shell. To reactivate, enter the scripts directory and run again `source .venv/bin/activate`. To get rid of the environment, deactivate it and delete the created `.venv` directory.
+Once done, run `deactivate` to deactivate the environment, or simply close the shell. To reactivate, enter the scripts directory and run again `source .venv/bin/activate`. To get rid of the environment, deactivate it and delete the created `.venv` directory. Any update to script sources (e.g., resulting from local edits / `git pull` actions) will be immediately effective due to install in editable mode. The tool and the installation procedure listed above should work also on Windows, though development and testing are mostly done in Linux.
 
-We list next the main tasks provided by scripts. All the listed commands have to be executed in the root ontology directory, i.e., the one containing `crima.ttl`.
+Next, we list the main tasks provided by scripts. All the listed commands are assumed to be executed in the `wp2/vkg/` directory.
 
 ## Merge Modules into a Single File
 
-The following commands merge all modules and external vocabularies (either fragments or full versions) into a self-contained file `ontology.ttl`, dropping all `owl:imports` (via option -s) and retaining only `rdf:langString` literals with language `en`, `it` or `de`:
+The following commands merge all modules and external vocabularies (either fragments or full versions) into a self-contained file `ontology.ttl`, optionally dropping all `owl:imports` (via option -s) and retaining only `rdf:langString` literals with language `en`, `it` or `de`:
 ```bash
-scripts/helper merge -l en,it,de -s -o ontology.ttl crima.ttl modules/*.ttl imports/fragments/*.ttl  # to use fragments of external vocabularies
-scripts/helper merge -l en,it,de -s -o ontology.ttl crima.ttl modules/*.ttl imports/full/*.ttl       # to use full external vocabularies
+crima-vkg-tool merge -o ontology.ttl ontology/crima.ttl ontology/modules/*.ttl ontology/imports/fragments/*.ttl                 # use fragments
+crima-vkg-tool merge -o ontology.ttl ontology/crima.ttl ontology/modules/*.ttl ontology/imports/fragments/*.ttl -l en,it,de -s  # use fragments, filter by language, remove owl:imports
+crima-vkg-tool merge -o ontology.ttl ontology/crima.ttl ontology/modules/*.ttl ontology/imports/full/*.ttl -l en,it,de -s       # use full ext. vocabularies, filter and remove owl:imports
+```
+
+## Split a Single Files into Modules
+
+The following command splits a single merged file, such as the `ontology.ttl` build previously (with fragments, no filtering or `owl:imports` removal), into modules / external vocabularies, based on additional module metadata in `ontology/testing/metadata.ttl`. The generated `leftover.nt` file contains statements that could not be allocated to modules / vocabularies according to employed metadata. The produced files correspond to those prior to merging, with minor changes due to transitory module `ex:` that lacks proper metadata in `ontology/testing/metadata.ttl`, and whose content ends up partly scattered in other files.
+```bash
+crima-vkg-tool split -l leftover.nt -o output-dir/ ontology.ttl ontology/testing/metadata.ttl
 ```
 
 ## Downloading External Vocabularies
 
-The following command will download *missing* external vocabularies under `imports/full`, skipping download if the target file already exists (delete it to re-download):
+The following command will download *missing* external vocabularies under `ontology/imports/full`, skipping download if the target file already exists (delete it to re-download):
 ```bash
-scripts/helper download -o imports/full/
+crima-vkg-tool download -o ontology/imports/full/
 ```
 
 ## Generating Protégé Catalog Files
 
-The following commands will create/overwrite the `catalog-v001.xml` files located in folders `/`, `modules/`, `imports/fragments/`, `imports/full/`, `test/full`, based on the ontology modules and external vocabulary (full/fragments) actually present:
+The following commands will create/overwrite the `catalog-v001.xml` files located in folders `ontology/`, `ontology/modules/`, `ontology/imports/fragments/`, `ontology/imports/full/`, `ontology/test/full`, based on the ontology modules and external vocabulary (full/fragments) actually present:
 ```bash
-scripts/helper catalog -o catalog-v001.xml crima.ttl modules/*.ttl imports/fragments/*.ttl
-( cd modules; ../scripts/helper catalog -o catalog-v001.xml *.ttl ../imports/fragments/*.ttl )
-( cd imports/fragments; ../../scripts/helper catalog -o catalog-v001.xml *.ttl )
-( cd imports/full; ../../scripts/helper catalog -o catalog-v001.xml *.ttl )
-( cd testing/full; ../../scripts/helper catalog -o catalog-v001.xml crima.ttl ../../modules/*.ttl ../../imports/full/*.ttl )
+( cd ontology; crima-vkg-tool catalog -o catalog-v001.xml crima.ttl modules/*.ttl imports/fragments/*.ttl )
+( cd ontology/modules; crima-vkg-tool catalog -o catalog-v001.xml *.ttl ../imports/fragments/*.ttl )
+( cd ontology/imports/fragments; crima-vkg-tool catalog -o catalog-v001.xml *.ttl )
+( cd ontology/imports/full; crima-vkg-tool catalog -o catalog-v001.xml *.ttl )
+( cd ontology/testing/full; crima-vkg-tool catalog -o catalog-v001.xml crima.ttl ../../modules/*.ttl ../../imports/full/*.ttl )
 ```
 
 ## Generating Mermaid Diagram
 
 The following command will print to `stdout` the Mermaid source code for the diagram showing module dependencies (`voaf:*` relations), which can then be included in markdown files (as the main `README.md`) for display:
 ```bash
-scripts/helper mermaid -e 'sg_modules --------- sg_imports_fragments' -e 'linkStyle 0 stroke-width:0px' crima.ttl modules/*.ttl imports/fragments/*.ttl scripts/metadata.ttl
+crima-vkg-tool mermaid \
+    -e "sg_modules --------- sg_imports_fragments" \
+    -e "linkStyle 0 stroke-width:0px" \
+    ontology/crima.ttl \
+    ontology/modules/*.ttl \
+    ontology/imports/fragments/*.ttl \
+    ontology/testing/metadata.ttl
 ```
 
-## Additional Commands
+## Generating CSV Version of ECV Data
 
-Run the following to list all supported commands and their options:
+The following command will create a ZIP `ecv.zip` containing equivalent CSV files (one per table, prefixed by `unibz_ecv_`), a SQL schema, and OBDA mapping for ECV ABox data residing in `ontology/modules/ecv-data.ttl`:
 ```bash
-scripts/helper --help           # show general options and list all supported commands
-scripts/helper sanitize --help  # show help for a specific command (here: 'sanitize')
+crima-vkg-tool ecv -o ecv.zip -p unibz_ecv_ ontology/modules/ecv-data.ttl
+```
+
+## Sanitize an RDF/OWL File
+
+The following command will read RDF/OWL data, sanitize literals by normalizing/removing invisible unicode characters, and optionally apply <prefix, namespace> bindings from another file:
+```bash
+crima-vkg-tool sanitize -p ontology/testing/prefixes.ttl -o crima_sanitized.ttl ontology/crima.ttl
 ```
