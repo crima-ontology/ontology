@@ -11,44 +11,30 @@ PREFIX clex: <http://www.semanticweb.org/crima/crima-lexicon#>
 PREFIX cplace: <http://www.semanticweb.org/crima/crima-place#>
 PREFIX crid: <http://www.semanticweb.org/crima/crima-id#>
 PREFIX ecv-data: <http://www.semanticweb.org/crima/crima-ecv-data#>
-PREFIX crima-ont: <http://www.semanticweb.org/crima>
 PREFIX ctlo: <http://www.semanticweb.org/crima/crima-tlo#>
 PREFIX cunit: <http://www.semanticweb.org/crima/crima-unit#>
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
-PREFIX dcat-ont: <http://www.w3.org/ns/dcat>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX dpo-ont: <http://knowwheregraph/ontology/dpo>
-PREFIX dtype-ont: <http://www.linkedmodel.org/schema/dtype>
 PREFIX ecv: <http://www.semanticweb.org/crima/crima-ecv#>
 PREFIX emdat: <http://www.semanticweb.org/crima/emdat#>
 PREFIX ex: <http://example.org/ontology/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX geo-ont: <http://www.opengis.net/ont/geosparql>
-PREFIX hip-data-ont: <https://undrr-hip.org/hip-data/>
-PREFIX hip-schema-ont: <https://undrr-hip.org/hip-schema/>
 PREFIX ich: <http://www.semanticweb.org/crima/crima-impactchain#>
 PREFIX mod: <mod:>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX prov: <http://www.w3.org/ns/prov#>
-PREFIX prov-ont: <http://www.w3.org/ns/prov-o#>
-PREFIX qudt-ont: <http://qudt.org/schema/qudt>
-PREFIX qudt-unit-ont: <http://qudt.org/vocab/unit>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX schema: <http://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
-PREFIX skos-ont: <http://www.w3.org/2004/02/skos/core>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX sosa-common: <http://www.w3.org/ns/sosa/common/>
 PREFIX sosa-obs: <http://www.w3.org/ns/sosa/obs/>
-PREFIX time-ont: <http://www.w3.org/2006/time>
 PREFIX vann: <http://purl.org/vocab/vann/>
-PREFIX voaf-ont: <http://purl.org/vocommons/voaf>
 PREFIX wmdr-unit: <http://codes.wmo.int/wmdr/unit/>
-PREFIX xkos-ont: <http://rdf-vocabulary.ddialliance.org/xkos>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 
 
@@ -81,7 +67,7 @@ dbo:
     mod:hasSerialization "imports/fragments/dbo.ttl" ;
     mod:definesNamespace "http://dbpedia.org/ontology/"^^xsd:anyURI .
 
-dcat-ont:
+<http://www.w3.org/ns/dcat>
     mod:hasSerialization "imports/fragments/dcat.ttl" ;
     mod:definesNamespace "http://www.w3.org/ns/dcat#"^^xsd:anyURI ;
     mod:includesObjectsOf rdfs:isDefinedBy .
@@ -90,11 +76,11 @@ dcterms:
     mod:hasSerialization "imports/fragments/dcterms.ttl" ;
     mod:definesNamespace "http://purl.org/dc/terms/"^^xsd:anyURI .
 
-dpo-ont:
+<http://knowwheregraph/ontology/dpo>
     mod:hasSerialization "imports/fragments/dpo.ttl" ;
     mod:definesNamespace "http://knowwheregraph/ontology/dpo#"^^xsd:anyURI .
 
-dtype-ont:
+<http://www.linkedmodel.org/schema/dtype>
     mod:hasSerialization "imports/fragments/dtype.ttl" ;
     mod:definesNamespace "http://www.linkedmodel.org/schema/dtype#"^^xsd:anyURI .
 
@@ -102,7 +88,7 @@ foaf:
     mod:hasSerialization "imports/fragments/foaf.ttl" ;
     mod:definesNamespace "http://xmlns.com/foaf/0.1/"^^xsd:anyURI .
 
-geo-ont:
+<http://www.opengis.net/ont/geosparql>
     mod:hasSerialization "imports/fragments/geo.ttl" ;
     mod:definesNamespace "http://www.opengis.net/ont/geosparql#"^^xsd:anyURI ;
     mod:includesObjectsOf
@@ -113,16 +99,16 @@ org:
     mod:hasSerialization "imports/fragments/org.ttl" ;
     mod:definesNamespace "http://www.w3.org/ns/org#"^^xsd:anyURI .
 
-prov-ont:
+<http://www.w3.org/ns/prov-o#>
     mod:hasSerialization "imports/fragments/prov.ttl" ;
     mod:definesNamespace "http://www.w3.org/ns/prov#"^^xsd:anyURI .
 
-qudt-ont:
+<http://qudt.org/schema/qudt>
     mod:hasSerialization "imports/fragments/qudt.ttl" ;
     mod:definesNamespace "http://qudt.org/schema/qudt/"^^xsd:anyURI ;
     mod:includesObjectsOf rdfs:isDefinedBy .
 
-qudt-unit-ont:
+<http://qudt.org/vocab/unit>
     mod:hasSerialization "imports/fragments/qudt-unit.ttl" ;
     mod:definesNamespace "http://qudt.org/vocab/unit/"^^xsd:anyURI ;
     mod:includesObjectsOf
@@ -133,7 +119,7 @@ schema:
     mod:hasSerialization "imports/fragments/schema.ttl" ;
     mod:definesNamespace "http://schema.org/"^^xsd:anyURI .
 
-skos-ont:
+<http://www.w3.org/2004/02/skos/core>
     mod:hasSerialization "imports/fragments/skos.ttl" ;
     mod:definesNamespace "http://www.w3.org/2004/02/skos/core#"^^xsd:anyURI .
 
@@ -144,7 +130,7 @@ sosa-common:
 sosa-obs:
     mod:hasSerialization "imports/fragments/sosa-obs.ttl" .
 
-time-ont:
+<http://www.w3.org/2006/time>
     mod:hasSerialization "imports/fragments/time.ttl" ;
     mod:definesNamespace "http://www.w3.org/2006/time#"^^xsd:anyURI .
 
@@ -152,7 +138,7 @@ vann:
     mod:hasSerialization "imports/fragments/vann.ttl" ;
     mod:definesNamespace "http://purl.org/vocab/vann/"^^xsd:anyURI .
 
-voaf-ont:
+<http://purl.org/vocommons/voaf>
     mod:hasSerialization "imports/fragments/voaf.ttl" ;
     mod:definesNamespace "http://purl.org/vocommons/voaf#"^^xsd:anyURI .
 
@@ -160,7 +146,7 @@ wmdr-unit:
     mod:hasSerialization "imports/fragments/wmdr-unit.ttl" ;
     mod:definesNamespace "http://codes.wmo.int/wmdr/unit/"^^xsd:anyURI .
 
-xkos-ont:
+<http://rdf-vocabulary.ddialliance.org/xkos>
     mod:hasSerialization "imports/fragments/xkos.ttl" ;
     mod:definesNamespace "http://rdf-vocabulary.ddialliance.org/xkos#"^^xsd:anyURI .
 
@@ -252,7 +238,7 @@ ex:
     mod:hasSerialization "modules/ex.ttl" ;
     mod:definesNamespace "http://example.org/ontology/"^^xsd:anyURI .
 
-hip-data-ont:
+<https://undrr-hip.org/hip-data/>
     mod:hasSerialization "modules/hip-data.ttl" ;
     mod:definesNamespace
         "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#"^^xsd:anyURI ,
@@ -267,7 +253,7 @@ hip-data-ont:
         dcterms:source ,
         prov:wasInfluencedBy .
 
-hip-schema-ont:
+<https://undrr-hip.org/hip-schema/>
     mod:hasSerialization "modules/hip.ttl" ;
     mod:definesNamespaceTBox "https://undrr-hip.org/"^^xsd:anyURI ;
     mod:includesObjectsOf rdfs:isDefinedBy ;
@@ -282,7 +268,7 @@ ich:
 
 # ONTOLOGY MAIN FILE
 
-crima-ont:
+<http://www.semanticweb.org/crima>
     mod:hasSerialization "crima.ttl" ;
     mod:includesObjectsOf
         dcterms:license ,
