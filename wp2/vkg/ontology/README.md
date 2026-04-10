@@ -64,94 +64,91 @@ flowchart BT
         ich["<b>ich</b>"]:::subvoc
     end
 
-
     sg_modules --------- sg_imports_fragments
     linkStyle 0 stroke-width:0px
 
     ar__adapt --> clex
-    ar__cid --> voaf
     ar__cid --> skos
+    ar__cid --> voaf
     ar__impact --> clc
-    cbib --> dcterms
     cbib --> bibo
     cbib --> dcat
-    ccore --> dpo
-    ccore --> dcterms
-    ccore --> geo
+    cbib --> dcterms
     ccore --> ctlo
-    ccore --> time
+    ccore --> dcterms
+    ccore --> dpo
+    ccore --> geo
     ccore --> sosa_obs
+    ccore --> time
     clc --> cc
     clc --> dcterms
-    clc --> voaf
-    clc --> skos
     clc --> foaf
-    clex --> voaf
+    clc --> skos
+    clc --> voaf
     clex --> skos
+    clex --> voaf
+    cplace --> ctlo
     cplace --> dbo
     cplace --> geo
-    cplace --> ctlo
     cplace --> sosa_common
     crid --> voaf
-    crima --> ex
-    crima --> cbib
-    crima --> ccore
-    crima --> ecv_data
-    crima --> crid
-    crima --> ich
-    crima --> cplace
-    crima --> emdat
     crima --> ar__adapt
     crima --> ar__cid
     crima --> ar__impact
-    crima --> hip_data
     crima --> as
+    crima --> cbib
+    crima --> ccore
+    crima --> cplace
+    crima --> crid
+    crima --> ecv_data
+    crima --> emdat
+    crima --> ex
+    crima --> hip_data
+    crima --> ich
     ctlo --> voaf
-    cunit --> wmdr_unit
     cunit --> qudt
-    dcat --> voaf
+    cunit --> wmdr_unit
     dcat --> skos
-    dtype --> voaf
+    dcat --> voaf
     dtype --> skos
-    ecv --> geo
+    dtype --> voaf
     ecv --> cunit
+    ecv --> geo
     ecv --> sosa_common
-    ecv_data --> qudt_unit
-    ecv_data --> ecv
     ecv_data --> clex
+    ecv_data --> ecv
+    ecv_data --> qudt_unit
     emdat --> clex
     ex --> dbo
-    ex --> voaf
     ex --> prov
-    geo --> voaf
+    ex --> voaf
     geo --> skos
+    geo --> voaf
     hip --> dcterms
-    hip --> voaf
-    hip --> skos
     hip --> org
+    hip --> skos
+    hip --> voaf
     hip_data --> bibo
-    hip_data --> xkos
     hip_data --> clex
-    hip_data --> prov
     hip_data --> hip
-    ich --> voaf
+    hip_data --> prov
+    hip_data --> xkos
     ich --> skos
+    ich --> voaf
     qudt --> dtype
     qudt_unit --> dcterms
-    qudt_unit --> voaf
     qudt_unit --> qudt
+    qudt_unit --> voaf
     sosa_common --> dcterms
     sosa_common --> schema
     sosa_common --> time
-    sosa_obs --> voaf
-    sosa_obs --> skos
     sosa_obs --> sosa_common
-    time --> voaf
     time --> skos
+    time --> voaf
     voaf --> vann
     wmdr_unit --> dcterms
-    wmdr_unit --> voaf
     wmdr_unit --> skos
+    wmdr_unit --> voaf
 
     click ar__adapt href "http://www.semanticweb.org/crima/ipcc-ar5-adaptation#"
     click ar__cid href "http://www.semanticweb.org/crima/ipcc-ar6-cid#"
