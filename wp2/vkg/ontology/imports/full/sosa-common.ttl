@@ -2,7 +2,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX schema1: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX sosa-common: <http://www.w3.org/ns/sosa/common/>
@@ -25,7 +25,7 @@ sosa:Result
 sosa:endTime
     a owl:DatatypeProperty ;
     rdfs:label "end time"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
@@ -41,7 +41,7 @@ sosa:hasSimpleResult
         owl:DatatypeProperty ,
         owl:FunctionalProperty ;
     rdfs:label "has simple result"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -59,7 +59,7 @@ sosa:hasSimpleResult
 sosa:inputValueForExecution
     a owl:ObjectProperty ;
     rdfs:label "input value for execution"@en ;
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -72,8 +72,8 @@ sosa:inputValueForExecution
 sosa:isUltimateFeatureOfInterestOf
     a owl:ObjectProperty ;
     rdfs:label "is ultimate feature of interest of"@en ;
-    schema1:domainIncludes sosa:FeatureOfInterest ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:FeatureOfInterest ;
+    schema:rangeIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
@@ -87,7 +87,7 @@ sosa:isUltimateFeatureOfInterestOf
 sosa:resultTime
     a owl:DatatypeProperty ;
     rdfs:label "result time"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:comment "The value would usually be encoded using xsd:dateTime xsd:date xsd:gYearMonth xsd:gYear"@en ;
@@ -100,7 +100,7 @@ sosa:resultTime
 sosa:startTime
     a owl:DatatypeProperty ;
     rdfs:label "start time"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
@@ -114,8 +114,8 @@ sosa:startTime
 sosa:deployedOnPlatform
     a owl:ObjectProperty ;
     rdfs:label "deployed on platform"@en ;
-    schema1:domainIncludes sosa:Deployment ;
-    schema1:rangeIncludes sosa:Platform ;
+    schema:domainIncludes sosa:Deployment ;
+    schema:rangeIncludes sosa:Platform ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:deployedAsset ;
     owl:inverseOf sosa:inDeployment ;
@@ -127,8 +127,8 @@ sosa:deployedOnPlatform
 sosa:deployedSystem
     a owl:ObjectProperty ;
     rdfs:label "deployed system"@en ;
-    schema1:domainIncludes sosa:Deployment ;
-    schema1:rangeIncludes sosa:System ;
+    schema:domainIncludes sosa:Deployment ;
+    schema:rangeIncludes sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:deployedAsset ;
     owl:inverseOf sosa:systemDeployment ;
@@ -140,11 +140,11 @@ sosa:deployedSystem
 sosa:hasFeatureOfInterest
     a owl:ObjectProperty ;
     rdfs:label "has feature of interest"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes sosa:FeatureOfInterest ;
+    schema:rangeIncludes sosa:FeatureOfInterest ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:isFeatureOfInterestOf ;
     skos:definition """
@@ -162,7 +162,7 @@ sosa:hasFeatureOfInterest
 sosa:hasInput
     a owl:ObjectProperty ;
     rdfs:label "has input"@en ;
-    schema1:domainIncludes sosa:Procedure ;
+    schema:domainIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:inputFor ;
     skos:definition """
@@ -175,7 +175,7 @@ sosa:hasInput
 sosa:hasInputValue
     a owl:ObjectProperty ;
     rdfs:label "has input value"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -189,8 +189,8 @@ sosa:hasInputValue
 sosa:hasMember
     a owl:ObjectProperty ;
     rdfs:label "has member of collection" ;
-    schema1:domainIncludes sosa:ExecutionCollection ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:ExecutionCollection ;
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -205,7 +205,7 @@ sosa:hasMember
 sosa:hasOutput
     a owl:ObjectProperty ;
     rdfs:label "has output"@en ;
-    schema1:domainIncludes sosa:Procedure ;
+    schema:domainIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:outputFor ;
     skos:definition """
@@ -217,8 +217,8 @@ sosa:hasOutput
 sosa:hasProcedure
     a owl:ObjectProperty ;
     rdfs:label "has procedure"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes sosa:Procedure ;
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:propertyFor ;
     owl:inverseOf sosa:isProcedureFor ;
@@ -230,8 +230,8 @@ sosa:hasProcedure
 sosa:hasProperty
     a owl:ObjectProperty ;
     rdfs:label "has property"@en ;
-    schema1:domainIncludes sosa:FeatureOfInterest ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:domainIncludes sosa:FeatureOfInterest ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:isPropertyOf ;
     skos:definition """
@@ -244,7 +244,7 @@ sosa:hasResult
         owl:FunctionalProperty ,
         owl:ObjectProperty ;
     rdfs:label "has result"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -266,8 +266,8 @@ sosa:hasResult
 sosa:hasSubSystem
     a owl:ObjectProperty ;
     rdfs:label "has subsystem"@en ;
-    schema1:domainIncludes sosa:System ;
-    schema1:rangeIncludes sosa:System ;
+    schema:domainIncludes sosa:System ;
+    schema:rangeIncludes sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:isSubSystemOf ;
     skos:definition """
@@ -278,11 +278,11 @@ sosa:hasSubSystem
 sosa:hasUltimateFeatureOfInterest
     a owl:ObjectProperty ;
     rdfs:label "has ultimate feature of interest"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes sosa:FeatureOfInterest ;
+    schema:rangeIncludes sosa:FeatureOfInterest ;
     rdfs:isDefinedBy sosa-common: ;
     skos:definition """
   relation from a Deployment or Execution to its ultimate subject entity
@@ -300,8 +300,8 @@ sosa:hasUltimateFeatureOfInterest
 sosa:hosts
     a owl:ObjectProperty ;
     rdfs:label "hosts"@en ;
-    schema1:domainIncludes sosa:Platform ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:Platform ;
+    schema:rangeIncludes
         sosa:Asset ,
         sosa:Platform ,
         sosa:System ;
@@ -315,8 +315,8 @@ sosa:hosts
 sosa:implementedBy
     a owl:ObjectProperty ;
     rdfs:label "implemented by"@en ;
-    schema1:domainIncludes sosa:Procedure ;
-    schema1:rangeIncludes sosa:System ;
+    schema:domainIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:implements ;
     skos:definition """
@@ -328,8 +328,8 @@ sosa:implementedBy
 sosa:implements
     a owl:ObjectProperty ;
     rdfs:label "implements"@en ;
-    schema1:domainIncludes sosa:System ;
-    schema1:rangeIncludes sosa:Procedure ;
+    schema:domainIncludes sosa:System ;
+    schema:rangeIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:implementedBy ;
     skos:definition """
@@ -341,8 +341,8 @@ sosa:implements
 sosa:inDeployment
     a owl:ObjectProperty ;
     rdfs:label "in deployment"@en ;
-    schema1:domainIncludes sosa:Platform ;
-    schema1:rangeIncludes sosa:Deployment ;
+    schema:domainIncludes sosa:Platform ;
+    schema:rangeIncludes sosa:Deployment ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:hasDeployment ;
     owl:inverseOf sosa:deployedOnPlatform ;
@@ -355,7 +355,7 @@ sosa:inDeployment
 sosa:inputFor
     a owl:ObjectProperty ;
     rdfs:label "input for"@en ;
-    schema1:rangeIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hasInput ;
     skos:definition """
@@ -366,8 +366,8 @@ sosa:inputFor
 sosa:isFeatureOfInterestOf
     a owl:ObjectProperty ;
     rdfs:label "is feature of interest of"@en ;
-    schema1:domainIncludes sosa:FeatureOfInterest ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:FeatureOfInterest ;
+    schema:rangeIncludes
         sosa:Deployment ,
         sosa:Execution ,
         sosa:ExecutionCollection ;
@@ -384,11 +384,11 @@ sosa:isFeatureOfInterestOf
 sosa:isHostedBy
     a owl:ObjectProperty ;
     rdfs:label "is hosted by"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Asset ,
         sosa:Platform ,
         sosa:System ;
-    schema1:rangeIncludes sosa:Platform ;
+    schema:rangeIncludes sosa:Platform ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hosts ;
     skos:definition """
@@ -399,10 +399,10 @@ sosa:isHostedBy
 sosa:isMemberOf
     a owl:ObjectProperty ;
     rdfs:label "is member of collection" ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes sosa:ExecutionCollection ;
+    schema:rangeIncludes sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hasMember ;
     skos:definition """
@@ -415,8 +415,8 @@ sosa:isMemberOf
 sosa:isProcedureFor
     a owl:ObjectProperty ;
     rdfs:label "is procedure for"@en ;
-    schema1:domainIncludes sosa:Procedure ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:domainIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:forProperty ;
     owl:inverseOf sosa:hasProcedure ;
@@ -428,8 +428,8 @@ sosa:isProcedureFor
 sosa:isPropertyOf
     a owl:ObjectProperty ;
     rdfs:label "is property of"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes sosa:FeatureOfInterest ;
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes sosa:FeatureOfInterest ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hasProperty ;
     skos:definition """
@@ -440,7 +440,7 @@ sosa:isPropertyOf
 sosa:isResultOf
     a owl:ObjectProperty ;
     rdfs:label "is result of"@en ;
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -453,8 +453,8 @@ sosa:isResultOf
 sosa:isSubSystemOf
     a owl:ObjectProperty ;
     rdfs:label "is subsystem of"@en ;
-    schema1:domainIncludes sosa:System ;
-    schema1:rangeIncludes sosa:System ;
+    schema:domainIncludes sosa:System ;
+    schema:rangeIncludes sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hasSubSystem ;
     skos:definition """
@@ -465,10 +465,10 @@ sosa:isSubSystemOf
 sosa:madeBySystem
     a owl:ObjectProperty ;
     rdfs:label "made by system"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes sosa:System ;
+    schema:rangeIncludes sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:madeExecution ;
     skos:definition """
@@ -486,8 +486,8 @@ sosa:madeBySystem
 sosa:madeExecution
     a owl:ObjectProperty ;
     rdfs:label "made execution"@en ;
-    schema1:domainIncludes sosa:System ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:System ;
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -507,7 +507,7 @@ sosa:madeExecution
 sosa:outputFor
     a owl:ObjectProperty ;
     rdfs:label "output for"@en ;
-    schema1:rangeIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:hasOutput ;
     skos:definition """
@@ -518,8 +518,8 @@ sosa:outputFor
 sosa:phenomenonOccurred
     a owl:ObjectProperty ;
     rdfs:label "phenomenon occurred"@en ;
-    schema1:domainIncludes time:TemporalEntity ;
-    schema1:rangeIncludes
+    schema:domainIncludes time:TemporalEntity ;
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -532,10 +532,10 @@ sosa:phenomenonOccurred
 sosa:phenomenonTime
     a owl:ObjectProperty ;
     rdfs:label "phenomenon time"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes time:TemporalEntity ;
+    schema:rangeIncludes time:TemporalEntity ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:phenomenonOccurred ;
     skos:definition """
@@ -560,8 +560,8 @@ sosa:phenomenonTime
 sosa:systemDeployment
     a owl:ObjectProperty ;
     rdfs:label "system deployment"@en ;
-    schema1:domainIncludes sosa:System ;
-    schema1:rangeIncludes sosa:Deployment ;
+    schema:domainIncludes sosa:System ;
+    schema:rangeIncludes sosa:Deployment ;
     rdfs:isDefinedBy sosa-common: ;
     rdfs:subPropertyOf sosa:hasDeployment ;
     owl:inverseOf sosa:deployedSystem ;
@@ -573,8 +573,8 @@ sosa:systemDeployment
 sosa:usedForExecution
     a owl:ObjectProperty ;
     rdfs:label "used for execution"@en ;
-    schema1:domainIncludes sosa:Procedure ;
-    schema1:rangeIncludes sosa:Execution ;
+    schema:domainIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:Execution ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:usedProcedure ;
     skos:definition """
@@ -585,10 +585,10 @@ sosa:usedForExecution
 sosa:usedProcedure
     a owl:ObjectProperty ;
     rdfs:label "used procedure"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes sosa:Procedure ;
+    schema:rangeIncludes sosa:Procedure ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:usedForExecution ;
     skos:definition """
@@ -599,10 +599,10 @@ sosa:usedProcedure
 sosa:forProperty
     a owl:ObjectProperty ;
     rdfs:label "for property"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Procedure ,
         sosa:System ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:propertyFor ;
     skos:definition """
@@ -614,8 +614,8 @@ sosa:forProperty
 sosa:propertyFor
     a owl:ObjectProperty ;
     rdfs:label "property for"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes
         sosa:Procedure ,
         sosa:System ;
     rdfs:isDefinedBy sosa-common: ;
@@ -629,8 +629,8 @@ sosa:propertyFor
 sosa:deployedAsset
     a owl:ObjectProperty ;
     rdfs:label "deployed asset"@en ;
-    schema1:domainIncludes sosa:Deployment ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:Deployment ;
+    schema:rangeIncludes
         sosa:Asset ,
         sosa:Platform ,
         sosa:System ;
@@ -644,11 +644,11 @@ sosa:deployedAsset
 sosa:hasDeployment
     a owl:ObjectProperty ;
     rdfs:label "has deployment"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Asset ,
         sosa:Platform ,
         sosa:System ;
-    schema1:rangeIncludes sosa:Deployment ;
+    schema:rangeIncludes sosa:Deployment ;
     rdfs:isDefinedBy sosa-common: ;
     owl:inverseOf sosa:deployedAsset ;
     skos:definition """

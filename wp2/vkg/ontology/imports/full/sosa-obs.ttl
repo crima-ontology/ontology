@@ -2,7 +2,7 @@ PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX schema1: <http://schema.org/>
+PREFIX schema: <http://schema.org/>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
 PREFIX sosa: <http://www.w3.org/ns/sosa/>
 PREFIX sosa-common: <http://www.w3.org/ns/sosa/common/>
@@ -22,7 +22,7 @@ sosa:Platform
 .
 
 sosa:deployedAsset
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
@@ -31,7 +31,7 @@ sosa:deployedOnPlatform
 .
 
 sosa:deployedSystem
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
@@ -40,12 +40,12 @@ sosa:endTime
 .
 
 sosa:hasDeployment
-    schema1:domainIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasFeatureOfInterest
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -56,13 +56,13 @@ sosa:hasInput
 .
 
 sosa:hasInputValue
-    schema1:domainIncludes sosa:Observation ;
+    schema:domainIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasMember
-    schema1:domainIncludes sosa:ObservationCollection ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:ObservationCollection ;
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -81,45 +81,45 @@ sosa:hasProperty
 .
 
 sosa:hasResult
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasSimpleResult
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasSubSystem
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasUltimateFeatureOfInterest
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hosts
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:implementedBy
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:implements
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes sosa:ObservingProcedure ;
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:ObservingProcedure ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
@@ -132,27 +132,27 @@ sosa:inputFor
 .
 
 sosa:inputValueForExecution
-    schema1:rangeIncludes sosa:Observation ;
+    schema:rangeIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:isFeatureOfInterestOf
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:isHostedBy
-    schema1:domainIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:isMemberOf
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes sosa:ObservationCollection ;
+    schema:rangeIncludes sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
@@ -161,18 +161,18 @@ sosa:isPropertyOf
 .
 
 sosa:isResultOf
-    schema1:rangeIncludes sosa:Observation ;
+    schema:rangeIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:isSubSystemOf
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:isUltimateFeatureOfInterestOf
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
@@ -183,46 +183,46 @@ sosa:outputFor
 .
 
 sosa:phenomenonOccurred
-    schema1:rangeIncludes sosa:Observation ;
+    schema:rangeIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:phenomenonTime
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:propertyFor
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:resultTime
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:startTime
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:usedForExecution
-    schema1:rangeIncludes sosa:Observation ;
+    schema:rangeIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:usedProcedure
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes sosa:ObservingProcedure ;
+    schema:rangeIncludes sosa:ObservingProcedure ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
@@ -237,8 +237,8 @@ sosa:System
 sosa:detects
     a owl:ObjectProperty ;
     rdfs:label "detects"@en ;
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes sosa:Stimulus ;
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Stimulus ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:isDetectedBy ;
     skos:definition """
@@ -249,15 +249,15 @@ sosa:detects
 .
 
 sosa:forProperty
-    schema1:domainIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-common: ;
 .
 
 sosa:hasProxy
     a owl:ObjectProperty ;
     rdfs:label "has proxy"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes sosa:Stimulus ;
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes sosa:Stimulus ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:isProxyFor ;
     skos:definition """
@@ -272,8 +272,8 @@ An increase or decrease in the velocity of spinning cups on a wind Sensor is ser
 sosa:isDetectedBy
     a owl:ObjectProperty ;
     rdfs:label "is detected by"@en ;
-    schema1:domainIncludes sosa:Stimulus ;
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Stimulus ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:detects ;
     skos:definition """
@@ -286,8 +286,8 @@ sosa:isDetectedBy
 sosa:isObservedBy
     a owl:ObjectProperty ;
     rdfs:label "is observed by"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:observes ;
     skos:definition """
@@ -298,8 +298,8 @@ sosa:isObservedBy
 sosa:isProxyFor
     a owl:ObjectProperty ;
     rdfs:label "is proxy for"@en ;
-    schema1:domainIncludes sosa:Stimulus ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:domainIncludes sosa:Stimulus ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:hasProxy ;
     skos:definition """
@@ -311,10 +311,10 @@ sosa:isProxyFor
 sosa:madeBySensor
     a owl:ObjectProperty ;
     rdfs:label "made by sensor or observer"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Sensor ;
     rdfs:isDefinedBy sosa-obs: ;
     rdfs:subPropertyOf sosa:madeBySystem ;
     owl:inverseOf sosa:madeObservation ;
@@ -326,8 +326,8 @@ sosa:madeBySensor
 sosa:madeObservation
     a owl:ObjectProperty ;
     rdfs:label "made observation"@en ;
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -341,10 +341,10 @@ sosa:madeObservation
 sosa:observationRelatedTo
     a owl:ObjectProperty ;
     rdfs:label "observation related to"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -358,10 +358,10 @@ sosa:observationRelatedTo
 sosa:observedProperty
     a owl:ObjectProperty ;
     rdfs:label "observed property"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:wasObservedBy ;
     skos:definition """
@@ -375,8 +375,8 @@ sosa:observedProperty
 sosa:observes
     a owl:ObjectProperty ;
     rdfs:label "observes"@en ;
-    schema1:domainIncludes sosa:Sensor ;
-    schema1:rangeIncludes sosa:Property ;
+    schema:domainIncludes sosa:Sensor ;
+    schema:rangeIncludes sosa:Property ;
     rdfs:isDefinedBy sosa-obs: ;
     rdfs:subPropertyOf sosa:forProperty ;
     owl:inverseOf sosa:isObservedBy ;
@@ -388,8 +388,8 @@ sosa:observes
 sosa:originated
     a owl:ObjectProperty ;
     rdfs:label "originated"@en ;
-    schema1:domainIncludes sosa:Stimulus ;
-    schema1:rangeIncludes sosa:Observation ;
+    schema:domainIncludes sosa:Stimulus ;
+    schema:rangeIncludes sosa:Observation ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:wasOriginatedBy ;
     skos:definition """
@@ -400,7 +400,7 @@ sosa:originated
 sosa:qualityOf
     a owl:ObjectProperty ;
     rdfs:label "quality of" ;
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -413,10 +413,10 @@ sosa:qualityOf
 sosa:relatedObservation
     a owl:ObjectProperty ;
     rdfs:label "related observation"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Execution ,
         sosa:ExecutionCollection ;
-    schema1:rangeIncludes
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -430,7 +430,7 @@ sosa:relatedObservation
 sosa:resultQuality
     a owl:ObjectProperty ;
     rdfs:label "observation result quality" ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -451,8 +451,8 @@ sosa:resultQuality
 sosa:wasObservedBy
     a owl:ObjectProperty ;
     rdfs:label "was observed by"@en ;
-    schema1:domainIncludes sosa:Property ;
-    schema1:rangeIncludes
+    schema:domainIncludes sosa:Property ;
+    schema:rangeIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
     rdfs:isDefinedBy sosa-obs: ;
@@ -465,10 +465,10 @@ sosa:wasObservedBy
 sosa:wasOriginatedBy
     a owl:ObjectProperty ;
     rdfs:label "was originated by"@en ;
-    schema1:domainIncludes
+    schema:domainIncludes
         sosa:Observation ,
         sosa:ObservationCollection ;
-    schema1:rangeIncludes sosa:Stimulus ;
+    schema:rangeIncludes sosa:Stimulus ;
     rdfs:isDefinedBy sosa-obs: ;
     owl:inverseOf sosa:originated ;
     skos:definition """
