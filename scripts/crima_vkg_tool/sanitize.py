@@ -78,6 +78,7 @@ _SANITIZE_CONTROL_CHARS_REGEX = re.compile(r"[\u202D\u200e]+")
 
 _SANITIZE_TRANSLATION_TABLE = str.maketrans(
     {
+        "\r": "",
         "\u201c": '"',
         "\u201d": '"',
         "\u2018": "'",

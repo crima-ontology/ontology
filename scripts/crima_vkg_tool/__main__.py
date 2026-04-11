@@ -5,6 +5,7 @@ import click
 from crima_vkg_tool.catalog import cli_catalog
 from crima_vkg_tool.download import cli_download
 from crima_vkg_tool.ecv import cli_ecv
+from crima_vkg_tool.hip import cli_hip
 from crima_vkg_tool.merge import cli_merge
 from crima_vkg_tool.mermaid import cli_mermaid
 from crima_vkg_tool.sanitize import cli_sanitize
@@ -22,6 +23,7 @@ def cli(*, verbose: bool = False) -> None:
 cli.add_command(cli_catalog)
 cli.add_command(cli_download)
 cli.add_command(cli_ecv)
+cli.add_command(cli_hip)
 cli.add_command(cli_merge)
 cli.add_command(cli_mermaid)
 cli.add_command(cli_sanitize)
