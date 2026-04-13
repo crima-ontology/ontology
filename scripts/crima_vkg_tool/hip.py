@@ -1,6 +1,7 @@
 import json
 import logging
 import re
+from hashlib import blake2b
 from time import sleep
 from urllib.parse import urljoin
 
@@ -8,7 +9,7 @@ import click
 import extruct
 import requests
 from lxml import html
-from rdflib import DCTERMS, OWL, RDF, SKOS, Graph, Literal, Namespace, URIRef
+from rdflib import DCTERMS, OWL, RDF, RDFS, SKOS, XSD, Graph, Literal, Namespace, URIRef
 
 from crima_vkg_tool.util import BIBO, PROV, create_graph, get_namespace, rdf_read, rdf_write, replace_terms
 
@@ -104,10 +105,11 @@ def cli_hip_reshape(inputs: list[str], output_file: str = ".ttl:-") -> None:
 
     # Reshape the graph in multiple steps
     _reshape_types(graph)
-    _reshape_iris(graph)
+    _reshape_terms(graph)
     _reshape_skos_triples(graph)
     _reshape_ontology_triples(graph)
     _reshape_irrelevant_triples(graph)
+    _reshape_datatypes(graph)
 
     # Serialize collected RDF data (to file or stdout)
     rdf_write(graph, output_file)
@@ -126,7 +128,7 @@ def _reshape_types(graph: Graph) -> None:
         graph.add((s, RDF.type, BIBO.Document))
 
     # Replace class skos:Concept with subclasses hip:{HazardCluster,HazardType,SpecificHazard} + owl:NamedIndividual
-    for s, _, _ in list(graph.triples((None, RDF.type, SKOS.Concept))):
+    for s in list(graph.subjects(RDF.type, SKOS.Concept)):
         dcterms_type = graph.value(s, DCTERMS.type)
         rdf_type = (
             HIP_SCHEMA.HazardCluster
@@ -143,18 +145,25 @@ def _reshape_types(graph: Graph) -> None:
             graph.remove((s, RDF.type, SKOS.Concept))
             graph.add((s, RDF.type, rdf_type))
 
+    # Add type bibo:Image and remove bibo:Document (super-class) to subjects of dcterms:type "diagram"
+    for s in graph.subjects(DCTERMS.type, Literal("diagram")):
+        graph.remove((s, DCTERMS.type, None))
+        graph.remove((s, RDF.type, BIBO.Document))
+        graph.add((s, RDF.type, BIBO.Image))
 
-def _reshape_iris(graph: Graph) -> None:
+    # Add class skos:Concept to objects of skos:related property
+    for o in list(graph.objects(predicate=SKOS.related)):
+        graph.add((o, RDF.type, SKOS.Concept))
+
+
+def _reshape_terms(graph: Graph) -> None:
     """
-    Reshape step #2: rename IRIs of HIP scheme/concepts to ensure they conform to a certain form.
+    Reshape step #2: rewrite terms (IRIs/literals) of HIP scheme/concepts to ensure they conform to a certain form.
 
     :param graph: the Graph with HIP ABox data being transformed
     """
     # Dictionary where to schedule replacements
     replacements: dict[URIRef, URIRef] = {}
-
-    # Replace <.../drr-glossary/hips> website URL with <.../drr-glossary/HIP-classification-system> scheme IRI
-    replacements[WEBSITE] = SCHEME
 
     # Ensure hip:{HazardCluster,HazardType,SpecificHazard} IRIs are of form <correspoding namespace / local name>
     # E.g.: hip-cluster:construction/structural-failure -> hip-cluster:construction-structural-failure
@@ -175,17 +184,21 @@ def _reshape_iris(graph: Graph) -> None:
         if not graph.value(s, DCTERMS.identifier):
             replacements[s] = None
 
+    # Replace bibo:Document/bibo:Image arbitrary IRIs with a templated one, moving original IRI as bibo:uri value
+    for s in (
+        set(graph.subjects(RDF.type, BIBO.Document)) |
+        set(graph.subjects(RDF.type, BIBO.Image))
+    ):
+        iri = graph.value(s, DCTERMS.identifier) or str(s)
+        graph.remove((s, DCTERMS.identifier, None))
+        graph.add((s, BIBO.uri, Literal(iri, datatype=XSD.anyURI)))
+        hash = blake2b(iri.encode("utf-8"), digest_size=8).hexdigest()
+        iri = URIRef("https://www.preventionweb.net/hips-document/" + hash)
+        replacements[s] = iri
+        replacements[Literal(s)] = iri  # this handles objects of dcterms:conformsTo that are literals rather than IRIs
+
     # Apply replacements in a single pass over Graph triples
     replace_terms(graph, replacements, positions={0, 2})
-
-    # Triples with predicate prov:wasInfluencedBy and dcterms:references should go to website URL, and not scheme IRI
-    # (this will revert website -> scheme replacement in those specific cases only)
-    for s, p, _ in graph.triples((None, None, SCHEME)):
-        if p in {PROV.wasInfluencedBy, DCTERMS.references}:
-            graph.remove((s, p, SCHEME))
-            graph.add((s, p, WEBSITE))
-
-
 
 
 def _reshape_skos_triples(graph: Graph) -> None:
@@ -200,16 +213,18 @@ def _reshape_skos_triples(graph: Graph) -> None:
     graph.add((SCHEME, RDF.type, OWL.NamedIndividual))
 
     # For the skos:Scheme individual, recover title, description and date from OG properties (later discarded)
-    for o in graph.objects(SCHEME, OG.title):
+    website_document_iri = next(graph.subjects(BIBO.uri, Literal(WEBSITE, datatype=XSD.anyURI)))
+    for o in graph.objects(website_document_iri, OG.title):
         graph.add((SCHEME, DCTERMS.title, o))
-    for o in graph.objects(SCHEME, OG.description):
+    for o in graph.objects(website_document_iri, OG.description):
         graph.add((SCHEME, DCTERMS.description, o))
-    for o in graph.objects(SCHEME, ARTICLE.published_time):
+    for o in graph.objects(website_document_iri, ARTICLE.published_time):
         graph.add((SCHEME, DCTERMS.date, o))
 
     # Assert skos:inScheme triples for all instances of hip-schema:{HazardCluster,HazardType}
-    for c in (HIP_SCHEMA.HazardCluster, HIP_SCHEMA.HazardType):
+    for c in (HIP_SCHEMA.HazardCluster, HIP_SCHEMA.HazardType, HIP_SCHEMA.SpecificHazard):
         for s in list(graph.subjects(RDF.type, c)):
+            graph.remove((s, SKOS.inScheme, None))
             graph.add((s, SKOS.inScheme, URIRef(SCHEME)))
 
     # Replace skos:broader triples pointing to hip-schema:HazardCluster SKOS collections with clex:isMemberOf triples
@@ -283,12 +298,40 @@ def _reshape_irrelevant_triples(graph: Graph) -> None:
     graph.remove((None, OG.image, None))
     graph.remove((None, XHV.role, None))
 
-    # Add all triples about terms in <https://www.preventionweb.net/hips-chapeau/> namespace
+    # Drop all triples about terms in <https://www.preventionweb.net/hips-chapeau/> namespace
     for t in {
         t for triple in graph for t in triple if get_namespace(t) == "https://www.preventionweb.net/hips-chapeau/"
     }:
         graph.remove((t, None, None))
         graph.remove((None, None, t))
+
+    # Drop all extra rdfs:label of bibo:Document instances except the longest one
+    for s in graph.subjects(RDF.type, BIBO.Document):
+        labels = set(graph.objects(s, RDFS.label))
+        if len(labels) > 1:
+            graph.remove((s, RDFS.label, None))
+            graph.add((s, RDFS.label, max(labels, key=len)))
+
+
+def _reshape_datatypes(graph: Graph) -> None:
+    """
+    Reshape step #6: assign proper literal datatypes (e.g., xsd:dateTime for dcterms:date and similar).
+
+    :param graph: the Graph with HIP ABox data being transformed
+    """
+    # Use xsd:dateTime as datatype of literal objects of dcterms:{date,created,modified}
+    for p in (DCTERMS.date, DCTERMS.created, DCTERMS.modified):
+        for s, _, o in list(graph.triples((None, p, None))):
+            if isinstance(o, Literal) and o.datatype != XSD.dateTime:
+                graph.remove((s, p, o))
+                graph.add((s, p, Literal(o.value, datatype=XSD.dateTime)))
+
+    # Use @en as language of literal objects of dcterms:{title,description,accessRights}
+    for p in (DCTERMS.title, DCTERMS.description, DCTERMS.accessRights):
+        for s, _, o in list(graph.triples((None, p, None))):
+            if isinstance(o, Literal) and o.language != "en":
+                graph.remove((s, p, o))
+                graph.add((s, p, Literal(o.value, lang="en")))
 
 
 def _bind_prefixes(graph: Graph) -> None:
