@@ -20,7 +20,6 @@ _LOGGER = logging.getLogger(__name__)
 
 
 ARTICLE = Namespace("http://ogp.me/ns/article#")
-CLEX = Namespace("http://www.semanticweb.org/crima/crima-lexicon#")
 HIP_SCHEMA = Namespace("https://undrr-hip.org/")
 OG = Namespace("https://ogp.me/ns#")
 XHV = Namespace("http://www.w3.org/1999/xhtml/vocab#")
@@ -257,7 +256,6 @@ def _reshape_ontology_triples(graph: Graph) -> None:
         format="ttl",
         data="""
         @prefix bibo: <http://purl.org/ontology/bibo/> .
-        @prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
         @prefix dcterms: <http://purl.org/dc/terms/> .
         @prefix owl: <http://www.w3.org/2002/07/owl#> .
         @prefix voaf: <http://purl.org/vocommons/voaf#> .
@@ -267,14 +265,12 @@ def _reshape_ontology_triples(graph: Graph) -> None:
             voaf:reliesOn dcterms:,
                 bibo:,
                 <http://rdf-vocabulary.ddialliance.org/xkos>,
-                clex:,
                 <http://www.w3.org/2004/02/skos/core>,
                 <http://www.w3.org/ns/prov-o#>,
                 <https://undrr-hip.org/hip-schema/> ;
             owl:imports dcterms:,
                 bibo:,
                 <http://rdf-vocabulary.ddialliance.org/xkos>,
-                clex:,
                 <http://www.w3.org/2004/02/skos/core>,
                 <http://www.w3.org/ns/prov-o#>,
                 <https://undrr-hip.org/hip-schema/> .
@@ -595,7 +591,6 @@ _HIP_SQL_TEMPLATE = Template("""
 _HIP_OBDA_TEMPLATE = Template("""
     [PrefixDeclaration]
     bibo:           http://purl.org/ontology/bibo/
-    clex:           http://www.semanticweb.org/crima/crima-lexicon#
     dcterms:        http://purl.org/dc/terms/
     hip-cluster:    https://www.preventionweb.net/hips-cluster/
     hip-document:   https://www.preventionweb.net/hips-document/
@@ -626,7 +621,6 @@ _HIP_OBDA_TEMPLATE = Template("""
                         <http://purl.org/dc/terms/> ,
                         <http://purl.org/ontology/bibo/> ,
                         <http://rdf-vocabulary.ddialliance.org/xkos> ,
-                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
                         <http://www.w3.org/2004/02/skos/core> ,
                         <http://www.w3.org/ns/prov-o#> ,
                         <https://undrr-hip.org/hip-schema/> ;
@@ -634,7 +628,6 @@ _HIP_OBDA_TEMPLATE = Template("""
                         <http://purl.org/dc/terms/> ,
                         <http://purl.org/ontology/bibo/> ,
                         <http://rdf-vocabulary.ddialliance.org/xkos> ,
-                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
                         <http://www.w3.org/2004/02/skos/core> ,
                         <http://www.w3.org/ns/prov-o#> ,
                         <https://undrr-hip.org/hip-schema/> .
@@ -780,7 +773,6 @@ def _bind_prefixes(graph: Graph) -> None:
     """
     graph.bind("article", "http://ogp.me/ns/article#")
     graph.bind("bibo", "http://purl.org/ontology/bibo/")
-    graph.bind("clex", "http://www.semanticweb.org/crima/crima-lexicon#")
     graph.bind("dcterms", "http://purl.org/dc/terms/")
     graph.bind("hip-cluster", "https://www.preventionweb.net/hips-cluster/")
     graph.bind("hip-glossary", "https://www.preventionweb.net/drr-glossary/")

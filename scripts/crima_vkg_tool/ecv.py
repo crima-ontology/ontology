@@ -50,7 +50,8 @@ def cli_ecv(input_file: str, output_file: str, prefix: str = "") -> None:
             "subdomain",
             """
             SELECT ?id ?domain_id ?label {
-                ?iri a ecv:ECV-subdomain ; skos:broader ?domain ; rdfs:label ?label
+                ?iri a ecv:ECV-subdomain ; skos:broader ?domain ; rdfs:label ?label .
+                ?domain a ecv:ECV-domain .
                 BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
                 BIND(STRAFTER(STR(?domain), STR(ecv:)) AS ?domain_id)
             } ORDER BY ?id""",
@@ -60,7 +61,8 @@ def cli_ecv(input_file: str, output_file: str, prefix: str = "") -> None:
             "variable",
             """
             SELECT ?id ?subdomain_id ?label ?definition {
-                ?iri a ecv:ECV-variable ; clex:isMemberOf ?subdomain ; rdfs:label ?label
+                ?iri a ecv:ECV-variable ; skos:broader ?subdomain ; rdfs:label ?label .
+                ?subdomain a ecv:ECV-subdomain .
                 OPTIONAL { ?iri skos:definition ?definition }
                 BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
                 BIND(STRAFTER(STR(?subdomain), STR(ecv:)) AS ?subdomain_id)
@@ -158,7 +160,6 @@ _ECV_SQL_TEMPLATE = Template("""
 
 _ECV_OBDA_TEMPLATE = Template("""
     [PrefixDeclaration]
-    clex:       http://www.semanticweb.org/crima/crima-lexicon#
     cunit:      http://www.semanticweb.org/crima/crima-unit#
     ecv:        http://www.semanticweb.org/crima/crima-ecv#
     owl:        http://www.w3.org/2002/07/owl#
@@ -184,7 +185,6 @@ _ECV_OBDA_TEMPLATE = Template("""
                         <http://qudt.org/schema/qudt> ,
                         <http://qudt.org/vocab/unit> ,
                         <http://www.semanticweb.org/crima/crima-ecv#> ,
-                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
                         <http://www.semanticweb.org/crima/crima-unit#> ,
                         <http://www.w3.org/2004/02/skos/core> ;
                     owl:imports
@@ -192,7 +192,6 @@ _ECV_OBDA_TEMPLATE = Template("""
                         <http://qudt.org/schema/qudt> ,
                         <http://qudt.org/vocab/unit> ,
                         <http://www.semanticweb.org/crima/crima-ecv#> ,
-                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
                         <http://www.semanticweb.org/crima/crima-unit#> ,
                         <http://www.w3.org/2004/02/skos/core> .
     source      SELECT 1
@@ -210,7 +209,7 @@ _ECV_OBDA_TEMPLATE = Template("""
 
     mappingId   ${prefix}variable
     target      ecv:{id} a ecv:ECV-variable ;
-                    clex:isMemberOf ecv:{subdomain_id} ;
+                    skos:broader ecv:{subdomain_id} ;
                     rdfs:label "{label}"@en ;
                     skos:definition "{definition}"@en .
     source      SELECT * FROM ${prefix}variable
