@@ -1,4 +1,3 @@
-@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
 @prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
 @prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -107,7 +106,7 @@ ecv:ECV-variable a sh:NodeShape ;
         sh:minCount 1 ;
         sh:maxCount 1
     ] , [
-        sh:path clex:isMemberOf ;
+        sh:path skos:broader ;
         sh:class ecv:ECV-subdomain ;
         sh:minCount 1 ;
         sh:maxCount 1

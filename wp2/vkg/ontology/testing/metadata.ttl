@@ -7,7 +7,6 @@ PREFIX cbib: <http://www.semanticweb.org/crima/crima-bib#>
 PREFIX cc: <http://creativecommons.org/ns#>
 PREFIX ccore: <http://www.semanticweb.org/crima/crima-core#>
 PREFIX clc: <http://www.w3.org/2015/03/corine#>
-PREFIX clex: <http://www.semanticweb.org/crima/crima-lexicon#>
 PREFIX cplace: <http://www.semanticweb.org/crima/crima-place#>
 PREFIX crid: <http://www.semanticweb.org/crima/crima-id#>
 PREFIX ecv-data: <http://www.semanticweb.org/crima/crima-ecv-data#>
@@ -193,10 +192,6 @@ ccore:
     mod:definesNamespace "http://www.semanticweb.org/crima/crima-core#"^^xsd:anyURI ;
     mod:includesStatementsWith
         ( sosa:Property ctlo:Quality ) .
-
-clex:
-    mod:hasSerialization "modules/clex.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-lexicon#"^^xsd:anyURI .
 
 cplace:
     mod:hasSerialization "modules/cplace.ttl" ;

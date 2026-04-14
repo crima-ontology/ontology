@@ -6,7 +6,6 @@
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
 @prefix clc: <http://www.w3.org/2015/03/corine#> .
-@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
 @prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
 @prefix crid: <http://www.semanticweb.org/crima/crima-id#> .
 @prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
@@ -55,7 +54,6 @@
         ecv:,
         crid:,
         ich:,
-        clex:,
         cplace:,
         ctlo:,
         cunit:,
@@ -96,7 +94,6 @@
         ecv:,
         crid:,
         ich:,
-        clex:,
         cplace:,
         ctlo:,
         cunit:,

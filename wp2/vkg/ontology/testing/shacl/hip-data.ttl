@@ -1,5 +1,4 @@
 @prefix bibo: <http://purl.org/ontology/bibo/> .
-@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix hip-cluster: <https://www.preventionweb.net/hips-cluster/> .
 @prefix hip-glossary: <https://www.preventionweb.net/drr-glossary/> .
@@ -15,6 +14,8 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+
+# TODO: match and validate ontology, close w.r.t. types
 
 hip-schema:HIP-ClassificationSystem a sh:Nodeshape ;
     sh:targetClass hip-schema:HIP-ClassificationSystem ;
