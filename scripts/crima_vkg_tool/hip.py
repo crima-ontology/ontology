@@ -2,8 +2,11 @@ import json
 import logging
 import re
 from hashlib import blake2b
+from string import Template
+from textwrap import dedent
 from time import sleep
 from urllib.parse import urljoin
+from zipfile import ZIP_DEFLATED, ZipFile
 
 import click
 import extruct
@@ -227,19 +230,13 @@ def _reshape_skos_triples(graph: Graph) -> None:
             graph.remove((s, SKOS.inScheme, None))
             graph.add((s, SKOS.inScheme, URIRef(SCHEME)))
 
-    # Replace skos:broader triples pointing to hip-schema:HazardCluster SKOS collections with clex:isMemberOf triples
-    for s, _, o in list(graph.triples((None, SKOS.broader, None))):
-        if (o, RDF.type, HIP_SCHEMA.HazardCluster) in graph:
-            graph.remove((s, SKOS.broader, o))
-            graph.add((s, CLEX.isMemberOf, o))
-
-    # Generate missing skos:broader triples from hip-schema:HazardCluster to hip-schema:HazardType individuals (TODO)
+    # Generate missing skos:broader triples from hip-schema:HazardCluster to hip-schema:HazardType individuals
     for r in list(
         graph.query("""
         SELECT (?hc AS ?cluster) (SAMPLE(?ht) AS ?type)
         {
-            ?hc a hip-schema:HazardCluster; ^clex:isMemberOf ?st .
-            ?st a hip-schema:SpecificHazard; skos:broader ?ht .
+            ?sh a hip-schema:SpecificHazard; skos:broader ?hc , ?ht .
+            ?hc a hip-schema:HazardCluster .
             ?ht a hip-schema:HazardType
         }
         GROUP BY ?hc
@@ -310,7 +307,7 @@ def _reshape_irrelevant_triples(graph: Graph) -> None:
         labels = set(graph.objects(s, RDFS.label))
         if len(labels) > 1:
             graph.remove((s, RDFS.label, None))
-            graph.add((s, RDFS.label, max(labels, key=len)))
+            graph.add((s, RDFS.label, max(sorted(labels), key=lambda l: len(l.value))))
 
 
 def _reshape_datatypes(graph: Graph) -> None:
@@ -334,6 +331,447 @@ def _reshape_datatypes(graph: Graph) -> None:
                 graph.add((s, p, Literal(o.value, lang="en")))
 
 
+@cli_hip.command(name="csv")
+@click.argument("input_files", metavar="INPUT_FILE...", nargs=-1)
+@click.option("-o", "--output-file", metavar="FILE", default="hip.zip", help="output ZIP file")
+@click.option("-p", "--prefix", metavar="PREFIX", default="", help="optional prefix for generated SQL tables")
+def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> None:
+    """
+    Generate a ZIP with equivalent CSV files, SQL schema, and OBDA mappings for HIP RDF ABox data.
+
+    Takes one or multiple RDF input files with HIP ABox data (e.g., modules/hip-data.ttl), and an optional prefix for
+    generated tables (default "") . Based on them, produces a ZIP file containing:
+    (1) {prefix}{table}.csv: a CSV file per table, with HIP data (9 tables total);
+    (2) schema.sql: the SQL schema with table definitions matching the content CSV files, for possible import in a RDB;
+    (3) mapping.obda: an OBDA mapping file, in Ontop format, formalizing the correspondence between CSV and RDF data.
+    """
+    graph = create_graph()
+    for input in input_files or [".ttl:-"]:
+        rdf_read(graph, input)
+
+    _bind_prefixes(graph)
+
+    with ZipFile(output_file, mode="w", compression=ZIP_DEFLATED) as zip:
+
+        def emit_csv(tbl_suffix: str, query: str) -> None:
+            results = graph.query(query)
+            with zip.open(prefix + tbl_suffix + ".csv", "w") as f:
+                results.serialize(destination=f, format="csv")
+
+        with zip.open("schema.sql", "w") as f:
+            f.write(dedent(_HIP_SQL_TEMPLATE.substitute(prefix=prefix)).lstrip().encode("utf-8"))
+
+        with zip.open("mapping.obda", "w") as f:
+            template_args = {
+                "prefix": prefix,
+                "date": graph.value(SCHEME, DCTERMS.date).value,
+                "title": graph.value(SCHEME, DCTERMS.title).value,
+                "description": graph.value(SCHEME, DCTERMS.description).value,
+                "version": "2025 update; https://www.undrr.org/publication/"
+                    "2025-update-undrr-isc-hazard-information-profiles-hips"
+            }
+            f.write(dedent(_HIP_OBDA_TEMPLATE.substitute(**template_args)).lstrip().encode("utf-8"))
+
+        emit_csv(
+            "document",
+            """
+            SELECT ?id ?url ?format ?label {
+                ?iri bibo:uri ?url .
+                OPTIONAL { ?iri dcterms:format ?format }
+                OPTIONAL { ?iri rdfs:label ?label }
+                BIND(STRAFTER(STR(?iri), STR(hip-document:)) AS ?id)
+            } ORDER BY ?id"""
+        )
+
+        emit_csv(
+            "substance",
+            """
+            SELECT ?id ?label {
+                ?iri a skos:Concept ; rdfs:label ?label
+                FILTER (STRSTARTS(STR(?iri), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#"))
+                BIND (STRAFTER(STR(?iri), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#") AS ?id)
+            } ORDER BY ?id"""
+        )
+
+        emit_csv(
+            "hazard_type",
+            """
+            SELECT  ?id ?label {
+                ?iri a hip-schema:HazardType ; skos:prefLabel ?label
+                BIND (STRAFTER(STR(?iri), STR(hip-type:)) AS ?id)
+            } ORDER BY ?id"""
+        )
+
+        emit_csv(
+            "hazard_cluster",
+            """
+            SELECT ?id ?hazard_type_id ?label {
+                ?iri a hip-schema:HazardCluster ; skos:broader ?hazard_type ; skos:prefLabel ?label
+                BIND (STRAFTER(STR(?iri), STR(hip-cluster:)) AS ?id)
+                BIND (STRAFTER(STR(?hazard_type), STR(hip-type:)) AS ?hazard_type_id)
+            } ORDER BY ?id"""
+        )
+
+        emit_csv(
+            "specific_hazard",
+            """
+            SELECT DISTINCT ?id ?hazard_type_id ?hazard_cluster_id ?label ?title ?definition ?note ?note_drivers
+                ?note_impacts ?note_metrics ?note_monitoring_early_warning ?note_multi_hazard_context
+                ?note_risk_management ?created ?modified ?relation
+            {
+                ?iri a hip-schema:SpecificHazard ;
+                    skos:broader ?hazard_type , ?hazard_cluster ;
+                    skos:prefLabel ?label ;
+                    dcterms:title ?title ;
+                    skos:definition ?definition ;
+                    skos:note ?note ;
+                    dcterms:created ?created ;
+                    dcterms:modified ?modified .
+                ?hazard_type a hip-schema:HazardType .
+                ?hazard_cluster a hip-schema:HazardCluster .
+                OPTIONAL { ?iri dcterms:relation ?relation }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "drivers" ; xkos:plainText ?note_drivers ] }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "impacts" ; xkos:plainText ?note_impacts ] }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "metrics" ; xkos:plainText ?note_metrics ] }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "monitoringEarlyWarning" ;
+                                                 xkos:plainText ?note_monitoring_early_warning ] }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "multiHazardContext" ;
+                                                 xkos:plainText ?note_multi_hazard_context ] }
+                OPTIONAL { ?iri skos:scopeNote [ dcterms:type "riskManagement" ;
+                                                 xkos:plainText ?note_risk_management ] }
+                BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?id)
+                BIND (STRAFTER(STR(?hazard_type), STR(hip-type:)) AS ?hazard_type_id)
+                BIND (STRAFTER(STR(?hazard_cluster), STR(hip-cluster:)) AS ?hazard_cluster_id)
+            }
+            ORDER BY ?id"""
+        )
+
+        emit_csv(
+            "specific_hazard_alt_label",
+            """
+            SELECT ?specific_hazard_id ?alt_label {
+                ?iri a hip-schema:SpecificHazard ; skos:altLabel ?alt_label
+                BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?specific_hazard_id)
+            } ORDER BY ?specific_hazard_id ?alt_label"""
+        )
+
+        emit_csv(
+            "specific_hazard_cause",
+            """
+            SELECT DISTINCT ?cause_id ?effect_id {
+                ?cause a hip-schema:SpecificHazard .
+                ?effect a hip-schema:SpecificHazard .
+                { ?cause xkos:causes ?effect } UNION { ?effect xkos:causedBy ?cause }
+                BIND (STRAFTER(STR(?cause), STR(hip-term:)) AS ?cause_id)
+                BIND (STRAFTER(STR(?effect), STR(hip-term:)) AS ?effect_id)
+            } ORDER BY ?cause_id ?effect_id"""
+        )
+
+        emit_csv(
+            "specific_hazard_document",
+            """
+            SELECT
+                ?specific_hazard_id ?document_id
+                (MAX(?r = dcterms:conformsTo) AS ?rel_conforms_to)
+                (MAX(?r = dcterms:references) AS ?rel_references)
+                (MAX(?r = dcterms:source) AS ?rel_source)
+                (MAX(?r = dcterms:hasPart) AS ?rel_image)
+            {
+                SELECT ?specific_hazard_id ?document_id ?r {
+                    ?iri a hip-schema:SpecificHazard
+                    { ?iri dcterms:conformsTo ?document BIND (dcterms:conformsTo AS ?r) } UNION
+                    { ?iri dcterms:references ?document BIND (dcterms:references AS ?r) } UNION
+                    { ?iri dcterms:source ?document BIND (dcterms:source AS ?r) } UNION
+                    { ?iri dcterms:hasPart ?document BIND (dcterms:hasPart AS ?r) }
+                    BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?specific_hazard_id)
+                    BIND (STRAFTER(STR(?document), STR(hip-document:)) AS ?document_id)
+                }
+            }
+            GROUP BY ?specific_hazard_id ?document_id
+            ORDER BY ?specific_hazard_id ?document_id"""
+        )
+
+        emit_csv(
+            "specific_hazard_substance",
+            """
+            SELECT ?specific_hazard_id ?substance_id {
+                ?iri a hip-schema:SpecificHazard ; skos:related ?substance
+                BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?specific_hazard_id)
+                BIND (STRAFTER(STR(?substance), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#")
+                      AS ?substance_id)
+            } ORDER BY ?specific_hazard_id ?substance_id"""
+        )
+
+
+_HIP_SQL_TEMPLATE = Template("""
+    CREATE TABLE ${prefix}document (
+        id VARCHAR NOT NULL,
+        url VARCHAR NOT NULL,
+        format VARCHAR,
+        label VARCHAR,
+        PRIMARY KEY (id),
+        UNIQUE (url)
+    );
+
+    CREATE TABLE ${prefix}substance (
+        id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE ${prefix}hazard_type (
+        id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        PRIMARY KEY (id)
+    );
+
+    CREATE TABLE ${prefix}hazard_cluster (
+        id VARCHAR NOT NULL,
+        hazard_type_id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        PRIMARY KEY (id),
+        FOREIGN KEY (hazard_type_id) REFERENCES ${prefix}hazard_type(id)
+    );
+
+    CREATE TABLE ${prefix}specific_hazard (
+        id VARCHAR NOT NULL,
+        hazard_type_id VARCHAR NOT NULL,
+        hazard_cluster_id VARCHAR NOT NULL,
+        label VARCHAR NOT NULL,
+        title VARCHAR NOT NULL,
+        definition VARCHAR NOT NULL,
+        note VARCHAR NOT NULL,
+        note_drivers VARCHAR,
+        note_impacts VARCHAR,
+        note_metrics VARCHAR,
+        note_monitoring_early_warning VARCHAR,
+        note_multi_hazard_context VARCHAR,
+        note_risk_management VARCHAR,
+        created TIMESTAMP WITH TIME ZONE NOT NULL,
+        modified TIMESTAMP WITH TIME ZONE NOT NULL,
+        relation VARCHAR,
+        PRIMARY KEY (id),
+        FOREIGN KEY (hazard_type_id) REFERENCES ${prefix}hazard_type(id),
+        FOREIGN KEY (hazard_cluster_id) REFERENCES ${prefix}hazard_cluster(id)
+    );
+
+    CREATE TABLE ${prefix}specific_hazard_alt_label (
+        specific_hazard_id VARCHAR NOT NULL,
+        alt_label VARCHAR NOT NULL,
+        PRIMARY KEY (specific_hazard_id, alt_label),
+        FOREIGN KEY (specific_hazard_id) REFERENCES ${prefix}specific_hazard(id)
+    );
+
+    CREATE TABLE ${prefix}specific_hazard_cause (
+        cause_id VARCHAR NOT NULL,
+        effect_id VARCHAR NOT NULL,
+        PRIMARY KEY (cause_id, effect_id),
+        FOREIGN KEY (cause_id) REFERENCES ${prefix}specific_hazard(id),
+        FOREIGN KEY (effect_id) REFERENCES ${prefix}specific_hazard(id)
+    );
+
+    CREATE TABLE ${prefix}specific_hazard_document (
+        specific_hazard_id VARCHAR NOT NULL,
+        document_id VARCHAR NOT NULL,
+        rel_conforms_to BOOLEAN NOT NULL,
+        rel_references BOOLEAN NOT NULL,
+        rel_source BOOLEAN NOT NULL,
+        rel_image BOOLEAN NOT NULL,
+        PRIMARY KEY (specific_hazard_id, document_id),
+        FOREIGN KEY (specific_hazard_id) REFERENCES ${prefix}specific_hazard(id),
+        FOREIGN KEY (document_id) REFERENCES ${prefix}document(id)
+    );
+
+    CREATE TABLE ${prefix}specific_hazard_substance (
+        specific_hazard_id VARCHAR NOT NULL,
+        substance_id VARCHAR NOT NULL,
+        PRIMARY KEY (specific_hazard_id, substance_id),
+        FOREIGN KEY (specific_hazard_id) REFERENCES ${prefix}specific_hazard(id),
+        FOREIGN KEY (substance_id) REFERENCES ${prefix}substance(id)
+    );
+""")
+
+
+_HIP_OBDA_TEMPLATE = Template("""
+    [PrefixDeclaration]
+    bibo:           http://purl.org/ontology/bibo/
+    clex:           http://www.semanticweb.org/crima/crima-lexicon#
+    dcterms:        http://purl.org/dc/terms/
+    hip-cluster:    https://www.preventionweb.net/hips-cluster/
+    hip-document:   https://www.preventionweb.net/hips-document/
+    hip-glossary:   https://www.preventionweb.net/drr-glossary/
+    hip-schema:     https://undrr-hip.org/
+    hip-term:       https://www.undrr.org/terms/hips/
+    hip-type:       https://www.preventionweb.net/hips-type/
+    owl:            http://www.w3.org/2002/07/owl#
+    prov:           http://www.w3.org/ns/prov#
+    rdf:            http://www.w3.org/1999/02/22-rdf-syntax-ns#
+    rdfs:           http://www.w3.org/2000/01/rdf-schema#
+    sh:             http://www.w3.org/ns/shacl#
+    skos:           http://www.w3.org/2004/02/skos/core#
+    voaf:           http://purl.org/vocommons/voaf#
+    xsd:            http://www.w3.org/2001/XMLSchema#
+    xkos:           http://rdf-vocabulary.ddialliance.org/xkos#
+
+    [MappingDeclaration] @collection [[
+
+    mappingId   ${prefix}static
+    target      hip-glossary:HIP-classification-system a hip-schema:HIP-ClassificationSystem ;
+                    dcterms:date "${date}"^^xsd:dateTime ;
+                    dcterms:title "${title}"@en ;
+                    dcterms:description "${description}"@en .
+                <https://undrr-hip.org/hip-data/> a owl:Ontology ;
+                    voaf:metadataVoc <http://purl.org/vocommons/voaf> ;
+                    voaf:reliesOn
+                        <http://purl.org/dc/terms/> ,
+                        <http://purl.org/ontology/bibo/> ,
+                        <http://rdf-vocabulary.ddialliance.org/xkos> ,
+                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
+                        <http://www.w3.org/2004/02/skos/core> ,
+                        <http://www.w3.org/ns/prov-o#> ,
+                        <https://undrr-hip.org/hip-schema/> ;
+                    owl:imports
+                        <http://purl.org/dc/terms/> ,
+                        <http://purl.org/ontology/bibo/> ,
+                        <http://rdf-vocabulary.ddialliance.org/xkos> ,
+                        <http://www.semanticweb.org/crima/crima-lexicon#> ,
+                        <http://www.w3.org/2004/02/skos/core> ,
+                        <http://www.w3.org/ns/prov-o#> ,
+                        <https://undrr-hip.org/hip-schema/> .
+    source      SELECT 1
+
+    mappingId   ${prefix}document
+    target      hip-document:{id} a bibo:Document ;
+                    bibo:uri {url}^^xsd:anyURI ;
+                    rdfs:label "{label}"@en ;
+                    dcterms:format "{format}" ;
+                    dcterms:accessRights "public"@en .
+    source      SELECT * FROM ${prefix}document
+
+    mappingId   ${prefix}document_image
+    target      hip-document:{id} a bibo:Image .
+    source      SELECT * FROM ${prefix}document WHERE format = "image/png"
+
+    mappingId   ${prefix}subdomain
+    target      <https://unece.org/transport/dangerous-goods/ghs-rev10-2023#{id}> a skos:Concept ;
+                    rdfs:label "{label}"@en .
+    source      SELECT * FROM ${prefix}substance
+
+    mappingId   ${prefix}hazard_type
+    target      hip-type:{id} a hip-schema:HazardType ;
+                    skos:prefLabel "{label}"@en ;
+                    skos:inScheme hip-glossary:HIP-classification-system .
+    source      SELECT * FROM ${prefix}hazard_type
+
+    mappingId   ${prefix}hazard_cluster
+    target      hip-cluster:{id} a hip-schema:HazardCluster ;
+                    skos:prefLabel "{label}"@en ;
+                    skos:inScheme hip-glossary:HIP-classification-system ;
+                    skos:broader hip-type:{hazard_type_id} .
+    source      SELECT * FROM ${prefix}hazard_cluster
+
+    mappingId   ${prefix}specific_hazard
+    target      hip-term:{id} a hip-schema:SpecificHazard ;
+                    skos:prefLabel "{label}"@en ;
+                    dcterms:title "{title}"@en ;
+                    skos:definition "{definition}"@en ;
+                    skos:note "{note}"@en ;
+                    dcterms:identifier "{id_upper}" ;
+                    dcterms:created "{created}"^^xsd:dateTime ;
+                    dcterms:modified "{modified}"^^xsd:dateTime ;
+                    dcterms:relation "{relation}"@en ;
+                    dcterms:publisher "UNDRR, ISC, and contributors" ;
+                    dcterms:rights "Creative Commons CC BY 4.0" ;
+                    owl:versionInfo "${version}"@en ;
+                    skos:inScheme hip-glossary:HIP-classification-system ;
+                    skos:broader hip-type:{hazard_type_id} ;
+                    skos:broader hip-cluster:{hazard_cluster_id} .
+    source      SELECT *, upper(id) AS id_upper FROM ${prefix}specific_hazard
+
+    mappingId   ${prefix}specific_hazard_note_drivers
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "drivers" ;
+                    xkos:plainText "{note_drivers}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_drivers IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_note_impacts
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "impacts" ;
+                    xkos:plainText "{note_impacts}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_impacts IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_note_metrics
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "metrics" ;
+                    xkos:plainText "{note_metrics}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_metrics IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_note_monitoring_early_warning
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "monitoringEarlyWarning" ;
+                    xkos:plainText "{note_monitoring_early_warning}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_monitoring_early_warning IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_note_multi_hazard_context
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "multiHazardContext" ;
+                    xkos:plainText "{note_multi_hazard_context}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_multi_hazard_context IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_note_risk_management
+    target      hip-term:{id} skos:scopeNote [
+                    a xkos:ExplanatoryNote ;
+                    dcterms:type "riskManagement" ;
+                    xkos:plainText "{note_risk_management}"@en
+                ] .
+    source      SELECT * FROM ${prefix}specific_hazard WHERE note_risk_management IS NOT NULL
+
+    mappingId   ${prefix}specific_hazard_alt_label
+    target      hip-term:{specific_hazard_id} skos:altLabel "{alt_label}"@en .
+    source      SELECT * FROM ${prefix}specific_hazard_alt_label
+
+    mappingId   ${prefix}specific_hazard_cause
+    target      hip-term:{cause_id} xkos:causes hip-term:{effect_id} .
+                hip-term:{effect_id} xkos:causedBy hip-term:{cause_id} .
+    source      SELECT * FROM ${prefix}specific_hazard_cause
+
+    mappingId   ${prefix}specific_hazard_document_conforms_to
+    target      hip-term:{specific_hazard_id} dcterms:conformsTo hip-document{document_id} .
+    source      SELECT * FROM ${prefix}specific_hazard_document WHERE rel_conforms_to = TRUE
+
+    mappingId   ${prefix}specific_hazard_document_references
+    target      hip-term:{specific_hazard_id} dcterms:references hip-document{document_id} .
+                hip-term:{specific_hazard_id} prov:wasInfluencedBy hip-document{document_id} .
+    source      SELECT * FROM ${prefix}specific_hazard_document WHERE rel_references = TRUE
+
+    mappingId   ${prefix}specific_hazard_document_source
+    target      hip-term:{specific_hazard_id} dcterms:source hip-document{document_id} .
+                hip-term:{specific_hazard_id} prov:wasQuotedFrom hip-document{document_id} .
+    source      SELECT * FROM ${prefix}specific_hazard_document WHERE rel_source = TRUE
+
+    mappingId   ${prefix}specific_hazard_document_image
+    target      hip-term:{specific_hazard_id} dcterms:hasPart hip-document{document_id} .
+    source      SELECT * FROM ${prefix}specific_hazard_document WHERE rel_image = TRUE
+
+    mappingId   ${prefix}specific_hazard_substance
+    target      hip-term:{specific_hazard_id} skos:related
+                    <https://unece.org/transport/dangerous-goods/ghs-rev10-2023#{substance_id}> .
+    source      SELECT * FROM ${prefix}specific_hazard_substance
+
+    ]]
+""")
+
+
 def _bind_prefixes(graph: Graph) -> None:
     """
     Set prefixes related to HIP data, for use in RDF serialization and SPARQL transformations.
@@ -341,6 +779,7 @@ def _bind_prefixes(graph: Graph) -> None:
     :param graph: the Graph where to bind prefixes to
     """
     graph.bind("article", "http://ogp.me/ns/article#")
+    graph.bind("bibo", "http://purl.org/ontology/bibo/")
     graph.bind("clex", "http://www.semanticweb.org/crima/crima-lexicon#")
     graph.bind("dcterms", "http://purl.org/dc/terms/")
     graph.bind("hip-cluster", "https://www.preventionweb.net/hips-cluster/")
@@ -348,6 +787,7 @@ def _bind_prefixes(graph: Graph) -> None:
     graph.bind("hip-schema", "https://undrr-hip.org/")
     graph.bind("hip-term", "https://www.undrr.org/terms/hips/")
     graph.bind("hip-type", "https://www.preventionweb.net/hips-type/")
+    graph.bind("hip-document", "https://www.preventionweb.net/hips-document/")
     graph.bind("og", "https://ogp.me/ns#")
     graph.bind("prov", "http://www.w3.org/ns/prov#")
     graph.bind("skos", "http://www.w3.org/2004/02/skos/core#")

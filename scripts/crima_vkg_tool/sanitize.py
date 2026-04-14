@@ -1,5 +1,6 @@
 import re
 import unicodedata
+from html import unescape
 from typing import TypeVar
 
 import click
@@ -68,7 +69,8 @@ def _sanitize[T](data: T) -> T:
     if isinstance(data, str) and not isinstance(data, Node):
         text = unicodedata.normalize("NFKC", data)
         text = _SANITIZE_CONTROL_CHARS_REGEX.sub("", data)
-        return text.translate(_SANITIZE_TRANSLATION_TABLE)
+        text = text.translate(_SANITIZE_TRANSLATION_TABLE)
+        return unescape(text)
 
     return data
 
