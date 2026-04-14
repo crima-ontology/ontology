@@ -53,7 +53,7 @@ The following commands will create/overwrite the `catalog-v001.xml` files locate
 The following command will print to `stdout` the Mermaid source code for the diagram showing module dependencies (`voaf:*` relations), which can then be included in markdown files (as the main `README.md`) for display:
 ```bash
 crima-vkg-tool mermaid \
-    -e "sg_modules --------- sg_imports_fragments" \
+    -e "sg_modules -------- sg_imports_fragments" \
     -e "linkStyle 0 stroke-width:0px" \
     ontology/crima.ttl \
     ontology/modules/*.ttl \
