@@ -43,6 +43,27 @@ hip-schema:HIP-ClassificationSystem a sh:Nodeshape ;
         sh:maxCount 1
     ] .
 
+hip-schema:HazardType a sh:NodeShape ;
+    sh:targetClass hip-schema:HazardType ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://www.preventionweb.net/hips-type/[a-z0-9-]+$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( hip-schema:HazardType owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:inScheme ;
+        sh:class hip-schema:HIP-ClassificationSystem ;
+        sh:in ( hip-glossary:HIP-classification-system ) ;
+        sh:minCount 1
+    ] .
+
 hip-schema:HazardCluster a sh:NodeShape ;
     sh:targetClass hip-schema:HazardCluster ;
     sh:closed true ;
@@ -67,27 +88,6 @@ hip-schema:HazardCluster a sh:NodeShape ;
         sh:class hip-schema:HazardType ;
         sh:minCount 1 ;
         sh:maxCount 1
-    ] .
-
-hip-schema:HazardType a sh:NodeShape ;
-    sh:targetClass hip-schema:HazardType ;
-    sh:closed true ;
-    sh:nodeKind sh:IRI ;
-    sh:pattern "^https://www.preventionweb.net/hips-type/[a-z0-9-]+$" ;
-    sh:property [
-        sh:path rdf:type ;
-        sh:in ( hip-schema:HazardType owl:NamedIndividual )
-    ] , [
-        sh:path skos:prefLabel ;
-        sh:datatype rdf:langString ;
-        sh:languageIn ("en") ;
-        sh:minCount 1 ;
-        sh:maxCount 1
-    ] , [
-        sh:path skos:inScheme ;
-        sh:class hip-schema:HIP-ClassificationSystem ;
-        sh:in ( hip-glossary:HIP-classification-system ) ;
-        sh:minCount 1
     ] .
 
 hip-schema:SpecificHazard a sh:NodeShape ;
@@ -177,14 +177,18 @@ hip-schema:SpecificHazard a sh:NodeShape ;
         sh:minCount 1
     ] , [
         sh:path skos:broader ;
-        sh:class hip-schema:HazardType ;
-        sh:minCount 1 ;
-        sh:maxCount 1
+        sh:minCount 2 ;
+        sh:maxCount 2
     ] , [
-        sh:path clex:isMemberOf ;
-        sh:class hip-schema:HazardCluster ;
-        sh:minCount 1 ;
-        sh:maxCount 1
+        sh:path skos:broader ;
+        sh:qualifiedValueShape [ sh:class hip-schema:HazardType ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:broader ;
+        sh:qualifiedValueShape [ sh:class hip-schema:HazardCluster ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
     ] ;
     # Multi-valued object properties
     sh:property [
