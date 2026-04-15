@@ -50,7 +50,6 @@ flowchart BT
         ar__impact["<b>ar6-impact</b>"]:::subvoc
         cbib["<b>cbib</b>"]:::subvoc
         ccore["<b>ccore</b>"]:::subvoc
-        clex["<b>clex</b>"]:::subvoc
         cplace["<b>cplace</b>"]:::subvoc
         crid["<b>crid</b>"]:::subvoc
         ctlo["<b>ctlo</b>"]:::subvoc
@@ -64,29 +63,17 @@ flowchart BT
         ich["<b>ich</b>"]:::subvoc
     end
 
-    sg_modules --------- sg_imports_fragments
+    sg_modules -------- sg_imports_fragments
     linkStyle 0 stroke-width:0px
 
-    ar__adapt --> clex
-    ar__cid --> skos
-    ar__cid --> voaf
-    ar__impact --> clc
     cbib --> bibo
     cbib --> dcat
     cbib --> dcterms
-    ccore --> ctlo
-    ccore --> dcterms
-    ccore --> dpo
-    ccore --> geo
-    ccore --> sosa_obs
-    ccore --> time
     clc --> cc
     clc --> dcterms
     clc --> foaf
     clc --> skos
     clc --> voaf
-    clex --> skos
-    clex --> voaf
     cplace --> ctlo
     cplace --> dbo
     cplace --> geo
@@ -98,13 +85,16 @@ flowchart BT
     crima --> as
     crima --> cbib
     crima --> ccore
+    crima --> clc
     crima --> cplace
     crima --> crid
+    crima --> dpo
     crima --> ecv_data
     crima --> emdat
     crima --> ex
     crima --> hip_data
     crima --> ich
+    crima --> sosa_obs
     ctlo --> voaf
     cunit --> qudt
     cunit --> wmdr_unit
@@ -112,13 +102,11 @@ flowchart BT
     dcat --> voaf
     dtype --> skos
     dtype --> voaf
-    ecv --> cunit
-    ecv --> geo
-    ecv --> sosa_common
-    ecv_data --> clex
+    ecv_data --> cunit
     ecv_data --> ecv
     ecv_data --> qudt_unit
-    emdat --> clex
+    emdat --> skos
+    emdat --> voaf
     ex --> dbo
     ex --> prov
     ex --> voaf
@@ -129,7 +117,6 @@ flowchart BT
     hip --> skos
     hip --> voaf
     hip_data --> bibo
-    hip_data --> clex
     hip_data --> hip
     hip_data --> prov
     hip_data --> xkos
@@ -138,11 +125,12 @@ flowchart BT
     qudt --> dtype
     qudt_unit --> dcterms
     qudt_unit --> qudt
-    qudt_unit --> voaf
     sosa_common --> dcterms
     sosa_common --> schema
     sosa_common --> time
+    sosa_obs --> skos
     sosa_obs --> sosa_common
+    sosa_obs --> voaf
     time --> skos
     time --> voaf
     voaf --> vann
@@ -159,7 +147,6 @@ flowchart BT
     click cc href "http://creativecommons.org/ns#"
     click ccore href "http://www.semanticweb.org/crima/crima-core#"
     click clc href "http://www.w3.org/2015/03/corine#"
-    click clex href "http://www.semanticweb.org/crima/crima-lexicon#"
     click cplace href "http://www.semanticweb.org/crima/crima-place#"
     click crid href "http://www.semanticweb.org/crima/crima-id#"
     click crima href "http://www.semanticweb.org/crima"

@@ -1,56 +1,86 @@
+@prefix : <http://www.semanticweb.org/crima/crima-impactchain#> .
 @prefix ich: <http://www.semanticweb.org/crima/crima-impactchain#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix swrl: <http://www.w3.org/2003/11/swrl#> .
-@prefix swrl-var: <urn:swrl:var#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix swrl-var: <urn:swrl:var#> .
+@base <http://www.semanticweb.org/crima/crima-impactchain#> .
 
-ich: a owl:Ontology ;
-    vann:preferredNamespacePrefix "ich" ;
-    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-impactchain#"^^xsd:anyURI ;
-    voaf:metadataVoc vann:,
-        <http://purl.org/vocommons/voaf>,
-        <http://www.w3.org/2004/02/skos/core> ;
-    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
-    owl:imports <http://www.w3.org/2004/02/skos/core> .
+<http://www.semanticweb.org/crima/crima-impactchain#> rdf:type owl:Ontology ;
+                                                       owl:imports <http://www.w3.org/2004/02/skos/core> ;
+                                                       vann:preferredNamespacePrefix "ich" ;
+                                                       vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-impactchain#"^^xsd:anyURI ;
+                                                       voaf:metadataVoc vann: ,
+                                                                        <http://purl.org/vocommons/voaf> ,
+                                                                        <http://www.w3.org/2004/02/skos/core> ;
+                                                       voaf:specializes <http://www.w3.org/2004/02/skos/core> .
 
-ich:RiskFactor a owl:Class ;
-    rdfs:comment "Impact Chain risk factor" ;
-    rdfs:isDefinedBy "Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook - Zebisch et al., 2023)" ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:altLabel "Key risk" ;
-    skos:definition "Combined impacts, exposure elements and vulnerabilities that describe potential risks highly relevant in the scope of the impact chain." .
+#################################################################
+#    Annotation properties
+#################################################################
 
-ich:UnderlyingRiskDriverFactor a owl:Class ;
-    rdfs:isDefinedBy "PAR, Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook - Zebisch et al., 2023) and Forin (https://www.irdrinternational.org/pdf/uploads/files/p0Rm0Zgt1EyRt4vABHAn4IOUXCig6WE5xi9iVri9.pdf)." ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:definition "It refers to the (non-climatic) risk drivers that may significantly alter the socio-economic or environmental situations and possibly amplify the negative consequences of impacts by acting on their determinants (e.g., vulnerability or exposure) but cannot be mitigated or controlled within the scope of the impact chain." .
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
 
-ich:contains a owl:ObjectProperty ;
-    rdfs:domain ich:ImpactChainModel ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( ich:ImpactChainConnection ich:ImpactChainFactor ) ] .
 
-ich:daysToWeeks a ich:ConnectionTimeLag,
-        owl:NamedIndividual ;
-    rdfs:comment "Example: Dengue infection leading to health deterioration." ;
-    rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
-ich:high a ich:ConfidenceLevel,
-        owl:NamedIndividual .
 
-ich:hoursToDays a ich:ConnectionTimeLag,
-        owl:NamedIndividual ;
-    rdfs:comment "Example: Prolonged rainfall leading to flooding." ;
-    rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+###  http://purl.org/vocommons/voaf#metadataVoc
+voaf:metadataVoc rdf:type owl:AnnotationProperty .
 
-ich:isAbout a owl:ObjectProperty ;
-    rdfs:isDefinedBy <https://repository.ifla.org/rest/api/core/bitstreams/3016edd2-d431-4d27-84f9-33d6821f5203/content>,
-        """"Definition of FRBROO A Conceptual Model for Bibliographic Information in Object-Oriented Formalism"
+
+###  http://purl.org/vocommons/voaf#specializes
+voaf:specializes rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/crima/crima-impactchain#confidence
+ich:confidence rdf:type owl:ObjectProperty ;
+               rdfs:domain ich:ImpactChainConnection ;
+               rdfs:range ich:ConfidenceLevel .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#contains
+ich:contains rdf:type owl:ObjectProperty ;
+             rdfs:domain ich:ImpactChainModel ;
+             rdfs:range [ rdf:type owl:Class ;
+                          owl:unionOf ( ich:ImpactChainConnection
+                                        ich:ImpactChainFactor
+                                      )
+                        ] .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#directLeadsTo
+ich:directLeadsTo rdf:type owl:ObjectProperty ;
+                  rdfs:domain [ rdf:type owl:Class ;
+                                owl:unionOf ( ich:HazardFactor
+                                              ich:ImpactFactor
+                                            )
+                              ] ;
+                  rdfs:range [ rdf:type owl:Class ;
+                               owl:unionOf ( ich:HazardFactor
+                                             ich:ImpactFactor
+                                           )
+                             ] .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#isAbout
+ich:isAbout rdf:type owl:ObjectProperty ;
+            rdfs:range ich:ImpactChainConnection ,
+                       ich:ImpactChainFactor ;
+            rdfs:isDefinedBy <https://repository.ifla.org/rest/api/core/bitstreams/3016edd2-d431-4d27-84f9-33d6821f5203/content> ,
+                             """\"Definition of FRBROO A Conceptual Model for Bibliographic Information in Object-Oriented Formalism\"
 
 Prepared by: Working Group on FRBR/CRM Dialogue (also referred to as: International Working Group on
 FRBR and CIDOC CRM Harmonisation), affiliated to the IFLA FRBR Review Group, reporting to the IFLA Cataloguing Section
@@ -59,182 +89,311 @@ Edited by:
 Chryssoula Bekiari, Martin Doerr, Patrick Le Bœuf, Pat Riva
 
 With contributions from:
-Trond Aalberg, Jérôme Barthélémy, Chryssoula Bekiari, Guillaume Boutard, Martin Doerr, Günther Görz, Dolores Iorizzo, Max Jacob, Carlos Lamsfus, Patrick Le Bœuf, Mika Nyman, João Oliveira, Christian Emil Ore, Allen H. Renear, Pat Riva, Richard Smiraglia, Stephen Stead, Maja Žumer, and others"""@en ;
-    rdfs:range ich:ImpactChainConnection,
-        ich:ImpactChainFactor .
+Trond Aalberg, Jérôme Barthélémy, Chryssoula Bekiari, Guillaume Boutard, Martin Doerr, Günther Görz, Dolores Iorizzo, Max Jacob, Carlos Lamsfus, Patrick Le Bœuf, Mika Nyman, João Oliveira, Christian Emil Ore, Allen H. Renear, Pat Riva, Richard Smiraglia, Stephen Stead, Maja Žumer, and others"""@en .
 
-ich:low a ich:ConfidenceLevel,
-        owl:NamedIndividual .
 
-ich:medium a ich:ConfidenceLevel,
-        owl:NamedIndividual .
+###  http://www.semanticweb.org/crima/crima-impactchain#saturatedLeadsTo
+ich:saturatedLeadsTo rdf:type owl:ObjectProperty ;
+                     rdfs:domain [ rdf:type owl:Class ;
+                                   owl:unionOf ( ich:HazardFactor
+                                                 ich:ImpactFactor
+                                               )
+                                 ] ;
+                     rdfs:range [ rdf:type owl:Class ;
+                                  owl:unionOf ( ich:HazardFactor
+                                                ich:ImpactFactor
+                                              )
+                                ] .
 
-ich:minutesToHours a ich:ConnectionTimeLag,
-        owl:NamedIndividual ;
-    rdfs:label "Example: An Earthquake (hazard) can trigger (leads to) a landslide." ;
-    rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
 
-ich:monthsToYears a ich:ConnectionTimeLag,
-        owl:NamedIndividual ;
-    rdfs:comment "Example: Unsustainable agricultural practices leading to soil erosion." ;
-    rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+###  http://www.semanticweb.org/crima/crima-impactchain#source
+ich:source rdf:type owl:ObjectProperty ;
+           rdfs:comment "[ICconnection --source--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its first argument."@en .
 
-ich:saturatedLeadsTo a owl:ObjectProperty ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] .
 
-ich:timeLag a owl:ObjectProperty ;
-    rdfs:domain ich:ImpactChainConnection ;
-    rdfs:range ich:ConnectionTimeLag .
+###  http://www.semanticweb.org/crima/crima-impactchain#target
+ich:target rdf:type owl:ObjectProperty ;
+           rdfs:comment "[ICconnections --target--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its secoond argument."@en .
 
-ich:weeksToMonths a ich:ConnectionTimeLag,
-        owl:NamedIndividual ;
-    rdfs:comment "Example: Reduced irrigation (during a drought) leading to crop loss." ;
-    rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
 
-ich:AdaptationFactor a owl:Class ;
-    rdfs:comment "Impact Chain adaptation factor" ;
-    rdfs:isDefinedBy "IPCC WGII AR5 (https://www.ipcc.ch/site/assets/uploads/2018/02/WGIIAR5-PartA_FINAL.pdf): categories of adaptation options (page 845) (Field et al., 2014)." ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:altLabel "Risk mitigation measure" ;
-    skos:definition "Measure to decrease the negative consequences of an impact by addressing one or more vulnerabilities or impacting mechanisms." .
+###  http://www.semanticweb.org/crima/crima-impactchain#timeLag
+ich:timeLag rdf:type owl:ObjectProperty ;
+            rdfs:domain ich:ImpactChainConnection ;
+            rdfs:range ich:ConnectionTimeLag .
 
-ich:Affects a owl:Class ;
-    rdfs:label "Affects"@en ;
-    rdfs:comment "Lack of land ownership (vulnerability) affects the disruption of agricultural livelihoods in a flood (impact)." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty ich:source ;
-            owl:someValuesFrom ich:VulnerabilityFactor ],
-        [ a owl:Restriction ;
-            owl:onProperty ich:target ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( ich:ImpactFactor ich:VulnerabilityFactor ) ] ],
-        ich:ImpactChainConnection .
 
-ich:ExposureFactor a owl:Class ;
-    rdfs:comment "Impact Chain exposure factor" ;
-    rdfs:isDefinedBy "No standard reference, see IPCC, UNDRR (https://www.undrr.org/terminology/exposure), Prevention web (https://www.preventionweb.net/understanding-disaster-risk/component-risk/exposure), Charim or Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook)." ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:definition "The (presence of) people, livelihoods, species or ecosystems, environmental functions, services, and resources, infrastructure, or economic, social, or cultural assets in places and settings that could be adversely affected (IPCC, 2021)." .
+#################################################################
+#    Classes
+#################################################################
 
-ich:ImpactChainModel a owl:Class .
+###  http://www.semanticweb.org/crima/crima-impactchain#AdaptationFactor
+ich:AdaptationFactor rdf:type owl:Class ;
+                     rdfs:subClassOf ich:ImpactChainFactor ;
+                     rdfs:comment "Impact Chain adaptation factor" ;
+                     rdfs:isDefinedBy "IPCC WGII AR5 (https://www.ipcc.ch/site/assets/uploads/2018/02/WGIIAR5-PartA_FINAL.pdf): categories of adaptation options (page 845) (Field et al., 2014)." ;
+                     skos:altLabel "Risk mitigation measure" ;
+                     skos:definition "Measure to decrease the negative consequences of an impact by addressing one or more vulnerabilities or impacting mechanisms." .
 
-ich:ImpactsOn a owl:Class ;
-    rdfs:label "Impacts on"@en ;
-    rdfs:comment "An increase in power outages (impact) impacts industries (exposure)." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty ich:source ;
-            owl:someValuesFrom ich:ImpactFactor ],
-        [ a owl:Restriction ;
-            owl:onProperty ich:target ;
-            owl:someValuesFrom ich:ExposureFactor ],
-        ich:ImpactChainConnection .
 
-ich:Mitigates a owl:Class ;
-    rdfs:label "Mitigates"@en ;
-    rdfs:comment "An improved irrigation technique (adaptation measure) mitigates the decrease in crop yield (impact) during droughts." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty ich:source ;
-            owl:someValuesFrom ich:AdaptationFactor ],
-        [ a owl:Restriction ;
-            owl:onProperty ich:target ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( ich:ImpactFactor ich:VulnerabilityFactor ) ] ],
-        ich:ImpactChainConnection .
+###  http://www.semanticweb.org/crima/crima-impactchain#Affects
+ich:Affects rdf:type owl:Class ;
+            rdfs:subClassOf ich:ImpactChainConnection ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ich:source ;
+                              owl:someValuesFrom ich:VulnerabilityFactor
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ich:target ;
+                              owl:someValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( ich:ImpactFactor
+                                                                 ich:VulnerabilityFactor
+                                                               )
+                                                 ]
+                            ] ;
+            rdfs:comment "Lack of land ownership (vulnerability) affects the disruption of agricultural livelihoods in a flood (impact)." ;
+            rdfs:label "Affects"@en .
 
-ich:confidence a owl:ObjectProperty ;
-    rdfs:domain ich:ImpactChainConnection ;
-    rdfs:range ich:ConfidenceLevel .
 
-ich:directLeadsTo a owl:ObjectProperty ;
-    rdfs:domain [ a owl:Class ;
-            owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] ;
-    rdfs:range [ a owl:Class ;
-            owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] .
+###  http://www.semanticweb.org/crima/crima-impactchain#ConfidenceLevel
+ich:ConfidenceLevel rdf:type owl:Class ;
+                    rdfs:subClassOf skos:Concept ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty ich:confidence ;
+                                      owl:allValuesFrom ich:ConfidenceLevel
+                                    ] .
 
-ich:LeadsTo a owl:Class ;
-    rdfs:label "Leads to"@en ;
-    rdfs:comment "An increase in average temperature (hazard) leads to the melting of glaciers (impact)." ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:onProperty ich:source ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] ],
-        [ a owl:Restriction ;
-            owl:onProperty ich:target ;
-            owl:someValuesFrom [ a owl:Class ;
-                    owl:unionOf ( ich:HazardFactor ich:ImpactFactor ) ] ],
-        ich:ImpactChainConnection .
 
-swrl-var:s a swrl:Variable .
+###  http://www.semanticweb.org/crima/crima-impactchain#ConnectionTimeLag
+ich:ConnectionTimeLag rdf:type owl:Class ;
+                      rdfs:subClassOf skos:Concept .
 
-swrl-var:t a swrl:Variable .
 
-ich:VulnerabilityFactor a owl:Class ;
-    rdfs:comment "Impact Chain vulnerability factor" ;
-    rdfs:isDefinedBy "INFORM.MOVE Framework (https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology - Birkmann et al., 2013) (both for risk assessment but incl. Classification of vulnerability components)." ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:definition "Vulnerability refers to the predisposition/propensity of exposed elements such as human beings, their livelihoods, and assets to be adversely affected by a natural hazard. This element contributes to and encompasses a variety of concepts and elements, including sensitivity or susceptibility to harm and/or lack of capacity to prevent, prepare, respond, cope and/or adapt (IPCC, 2021)." .
+###  http://www.semanticweb.org/crima/crima-impactchain#ExposureFactor
+ich:ExposureFactor rdf:type owl:Class ;
+                   rdfs:subClassOf ich:ImpactChainFactor ;
+                   rdfs:comment "Impact Chain exposure factor" ;
+                   rdfs:isDefinedBy "No standard reference, see IPCC, UNDRR (https://www.undrr.org/terminology/exposure), Prevention web (https://www.preventionweb.net/understanding-disaster-risk/component-risk/exposure), Charim or Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook)." ;
+                   skos:definition "The (presence of) people, livelihoods, species or ecosystems, environmental functions, services, and resources, infrastructure, or economic, social, or cultural assets in places and settings that could be adversely affected (IPCC, 2021)." .
 
-swrl-var:z a swrl:Variable .
 
-ich:ConfidenceLevel a owl:Class ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom ich:ConfidenceLevel ;
-            owl:onProperty ich:confidence ],
-        skos:Concept .
+###  http://www.semanticweb.org/crima/crima-impactchain#HazardFactor
+ich:HazardFactor rdf:type owl:Class ;
+                 rdfs:subClassOf ich:ImpactChainFactor ;
+                 rdfs:comment "Impact Chain hazard factor" ,
+                              "Including climatic drivers." ;
+                 rdfs:isDefinedBy "https://www.preventionweb.net/understanding-disaster-risk/component-risk/hazard. Extensive classification: UNDRR 2021 (https://www.undrr.org/publication/hazard-definition-and-classification-review-technical-report);  Climate related hazard indices for Europe (https://www.eea.europa.eu/publications/europes-changing-climate-hazards-1/what-will-the-future-bring/projected-changes-in-climate-related/view - Crespi et al., 2020)" ;
+                 skos:definition "Climatic influence, climatic or non-climatic event or trend that may constitute a hazard to the exposed assets and systems and result in an impact and possibly a risk (with damage or loss)." .
 
-ich:source a owl:ObjectProperty ;
-    rdfs:comment "[ICconnection --source--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its first argument."@en .
 
-ich:target a owl:ObjectProperty ;
-    rdfs:comment "[ICconnections --target--> ICFactor]: This property is meant to be used to link the reification of an impact chain binary connection with its secoond argument."@en .
+###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainConnection
+ich:ImpactChainConnection rdf:type owl:Class .
 
-ich:ConnectionTimeLag a owl:Class ;
-    rdfs:subClassOf skos:Concept .
 
-ich:HazardFactor a owl:Class ;
-    rdfs:comment "Impact Chain hazard factor",
-        "Including climatic drivers." ;
-    rdfs:isDefinedBy "https://www.preventionweb.net/understanding-disaster-risk/component-risk/hazard. Extensive classification: UNDRR 2021 (https://www.undrr.org/publication/hazard-definition-and-classification-review-technical-report);  Climate related hazard indices for Europe (https://www.eea.europa.eu/publications/europes-changing-climate-hazards-1/what-will-the-future-bring/projected-changes-in-climate-related/view - Crespi et al., 2020)" ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:definition "Climatic influence, climatic or non-climatic event or trend that may constitute a hazard to the exposed assets and systems and result in an impact and possibly a risk (with damage or loss)." .
+###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainFactor
+ich:ImpactChainFactor rdf:type owl:Class ;
+                      rdfs:comment "Impact Chain factor" .
 
-ich:ImpactChainConnection a owl:Class .
 
-ich:ImpactChainFactor a owl:Class ;
-    rdfs:comment "Impact Chain factor" .
+###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainModel
+ich:ImpactChainModel rdf:type owl:Class .
 
-ich:ImpactFactor a owl:Class ;
-    rdfs:comment "Impact Chain impact factor" ;
-    rdfs:isDefinedBy "https://reliefweb.int/report/world/climate-risk-sourcebook" ;
-    rdfs:subClassOf ich:ImpactChainFactor ;
-    skos:definition "Effect or consequence caused by a hazard or another impact. Within the impact chain, Impacts relate to adverse (negative) consequences that can be considered as potential materializations of risks." .
 
-[] a owl:AllDisjointClasses ;
-    owl:members ( ich:Affects ich:ImpactsOn ich:LeadsTo ich:Mitigates ) .
+###  http://www.semanticweb.org/crima/crima-impactchain#ImpactFactor
+ich:ImpactFactor rdf:type owl:Class ;
+                 rdfs:subClassOf ich:ImpactChainFactor ;
+                 rdfs:comment "Impact Chain impact factor" ;
+                 rdfs:isDefinedBy "https://reliefweb.int/report/world/climate-risk-sourcebook" ;
+                 skos:definition "Effect or consequence caused by a hazard or another impact. Within the impact chain, Impacts relate to adverse (negative) consequences that can be considered as potential materializations of risks." .
 
-[] a swrl:Imp ;
-    swrl:body [ a swrl:AtomList ;
-            rdf:first [ a swrl:ClassAtom ;
-                    swrl:argument1 swrl-var:z ;
-                    swrl:classPredicate ich:LeadsTo ] ;
-            rdf:rest [ a swrl:AtomList ;
-                    rdf:first [ a swrl:IndividualPropertyAtom ;
-                            swrl:argument1 swrl-var:z ;
-                            swrl:argument2 swrl-var:s ;
-                            swrl:propertyPredicate ich:source ] ;
-                    rdf:rest [ a swrl:AtomList ;
-                            rdf:first [ a swrl:IndividualPropertyAtom ;
-                                    swrl:argument1 swrl-var:z ;
-                                    swrl:argument2 swrl-var:t ;
-                                    swrl:propertyPredicate ich:target ] ;
-                            rdf:rest () ] ] ] ;
-    swrl:head [ a swrl:AtomList ;
-            rdf:first [ a swrl:IndividualPropertyAtom ;
-                    swrl:argument1 swrl-var:s ;
-                    swrl:argument2 swrl-var:t ;
-                    swrl:propertyPredicate ich:directLeadsTo ] ;
-            rdf:rest () ] .
 
+###  http://www.semanticweb.org/crima/crima-impactchain#ImpactsOn
+ich:ImpactsOn rdf:type owl:Class ;
+              rdfs:subClassOf ich:ImpactChainConnection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ich:source ;
+                                owl:someValuesFrom ich:ImpactFactor
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ich:target ;
+                                owl:someValuesFrom ich:ExposureFactor
+                              ] ;
+              rdfs:comment "An increase in power outages (impact) impacts industries (exposure)." ;
+              rdfs:label "Impacts on"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#LeadsTo
+ich:LeadsTo rdf:type owl:Class ;
+            rdfs:subClassOf ich:ImpactChainConnection ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ich:source ;
+                              owl:someValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( ich:HazardFactor
+                                                                 ich:ImpactFactor
+                                                               )
+                                                 ]
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty ich:target ;
+                              owl:someValuesFrom [ rdf:type owl:Class ;
+                                                   owl:unionOf ( ich:HazardFactor
+                                                                 ich:ImpactFactor
+                                                               )
+                                                 ]
+                            ] ;
+            rdfs:comment "An increase in average temperature (hazard) leads to the melting of glaciers (impact)." ;
+            rdfs:label "Leads to"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#Mitigates
+ich:Mitigates rdf:type owl:Class ;
+              rdfs:subClassOf ich:ImpactChainConnection ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ich:source ;
+                                owl:someValuesFrom ich:AdaptationFactor
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty ich:target ;
+                                owl:someValuesFrom [ rdf:type owl:Class ;
+                                                     owl:unionOf ( ich:ImpactFactor
+                                                                   ich:VulnerabilityFactor
+                                                                 )
+                                                   ]
+                              ] ;
+              rdfs:comment "An improved irrigation technique (adaptation measure) mitigates the decrease in crop yield (impact) during droughts." ;
+              rdfs:label "Mitigates"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#RiskFactor
+ich:RiskFactor rdf:type owl:Class ;
+               rdfs:subClassOf ich:ImpactChainFactor ;
+               rdfs:comment "Impact Chain risk factor" ;
+               rdfs:isDefinedBy "Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook - Zebisch et al., 2023)" ;
+               skos:altLabel "Key risk" ;
+               skos:definition "Combined impacts, exposure elements and vulnerabilities that describe potential risks highly relevant in the scope of the impact chain." .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#UnderlyingRiskDriverFactor
+ich:UnderlyingRiskDriverFactor rdf:type owl:Class ;
+                               rdfs:subClassOf ich:ImpactChainFactor ;
+                               rdfs:isDefinedBy "PAR, Climate Risk Sourcebook (https://reliefweb.int/report/world/climate-risk-sourcebook - Zebisch et al., 2023) and Forin (https://www.irdrinternational.org/pdf/uploads/files/p0Rm0Zgt1EyRt4vABHAn4IOUXCig6WE5xi9iVri9.pdf)." ;
+                               skos:definition "It refers to the (non-climatic) risk drivers that may significantly alter the socio-economic or environmental situations and possibly amplify the negative consequences of impacts by acting on their determinants (e.g., vulnerability or exposure) but cannot be mitigated or controlled within the scope of the impact chain." .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#VulnerabilityFactor
+ich:VulnerabilityFactor rdf:type owl:Class ;
+                        rdfs:subClassOf ich:ImpactChainFactor ;
+                        rdfs:comment "Impact Chain vulnerability factor" ;
+                        rdfs:isDefinedBy "INFORM.MOVE Framework (https://drmkc.jrc.ec.europa.eu/inform-index/INFORM-Risk/Methodology - Birkmann et al., 2013) (both for risk assessment but incl. Classification of vulnerability components)." ;
+                        skos:definition "Vulnerability refers to the predisposition/propensity of exposed elements such as human beings, their livelihoods, and assets to be adversely affected by a natural hazard. This element contributes to and encompasses a variety of concepts and elements, including sensitivity or susceptibility to harm and/or lack of capacity to prevent, prepare, respond, cope and/or adapt (IPCC, 2021)." .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/crima/crima-impactchain#daysToWeeks
+ich:daysToWeeks rdf:type owl:NamedIndividual ,
+                         ich:ConnectionTimeLag ;
+                rdfs:comment "Example: Dengue infection leading to health deterioration." ;
+                rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#high
+ich:high rdf:type owl:NamedIndividual ,
+                  ich:ConfidenceLevel .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#hoursToDays
+ich:hoursToDays rdf:type owl:NamedIndividual ,
+                         ich:ConnectionTimeLag ;
+                rdfs:comment "Example: Prolonged rainfall leading to flooding." ;
+                rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#low
+ich:low rdf:type owl:NamedIndividual ,
+                 ich:ConfidenceLevel .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#medium
+ich:medium rdf:type owl:NamedIndividual ,
+                    ich:ConfidenceLevel .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#minutesToHours
+ich:minutesToHours rdf:type owl:NamedIndividual ,
+                            ich:ConnectionTimeLag ;
+                   rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" ;
+                   rdfs:label "Example: An Earthquake (hazard) can trigger (leads to) a landslide." .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#monthsToYears
+ich:monthsToYears rdf:type owl:NamedIndividual ,
+                           ich:ConnectionTimeLag ;
+                  rdfs:comment "Example: Unsustainable agricultural practices leading to soil erosion." ;
+                  rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#weeksToMonths
+ich:weeksToMonths rdf:type owl:NamedIndividual ,
+                           ich:ConnectionTimeLag ;
+                  rdfs:comment "Example: Reduced irrigation (during a drought) leading to crop loss." ;
+                  rdfs:isDefinedBy "M. Pittore, M. Zebisch, S. Cocuccioni, K. Renner, S. Fruchter, S. Schneiderbauer, Impact Chains - Towards a shared standard for complex risk conceptualization  v1.0, Eurac Research, 2026" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( ich:Affects
+                ich:ImpactsOn
+                ich:LeadsTo
+                ich:Mitigates
+              )
+] .
+
+
+#################################################################
+#    Rules
+#################################################################
+
+swrl-var:z rdf:type swrl:Variable .
+
+swrl-var:s rdf:type swrl:Variable .
+
+swrl-var:t rdf:type swrl:Variable .
+
+[ rdf:type swrl:Imp ;
+   swrl:body [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:ClassAtom ;
+                           swrl:classPredicate ich:LeadsTo ;
+                           swrl:argument1 swrl-var:z
+                         ] ;
+               rdf:rest [ rdf:type swrl:AtomList ;
+                          rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                      swrl:propertyPredicate ich:source ;
+                                      swrl:argument1 swrl-var:z ;
+                                      swrl:argument2 swrl-var:s
+                                    ] ;
+                          rdf:rest [ rdf:type swrl:AtomList ;
+                                     rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                                                 swrl:propertyPredicate ich:target ;
+                                                 swrl:argument1 swrl-var:z ;
+                                                 swrl:argument2 swrl-var:t
+                                               ] ;
+                                     rdf:rest rdf:nil
+                                   ]
+                        ]
+             ] ;
+   swrl:head [ rdf:type swrl:AtomList ;
+               rdf:first [ rdf:type swrl:IndividualPropertyAtom ;
+                           swrl:propertyPredicate ich:directLeadsTo ;
+                           swrl:argument1 swrl-var:s ;
+                           swrl:argument2 swrl-var:t
+                         ] ;
+               rdf:rest rdf:nil
+             ]
+ ] .
+
+###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

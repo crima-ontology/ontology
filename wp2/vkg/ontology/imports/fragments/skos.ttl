@@ -1,95 +1,170 @@
+@prefix : <http://www.w3.org/2004/02/skos/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://www.w3.org/2004/02/skos/core#> .
 
-skos:Collection a owl:Class ;
-    rdfs:label "Collection"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    owl:disjointWith skos:Concept,
-        skos:ConceptScheme ;
-    skos:definition "A meaningful collection of concepts."@en ;
-    skos:scopeNote "Labelled collections can be used where you would like a set of concepts to be displayed under a 'node label' in the hierarchy."@en .
+<http://www.w3.org/2004/02/skos/core#> rdf:type owl:Ontology .
 
-skos:altLabel a owl:AnnotationProperty ;
-    rdfs:label "alternative label"@en ;
-    rdfs:comment "The range of skos:altLabel is the class of RDF plain literals."@en,
-        "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    skos:definition "An alternative lexical label for a resource."@en ;
-    skos:example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."@en .
+#################################################################
+#    Annotation properties
+#################################################################
 
-skos:broader a owl:ObjectProperty ;
-    rdfs:label "has broader"@en ;
-    rdfs:comment "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    owl:inverseOf skos:narrower ;
-    skos:definition "Relates a concept to a concept that is more general in meaning."@en ;
-    skos:scopeNote "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."@en .
+###  http://www.w3.org/2004/02/skos/core#altLabel
+:altLabel rdf:type owl:AnnotationProperty ;
+          rdfs:comment "The range of skos:altLabel is the class of RDF plain literals."@en ,
+                       "skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise disjoint properties."@en ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+          rdfs:label "alternative label"@en ;
+          :definition "An alternative lexical label for a resource."@en ;
+          :example "Acronyms, abbreviations, spelling variants, and irregular plural/singular forms may be included among the alternative labels for a concept. Mis-spelled terms are normally included as hidden labels (see skos:hiddenLabel)."@en .
 
-skos:changeNote a owl:AnnotationProperty .
 
-skos:definition a owl:AnnotationProperty ;
-    rdfs:label "definition"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    skos:definition "A statement or formal explanation of the meaning of a concept."@en .
+###  http://www.w3.org/2004/02/skos/core#changeNote
+:changeNote rdf:type owl:AnnotationProperty ;
+            rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+            rdfs:label "change note"@en ;
+            :definition "A note about a modification to a concept."@en ;
+            rdfs:subPropertyOf :note .
 
-skos:description a owl:AnnotationProperty .
 
-skos:editorialNote a owl:AnnotationProperty .
+###  http://www.w3.org/2004/02/skos/core#definition
+:definition rdf:type owl:AnnotationProperty ;
+            rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+            rdfs:label "definition"@en ;
+            :definition "A statement or formal explanation of the meaning of a concept."@en .
 
-skos:example a owl:AnnotationProperty .
 
-skos:hasTopConcept a owl:AnnotationProperty .
+###  http://www.w3.org/2004/02/skos/core#editorialNote
+:editorialNote rdf:type owl:AnnotationProperty ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+               rdfs:label "editorial note"@en ;
+               :definition "A note for an editor, translator or maintainer of the vocabulary."@en ;
+               rdfs:subPropertyOf :note .
 
-skos:inScheme a owl:ObjectProperty ;
-    rdfs:label "is in scheme"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    rdfs:range skos:ConceptScheme ;
-    skos:definition "Relates a resource (for example a concept) to a concept scheme in which it is included."@en ;
-    skos:scopeNote "A concept may be a member of more than one concept scheme."@en .
 
-skos:mappingRelation a owl:ObjectProperty .
+###  http://www.w3.org/2004/02/skos/core#example
+:example rdf:type owl:AnnotationProperty ;
+         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+         rdfs:label "example"@en ;
+         :definition "An example of the use of a concept."@en ;
+         rdfs:subPropertyOf :note .
 
-skos:member a owl:ObjectProperty .
 
-skos:notation a owl:AnnotationProperty .
+###  http://www.w3.org/2004/02/skos/core#note
+:note rdf:type owl:AnnotationProperty ;
+      rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+      rdfs:label "note"@en ;
+      :definition "A general note, for any purpose."@en ;
+      :scopeNote "This property may be used directly, or as a super-property for more specific note types."@en .
 
-skos:note a owl:AnnotationProperty .
 
-skos:prefLabel a owl:AnnotationProperty ;
-    rdfs:label "preferred label"@en ;
-    rdfs:comment "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."@en,
-        "The range of skos:prefLabel is the class of RDF plain literals."@en,
-        """skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
+###  http://www.w3.org/2004/02/skos/core#prefLabel
+:prefLabel rdf:type owl:AnnotationProperty ;
+           rdfs:comment "A resource has no more than one value of skos:prefLabel per language tag, and no more than one value of skos:prefLabel without language tag."@en ,
+                        "The range of skos:prefLabel is the class of RDF plain literals."@en ,
+                        """skos:prefLabel, skos:altLabel and skos:hiddenLabel are pairwise
       disjoint properties."""@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    skos:definition "The preferred lexical label for a resource, in a given language."@en .
+           rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+           rdfs:label "preferred label"@en ;
+           :definition "The preferred lexical label for a resource, in a given language."@en .
 
-skos:related a owl:AnnotationProperty .
 
-skos:scopeNote a owl:AnnotationProperty .
+###  http://www.w3.org/2004/02/skos/core#scopeNote
+:scopeNote rdf:type owl:AnnotationProperty ;
+           rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+           rdfs:label "scope note"@en ;
+           :definition "A note that helps to clarify the meaning and/or the use of a concept."@en ;
+           rdfs:subPropertyOf :note .
 
-skos:Concept a owl:Class ;
-    rdfs:label "Concept"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    owl:disjointWith skos:ConceptScheme ;
-    skos:definition "An idea or notion; a unit of thought."@en .
 
-skos:narrower a owl:ObjectProperty ;
-    rdfs:label "has narrower"@en ;
-    rdfs:comment "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    rdfs:subPropertyOf owl:topObjectProperty ;
-    skos:definition "Relates a concept to a concept that is more specific in meaning."@en ;
-    skos:scopeNote "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."@en .
+#################################################################
+#    Object Properties
+#################################################################
 
-skos:ConceptScheme a owl:Class ;
-    rdfs:label "Concept Scheme"@en ;
-    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
-    skos:definition "A set of concepts, optionally including statements about semantic relationships between those concepts."@en ;
-    skos:example "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies."@en ;
-    skos:scopeNote "A concept scheme may be defined to include concepts from different sources."@en .
+###  http://www.w3.org/2004/02/skos/core#broader
+:broader rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :semanticRelation ;
+         owl:inverseOf :narrower ;
+         rdfs:comment "Broader concepts are typically rendered as parents in a concept hierarchy (tree)."@en ;
+         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+         rdfs:label "has broader"@en ;
+         :definition "Relates a concept to a concept that is more general in meaning."@en ;
+         :scopeNote "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."@en .
 
-<http://www.w3.org/2004/02/skos/core> a owl:Ontology .
 
+###  http://www.w3.org/2004/02/skos/core#inScheme
+:inScheme rdf:type owl:ObjectProperty ;
+          rdfs:range :ConceptScheme ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+          rdfs:label "is in scheme"@en ;
+          :definition "Relates a resource (for example a concept) to a concept scheme in which it is included."@en ;
+          :scopeNote "A concept may be a member of more than one concept scheme."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrower
+:narrower rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :semanticRelation ;
+          rdfs:comment "Narrower concepts are typically rendered as children in a concept hierarchy (tree)."@en ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+          rdfs:label "has narrower"@en ;
+          :definition "Relates a concept to a concept that is more specific in meaning."@en ;
+          :scopeNote "By convention, skos:broader is only used to assert an immediate (i.e. direct) hierarchical link between two conceptual resources."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#related
+:related rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :semanticRelation ;
+         rdf:type owl:SymmetricProperty ;
+         rdfs:comment "skos:related is disjoint with skos:broaderTransitive"@en ;
+         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+         rdfs:label "has related"@en ;
+         :definition "Relates a concept to a concept with which there is an associative semantic relationship."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#semanticRelation
+:semanticRelation rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Concept ;
+                  rdfs:range :Concept ;
+                  rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+                  rdfs:label "is in semantic relation with"@en ;
+                  :definition "Links a concept to a concept related by meaning."@en ;
+                  :scopeNote "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts."@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#notation
+:notation rdf:type owl:DatatypeProperty ;
+          rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+          rdfs:label "notation"@en ;
+          :definition "A notation, also known as classification code, is a string of characters such as \"T58.5\" or \"303.4833\" used to uniquely identify a concept within the scope of a given concept scheme."@en ;
+          :scopeNote "By convention, skos:notation is used with a typed literal in the object position of the triple."@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+:Concept rdf:type owl:Class ;
+         owl:disjointWith :ConceptScheme ;
+         rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+         rdfs:label "Concept"@en ;
+         :definition "An idea or notion; a unit of thought."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+:ConceptScheme rdf:type owl:Class ;
+               rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+               rdfs:label "Concept Scheme"@en ;
+               :definition "A set of concepts, optionally including statements about semantic relationships between those concepts."@en ;
+               :example "Thesauri, classification schemes, subject heading lists, taxonomies, 'folksonomies', and other types of controlled vocabulary are all examples of concept schemes. Concept schemes are also embedded in glossaries and terminologies."@en ;
+               :scopeNote "A concept scheme may be defined to include concepts from different sources."@en .
+
+
+###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

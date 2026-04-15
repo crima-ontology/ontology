@@ -1,4 +1,3 @@
-@prefix clex: <http://www.semanticweb.org/crima/crima-lexicon#> .
 @prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
 @prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -1405,105 +1404,103 @@ ecv:pCO2 a ecv:ECV-product,
         <http://qudt.org/schema/qudt>,
         <http://qudt.org/vocab/unit>,
         ecv:,
-        clex:,
         cunit:,
         <http://www.w3.org/2004/02/skos/core> ;
     owl:imports wmdr-unit:,
         <http://qudt.org/schema/qudt>,
         <http://qudt.org/vocab/unit>,
         ecv:,
-        clex:,
         cunit:,
         <http://www.w3.org/2004/02/skos/core> .
 
 ecv:Above-GroundBiomass a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "above-ground biomass"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:Albedo a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "albedo"@en ;
-    clex:isMemberOf ecv:Biology ;
+    skos:broader ecv:Biology ;
     skos:definition "The land surface albedo is the ratio of the radiant flux reflected from Earth's surface to the incident flux. Each spectral/broadband value depends on natural variations and is highly variable in space and time as a result of terrestrial properties changes, and with illumination conditions."@en .
 
 ecv:AnthropogenicWaterUse a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "anthropogenic water use"@en ;
-    clex:isMemberOf ecv:HumanUseOfNaturalResources ;
+    skos:broader ecv:HumanUseOfNaturalResources ;
     skos:definition "Volume of water used by country, by sector - agricultural, industrial and domestic."@en .
 
 ecv:FractionOfAbsorbedPhotosyntheticallyActiveRadiation-FAPAR a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "fraction of absorbed photosynthetically active radiation (FAPAR)"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:LeafAreaIndex a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "leaf area index"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:Oxygen a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "oxygen"@en ;
-    clex:isMemberOf ecv:Biogeochemical ;
+    skos:broader ecv:Biogeochemical ;
     skos:definition "Concentration of dissolved oxygen (O₂) in the water column."@en .
 
 ecv:Precipitation a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "precipitation"@en ;
-    clex:isMemberOf ecv:Surface ;
+    skos:broader ecv:Surface ;
     skos:definition "Integration of solid and liquid precipitation rate reaching the ground over a time period defined in the metadata."@en .
 
 ecv:SeaState a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "sea state"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SeaSurfaceSalinity a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "sea surface salinity"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SeaSurfaceTemperature a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "sea surface temperature"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SubsurfaceCurrents a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "subsurface currents"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SubsurfaceSalinity a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "subsurface salinity"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SubsurfaceTemperature a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "subsurface temperature"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SurfacePressure a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface pressure"@en ;
-    clex:isMemberOf ecv:Surface .
+    skos:broader ecv:Surface .
 
 ecv:SurfaceStress a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface stress"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SurfaceTemperature a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface temperature"@en ;
-    clex:isMemberOf ecv:Surface .
+    skos:broader ecv:Surface .
 
 ecv:TerrestrialWaterStorage-TWS a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "terrestrial water storage (TWS)"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:Biological-Ecosystems a ecv:ECV-subdomain,
         owl:NamedIndividual ;
@@ -1513,7 +1510,7 @@ ecv:Biological-Ecosystems a ecv:ECV-subdomain,
 ecv:Groundwater a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "groundwater"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:HumanUseOfNaturalResources a ecv:ECV-subdomain,
         owl:NamedIndividual ;
@@ -1523,40 +1520,40 @@ ecv:HumanUseOfNaturalResources a ecv:ECV-subdomain,
 ecv:LandSurfaceTemperature a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "land surface temperature"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:Lightning a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "lightning"@en ;
-    clex:isMemberOf ecv:UpperAtmosphere ;
+    skos:broader ecv:UpperAtmosphere ;
     skos:definition "Total number of detected strokes in the corresponding time interval and the space unit. The space unit (grid box) should be on the order of the horizontal resolution and the accumulation time to the observing cycle."@en .
 
 ecv:NitrousOxide a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "nitrous oxide"@en ;
-    clex:isMemberOf ecv:Biogeochemical ;
+    skos:broader ecv:Biogeochemical ;
     skos:definition "Concentration of N₂O gas in the water column."@en .
 
 ecv:OceanColour a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "ocean colour"@en ;
-    clex:isMemberOf ecv:Biogeochemical ;
+    skos:broader ecv:Biogeochemical ;
     skos:definition "Concentration of chlorophyll-a pigment in the surface water."@en .
 
 ecv:RiverDischarge a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "river discharge"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:SeaLevel a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "sea level"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:SurfaceCurrents a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface currents"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:Atmosphere a ecv:ECV-domain,
         owl:NamedIndividual ;
@@ -1565,27 +1562,27 @@ ecv:Atmosphere a ecv:ECV-domain,
 ecv:Fire a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "fire"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:Glaciers a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "glaciers"@en ;
-    clex:isMemberOf ecv:Cryosphere .
+    skos:broader ecv:Cryosphere .
 
 ecv:InorganicCarbon a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "inorganic carbon"@en ;
-    clex:isMemberOf ecv:Biogeochemical .
+    skos:broader ecv:Biogeochemical .
 
 ecv:LandCover a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "land cover"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:Nutrients a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "nutrients"@en ;
-    clex:isMemberOf ecv:Biogeochemical ;
+    skos:broader ecv:Biogeochemical ;
     skos:definition "Concentration of Si(OH)₄ in the water column."@en .
 
 ecv:Ocean a ecv:ECV-domain,
@@ -1595,38 +1592,38 @@ ecv:Ocean a ecv:ECV-domain,
 ecv:OceanSurfaceHeatFlux a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "ocean surface heat flux"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:Permafrost a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "permafrost"@en ;
-    clex:isMemberOf ecv:Cryosphere ;
+    skos:broader ecv:Cryosphere ;
     skos:definition "Permafrost is subsurface earth material that remains continuously at or below 0 °C throughout at least two consecutive years, usually for extended time periods."@en .
 
 ecv:Snow a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "snow"@en ;
-    clex:isMemberOf ecv:Cryosphere .
+    skos:broader ecv:Cryosphere .
 
 ecv:SoilCarbon a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "soil carbon"@en ;
-    clex:isMemberOf ecv:Biology .
+    skos:broader ecv:Biology .
 
 ecv:SurfaceRadiationBudget a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface radiation budget"@en ;
-    clex:isMemberOf ecv:Surface .
+    skos:broader ecv:Surface .
 
 ecv:SurfaceWaterVapour a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface water vapour"@en ;
-    clex:isMemberOf ecv:Surface .
+    skos:broader ecv:Surface .
 
 ecv:SurfaceWindSpeedAndDirection a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "surface wind speed and direction"@en ;
-    clex:isMemberOf ecv:Surface ;
+    skos:broader ecv:Surface ;
     skos:definition """Wind Speed (near surface): Speed of air at a known height above the surface which is to be specified in the metadata.
 Wind Direction (near surface): Direction from which wind is blowing at a known height above the surface which is to be specified in the metadata."""@en .
 
@@ -1638,7 +1635,7 @@ ecv:Cryosphere a ecv:ECV-subdomain,
 ecv:IceSheetsAndIceShelves a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "ice sheets and ice shelves"@en ;
-    clex:isMemberOf ecv:Cryosphere .
+    skos:broader ecv:Cryosphere .
 
 ecv:Land a ecv:ECV-domain,
         owl:NamedIndividual ;
@@ -1647,24 +1644,24 @@ ecv:Land a ecv:ECV-domain,
 ecv:MarineHabitats a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "marine habitats"@en ;
-    clex:isMemberOf ecv:Biological-Ecosystems ;
+    skos:broader ecv:Biological-Ecosystems ;
     skos:definition "Extent of mangroves and species types in coastal environments (percent or ha and number of species per area)."@en .
 
 ecv:Plankton a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "plankton"@en ;
-    clex:isMemberOf ecv:Biological-Ecosystems ;
+    skos:broader ecv:Biological-Ecosystems ;
     skos:definition "Number of species, functional traits, molecular biology groups (Operational Taxonomic Unit/OUT, other) per unit seawater volume or unit sea surface area, or unit benthos area."@en .
 
 ecv:SoilMoisture a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "soil moisture"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:TransientTracers a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "transient tracers"@en ;
-    clex:isMemberOf ecv:Biogeochemical .
+    skos:broader ecv:Biogeochemical .
 
 ecv:UpperAtmosphere a ecv:ECV-subdomain,
         owl:NamedIndividual ;
@@ -1679,22 +1676,22 @@ ecv:AtmosphericComposition a ecv:ECV-subdomain,
 ecv:CarbonDioxideMethaneAndOtherGreenhouseGases a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "carbon dioxide methane and other greenhouse gases"@en ;
-    clex:isMemberOf ecv:AtmosphericComposition .
+    skos:broader ecv:AtmosphericComposition .
 
 ecv:EarthRadiationBudget a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "Earth radiation budget"@en ;
-    clex:isMemberOf ecv:UpperAtmosphere .
+    skos:broader ecv:UpperAtmosphere .
 
 ecv:EvaporationFromLand a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "evaporation from land"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:Upper-airTemperature a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "upper-air temperature"@en ;
-    clex:isMemberOf ecv:Surface .
+    skos:broader ecv:Surface .
 
 ecv:Biogeochemical a ecv:ECV-subdomain,
         owl:NamedIndividual ;
@@ -1709,34 +1706,34 @@ ecv:Hydrology a ecv:ECV-subdomain,
 ecv:Lakes a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "lakes"@en ;
-    clex:isMemberOf ecv:Hydrology .
+    skos:broader ecv:Hydrology .
 
 ecv:Ozone a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "ozone"@en ;
-    clex:isMemberOf ecv:AtmosphericComposition ;
+    skos:broader ecv:AtmosphericComposition ;
     skos:definition "2D field of total amount of O3 molecules per unit area in an atmospheric column extending from the Earth's surface to the tropopause."@en .
 
 ecv:Aerosols a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "aerosols"@en ;
-    clex:isMemberOf ecv:AtmosphericComposition ;
+    skos:broader ecv:AtmosphericComposition ;
     skos:definition "Above-ground biomass is defined as the mass of live and/or dead organic matter in terrestrial vegetation."@en .
 
 ecv:Clouds a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "clouds"@en ;
-    clex:isMemberOf ecv:AtmosphericComposition .
+    skos:broader ecv:AtmosphericComposition .
 
 ecv:PrecursorsForAerosolsAndOzone a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "precursors for aerosols and ozone"@en ;
-    clex:isMemberOf ecv:AtmosphericComposition .
+    skos:broader ecv:AtmosphericComposition .
 
 ecv:SeaIce a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "sea ice"@en ;
-    clex:isMemberOf ecv:Physical .
+    skos:broader ecv:Physical .
 
 ecv:Surface a ecv:ECV-subdomain,
         owl:NamedIndividual ;
@@ -1746,7 +1743,7 @@ ecv:Surface a ecv:ECV-subdomain,
 ecv:AnthropogenicGreenhouseGasEmissions a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "anthropogenic greenhouse gas emissions"@en ;
-    clex:isMemberOf ecv:HumanUseOfNaturalResources ;
+    skos:broader ecv:HumanUseOfNaturalResources ;
     skos:definition "Anthropogenic long-cycle C emissions are mainly originating from combustion of fossil fuels, and for about 10% also from non-combustion sources, such as cement production, ferrous and non-ferrous metal production processes, urea production, agricultural liming and solvent use."@en .
 
 ecv:Biology a ecv:ECV-subdomain,
@@ -1757,12 +1754,12 @@ ecv:Biology a ecv:ECV-subdomain,
 ecv:Upper-airWaterVapour a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "upper-air water vapour"@en ;
-    clex:isMemberOf ecv:UpperAtmosphere .
+    skos:broader ecv:UpperAtmosphere .
 
 ecv:Upper-airWindSpeedAndDirection a ecv:ECV-variable,
         owl:NamedIndividual ;
     rdfs:label "upper-air wind speed and direction"@en ;
-    clex:isMemberOf ecv:UpperAtmosphere .
+    skos:broader ecv:UpperAtmosphere .
 
 ecv:Physical a ecv:ECV-subdomain,
         owl:NamedIndividual ;

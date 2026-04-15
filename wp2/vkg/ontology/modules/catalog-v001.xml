@@ -29,7 +29,6 @@
     <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="ar6-impact.ttl"/>
     <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="cbib.ttl"/>
     <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="ccore.ttl"/>
-    <uri id="clex" name="http://www.semanticweb.org/crima/crima-lexicon#" uri="clex.ttl"/>
     <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="cplace.ttl"/>
     <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="crid.ttl"/>
     <uri id="ctlo" name="http://www.semanticweb.org/crima/crima-tlo#" uri="ctlo.ttl"/>

@@ -1,67 +1,122 @@
+@prefix : <http://www.semanticweb.org/crima/crima-place#> .
 @prefix as: <https://www.w3.org/ns/activitystreams#> .
-@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
-@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
+@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
+@base <http://www.semanticweb.org/crima/crima-place#> .
 
-dbo:ArchitecturalStructure rdfs:subClassOf geo:Feature,
-        sosa:FeatureOfInterest .
+<http://www.semanticweb.org/crima/crima-place#> rdf:type owl:Ontology ;
+                                                 owl:imports dbo: ,
+                                                             <http://www.opengis.net/ont/geosparql> ,
+                                                             ctlo: ,
+                                                             sosa-common: ;
+                                                 vann:preferredNamespacePrefix "cplace" ;
+                                                 vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-place#"^^xsd:anyURI ;
+                                                 voaf:extends ctlo: ;
+                                                 voaf:metadataVoc vann: ,
+                                                                  <http://purl.org/vocommons/voaf> ;
+                                                 voaf:specializes dbo: ,
+                                                                  <http://www.opengis.net/ont/geosparql> ,
+                                                                  ctlo: ,
+                                                                  sosa-common: .
 
-dbo:Place rdfs:subClassOf geo:Feature,
-        sosa:FeatureOfInterest .
+#################################################################
+#    Annotation properties
+#################################################################
 
-cplace: a owl:Ontology ;
-    vann:preferredNamespacePrefix "cplace" ;
-    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-place#"^^xsd:anyURI ;
-    voaf:extends ctlo: ;
-    voaf:metadataVoc vann:,
-        <http://purl.org/vocommons/voaf> ;
-    voaf:specializes dbo:,
-        <http://www.opengis.net/ont/geosparql>,
-        ctlo:,
-        sosa-common: ;
-    owl:imports dbo:,
-        <http://www.opengis.net/ont/geosparql>,
-        ctlo:,
-        sosa-common: .
+###  http://purl.org/vocommons/voaf#extends
+voaf:extends rdf:type owl:AnnotationProperty .
 
-cplace:CommunityDistrict a owl:Class ;
-    rdfs:comment "es. BURGRAVIATO, VALVENOSTA, BASSAATESINA,..." ;
-    rdfs:subClassOf dbo:District .
 
-cplace:DrainageBasin a owl:Class ;
-    rdfs:subClassOf dbo:NaturalPlace .
+###  http://purl.org/vocommons/voaf#specializes
+voaf:specializes rdf:type owl:AnnotationProperty .
 
-cplace:MeteorologicalStation a owl:Class ;
-    rdfs:subClassOf sosa:Platform .
 
-cplace:inHealthDistrict a owl:ObjectProperty ;
-    rdfs:domain ctlo:PhysicalEndurant ;
-    rdfs:range cplace:HealthDistrict ;
-    rdfs:subPropertyOf ctlo:constantPartOf .
+#################################################################
+#    Object Properties
+#################################################################
 
-cplace:inHealthRegion a owl:ObjectProperty ;
-    rdfs:domain ctlo:PhysicalEndurant ;
-    rdfs:range cplace:HealthRegion ;
-    rdfs:subPropertyOf ctlo:constantPartOf .
+###  http://www.semanticweb.org/crima/crima-place#inHealthDistrict
+cplace:inHealthDistrict rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf ctlo:constantPartOf ;
+                        rdfs:domain ctlo:PhysicalEndurant ;
+                        rdfs:range cplace:HealthDistrict .
 
-as:latitude rdfs:subPropertyOf geo:hasSerialization .
 
-as:longitude rdfs:subPropertyOf geo:hasSerialization .
+###  http://www.semanticweb.org/crima/crima-place#inHealthRegion
+cplace:inHealthRegion rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf ctlo:constantPartOf ;
+                      rdfs:domain ctlo:PhysicalEndurant ;
+                      rdfs:range cplace:HealthRegion .
 
-cplace:HealthDistrict a owl:Class ;
-    rdfs:subClassOf dbo:District .
 
-cplace:HealthRegion a owl:Class ;
-    rdfs:comment "The sum of multiple contingous health districts (tentative)." ;
-    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion .
+#################################################################
+#    Data properties
+#################################################################
 
+###  https://www.w3.org/ns/activitystreams#latitude
+as:latitude rdf:type owl:DatatypeProperty ;
+            rdfs:subPropertyOf geo:hasSerialization .
+
+
+###  https://www.w3.org/ns/activitystreams#longitude
+as:longitude rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf geo:hasSerialization .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://dbpedia.org/ontology/ArchitecturalStructure
+dbo:ArchitecturalStructure rdfs:subClassOf geo:Feature ,
+                                           sosa:FeatureOfInterest .
+
+
+###  http://dbpedia.org/ontology/Place
+dbo:Place rdfs:subClassOf geo:Feature ,
+                          sosa:FeatureOfInterest .
+
+
+###  http://www.semanticweb.org/crima/crima-place#CommunityDistrict
+cplace:CommunityDistrict rdf:type owl:Class ;
+                         rdfs:subClassOf dbo:District ;
+                         rdfs:comment "es. BURGRAVIATO, VALVENOSTA, BASSAATESINA,..." .
+
+
+###  http://www.semanticweb.org/crima/crima-place#DrainageBasin
+cplace:DrainageBasin rdf:type owl:Class ;
+                     rdfs:subClassOf dbo:NaturalPlace .
+
+
+###  http://www.semanticweb.org/crima/crima-place#HealthDistrict
+cplace:HealthDistrict rdf:type owl:Class ;
+                      rdfs:subClassOf dbo:District .
+
+
+###  http://www.semanticweb.org/crima/crima-place#HealthRegion
+cplace:HealthRegion rdf:type owl:Class ;
+                    rdfs:subClassOf dbo:GovernmentalAdministrativeRegion ;
+                    rdfs:comment "The sum of multiple contingous health districts (tentative)." .
+
+
+###  http://www.semanticweb.org/crima/crima-place#MeteorologicalStation
+cplace:MeteorologicalStation rdf:type owl:Class ;
+                             rdfs:subClassOf sosa:Platform .
+
+
+###  http://www.w3.org/ns/sosa/Platform
 sosa:Platform rdfs:subClassOf geo:Feature .
 
+
+###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

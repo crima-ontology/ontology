@@ -11,6 +11,12 @@ bibo:AcademicArticle a owl:Class ;
     rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
     rdfs:subClassOf bibo:Article .
 
+bibo:Image a owl:Class ;
+    rdfs:label "Image"@en ;
+    rdfs:comment "A document that presents visual or diagrammatic information."@en ;
+    rdfs:isDefinedBy "http://purl.org/ontology/bibo/"^^xsd:anyURI ;
+    rdfs:subClassOf bibo:Document .
+
 bibo:Issue a owl:Class ;
     rdfs:label "Issue"@en ;
     rdfs:comment "Something that is printed or published and distributed, esp. a given number of a periodical"@en ;

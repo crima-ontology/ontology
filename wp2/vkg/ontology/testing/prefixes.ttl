@@ -7,7 +7,6 @@ PREFIX cbib: <http://www.semanticweb.org/crima/crima-bib#>
 PREFIX cc: <http://creativecommons.org/ns#>
 PREFIX ccore: <http://www.semanticweb.org/crima/crima-core#>
 PREFIX clc: <http://www.w3.org/2015/03/corine#>
-PREFIX clex: <http://www.semanticweb.org/crima/crima-lexicon#>
 PREFIX cplace: <http://www.semanticweb.org/crima/crima-place#>
 PREFIX crid: <http://www.semanticweb.org/crima/crima-id#>
 PREFIX ctlo: <http://www.semanticweb.org/crima/crima-tlo#>
@@ -43,6 +42,7 @@ PREFIX swrl: <http://www.w3.org/2003/11/swrl#>
 PREFIX swrl-var: <urn:swrl:var#>
 PREFIX time: <http://www.w3.org/2006/time#>
 PREFIX unit: <http://qudt.org/vocab/unit/>
+PREFIX voaf: <http://purl.org/vocommons/voaf#>
 PREFIX vann: <http://purl.org/vocab/vann/>
 PREFIX wmdr-unit: <http://codes.wmo.int/wmdr/unit/>
 PREFIX xkos: <http://rdf-vocabulary.ddialliance.org/xkos#>

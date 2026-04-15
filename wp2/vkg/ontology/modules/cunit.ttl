@@ -1,87 +1,150 @@
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix : <http://www.semanticweb.org/crima/crima-unit#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
 @prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@base <http://www.semanticweb.org/crima/crima-unit#> .
 
+<http://www.semanticweb.org/crima/crima-unit#> rdf:type owl:Ontology ;
+                                                owl:imports wmdr-unit: ,
+                                                            <http://qudt.org/schema/qudt> ,
+                                                            <http://www.w3.org/2004/02/skos/core> ;
+                                                vann:preferredNamespacePrefix "cunit" ;
+                                                vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-unit#"^^xsd:anyURI ;
+                                                voaf:generalizes wmdr-unit: ,
+                                                                 <http://qudt.org/schema/qudt> ;
+                                                voaf:metadataVoc vann: ,
+                                                                 <http://purl.org/vocommons/voaf> ,
+                                                                 <http://www.w3.org/2004/02/skos/core> ;
+                                                voaf:specializes <http://www.w3.org/2004/02/skos/core> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocommons/voaf#generalizes
+voaf:generalizes rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocommons/voaf#specializes
+voaf:specializes rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://codes.wmo.int/wmdr/unit/Unit
 wmdr-unit:Unit rdfs:subClassOf cunit:Unit .
 
+
+###  http://qudt.org/schema/qudt/Unit
 qudt:Unit rdfs:subClassOf cunit:Unit .
 
-cunit: a owl:Ontology ;
-    vann:preferredNamespacePrefix "cunit" ;
-    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-unit#"^^xsd:anyURI ;
-    voaf:generalizes wmdr-unit:,
-        <http://qudt.org/schema/qudt> ;
-    voaf:metadataVoc vann:,
-        <http://purl.org/vocommons/voaf>,
-        <http://www.w3.org/2004/02/skos/core> ;
-    voaf:specializes <http://www.w3.org/2004/02/skos/core> ;
-    owl:imports wmdr-unit:,
-        <http://qudt.org/schema/qudt>,
-        <http://www.w3.org/2004/02/skos/core> .
 
-cunit:GigaM3-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Cubic gigametre per year",
-        "Cubic gigametre per year"@en .
+###  http://www.semanticweb.org/crima/crima-unit#Unit
+cunit:Unit rdf:type owl:Class ;
+           rdfs:subClassOf skos:Concept .
 
-cunit:KiloGM-CO2-PER-M2-PER-SEC a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions",
-        "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions"@en .
 
-cunit:MegaGM-CH4-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Megagrams of Methane per year",
-        "Megagrams of Methane per year"@en .
+#################################################################
+#    Individuals
+#################################################################
 
-cunit:MegaGM-CO2-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Megagrams of Carbon Dioxide per year",
-        "Megagrams of Carbon Dioxide per year"@en .
+###  http://www.semanticweb.org/crima/crima-unit#GigaM3-PER-YR
+cunit:GigaM3-PER-YR rdf:type owl:NamedIndividual ,
+                             cunit:Unit ;
+                    rdfs:label "Cubic gigametre per year"@en ,
+                               "Cubic gigametre per year" .
 
-cunit:MegaGM-CO2eq-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Megagrams of carbon dioxide equivalent per year",
-        "Megagrams of carbon dioxide equivalent per year"@en .
 
-cunit:MegaGM-N2O-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Megagrams of nitrous oxide per year",
-        "Megagrams of nitrous oxide per year"@en .
+###  http://www.semanticweb.org/crima/crima-unit#KiloGM-CO2-PER-M2-PER-SEC
+cunit:KiloGM-CO2-PER-M2-PER-SEC rdf:type owl:NamedIndividual ,
+                                         cunit:Unit ;
+                                rdfs:label "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions"@en ,
+                                           "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions" .
 
-cunit:MoleculesPerSquareCentimeter a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Molecules per square centimeter" .
 
-cunit:NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Number of molecular biology groups per unit volume or area" .
+###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CH4-PER-YR
+cunit:MegaGM-CH4-PER-YR rdf:type owl:NamedIndividual ,
+                                 cunit:Unit ;
+                        rdfs:label "Megagrams of Methane per year"@en ,
+                                   "Megagrams of Methane per year" .
 
-cunit:NumberOfSpeciesPerUnitVolumeOrArea a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Number of species per unit volume or area" .
 
-cunit:NumberOfTraitsPerUnitVolumeOrArea a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Number of traits per unit volume or area" .
+###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CO2-PER-YR
+cunit:MegaGM-CO2-PER-YR rdf:type owl:NamedIndividual ,
+                                 cunit:Unit ;
+                        rdfs:label "Megagrams of Carbon Dioxide per year"@en ,
+                                   "Megagrams of Carbon Dioxide per year" .
 
-cunit:StrokesPerSquareKilometerPerYear a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:isDefinedBy """GCOS-245 "The 2022 GCOS ECVs Requirements"
-2022 edition - Updated in 2025""" ;
-    skos:notation "Strokes per km2 y-1" .
 
-cunit:kiloM3-PER-YR a cunit:Unit,
-        owl:NamedIndividual ;
-    rdfs:label "Cubic Kilometers per Year",
-        "Cubic Kilometers per Year"@en .
+###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CO2eq-PER-YR
+cunit:MegaGM-CO2eq-PER-YR rdf:type owl:NamedIndividual ,
+                                   cunit:Unit ;
+                          rdfs:label "Megagrams of carbon dioxide equivalent per year"@en ,
+                                     "Megagrams of carbon dioxide equivalent per year" .
 
-cunit:Unit a owl:Class ;
-    rdfs:subClassOf skos:Concept .
 
+###  http://www.semanticweb.org/crima/crima-unit#MegaGM-N2O-PER-YR
+cunit:MegaGM-N2O-PER-YR rdf:type owl:NamedIndividual ,
+                                 cunit:Unit ;
+                        rdfs:label "Megagrams of nitrous oxide per year"@en ,
+                                   "Megagrams of nitrous oxide per year" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#MoleculesPerSquareCentimeter
+cunit:MoleculesPerSquareCentimeter rdf:type owl:NamedIndividual ,
+                                            cunit:Unit ;
+                                   rdfs:label "Molecules per square centimeter" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea
+cunit:NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
+                                                                 cunit:Unit ;
+                                                        rdfs:label "Number of molecular biology groups per unit volume or area" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#NumberOfSpeciesPerUnitVolumeOrArea
+cunit:NumberOfSpeciesPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
+                                                  cunit:Unit ;
+                                         rdfs:label "Number of species per unit volume or area" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#NumberOfTraitsPerUnitVolumeOrArea
+cunit:NumberOfTraitsPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
+                                                 cunit:Unit ;
+                                        rdfs:label "Number of traits per unit volume or area" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#StrokesPerSquareKilometerPerYear
+cunit:StrokesPerSquareKilometerPerYear rdf:type owl:NamedIndividual ,
+                                                cunit:Unit ;
+                                       skos:notation "Strokes per km2 y-1" ;
+                                       rdfs:isDefinedBy """GCOS-245 \"The 2022 GCOS ECVs Requirements\"
+2022 edition - Updated in 2025""" .
+
+
+###  http://www.semanticweb.org/crima/crima-unit#kiloM3-PER-YR
+cunit:kiloM3-PER-YR rdf:type owl:NamedIndividual ,
+                             cunit:Unit ;
+                    rdfs:label "Cubic Kilometers per Year"@en ,
+                               "Cubic Kilometers per Year" .
+
+
+###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

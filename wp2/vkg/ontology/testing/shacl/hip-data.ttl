@@ -1,0 +1,316 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix hip-cluster: <https://www.preventionweb.net/hips-cluster/> .
+@prefix hip-glossary: <https://www.preventionweb.net/drr-glossary/> .
+@prefix hip-schema: <https://undrr-hip.org/> .
+@prefix hip-term: <https://www.undrr.org/terms/hips/> .
+@prefix hip-type: <https://www.preventionweb.net/hips-type/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix xkos: <http://rdf-vocabulary.ddialliance.org/xkos#> .
+
+# TODO: match and validate ontology, close w.r.t. types
+
+hip-schema:HIP-ClassificationSystem a sh:Nodeshape ;
+    sh:targetClass hip-schema:HIP-ClassificationSystem ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://www.preventionweb.net/drr-glossary/HIP-classification-system$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( hip-schema:HIP-ClassificationSystem owl:NamedIndividual )
+    ] , [
+        sh:path dcterms:date ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:title ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:description ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
+
+hip-schema:HazardType a sh:NodeShape ;
+    sh:targetClass hip-schema:HazardType ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://www.preventionweb.net/hips-type/[a-z0-9-]+$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( hip-schema:HazardType owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:inScheme ;
+        sh:class hip-schema:HIP-ClassificationSystem ;
+        sh:in ( hip-glossary:HIP-classification-system ) ;
+        sh:minCount 1
+    ] .
+
+hip-schema:HazardCluster a sh:NodeShape ;
+    sh:targetClass hip-schema:HazardCluster ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://www.preventionweb.net/hips-cluster/[a-z0-9-]+$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( hip-schema:HazardCluster owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ("en") ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:inScheme ;
+        sh:class hip-schema:HIP-ClassificationSystem ;
+        sh:in ( hip-glossary:HIP-classification-system ) ;
+        sh:minCount 1
+    ] , [
+        sh:path skos:broader ; # TODO: inconsistency
+        sh:class hip-schema:HazardType ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
+
+hip-schema:SpecificHazard a sh:NodeShape ;
+    sh:targetClass hip-schema:SpecificHazard ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:pattern "^https://www.undrr.org/terms/hips/[a-z0-9-]+$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( hip-schema:SpecificHazard owl:NamedIndividual )
+    ] ;
+    # Single-valued datatype properties
+    sh:property [
+        sh:path skos:prefLabel ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:definition ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:note ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:identifier ;
+        sh:datatype xsd:string ;
+        sh:pattern "^[A-Z]{2}[0-9]{4}$" ; # same as ID in the IRI, but uppercase
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:created ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:modified ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:title ;
+        sh:equals skos:prefLabel
+    ] , [
+        sh:path dcterms:relation ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 0 ;
+        sh:maxCount 1
+    ], [
+        sh:path dcterms:publisher ;
+        sh:in ( "UNDRR, ISC, and contributors" ) ;
+        sh:minCount 1
+    ] , [
+        sh:path dcterms:rights ;
+        sh:in ( "Creative Commons CC BY 4.0" ) ;
+        sh:minCount 1
+    ] , [
+        sh:path owl:versionInfo ;
+        sh:in ( "2025 update; https://www.undrr.org/publication/2025-update-undrr-isc-hazard-information-profiles-hips"@en ) ;
+        sh:minCount 1
+    ] ;
+    # Multi-valued datatype properties
+    sh:property [
+        sh:path skos:altLabel ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] ;
+    # Single-valued object properties
+    sh:property [
+        sh:path dcterms:conformsTo ;
+        sh:class bibo:Document ;
+        sh:maxCount 1
+    ] , [
+        sh:path skos:inScheme ;
+        sh:class hip-schema:HIP-ClassificationSystem ;
+        sh:in ( hip-glossary:HIP-classification-system ) ;
+        sh:minCount 1
+    ] , [
+        sh:path skos:broader ;
+        sh:minCount 2 ;
+        sh:maxCount 2
+    ] , [
+        sh:path skos:broader ;
+        sh:qualifiedValueShape [ sh:class hip-schema:HazardType ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:broader ;
+        sh:qualifiedValueShape [ sh:class hip-schema:HazardCluster ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
+    ] ;
+    # Multi-valued object properties
+    sh:property [
+        sh:path dcterms:references ;
+        sh:class bibo:Document ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] , [
+        sh:path prov:wasInfluencedBy ;
+        sh:equals dcterms:references
+    ] , [
+        sh:path dcterms:source ;
+        sh:class bibo:Document ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] , [
+        sh:path prov:wasQuotedFrom ;
+        sh:equals dcterms:source
+    ] , [
+        sh:path dcterms:hasPart ;
+        sh:class bibo:Image ;
+        sh:nodeKind sh:IRI
+    ] , [
+        sh:path xkos:causes ;
+        sh:class hip-schema:SpecificHazard
+    ] , [
+        sh:path xkos:causedBy ;
+        sh:class hip-schema:SpecificHazard
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:class xkos:ExplanatoryNote ;
+        sh:minCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "drivers" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "impacts" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "metrics" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "monitoringEarlyWarning" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "multiHazardContext" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:scopeNote ;
+        sh:qualifiedValueShape [ sh:property [ sh:path dcterms:type; sh:in ( "riskManagement" ) ] ] ;
+        sh:qualifiedMinCount 0 ;
+        sh:qualifiedMaxCount 1
+    ] , [
+        sh:path skos:related ;
+        sh:class skos:Concept ;
+        sh:nodeKind sh:IRI ;
+        sh:pattern "^https://unece.org/transport/dangerous-goods/ghs-rev10-2023#GHS[0-9]{2}$" ;
+        sh:node [
+            sh:closed true ;
+            sh:property [
+                sh:path rdf:type ;
+                sh:in ( skos:Concept )
+            ] , [
+                sh:path rdfs:label ;
+                sh:datatype rdf:langString ;
+                sh:languageIn ( "en" ) ;
+                sh:minCount 1 ;
+                sh:maxCount 1
+            ]
+        ]
+    ] .
+
+bibo:Document a sh:NodeShape ;
+    sh:targetClass bibo:Document , bibo:Image ;
+    sh:closed true ;
+    sh:nodeKind sh:IRI ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( bibo:Document bibo:Image owl:NamedIndividual )
+    ] , [
+        sh:path bibo:uri ;
+        sh:datatype xsd:anyURI ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] , [
+        sh:path rdfs:label ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:format ;
+        sh:datatype xsd:string ;
+        sh:in ( "text/html" "image/png" ) ;
+        sh:maxCount 1
+    ] , [
+        sh:path dcterms:accessRights ;
+        sh:in ( "public"@en )
+    ] .
+
+xkos:ExplanatoryNote a sh:NodeShape ;
+    sh:targetClass xkos:ExplanatoryNote ;
+    sh:closed true ;
+    sh:nodeKind sh:BlankNode ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( xkos:ExplanatoryNote owl:NamedIndividual )
+    ] , [
+        sh:path dcterms:type ;
+        sh:in ( "drivers" "impacts" "metrics" "monitoringEarlyWarning" "multiHazardContext" "riskManagement" ) ;
+        sh:maxCount 1
+    ] , [
+        sh:path xkos:plainText ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" ) ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] .
