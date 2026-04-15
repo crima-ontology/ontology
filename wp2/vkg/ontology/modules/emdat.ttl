@@ -61,3 +61,10 @@ emdat:emdat-subgroup a owl:Class ;
 emdat:EMDAT-DisastersClassification a owl:Class ;
     rdfs:subClassOf skos:ConceptScheme .
 
+emdat:Classification a owl:Class ;
+    rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
+
+emdat:hasSubtype a owl:ObjectProperty ;
+    rdfs:domain emdat:Classification ;
+    rdfs:range emdat:emdat-subtype ;
+    rdfs:comment "Links a record-level EM-DAT classification to its leaf subtype concept." .
