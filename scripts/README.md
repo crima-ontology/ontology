@@ -12,6 +12,27 @@ crima-vkg-tool --help             # test whether scripts work (work in any direc
 
 Once done, run `deactivate` to deactivate the environment, or simply close the shell. To reactivate, enter the scripts directory and run again `source .venv/bin/activate`. To get rid of the environment, deactivate it and delete the created `.venv` directory. Any update to script sources (e.g., resulting from local edits / `git pull` actions) will be immediately effective due to install in editable mode. The tool and the installation procedure listed above should work also on Windows, though development and testing are mostly done in Linux.
 
+Some reference documentation about using the tool is available through command line help (run `crima-vkg-toll <command> --help` for command specific help):
+```
+Usage: crima-vkg-tool [OPTIONS] COMMAND [ARGS]...
+
+  Utility tool to maintain CRIMA ontology and mapping.
+
+Options:
+  -v, --verbose  log debug information to stderr
+  --help         Show this message and exit.
+
+Commands:
+  catalog   Generate catalog-v001.xml files for use in Protégé / OWL API.
+  download  Download external vocabularies referenced by the CRIMA ontology into the directory specified.
+  ecv       Generate a ZIP with equivalent CSV files, SQL schema, and OBDA mappings for ECV RDF data.
+  hip       Utilities related to HIP Abox data.
+  merge     Merge multiple OWL/RDF files into a single one.
+  mermaid   Generate a Markdown + Mermaid diagram of ontology voaf:reliesOn relations.
+  sanitize  Sanitize RDF data from one or more files, writing sanitized RDF output to a specified file.
+  split     Split merged RDF data about multiple ontologies into multiple output RDF files, one per ontology.
+```
+
 Next, we list the main tasks provided by scripts. All the listed commands are assumed to be executed in the `wp2/vkg/` directory.
 
 ## Merge Modules into a Single File
@@ -61,11 +82,28 @@ crima-vkg-tool mermaid \
     ontology/testing/metadata.ttl
 ```
 
-## Generating CSV Version of ECV Data
+## Dealing with ECV Data
 
-The following command will create a ZIP `ecv.zip` containing equivalent CSV files (one per table, prefixed by `unibz_ecv_`), a SQL schema, and OBDA mapping for ECV ABox data residing in `ontology/modules/ecv-data.ttl`:
+The following command will create a ZIP `unibz_ecv.zip` containing equivalent CSV files (one per table, prefixed by `unibz_ecv_`), a SQL schema, and OBDA mapping for ECV ABox data residing in `ontology/modules/ecv-data.ttl`:
 ```bash
-crima-vkg-tool ecv -o ecv.zip -p unibz_ecv_ ontology/modules/ecv-data.ttl
+crima-vkg-tool ecv -o unibz_ecv.zip -p unibz_ecv_ ontology/modules/ecv-data.ttl
+```
+
+## Dealing with HIP Data
+
+The following command will crawl HIP pages starting from https://www.preventionweb.net/drr-glossary/hips (unless specified otherwise), collecting RDF data embedded as JSON-LD / RDFa and storing it as-is (including irrelevant triples, noisy triples) into a file `hip-crawl.ttl`.
+```bash
+crima-vkg-tool hip crawl -o hip-crawl.ttl
+```
+
+The following command will reshape crawled HIP data into the format used in CRIMA, also applying sanitization to handle special/control characters in raw HIP data, resulting in the content of file at `ontology/modules/hip-data.ttl`:
+```bash
+crima-vkg-tool hip reshape hip-crawl.ttl | crima-vkg-tool sanitize -o ontology/modules/hip-data.ttl -
+```
+
+The following command will create a ZIP `unibz_hip.zip` containing equivalent CSV files (one per table, prefixed by `unibz_hip_`), a SQL schema, and OBDA mapping for reshaped HIP ABox data residing in `ontology/modules/hip-data.ttl`:
+```bash
+crima-vkg-tool hip csv -o unibz_hip.zip -p unibz_hip_ ontology/modules/hip-data.ttl
 ```
 
 ## Sanitize an RDF/OWL File
