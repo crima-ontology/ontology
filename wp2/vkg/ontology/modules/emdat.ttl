@@ -7,6 +7,7 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
 @base <http://www.semanticweb.org/crima/emdat#> .
 
 <http://www.semanticweb.org/crima/emdat#> rdf:type owl:Ontology ;
@@ -45,7 +46,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-emdat:Classification a owl:Class ;
+:ClassificationEntry a owl:Class ;
     rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
 
 ###  http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification
@@ -100,6 +101,14 @@ emdat:Classification a owl:Class ;
                               owl:allValuesFrom :EMDAT-DisastersClassification
                             ] .
 
+:disaster-event rdf:type owl:Class ;
+    rdfs:subClassOf [
+        rdf:type owl:Class ;
+        owl:unionOf (
+            ccore:Hazard
+            ccore:CascadingEvent
+        )
+    ] .
 
 #################################################################
 #    Individuals
@@ -115,9 +124,9 @@ emdat:Classification a owl:Class ;
 #    Object Properties
 #################################################################
 
-emdat:hasSubtype a owl:ObjectProperty ;
-    rdfs:domain emdat:Classification ;
-    rdfs:range emdat:emdat-subtype ;
+:hasSubtype a owl:ObjectProperty ;
+    rdfs:domain :Classification ;
+    rdfs:range :emdat-subtype ;
     rdfs:comment "Links a record-level EM-DAT classification to its leaf subtype concept." .
 
 
