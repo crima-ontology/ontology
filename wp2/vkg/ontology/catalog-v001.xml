@@ -17,7 +17,7 @@
     <uri id="qudt-unit" name="http://qudt.org/vocab/unit" uri="imports/fragments/qudt-unit.ttl"/>
     <uri id="qudt" name="http://qudt.org/schema/qudt" uri="imports/fragments/qudt.ttl"/>
     <uri id="schema" name="http://schema.org/" uri="imports/fragments/schema.ttl"/>
-    <uri id="skos" name="http://www.w3.org/2004/02/skos/core" uri="imports/fragments/skos.ttl"/>
+    <uri id="skos" name="http://www.w3.org/2004/02/skos/core#" uri="imports/fragments/skos.ttl"/>
     <uri id="sosa-common" name="http://www.w3.org/ns/sosa/common/" uri="imports/fragments/sosa-common.ttl"/>
     <uri id="sosa-obs" name="http://www.w3.org/ns/sosa/obs/" uri="imports/fragments/sosa-obs.ttl"/>
     <uri id="time" name="http://www.w3.org/2006/time" uri="imports/fragments/time.ttl"/>

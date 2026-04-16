@@ -62,7 +62,7 @@
                                                 ar5-adapt: ,
                                                 ar6-cid: ,
                                                 ar6-impact: ,
-                                                <http://www.w3.org/2004/02/skos/core> ,
+                                                <http://www.w3.org/2004/02/skos/core#> ,
                                                 <http://www.w3.org/2006/time> ,
                                                 clc: ,
                                                 <http://www.w3.org/ns/dcat> ,
