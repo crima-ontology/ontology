@@ -137,10 +137,7 @@ hip-schema:SpecificHazard a sh:NodeShape ;
         sh:maxCount 1
     ] , [
         sh:path dcterms:title ;
-        sh:datatype rdf:langString ;
-        sh:languageIn ( "en" ) ;
-        sh:minCount 1 ;
-        sh:maxCount 1
+        sh:equals skos:prefLabel
     ] , [
         sh:path dcterms:relation ;
         sh:datatype rdf:langString ;

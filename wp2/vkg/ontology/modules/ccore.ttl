@@ -40,6 +40,36 @@
                                                                  <http://www.w3.org/2006/time> ,
                                                                  sosa-obs: .
 
+##### Davide #####
+
+:TemporalPrecision a owl:Class ;
+    rdfs:label "Temporal Precision" ;
+    rdfs:comment "A classification of the granularity at which a temporal value is known." .
+
+:temporalPrecision a owl:ObjectProperty ;
+    rdfs:label "temporal precision"@en ;
+    rdfs:comment "Specifies the granularity or precision with which a temporal entity is known or recorded (e.g., year, month, day, exact)."@en ;
+    rdfs:domain time:TemporalEntity ;
+    rdfs:range :TemporalPrecision .
+
+:YearPrecision a owl:NamedIndividual, :TemporalPrecision ;
+    rdfs:label "year precision"@en .
+
+:MonthPrecision a owl:NamedIndividual, :TemporalPrecision ;
+    rdfs:label "month precision"@en .
+
+:DayPrecision a owl:NamedIndividual, :TemporalPrecision ;
+    rdfs:label "day precision"@en .
+
+:SecondPrecision a owl:NamedIndividual, :TemporalPrecision ;
+    rdfs:label "second precision"@en .
+
+:ExactPrecision a owl:NamedIndividual, :TemporalPrecision ;
+    rdfs:label "exact precision"@en ;
+    rdfs:comment "Indicates that the temporal value is known exactly at its stated resolution."@en .
+
+##################
+
 #################################################################
 #    Annotation properties
 #################################################################
