@@ -257,3 +257,17 @@ time:ProperInterval a owl:Class ;
     rdfs:subClassOf time:Interval ;
     skos:definition "A temporal entity with non-zero extent or duration, i.e., for which the value of the beginning and end are different"@en .
 
+:inXSDDate
+    a owl:DatatypeProperty ;
+    rdfs:label
+        "in XSD date"@en ,
+        "en fecha XSD"@es ;
+    rdfs:comment
+        "Position of an instant, expressed using xsd:date"@en ,
+        "Posición de un instante, expresado utilizando xsd:date."@es ;
+    rdfs:domain :Instant ;
+    rdfs:range xsd:date ;
+    skos:definition
+        "Position of an instant, expressed using xsd:date"@en ,
+        "Posición de un instante, expresado utilizando xsd:date."@es ;
+.

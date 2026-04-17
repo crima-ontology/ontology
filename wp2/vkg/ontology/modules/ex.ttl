@@ -231,6 +231,9 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
+:EffisWildfire rdf:type owl:Class ;
+    rdfs:subClassOf ccore:Hazard .
+
 ###  http://dbpedia.org/ontology/Agriculture
 dbo:Agriculture rdf:type owl:Class .
 
