@@ -1,4 +1,4 @@
-@prefix : <http://www.w3.org/2004/02/skos/core#> .
+    @prefix : <http://www.w3.org/2004/02/skos/core#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -132,6 +132,26 @@
                   rdfs:label "is in semantic relation with"@en ;
                   :definition "Links a concept to a concept related by meaning."@en ;
                   :scopeNote "This property should not be used directly, but as a super-property for all properties denoting a relationship of meaning between concepts."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#broaderTransitive
+:broaderTransitive rdf:type owl:ObjectProperty ;
+    rdfs:label "has broader transitive"@en ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+    rdfs:subPropertyOf skos:semanticRelation ;
+    owl:inverseOf skos:narrowerTransitive ;
+    :definition "skos:broaderTransitive is a transitive superproperty of skos:broader." ;
+    :scopeNote "By convention, skos:broaderTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application."@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#narrowerTransitive
+:narrowerTransitive rdf:type owl:ObjectProperty ;
+    rdfs:label "has narrower transitive"@en ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core#> ;
+    rdfs:subPropertyOf skos:semanticRelation ;
+    owl:inverseOf skos:broaderTransitive ;
+    :definition "skos:narrowerTransitive is a transitive superproperty of skos:narrower." ;
+    :scopeNote "By convention, skos:narrowerTransitive is not used to make assertions. Rather, the properties can be used to draw inferences about the transitive closure of the hierarchical relation, which is useful e.g. when implementing a simple query expansion algorithm in a search application."@en .
 
 
 #################################################################
