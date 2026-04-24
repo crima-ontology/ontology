@@ -1,478 +1,666 @@
+@@prefix : <http://example.org/ontology/> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix ex: <http://example.org/ontology/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix csrc: <http://www.semanticweb.org/crima/crima-source#> .
-@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@base <http://example.org/ontology/> .
 
-ex: a owl:Ontology ;
+##############################################################
+#  Ontology declaration
+##############################################################
+
+<http://example.org/ontology/> rdf:type owl:Ontology ;
     vann:preferredNamespacePrefix "ex" ;
     vann:preferredNamespaceUri "http://example.org/ontology/"^^xsd:anyURI ;
-    owl:imports dbo: , <http://www.w3.org/ns/prov-o#> ;
-    voaf:reliesOn dbo: , <http://www.w3.org/ns/prov-o#> ;
-    voaf:metadataVoc vann: , <http://purl.org/vocommons/voaf> .
+    voaf:metadataVoc vann: , <http://purl.org/vocommons/voaf> ;
+    voaf:reliesOn
+        dbo: ,
+        <http://www.w3.org/ns/sosa/> ,
+        <http://www.opengis.net/ont/geosparql#> ,
+        <http://www.semanticweb.org/crima/crima-core#> ,
+        <http://www.semanticweb.org/crima/crima-source#> ;
+    owl:imports
+        dbo: ,
+        <http://www.w3.org/ns/sosa/> .
 
-#### Begin Davide ####
-##############
-# IFFICausek
-##############
-ex:IFFICause rdf:type owl:Class ;
-             rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
 
-ex:IFFICause rdfs:subClassOf skos:Concept .
+##############################################################
+#  Annotation properties (external, declared for clarity)
+##############################################################
 
-ex:hasCause a owl:ObjectProperty ;
-    rdfs:label "has cause"@en ;
-    rdfs:domain ex:IffiLandslide ;
-    rdfs:range ex:IFFICause .
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+vann:preferredNamespaceUri    rdf:type owl:AnnotationProperty .
+voaf:metadataVoc              rdf:type owl:AnnotationProperty .
+voaf:reliesOn                 rdf:type owl:AnnotationProperty .
 
-ex:shpCode a owl:DatatypeProperty ;
+##############################################################
+#  Classes
+##############################################################
+
+# --- Administrative / territorial ---
+
+:HealthDistrict rdf:type owl:Class ;
+    rdfs:label "Health District"@en ;
+    rdfs:comment "An administrative health district within the province of Bolzano/Bozen." .
+
+:HealthRegion rdf:type owl:Class ;
+    rdfs:label "Health Region"@en ;
+    rdfs:comment "An administrative health region within the province of Bolzano/Bozen." .
+
+:RoadNetwork rdf:type owl:Class ;
+    rdfs:label "Road Network"@en ;
+    rdfs:comment "A linear road-network infrastructure feature from the BZ infrastructure dataset." .
+
+# --- Hazard causes ---
+
+:IFFICause rdf:type owl:Class ;
+    rdfs:subClassOf skos:Concept ;
+    rdfs:label "IFFI Cause"@en ;
+    rdfs:comment "A landslide cause from the IFFI (Inventario dei Fenomeni Franosi in Italia) cause dictionary." .
+
+# --- Source classes ---
+
+csrc:IFFI-Landslide rdf:type owl:Class ;
+    rdfs:subClassOf ccore:Hazard ;
+    rdfs:label "IFFI Landslide"@en ;
+    rdfs:comment "A landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point at the highest initiation point (PIFF)."@en .
+
+csrc:EffisWildfire rdf:type owl:Class ;
+    rdfs:subClassOf ccore:Hazard ;
+    rdfs:label "EFFIS Wildfire"@en ;
+    rdfs:comment "A wildfire event recorded in the European Forest Fire Information System (EFFIS)." .
+
+
+##############################################################
+#  Object Properties
+##############################################################
+
+# --- Administrative location ---
+
+:locatedInMunicipality rdf:type owl:ObjectProperty ;
+    rdfs:label "located in municipality"@en ;
+    rdfs:range dbo:Municipality ;
+    rdfs:comment "Relates a feature to the municipality it is spatially located in." .
+
+:locatedInRegion rdf:type owl:ObjectProperty ;
+    rdfs:label "located in region"@en ;
+    rdfs:range :HealthRegion ;
+    rdfs:comment "Relates a feature to the health region it belongs to." .
+
+:inDistrict rdf:type owl:ObjectProperty ;
+    rdfs:label "in district"@en ;
+    rdfs:range dbo:District ;
+    rdfs:comment "Relates a municipality to its administrative district." .
+
+:inHealthDistrict rdf:type owl:ObjectProperty ;
+    rdfs:label "in health district"@en ;
+    rdfs:range :HealthDistrict ;
+    rdfs:comment "Relates a municipality to its health district." .
+
+:inHealthRegion rdf:type owl:ObjectProperty ;
+    rdfs:label "in health region"@en ;
+    rdfs:range :HealthRegion ;
+    rdfs:comment "Relates a health district to its parent health region." .
+
+# --- Hydrology ---
+
+:isLocatedOnWatercourse rdf:type owl:ObjectProperty ;
+    rdfs:label "is located on watercourse"@en ;
+    rdfs:range dbo:Watercourse ;
+    rdfs:comment "Relates a hydrological station or water derivation point to the watercourse it lies on." .
+
+:isDrainedBy rdf:type owl:ObjectProperty ;
+    rdfs:label "is drained by"@en ;
+    rdfs:range dbo:Watercourse ;
+    rdfs:comment "Relates a drainage basin to the main watercourse draining it." .
+
+:hasParentWatercourse rdf:type owl:ObjectProperty ;
+    rdfs:label "has parent watercourse"@en ;
+    rdfs:domain dbo:Watercourse ;
+    rdfs:range dbo:Watercourse ;
+    rdfs:comment "Relates a tributary watercourse to its parent watercourse." .
+
+:isPartOf rdf:type owl:ObjectProperty ;
+    rdfs:label "is part of"@en ;
+    rdfs:comment "Mereological part-of relation; used to relate watercourses to drainage basins, and lakes to drainage basins." .
+
+# --- Road / infrastructure ---
+
+:roadSegmentFrom rdf:type owl:ObjectProperty ;
+    rdfs:label "road segment from"@en ;
+    rdfs:comment "Origin OSM node of a road segment." .
+
+:roadSegmentTo rdf:type owl:ObjectProperty ;
+    rdfs:label "road segment to"@en ;
+    rdfs:comment "Destination OSM node of a road segment." .
+
+
+##############################################################
+#  Datatype Properties
+##############################################################
+
+# ---- IFFICause ----
+
+:shpCode rdf:type owl:DatatypeProperty ;
+    rdfs:domain :IFFICause ;
+    rdfs:range xsd:string ;
     rdfs:label "shapefile code"@en ;
-    rdfs:comment "textual identifier associated to the landslide cause, from the landslide shapefile";
-    rdfs:domain ex:IFFICause ;
-    rdfs:range xsd:string .
+    rdfs:comment "Textual identifier associated to the landslide cause, from the IFFI shapefile." .
 
-ex:causeGroup a owl:DatatypeProperty ;
+:causeGroup rdf:type owl:DatatypeProperty ;
+    rdfs:domain :IFFICause ;
+    rdfs:range xsd:string ;
     rdfs:label "cause group"@en ;
-    rdfs:comment "group this landslide cause belongs to: 'intrinsic', 'physical', 'geomorphological', 'anthropogenic', or 'nd'";
-    rdfs:domain ex:IFFICause ;
-    rdfs:range xsd:string .
-### ###
+    rdfs:comment "Group this landslide cause belongs to: 'intrinsic', 'physical', 'geomorphological', 'anthropogenic', or 'nd'." .
 
-###############
-# IFFILandslide
-###############
+# ---- IFFI Landslide ----
 
-ex:IFFILandslide a owl:Class ;
-    rdfs:label "IFFI landslide"@en ;
-    rdfs:comment "Landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point corresponding to the highest initiation point (PIFF)."@en .
-
-ex:IFFILandslide rdfs:subClassOf ccore:Hazard .
-
-ex:dateReliability a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:dateReliability rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Flag indicating reliability of the event date; mostly null and not clearly correlated with completeness of year/month/day."@en .
+    rdfs:label "date reliability"@en ;
+    rdfs:comment "Flag indicating reliability of the event date." .
 
-# Quantitative properties
-ex:areaM2 a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
-    rdfs:range xsd:double ;
-    rdfs:comment "Total area affected by the landslide (m^2); derived from area_calc if available, otherwise from area."@en .
-
-ex:volumeM3 a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
-    rdfs:range xsd:double ;
-    rdfs:comment "Final volume of displaced material (m^3), computed or estimated."@en .
-
-# Movement
-ex:movementTypeL1 a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:movementTypeL1 rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Primary movement type (1st level classification) describing the landslide mechanism."@en .
+    rdfs:comment "Primary movement type (1st level classification)."@en .
 
-ex:movementTypeL2Primary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:movementTypeL2Primary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Primary value of the second-level movement classification (more detailed mechanism)."@en .
+    rdfs:comment "Primary value of the second-level movement classification."@en .
 
-ex:movementTypeL2Secondary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:movementTypeL2Secondary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Secondary value of the second-level movement classification."@en .
 
-ex:style a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:style rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Style of the landslide, representing combinations or repetitions of movement mechanisms within the same event."@en .
+    rdfs:comment "Style of the landslide (combinations/repetitions of movement mechanisms)."@en .
 
-# Materials
-ex:materialPrimary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:volumeM3 rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
+    rdfs:range xsd:double ;
+    rdfs:comment "Final volume of displaced material (m³)."@en .
+
+:materialPrimary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Primary material involved in the landslide, referring to its pre-event condition."@en .
+    rdfs:comment "Primary material involved in the landslide (pre-event condition)."@en .
 
-ex:materialSecondary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:materialSecondary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Secondary material involved in the landslide."@en .
 
-# Activity/state
-ex:activityStateL1 a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:activityStateL1 rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Landslide state (1st level classification)."@en .
+    rdfs:comment "Landslide activity state (1st level classification)."@en .
 
-ex:activityStateL2 a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:activityStateL2 rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "More detailed landslide state (2nd level classification)."@en .
+    rdfs:comment "Landslide activity state (2nd level classification)."@en .
 
-# Velocity
-ex:velocityPrimary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:velocityPrimary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Primary velocity class, based on IUGS/WGL (1995) movement intensity scale."@en .
+    rdfs:comment "Primary velocity class (IUGS/WGL 1995 scale)."@en .
 
-ex:velocitySecondary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:velocitySecondary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Secondary velocity class."@en .
 
-# Water content
-ex:waterContentPrimary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:waterContentPrimary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Primary water content classification of the material prior to movement."@en .
+    rdfs:comment "Primary water content classification prior to movement."@en .
 
-ex:waterContentSecondary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:waterContentSecondary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Secondary water content classification."@en .
 
-# Environment / geology
-ex:landUse a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:landUse rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Land use of the affected slope area, including agricultural, forestry, or anthropogenic use."@en .
+    rdfs:comment "Land use of the affected slope area."@en .
 
-ex:lithology a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:lithology rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Dominant lithological composition of the units involved in the landslide."@en .
+    rdfs:comment "Dominant lithological composition of units involved in the landslide."@en .
 
-ex:lithotechnics a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:lithotechnics rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Geomechanical behavior of the material involved in the landslide."@en .
+    rdfs:comment "Geomechanical behaviour of material involved in the landslide."@en .
 
-ex:structure a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:structure rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
-    rdfs:comment "Internal structural organization of the rock mass."@en .
+    rdfs:comment "Internal structural organisation of the rock mass."@en .
 
-# Methods
-ex:assessmentMethodPrimary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:assessmentMethodPrimary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Primary methodology used for landslide assessment."@en .
 
-ex:assessmentMethodSecondary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
+:assessmentMethodSecondary rdf:type owl:DatatypeProperty ;
+    rdfs:domain csrc:IFFI-Landslide ;
     rdfs:range xsd:string ;
     rdfs:comment "Secondary methodology used for landslide assessment."@en .
 
-ex:assessmentMethodTertiary a owl:DatatypeProperty ;
-    rdfs:domain ex:IFFILandslide ;
-    rdfs:range xsd:string ;
-    rdfs:comment "Additional methodology used for landslide assessment."@en .
-### ###
-#### End Davide ####
-
-###  http://example.org/ontology/hasCause
-:hasCause rdf:type owl:ObjectProperty ;
-          rdfs:domain csrc:IFFI-Landslide ;
-          rdfs:range :IFFICause ;
-          rdfs:label "has cause"@en .
-
-dbo:Climate a owl:Class .
-
-dbo:Climatology a owl:Class .
-
-###  http://example.org/ontology/activityStateL1
-:activityStateL1 rdf:type owl:DatatypeProperty ;
-                 rdfs:domain csrc:IFFI-Landslide ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "Landslide state (1st level classification)."@en .
-
-dbo:DrainageBasin a owl:Class .
-
-###  http://example.org/ontology/activityStateL2
-:activityStateL2 rdf:type owl:DatatypeProperty ;
-                 rdfs:domain csrc:IFFI-Landslide ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "More detailed landslide state (2nd level classification)."@en .
-
-dbo:MeteoStation a owl:Class .
-
-###  http://example.org/ontology/areaM2
-:areaM2 rdf:type owl:DatatypeProperty ;
-        rdfs:domain csrc:IFFI-Landslide ;
-        rdfs:range xsd:double ;
-        rdfs:comment "Total area affected by the landslide (m^2); derived from area_calc if available, otherwise from area."@en .
-
-dbo:RoadSegment a owl:Class .
-
-###  http://example.org/ontology/assessmentMethodPrimary
-:assessmentMethodPrimary rdf:type owl:DatatypeProperty ;
-                         rdfs:domain csrc:IFFI-Landslide ;
-                         rdfs:range xsd:string ;
-                         rdfs:comment "Primary methodology used for landslide assessment."@en .
-
-
-
-dbo:WaterDerivation a owl:Class .
-
-###  http://example.org/ontology/assessmentMethodSecondary
-:assessmentMethodSecondary rdf:type owl:DatatypeProperty ;
-                           rdfs:domain csrc:IFFI-Landslide ;
-                           rdfs:range xsd:string ;
-                           rdfs:comment "Secondary methodology used for landslide assessment."@en .
-
-ex:HealthDistrict a owl:Class .
-
-###  http://example.org/ontology/assessmentMethodTertiary
 :assessmentMethodTertiary rdf:type owl:DatatypeProperty ;
-                          rdfs:domain csrc:IFFI-Landslide ;
-                          rdfs:range xsd:string ;
-                          rdfs:comment "Additional methodology used for landslide assessment."@en .
+    rdfs:domain csrc:IFFI-Landslide ;
+    rdfs:range xsd:string ;
+    rdfs:comment "Tertiary methodology used for landslide assessment."@en .
+
+# ---- Administrative / geographic ----
+
+:istatCode rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "ISTAT code"@en ;
+    rdfs:comment "Italian national statistical institute (ISTAT) administrative code." .
+
+:zipCode rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "ZIP code"@en ;
+    owl:equivalentProperty schema:postalCode .
+
+:belfioreCode rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "Belfiore code"@en ;
+    rdfs:comment "Italian municipal cadastral code (codice Belfiore)." .
+
+:elevation rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "elevation"@en ;
+    rdfs:comment "Elevation above sea level (metres)." ;
+    rdfs:subPropertyOf schema:elevation .
+
+:area rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "area"@en ;
+    rdfs:comment "Area of a feature (unit depends on context: m², km², ha)." .
+
+:districtID rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "district ID"@en .
+
+# ---- Road / infrastructure ----
+
+:code rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "code"@en .
+
+:shapeLength rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "shape length"@en ;
+    rdfs:comment "Length of a linear feature geometry (metres)." .
+
+:roadType rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "road type"@en .
+
+:length rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "length"@en ;
+    rdfs:comment "Length of a feature (metres)." .
+
+:oneWay rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "one way"@en .
+
+# ---- Population / demographics ----
+
+:populationDay rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "daytime population"@en ;
+    rdfs:comment "Estimated daytime population present in the area." .
+
+:nighttimePopulation rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "nighttime population"@en ;
+    rdfs:comment "Estimated nighttime (resident) population in the area." .
+
+:populationCommuters rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "commuter population"@en ;
+    rdfs:comment "Estimated commuter population in the area." .
+
+:populationCount rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "population count"@en .
+
+:familiesCount rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families count"@en .
+
+:familiesWithChildren rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families with children"@en .
+
+:familiesSize1 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 1"@en .
+
+:familiesSize2 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 2"@en .
+
+:familiesSize3 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 3"@en .
+
+:familiesSize4 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 4"@en .
 
-ex:IFFICause a owl:Class ;
-    rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
+:familiesSize5 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 5"@en .
 
-ex:LandCoverChange a owl:Class .
+:familiesSize6plus rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "families of size 6+"@en .
 
-ex:RoadNetwork a owl:Class .
+:people0to17Male rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 0-17 male"@en .
 
-###  http://example.org/ontology/dateReliability
-:dateReliability rdf:type owl:DatatypeProperty ;
-                 rdfs:domain csrc:IFFI-Landslide ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "Flag indicating reliability of the event date; mostly null and not clearly correlated with completeness of year/month/day."@en .
+:people0to17Female rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 0-17 female"@en .
 
-ex:accessHospitalMax a rdf:Property .
+:people18to34Male rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 18-34 male"@en .
 
-###  http://example.org/ontology/landUse
-:landUse rdf:type owl:DatatypeProperty ;
-         rdfs:domain csrc:IFFI-Landslide ;
-         rdfs:range xsd:string ;
-         rdfs:comment "Land use of the affected slope area, including agricultural, forestry, or anthropogenic use."@en .
+:people18to34Female rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 18-34 female"@en .
 
-ex:accomodationCount a rdf:Property .
+:people35to64Male rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 35-64 male"@en .
 
-###  http://example.org/ontology/lithology
-:lithology rdf:type owl:DatatypeProperty ;
-           rdfs:domain csrc:IFFI-Landslide ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Dominant lithological composition of the units involved in the landslide."@en .
+:people35to64Female rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 35-64 female"@en .
 
-ex:altitudeMax a rdf:Property .
+:people65plusMale rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 65+ male"@en .
 
-###  http://example.org/ontology/lithotechnics
-:lithotechnics rdf:type owl:DatatypeProperty ;
-               rdfs:domain csrc:IFFI-Landslide ;
-               rdfs:range xsd:string ;
-               rdfs:comment "Geomechanical behavior of the material involved in the landslide."@en .
+:people65plusFemale rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 65+ female"@en .
 
-ex:altitudeMin a rdf:Property .
+:people60plusLivingAlone rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "people 60+ living alone"@en .
 
-###  http://example.org/ontology/materialPrimary
-:materialPrimary rdf:type owl:DatatypeProperty ;
-                 rdfs:domain csrc:IFFI-Landslide ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "Primary material involved in the landslide, referring to its pre-event condition."@en .
+# ---- Tourism ----
 
-ex:authorizedAmount a rdf:Property .
+:touristArrivals rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "tourist arrivals"@en .
 
-###  http://example.org/ontology/materialSecondary
-:materialSecondary rdf:type owl:DatatypeProperty ;
-                   rdfs:domain csrc:IFFI-Landslide ;
-                   rdfs:range xsd:string ;
-                   rdfs:comment "Secondary material involved in the landslide."@en .
+:touristOvernights rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "tourist overnights"@en .
 
-ex:belfioreCode a rdf:Property .
+# ---- Meteo / climate observations ----
 
-###  http://example.org/ontology/movementTypeL1
-:movementTypeL1 rdf:type owl:DatatypeProperty ;
-                rdfs:domain csrc:IFFI-Landslide ;
-                rdfs:range xsd:string ;
-                rdfs:comment "Primary movement type (1st level classification) describing the landslide mechanism."@en .
+:temperatureMin rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "minimum temperature"@en ;
+    rdfs:comment "Minimum temperature (Â°C)." .
+
+:temperatureMax rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "maximum temperature"@en ;
+    rdfs:comment "Maximum temperature (Â°C)." .
+
+:temperatureMean rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "mean temperature"@en ;
+    rdfs:comment "Mean temperature (Â°C)." .
+
+:precipitation rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "precipitation"@en ;
+    rdfs:comment "Precipitation (mm)." .
 
-ex:businessUnits a rdf:Property .
+:month rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "month"@en .
 
-###  http://example.org/ontology/movementTypeL2Primary
-:movementTypeL2Primary rdf:type owl:DatatypeProperty ;
-                       rdfs:domain csrc:IFFI-Landslide ;
-                       rdfs:range xsd:string ;
-                       rdfs:comment "Primary value of the second-level movement classification (more detailed mechanism)."@en .
+:year rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "year"@en .
 
-ex:cattleFarmCount a rdf:Property .
+# ---- Hydrology ----
+
+:dischargeValue rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "discharge value"@en ;
+    rdfs:comment "River discharge value (m³/s)." .
 
-###  http://example.org/ontology/movementTypeL2Secondary
-:movementTypeL2Secondary rdf:type owl:DatatypeProperty ;
-                         rdfs:domain csrc:IFFI-Landslide ;
-                         rdfs:range xsd:string ;
-                         rdfs:comment "Secondary value of the second-level movement classification."@en .
+:waterVolume rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "water volume"@en ;
+    rdfs:comment "Water volume (m³)." .
 
-ex:causeGroup a rdf:Property .
+:hierarchy rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "hierarchy"@en ;
+    rdfs:comment "Hierarchical order of a watercourse in the drainage network." .
 
-ex:changedArea a rdf:Property .
+:basinArea rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "basin area"@en .
 
-ex:code a rdf:Property .
+:width rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "width"@en .
 
-###  http://example.org/ontology/structure
-:structure rdf:type owl:DatatypeProperty ;
-           rdfs:domain csrc:IFFI-Landslide ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Internal structural organization of the rock mass."@en .
+:bathing rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "bathing"@en ;
+    rdfs:comment "Whether bathing is permitted in this lake." .
 
-ex:companyEmployees a rdf:Property .
+# ---- Water derivation ----
 
-###  http://example.org/ontology/style
-:style rdf:type owl:DatatypeProperty ;
-       rdfs:domain csrc:IFFI-Landslide ;
-       rdfs:range xsd:string ;
-       rdfs:comment "Style of the landslide, representing combinations or repetitions of movement mechanisms within the same event."@en .
+:waterBodyType rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "water body type"@en .
 
-ex:corineCodeLevel1 a rdf:Property .
+:derivationType rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "derivation type"@en .
 
-###  http://example.org/ontology/velocityPrimary
-:velocityPrimary rdf:type owl:DatatypeProperty ;
-                 rdfs:domain csrc:IFFI-Landslide ;
-                 rdfs:range xsd:string ;
-                 rdfs:comment "Primary velocity class, based on IUGS/WGL (1995) movement intensity scale."@en .
+:derivationDepth rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "derivation depth"@en .
 
-ex:corineCodeLevel3 a rdf:Property .
+:authorizedAmount rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "authorized amount"@en ;
+    rdfs:comment "Authorized water derivation amount." .
 
-###  http://example.org/ontology/velocitySecondary
-:velocitySecondary rdf:type owl:DatatypeProperty ;
-                   rdfs:domain csrc:IFFI-Landslide ;
-                   rdfs:range xsd:string ;
-                   rdfs:comment "Secondary velocity class."@en .
+# ---- Glacier ----
 
+:surveyYear rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "survey year"@en .
 
-ex:distanceMinRoadHospitalAccess a rdf:Property .
+:surveyedArea rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "surveyed area"@en ;
+    rdfs:comment "Glacier area as measured in the survey (m²)." .
 
-###  http://example.org/ontology/volumeM3
-:volumeM3 rdf:type owl:DatatypeProperty ;
-          rdfs:domain csrc:IFFI-Landslide ;
-          rdfs:range xsd:double ;
-          rdfs:comment "Final volume of displaced material (m^3), computed or estimated."@en .
+:altitudeMin rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "minimum altitude"@en .
 
-ex:drainageBasinCount a rdf:Property .
+:altitudeMax rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "maximum altitude"@en .
 
-###  http://example.org/ontology/waterContentPrimary
-:waterContentPrimary rdf:type owl:DatatypeProperty ;
-                     rdfs:domain csrc:IFFI-Landslide ;
-                     rdfs:range xsd:string ;
-                     rdfs:comment "Primary water content classification of the material prior to movement."@en .
+:altitudeMedian rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "median altitude"@en .
 
-ex:elevation a rdf:Property .
+:aspectClass rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "aspect class"@en ;
+    rdfs:comment "Dominant aspect (cardinal direction) of the glacier." .
 
-###  http://example.org/ontology/waterContentSecondary
-:waterContentSecondary rdf:type owl:DatatypeProperty ;
-                       rdfs:domain csrc:IFFI-Landslide ;
-                       rdfs:range xsd:string ;
-                       rdfs:comment "Secondary water content classification."@en .
+:cgiId rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "CGI identifier"@en ;
+    rdfs:comment "Identifier in the Catasto Ghiacciai Italiani." .
 
-ex:endMonth a rdf:Property .
+:wgmsId rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "WGMS identifier"@en ;
+    rdfs:comment "Identifier in the World Glacier Monitoring Service." .
 
-ex:endYear a rdf:Property .
+# ---- Hospital accessibility / exposure assets ----
 
-csrc:EffisWildfire rdf:type owl:Class ;
-    rdfs:subClassOf ccore:Hazard .
+:accessHospitalAvg rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "average hospital accessibility"@en .
 
-###  http://dbpedia.org/ontology/Agriculture
-dbo:Agriculture rdf:type owl:Class .
+:accessHospitalMax rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "maximum hospital accessibility"@en .
 
-ex:eventOrigin a rdf:Property .
+:distanceMinRoadHospitalAccess rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "minimum road-to-hospital distance"@en ;
+    rdfs:comment "Minimum distance in metres from a road to the nearest hospital accessibility hexagon." .
 
-ex:familiesCount a rdf:Property .
+:hospitalsCount rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "hospitals count"@en .
 
-ex:familiesSize1 a rdf:Property .
+:residentialBuildings rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "residential buildings"@en .
 
-ex:familiesSize2 a rdf:Property .
+:elderlyFacilities rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "elderly care facilities"@en .
 
-ex:familiesSize3 a rdf:Property .
+# ---- Companies ----
 
-ex:familiesSize4 a rdf:Property .
+:companiesCount rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "companies count"@en .
 
-ex:familiesSize5 a rdf:Property .
+:businessUnits rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "business units"@en .
 
-ex:familiesSize6plus a rdf:Property .
+:companyEmployees rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "company employees"@en .
 
-ex:familiesWithChildren a rdf:Property .
+:businessUnitEmployees rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "business unit employees"@en .
 
-ex:farmForestCount a rdf:Property .
+# ---- EMDAT disaster event ----
 
-ex:farmsCount a rdf:Property .
+:magnitude rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "magnitude"@en .
 
-ex:farmsWithForest a rdf:Property .
+:magnitudeScale rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "magnitude scale"@en .
 
-ex:farmsWithOtherLand a rdf:Property .
+:totalDamageKUSD rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "total damage (kUSD)"@en ;
+    rdfs:comment "Total damage in thousands of US dollars." .
 
-ex:farmsWithUnusedLand a rdf:Property .
+:eventOrigin rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "event origin"@en .
 
-ex:farmsWithUsedLand a rdf:Property .
+:declaration rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "declaration"@en ;
+    rdfs:comment "Type of official disaster declaration." .
 
-ex:fatalitiesCount a rdf:Property .
+# ---- CORINE land cover ----
 
-ex:forestArea a rdf:Property .
+:corineCodeLevel1 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "CORINE code level 1"@en .
 
-ex:goatFarmsCount a rdf:Property .
+:corineCodeLevel2 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "CORINE code level 2"@en .
 
-ex:goatsCount a rdf:Property .
+:corineCodeLevel3 rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:string ;
+    rdfs:label "CORINE code level 3"@en .
 
-ex:hasAssociatedHazardType a rdf:Property .
+# ---- Infrastructure node ----
 
-ex:hasEndNode a rdf:Property .
+:category rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:integer ;
+    rdfs:label "category"@en ;
+    rdfs:comment "Infrastructure node category code." .
 
-ex:hasParentWatercourse a rdf:Property .
+# ---- Population flow ----
 
-ex:hasStartNode a rdf:Property .
+:totalFlow rdf:type owl:DatatypeProperty ;
+    rdfs:range xsd:double ;
+    rdfs:label "total flow"@en ;
+    rdfs:comment "Total commuting flow count within the area." .
 
-###  http://example.org/ontology/IFFICause
-:IFFICause rdf:type owl:Class ;
-           rdfs:subClassOf skos:Concept ;
-           rdfs:comment "TODO: Da tabella iffi_cause, trovare classe adeguata. Inventario dei Fenomeni Franosi in Italia (IFFI) - Dictionary table listing landslide causes. Each row is a cause, with a textual ID, a numeric code, a IT description text and a group (4 total + 'nd'). Each landslide in table iffi_landslide can be associated to zero or more of the causes of this table, by means of 1:N association table iffi_landslide_cause. Data of this table come from the IFFI landslide inventory shapefile from Eurac and from [C]. References: [C] https://idrogeo.isprambiente.it/api/dizionari/cause." .
 
-ex:highwayType a rdf:Property .
+##############################################################
+#  Named Individuals Observable Properties
+##############################################################
 
-###  http://example.org/ontology/LandCoverChange
-:LandCoverChange rdf:type owl:Class .
+:hydro_station_discharge rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "hydro station discharge"@en .
 
-ex:inHealthRegion a rdf:ObjectProperty .
+:ASTAT_population_yearly rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "ASTAT yearly population"@en .
 
-ex:injuredPeopleCount a rdf:Property .
+:ASTAT_accomodation_monthly rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "ASTAT monthly accommodation"@en .
 
-ex:isDrainedBy a rdf:Property .
+:meteo_daily_observation rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "daily meteorological observation"@en .
 
-ex:isLocatedOnWatercourse a rdf:Property .
+:meteo_climatology rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "meteo station climatology"@en .
 
-ex:isPartOf a rdf:Property .
-
-###  http://www.semanticweb.org/crima/crima-source#IFFI-Landslide
-csrc:IFFI-Landslide rdf:type owl:Class ;
-                    rdfs:subClassOf ccore:Hazard ;
-                    rdfs:comment "Landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point corresponding to the highest initiation point (PIFF)."@en ;
-                    rdfs:label "IFFI landslide"@en .
-
-
-###  http://www.w3.org/1999/02/22-rdf-syntax-ns#ObjectProperty
-rdf:ObjectProperty rdf:type owl:Class .
-
-ex:istatCode a rdf:Property .
-
-ex:key a rdf:Property .
-
-ex:lanes a rdf:Property .
-
-ex:lastUpdate a rdf:Property .
-
-ex:lenght a rdf:Property .
-
-ex:length a rdf:Property .
-
-ex:locatedInCountry a rdf:Property .
-
-ex:locatedInMunicipality a rdf:Property .
+:astat_companies_summary_yearly rdf:type owl:NamedIndividual , sosa:ObservableProperty ;
+    rdfs:label "ASTAT yearly companies summary"@en .
 
 ###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
