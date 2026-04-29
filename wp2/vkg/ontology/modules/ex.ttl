@@ -300,7 +300,6 @@ csrc:EffisWildfire rdf:type owl:Class ;
     rdfs:comment "Area of a feature (unit depends on context: m², km², ha)." .
 
 :districtID rdf:type owl:DatatypeProperty ;
-    rdfs:range xsd:string ;
     rdfs:label "district ID"@en .
 
 # ---- Road / infrastructure ----
