@@ -90,12 +90,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                         rdfs:label "is located on watercourse"@en .
 
 
-###  http://example.org/ontology/isPartOf
-:isPartOf rdf:type owl:ObjectProperty ;
-          rdfs:comment "Mereological part-of relation; used to relate watercourses to drainage basins, and lakes to drainage basins." ;
-          rdfs:label "is part of"@en .
-
-
 ###  http://example.org/ontology/locatedInMunicipality
 :locatedInMunicipality rdf:type owl:ObjectProperty ;
                        rdfs:range dbo:Municipality ;
