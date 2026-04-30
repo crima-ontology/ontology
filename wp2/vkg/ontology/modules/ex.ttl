@@ -163,13 +163,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
              rdfs:label "minimum altitude"@en .
 
 
-###  http://example.org/ontology/area
-:area rdf:type owl:DatatypeProperty ;
-      rdfs:range xsd:double ;
-      rdfs:comment "Area of a feature (unit depends on context: m², km², ha)." ;
-      rdfs:label "area"@en .
-
-
 ###  http://example.org/ontology/aspectClass
 :aspectClass rdf:type owl:DatatypeProperty ;
              rdfs:range xsd:string ;
