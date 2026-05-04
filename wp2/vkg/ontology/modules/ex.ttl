@@ -58,48 +58,10 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                       rdfs:label "has parent watercourse"@en .
 
 
-###  http://example.org/ontology/inDistrict
-:inDistrict rdf:type owl:ObjectProperty ;
-            rdfs:range dbo:District ;
-            rdfs:comment "Relates a municipality to its administrative district." ;
-            rdfs:label "in district"@en .
-
-
-###  http://example.org/ontology/inHealthDistrict
-:inHealthDistrict rdf:type owl:ObjectProperty ;
-                  rdfs:comment "Relates a municipality to its health district." ;
-                  rdfs:label "in health district"@en .
-
-
-###  http://example.org/ontology/inHealthRegion
-:inHealthRegion rdf:type owl:ObjectProperty ;
-                rdfs:comment "Relates a health district to its parent health region." ;
-                rdfs:label "in health region"@en .
-
-
 ###  http://example.org/ontology/isDrainedBy
 :isDrainedBy rdf:type owl:ObjectProperty ;
              rdfs:comment "Relates a drainage basin to the main watercourse draining it." ;
              rdfs:label "is drained by"@en .
-
-
-###  http://example.org/ontology/isLocatedOnWatercourse
-:isLocatedOnWatercourse rdf:type owl:ObjectProperty ;
-                        rdfs:comment "Relates a hydrological station or water derivation point to the watercourse it lies on." ;
-                        rdfs:label "is located on watercourse"@en .
-
-
-###  http://example.org/ontology/locatedInMunicipality
-:locatedInMunicipality rdf:type owl:ObjectProperty ;
-                       rdfs:range dbo:Municipality ;
-                       rdfs:comment "Relates a feature to the municipality it is spatially located in." ;
-                       rdfs:label "located in municipality"@en .
-
-
-###  http://example.org/ontology/locatedInRegion
-:locatedInRegion rdf:type owl:ObjectProperty ;
-                 rdfs:comment "Relates a feature to the health region it belongs to." ;
-                 rdfs:label "located in region"@en .
 
 
 ###  http://example.org/ontology/roadSegmentFrom
