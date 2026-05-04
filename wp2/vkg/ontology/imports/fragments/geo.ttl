@@ -48,6 +48,7 @@ geo:wktLiteral rdf:type rdfs:Datatype ;
 #################################################################
 
 
+
 ###  http://www.opengis.net/ont/geosparql#hasArea
 geo:hasArea a owl:ObjectProperty ;
     rdfs:domain :SpatialObject ;
@@ -192,6 +193,25 @@ geo:hasSerialization rdf:type owl:DatatypeProperty ;
                      rdfs:range rdfs:Literal ;
                      skos:definition "Connects a Geometry object with its text-based serialization."@en ;
                      skos:prefLabel "has serialization"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#hasMetricArea
+geo:hasMetricArea a owl:DatatypeProperty ;
+    rdfs:domain :SpatialObject ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/spatial-object-properties> ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf :hasMetricSize ;
+    schema:description "The area of a Spatial Object in square meters."@en ;
+    schema:name "has area in square meters"@en .
+
+
+###  http://www.opengis.net/ont/geosparql#hasMetricSize
+geo:hasMetricSize a owl:DatatypeProperty ;
+    rdfs:domain :SpatialObject ;
+    rdfs:isDefinedBy <http://www.opengis.net/spec/geosparql/1.1/req/geometry-extension/spatial-object-properties> ;
+    rdfs:range xsd:double ;
+    schema:description "Subproperties of this property are used to indicate the size of a Spatial Object, as a measurement or estimate of one or more dimensions of the Spatial Object's spatial presence. Units are always metric (meter, square meter or cubic meter)."@en ;
+    schema:name "has metric size"@en .
 
 
 #################################################################
