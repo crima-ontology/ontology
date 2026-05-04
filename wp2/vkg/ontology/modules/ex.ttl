@@ -172,13 +172,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
          rdfs:label "bathing"@en .
 
 
-###  http://example.org/ontology/belfioreCode
-:belfioreCode rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:string ;
-              rdfs:comment "Italian municipal cadastral code (codice Belfiore)." ;
-              rdfs:label "Belfiore code"@en .
-
-
 ###  http://example.org/ontology/businessUnitEmployees
 :businessUnitEmployees rdf:type owl:DatatypeProperty ;
                        rdfs:range xsd:integer ;
@@ -211,12 +204,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
        rdfs:range xsd:string ;
        rdfs:comment "Identifier in the Catasto Ghiacciai Italiani." ;
        rdfs:label "CGI identifier"@en .
-
-
-###  http://example.org/ontology/code
-:code rdf:type owl:DatatypeProperty ;
-      rdfs:range xsd:string ;
-      rdfs:label "code"@en .
 
 
 ###  http://example.org/ontology/companiesCount
@@ -301,14 +288,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                    rdfs:label "elderly care facilities"@en .
 
 
-###  http://example.org/ontology/elevation
-:elevation rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf schema:elevation ;
-           rdfs:range xsd:integer ;
-           rdfs:comment "Elevation above sea level (metres)." ;
-           rdfs:label "elevation"@en .
-
-
 ###  http://example.org/ontology/eventOrigin
 :eventOrigin rdf:type owl:DatatypeProperty ;
              rdfs:range xsd:string ;
@@ -374,13 +353,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
 :hospitalsCount rdf:type owl:DatatypeProperty ;
                 rdfs:range xsd:integer ;
                 rdfs:label "hospitals count"@en .
-
-
-###  http://example.org/ontology/istatCode
-:istatCode rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Italian national statistical institute (ISTAT) administrative code." ;
-           rdfs:label "ISTAT code"@en .
 
 
 ###  http://example.org/ontology/landUse
@@ -536,12 +508,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                      rdfs:range xsd:double ;
                      rdfs:comment "Estimated commuter population in the area." ;
                      rdfs:label "commuter population"@en .
-
-
-###  http://example.org/ontology/populationCount
-:populationCount rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:integer ;
-                 rdfs:label "population count"@en .
 
 
 ###  http://example.org/ontology/populationDay
@@ -726,16 +692,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
       rdfs:label "year"@en .
 
 
-###  http://example.org/ontology/zipCode
-:zipCode rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:string ;
-         rdfs:label "ZIP code"@en .
-
-
-###  http://schema.org/elevation
-schema:elevation rdf:type owl:DatatypeProperty .
-
-
 #################################################################
 #    Classes
 #################################################################
@@ -773,6 +729,10 @@ csrc:IFFI-Landslide rdf:type owl:Class ;
 
 ###  http://www.w3.org/2004/02/skos/core#Concept
 skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Property
+sosa:Property rdf:type owl:Class .
 
 
 #################################################################

@@ -17,7 +17,7 @@ qudt:LatexString a rdfs:Datatype .
 
 qudt:QuantityKind a owl:Class ;
     rdfs:label "Quantity Kind" ;
-    qudt:informativeReference "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
+    rdfs:seeAlso "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
     rdfs:comment "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity."^^rdf:HTML ;
     rdfs:isDefinedBy <http://qudt.org/$$QUDT_VERSION$$/schema/qudt> .
 
@@ -34,7 +34,13 @@ quantitykind:Population a qudt:QuantityKind ;
   rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ; 
   rdfs:label "Population"@en . 
 
-qudt:informativeReference a owl:AnnotationProperty .
+
+quantitykind:Temperature a qudt:QuantityKind ;
+  dcterms:description "Temperature is a physical property of matter that quantitatively expresses the common notions of hot and cold. Objects of low temperature are cold, while various degrees of higher temperatures are referred to as warm or hot. Heat spontaneously flows from bodies of a higher temperature to bodies of lower temperature, at a rate that increases with the temperature difference and the thermal conductivity."@en ;
+  rdfs:comment "Applicable units are those of quantitykind:Temperature" ;
+  rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ;
+  rdfs:label "Temperature"@en .
+  
 
 qudt:numericValue a owl:DatatypeProperty ;
     rdfs:label "numeric value" ;
