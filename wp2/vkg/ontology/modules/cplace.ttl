@@ -47,24 +47,6 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 
 
 #################################################################
-#    Object Properties
-#################################################################
-
-###  http://www.semanticweb.org/crima/crima-place#inHealthDistrict
-cplace:inHealthDistrict rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf ctlo:constantPartOf ;
-                        rdfs:domain ctlo:PhysicalEndurant ;
-                        rdfs:range cplace:HealthDistrict .
-
-
-###  http://www.semanticweb.org/crima/crima-place#inHealthRegion
-cplace:inHealthRegion rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf ctlo:constantPartOf ;
-                      rdfs:domain ctlo:PhysicalEndurant ;
-                      rdfs:range cplace:HealthRegion .
-
-
-#################################################################
 #    Data properties
 #################################################################
 
