@@ -49,9 +49,16 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 
 ###  http://www.semanticweb.org/crima/emdat#hasSubtype
 :hasSubtype rdf:type owl:ObjectProperty ;
-            rdfs:domain :Classification ;
             rdfs:range :emdat-subtype ;
             rdfs:comment "Links a record-level EM-DAT classification to its leaf subtype concept." .
+
+
+###  http://www.w3.org/2004/02/skos/core#broader
+skos:broader rdf:type owl:ObjectProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#inScheme
+skos:inScheme rdf:type owl:ObjectProperty .
 
 
 #################################################################
@@ -66,15 +73,6 @@ ccore:CascadingEvent rdf:type owl:Class .
 ccore:Hazard rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/emdat#Classification
-:Classification rdf:type owl:Class .
-
-
-###  http://www.semanticweb.org/crima/emdat#ClassificationEntry
-:ClassificationEntry rdf:type owl:Class ;
-                     rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
-
-
 ###  http://www.semanticweb.org/crima/emdat#DisasterEvent
 :DisasterEvent rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Class ;
@@ -87,6 +85,12 @@ ccore:Hazard rdf:type owl:Class .
 ###  http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification
 :EMDAT-DisastersClassification rdf:type owl:Class ;
                                rdfs:subClassOf skos:ConceptScheme .
+
+
+###  http://www.semanticweb.org/crima/emdat#emdat-classificationEntry
+:emdat-classificationEntry rdf:type owl:Class ;
+                           rdfs:subClassOf skos:Concept ;
+                           rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
 
 
 ###  http://www.semanticweb.org/crima/emdat#emdat-group
@@ -135,6 +139,14 @@ ccore:Hazard rdf:type owl:Class .
                               owl:onProperty skos:inScheme ;
                               owl:allValuesFrom :EMDAT-DisastersClassification
                             ] .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://www.w3.org/2004/02/skos/core#ConceptScheme
+skos:ConceptScheme rdf:type owl:Class .
 
 
 #################################################################
