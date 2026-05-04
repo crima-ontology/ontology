@@ -121,6 +121,11 @@ cplace:HydrologicalStation rdf:type owl:Class ;
                            <http://www.w3.org/2004/02/skos/core#definition> "Hydrological station established for the observation of a specific element or elements in order to investigate hydrological events. (TR)" .
 
 
+###  http://www.semanticweb.org/crima/crima-place#RoadNetwork
+cplace:RoadNetwork rdf:type owl:Class ;
+                   rdfs:subClassOf dbo:Infrastructure .
+
+
 ###  http://www.semanticweb.org/crima/crima-place#Watercourse
 cplace:Watercourse rdf:type owl:Class ;
                    rdfs:subClassOf dbo:Stream ;
