@@ -26,8 +26,7 @@
                                 voaf:reliesOn dbo: ,
                                               geo: ,
                                               ccore: ,
-                                              csrc: ,
-                                              sosa: .
+                                              csrc: .
 
 #################################################################
 #    Annotation properties

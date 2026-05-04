@@ -28,6 +28,12 @@ qudt:QuantityValue a owl:Class ;
             owl:maxCardinality "1"^^xsd:nonNegativeInteger ;
             owl:onProperty qudt:hasUnit ] .
 
+quantitykind:Population a qudt:QuantityKind ; 
+  rdfs:subClassOf sosa:Property ;
+  dcterms:description "Population typically refers to the number of people in a single area, whether it be a city or town, region, country, continent, or the world, but can also represent the number of any kind of entity."@en ; 
+  rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ; 
+  rdfs:label "Population"@en . 
+
 qudt:informativeReference a owl:AnnotationProperty .
 
 qudt:numericValue a owl:DatatypeProperty ;
