@@ -40,36 +40,6 @@
                                                                  <http://www.w3.org/2006/time> ,
                                                                  sosa-obs: .
 
-##### Davide #####
-
-:TemporalPrecision a owl:Class ;
-    rdfs:label "Temporal Precision" ;
-    rdfs:comment "A classification of the granularity at which a temporal value is known." .
-
-:temporalPrecision a owl:ObjectProperty ;
-    rdfs:label "temporal precision"@en ;
-    rdfs:comment "Specifies the granularity or precision with which a temporal entity is known or recorded (e.g., year, month, day, exact)."@en ;
-    rdfs:domain time:TemporalEntity ;
-    rdfs:range :TemporalPrecision .
-
-:YearPrecision a owl:NamedIndividual, :TemporalPrecision ;
-    rdfs:label "year precision"@en .
-
-:MonthPrecision a owl:NamedIndividual, :TemporalPrecision ;
-    rdfs:label "month precision"@en .
-
-:DayPrecision a owl:NamedIndividual, :TemporalPrecision ;
-    rdfs:label "day precision"@en .
-
-:SecondPrecision a owl:NamedIndividual, :TemporalPrecision ;
-    rdfs:label "second precision"@en .
-
-:ExactPrecision a owl:NamedIndividual, :TemporalPrecision ;
-    rdfs:label "exact precision"@en ;
-    rdfs:comment "Indicates that the temporal value is known exactly at its stated resolution."@en .
-
-##################
-
 #################################################################
 #    Annotation properties
 #################################################################
@@ -248,6 +218,14 @@ participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant), ThreatPerdur
           rdfs:range :Goal .
 
 
+###  http://www.semanticweb.org/crima/crima-core#temporalPrecision
+:temporalPrecision rdf:type owl:ObjectProperty ;
+                   rdfs:domain time:TemporalEntity ;
+                   rdfs:range :TemporalPrecision ;
+                   rdfs:comment "Specifies the granularity or precision with which a temporal entity is known or recorded (e.g., year, month, day, exact)."@en ;
+                   rdfs:label "temporal precision"@en .
+
+
 ###  http://www.semanticweb.org/crima/crima-core#threatPerdurant
 :threatPerdurant rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
@@ -278,7 +256,8 @@ time:intervalOverlaps(T, T1) .""" .
 
 ###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
 :CascadingEvent rdf:type owl:Class ;
-                rdfs:subClassOf [ rdf:type owl:Restriction ;
+                rdfs:subClassOf :Hazard ,
+                                [ rdf:type owl:Restriction ;
                                   owl:onProperty [ owl:inverseOf :triggers
                                                  ] ;
                                   owl:someValuesFrom :ThreatPerdurant
@@ -288,7 +267,8 @@ time:intervalOverlaps(T, T1) .""" .
 
 ###  http://www.semanticweb.org/crima/crima-core#ClimaticImpactDriver
 :ClimaticImpactDriver rdf:type owl:Class ;
-                      rdfs:subClassOf [ rdf:type owl:Class ;
+                      rdfs:subClassOf :CascadingEvent ,
+                                      [ rdf:type owl:Class ;
                                         owl:unionOf ( ctlo:Event
                                                       ctlo:Process
                                                     )
@@ -475,6 +455,12 @@ impactsOn(I, O), refersTo(I, G), dpo:dependsOn(I, V), dpo:dependsOn(I, Exp), dpo
                            rdfs:subClassOf sosa:Observation .
 
 
+###  http://www.semanticweb.org/crima/crima-core#TemporalPrecision
+:TemporalPrecision rdf:type owl:Class ;
+                   rdfs:comment "A classification of the granularity at which a temporal value is known." ;
+                   rdfs:label "Temporal Precision" .
+
+
 ###  http://www.semanticweb.org/crima/crima-core#ThreatPerdurant
 :ThreatPerdurant rdf:type owl:Class ;
                  rdfs:subClassOf [ rdf:type owl:Class ;
@@ -520,6 +506,41 @@ inheresIn(V, O), proxyContent(V, Q1), manifestedBy(V, P), refersTo(V, G) .""" .
 
 ###  http://www.w3.org/ns/sosa/Property
 sosa:Property rdfs:subClassOf ctlo:Quality .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/crima/crima-core#DayPrecision
+:DayPrecision rdf:type owl:NamedIndividual ,
+                       :TemporalPrecision ;
+              rdfs:label "day precision"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-core#ExactPrecision
+:ExactPrecision rdf:type owl:NamedIndividual ,
+                         :TemporalPrecision ;
+                rdfs:comment "Indicates that the temporal value is known exactly at its stated resolution."@en ;
+                rdfs:label "exact precision"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-core#MonthPrecision
+:MonthPrecision rdf:type owl:NamedIndividual ,
+                         :TemporalPrecision ;
+                rdfs:label "month precision"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-core#SecondPrecision
+:SecondPrecision rdf:type owl:NamedIndividual ,
+                          :TemporalPrecision ;
+                 rdfs:label "second precision"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-core#YearPrecision
+:YearPrecision rdf:type owl:NamedIndividual ,
+                        :TemporalPrecision ;
+               rdfs:label "year precision"@en .
 
 
 #################################################################
@@ -582,4 +603,4 @@ swrl-var:p rdf:type swrl:Variable .
              ]
  ] .
 
-###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
