@@ -6,6 +6,11 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix quantitykind: <http://qudt.org/vocab/quantitykind/> .
+@prefix cquak: <http://www.semanticweb.org/crima/crima-quantity-kind#> .
+@prefix sosa: <http://www.w3.org/ns/sosa/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
 
 <http://qudt.org/schema/qudt> a owl:Ontology ;
     voaf:extends <http://www.linkedmodel.org/schema/dtype> ;
@@ -39,6 +44,7 @@ quantitykind:Temperature a qudt:QuantityKind ;
   dcterms:description "Temperature is a physical property of matter that quantitatively expresses the common notions of hot and cold. Objects of low temperature are cold, while various degrees of higher temperatures are referred to as warm or hot. Heat spontaneously flows from bodies of a higher temperature to bodies of lower temperature, at a rate that increases with the temperature difference and the thermal conductivity."@en ;
   rdfs:comment "Applicable units are those of quantitykind:Temperature" ;
   rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ;
+  rdfs:seeAlso <http://inspire.ec.europa.eu/codelist/GeothermalPotentialValue/temperature> ;
   rdfs:label "Temperature"@en .
   
 
@@ -56,3 +62,19 @@ qudt:hasUnit a owl:ObjectProperty ;
     rdfs:range qudt:Unit ;
     skos:definition "This property relates a factor unit to its unit or a system of units with a unit of measure that is either a) defined by the system, or b) accepted for use by the system and is convertible to a unit of equivalent dimension that is defined by the system. Systems of units may distinguish between base and derived units. Base units are the units which measure the base quantities for the corresponding system of quantities. The base units are used to define units for all other quantities as products of powers of the base units. Such units are called derived units for the system."@en .
 
+
+cquak:MinAmbientTemperature a qudt:QuantityKind ; 
+rdfs:label "minimum ambient temperature"@en ; 
+skos:definition "The minimum ambient temperature in the environment."@en ; 
+rdfs:isDefinedBy <http://www.semanticweb.org/crima/crima-quantity-kind#> . 
+ 
+cquak:MaxAmbientTemperature a qudt:QuantityKind ; 
+rdfs:label "maximum ambient temperature"@en ; 
+skos:definition "The maximum ambient temperature in the environment."@en ;
+rdfs:isDefinedBy <http://www.semanticweb.org/crima/crima-quantity-kind#> . 
+ 
+cquak:MeanAmbientTemperature a qudt:QuantityKind ; 
+rdfs:label "mean ambient temperature"@en ; 
+skos:definition "The average value is derived from a set of air temperature measurements that were recorded over a specific time period. "@en ;
+rdfs:isDefinedBy <http://www.semanticweb.org/crima/crima-quantity-kind#> . 
+ 
