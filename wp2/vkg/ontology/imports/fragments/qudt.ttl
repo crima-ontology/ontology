@@ -21,6 +21,7 @@
 qudt:LatexString a rdfs:Datatype .
 
 qudt:QuantityKind a owl:Class ;
+    rdfs:subClassOf sosa:Property ;
     rdfs:label "Quantity Kind" ;
     rdfs:seeAlso "http://www.electropedia.org/iev/iev.nsf/display?openform&ievref=112-01-04"^^xsd:anyURI ;
     rdfs:comment "A <b>Quantity Kind</b> is any observable property that can be  measured and quantified numerically. Familiar examples include physical properties such as length, mass, time, force, energy, power, electric charge, etc. Less familiar examples include currency, interest rate, price to earning ratio, and information capacity."^^rdf:HTML ;
@@ -34,7 +35,6 @@ qudt:QuantityValue a owl:Class ;
             owl:onProperty qudt:hasUnit ] .
 
 quantitykind:Population a qudt:QuantityKind ; 
-  rdfs:subClassOf sosa:Property ;
   dcterms:description "Population typically refers to the number of people in a single area, whether it be a city or town, region, country, continent, or the world, but can also represent the number of any kind of entity."@en ; 
   rdfs:isDefinedBy <http://qudt.org/vocab/quantitykind> ; 
   rdfs:label "Population"@en . 
