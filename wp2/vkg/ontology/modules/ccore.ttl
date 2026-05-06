@@ -352,7 +352,8 @@ Sales, T. P., Baião, F., Guizzardi, G., Almeida, J. P. A., Guarino, N., & Mylop
 
 ###  http://www.semanticweb.org/crima/crima-core#Hazard
 :Hazard rdf:type owl:Class ;
-        rdfs:subClassOf [ rdf:type owl:Restriction ;
+        rdfs:subClassOf :ThreatPerdurant ,
+                        [ rdf:type owl:Restriction ;
                           owl:onProperty [ owl:inverseOf :triggers
                                          ] ;
                           owl:allValuesFrom [ rdf:type owl:Class ;
@@ -541,18 +542,6 @@ sosa:Property rdfs:subClassOf ctlo:Quality .
 :YearPrecision rdf:type owl:NamedIndividual ,
                         :TemporalPrecision ;
                rdfs:label "year precision"@en .
-
-
-#################################################################
-#    General axioms
-#################################################################
-
-[ rdf:type owl:Class ;
-  owl:unionOf ( :CascadingEvent
-                :Hazard
-              ) ;
-  rdfs:subClassOf :ThreatPerdurant
-] .
 
 
 #################################################################
