@@ -30,6 +30,7 @@
                                               csrc: ,
                                               sosa-common: .
 
+
 #################################################################
 #    Annotation properties
 #################################################################
@@ -60,48 +61,10 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                       rdfs:label "has parent watercourse"@en .
 
 
-###  http://example.org/ontology/inDistrict
-:inDistrict rdf:type owl:ObjectProperty ;
-            rdfs:range dbo:District ;
-            rdfs:comment "Relates a municipality to its administrative district." ;
-            rdfs:label "in district"@en .
-
-
-###  http://example.org/ontology/inHealthDistrict
-:inHealthDistrict rdf:type owl:ObjectProperty ;
-                  rdfs:comment "Relates a municipality to its health district." ;
-                  rdfs:label "in health district"@en .
-
-
-###  http://example.org/ontology/inHealthRegion
-:inHealthRegion rdf:type owl:ObjectProperty ;
-                rdfs:comment "Relates a health district to its parent health region." ;
-                rdfs:label "in health region"@en .
-
-
 ###  http://example.org/ontology/isDrainedBy
 :isDrainedBy rdf:type owl:ObjectProperty ;
              rdfs:comment "Relates a drainage basin to the main watercourse draining it." ;
              rdfs:label "is drained by"@en .
-
-
-###  http://example.org/ontology/isLocatedOnWatercourse
-:isLocatedOnWatercourse rdf:type owl:ObjectProperty ;
-                        rdfs:comment "Relates a hydrological station or water derivation point to the watercourse it lies on." ;
-                        rdfs:label "is located on watercourse"@en .
-
-
-###  http://example.org/ontology/locatedInMunicipality
-:locatedInMunicipality rdf:type owl:ObjectProperty ;
-                       rdfs:range dbo:Municipality ;
-                       rdfs:comment "Relates a feature to the municipality it is spatially located in." ;
-                       rdfs:label "located in municipality"@en .
-
-
-###  http://example.org/ontology/locatedInRegion
-:locatedInRegion rdf:type owl:ObjectProperty ;
-                 rdfs:comment "Relates a feature to the health region it belongs to." ;
-                 rdfs:label "located in region"@en .
 
 
 ###  http://example.org/ontology/roadSegmentFrom
@@ -212,13 +175,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
          rdfs:label "bathing"@en .
 
 
-###  http://example.org/ontology/belfioreCode
-:belfioreCode rdf:type owl:DatatypeProperty ;
-              rdfs:range xsd:string ;
-              rdfs:comment "Italian municipal cadastral code (codice Belfiore)." ;
-              rdfs:label "Belfiore code"@en .
-
-
 ###  http://example.org/ontology/businessUnitEmployees
 :businessUnitEmployees rdf:type owl:DatatypeProperty ;
                        rdfs:range xsd:integer ;
@@ -251,12 +207,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
        rdfs:range xsd:string ;
        rdfs:comment "Identifier in the Catasto Ghiacciai Italiani." ;
        rdfs:label "CGI identifier"@en .
-
-
-###  http://example.org/ontology/code
-:code rdf:type owl:DatatypeProperty ;
-      rdfs:range xsd:string ;
-      rdfs:label "code"@en .
 
 
 ###  http://example.org/ontology/companiesCount
@@ -341,14 +291,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                    rdfs:label "elderly care facilities"@en .
 
 
-###  http://example.org/ontology/elevation
-:elevation rdf:type owl:DatatypeProperty ;
-           rdfs:subPropertyOf schema:elevation ;
-           rdfs:range xsd:integer ;
-           rdfs:comment "Elevation above sea level (metres)." ;
-           rdfs:label "elevation"@en .
-
-
 ###  http://example.org/ontology/eventOrigin
 :eventOrigin rdf:type owl:DatatypeProperty ;
              rdfs:range xsd:string ;
@@ -414,13 +356,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
 :hospitalsCount rdf:type owl:DatatypeProperty ;
                 rdfs:range xsd:integer ;
                 rdfs:label "hospitals count"@en .
-
-
-###  http://example.org/ontology/istatCode
-:istatCode rdf:type owl:DatatypeProperty ;
-           rdfs:range xsd:string ;
-           rdfs:comment "Italian national statistical institute (ISTAT) administrative code." ;
-           rdfs:label "ISTAT code"@en .
 
 
 ###  http://example.org/ontology/landUse
@@ -576,12 +511,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
                      rdfs:range xsd:double ;
                      rdfs:comment "Estimated commuter population in the area." ;
                      rdfs:label "commuter population"@en .
-
-
-###  http://example.org/ontology/populationCount
-:populationCount rdf:type owl:DatatypeProperty ;
-                 rdfs:range xsd:integer ;
-                 rdfs:label "population count"@en .
 
 
 ###  http://example.org/ontology/populationDay
@@ -766,16 +695,6 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
       rdfs:label "year"@en .
 
 
-###  http://example.org/ontology/zipCode
-:zipCode rdf:type owl:DatatypeProperty ;
-         rdfs:range xsd:string ;
-         rdfs:label "ZIP code"@en .
-
-
-###  http://schema.org/elevation
-schema:elevation rdf:type owl:DatatypeProperty .
-
-
 #################################################################
 #    Classes
 #################################################################
@@ -825,43 +744,47 @@ csrc:EMDATWildfire rdf:type owl:Class ;
                    rdfs:label "EMDAT Wildfire"@en .
 
 
+###  http://www.w3.org/ns/sosa/Property
+sosa:Property rdf:type owl:Class .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
 ###  http://example.org/ontology/ASTAT_accomodation_monthly
 :ASTAT_accomodation_monthly rdf:type owl:NamedIndividual ,
-                                     sosa:ObservableProperty ;
+                                     sosa:Property ;
                             rdfs:label "ASTAT monthly accommodation"@en .
 
 
 ###  http://example.org/ontology/ASTAT_population_yearly
 :ASTAT_population_yearly rdf:type owl:NamedIndividual ,
-                                  sosa:ObservableProperty ;
+                                  sosa:Property ;
                          rdfs:label "ASTAT yearly population"@en .
 
 
 ###  http://example.org/ontology/astat_companies_summary_yearly
 :astat_companies_summary_yearly rdf:type owl:NamedIndividual ,
-                                         sosa:ObservableProperty ;
+                                         sosa:Property ;
                                 rdfs:label "ASTAT yearly companies summary"@en .
 
 
 ###  http://example.org/ontology/hydro_station_discharge
 :hydro_station_discharge rdf:type owl:NamedIndividual ,
-                                  sosa:ObservableProperty ;
+                                  sosa:Property ;
                          rdfs:label "hydro station discharge"@en .
 
 
 ###  http://example.org/ontology/meteo_climatology
 :meteo_climatology rdf:type owl:NamedIndividual ,
-                            sosa:ObservableProperty ;
+                            sosa:Property ;
                    rdfs:label "meteo station climatology"@en .
 
 
 ###  http://example.org/ontology/meteo_daily_observation
 :meteo_daily_observation rdf:type owl:NamedIndividual ,
-                                  sosa:ObservableProperty ;
+                                  sosa:Property ;
                          rdfs:label "daily meteorological observation"@en .
 
 

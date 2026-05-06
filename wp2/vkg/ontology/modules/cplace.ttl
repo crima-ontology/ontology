@@ -47,24 +47,6 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 
 
 #################################################################
-#    Object Properties
-#################################################################
-
-###  http://www.semanticweb.org/crima/crima-place#inHealthDistrict
-cplace:inHealthDistrict rdf:type owl:ObjectProperty ;
-                        rdfs:subPropertyOf ctlo:constantPartOf ;
-                        rdfs:domain ctlo:PhysicalEndurant ;
-                        rdfs:range cplace:HealthDistrict .
-
-
-###  http://www.semanticweb.org/crima/crima-place#inHealthRegion
-cplace:inHealthRegion rdf:type owl:ObjectProperty ;
-                      rdfs:subPropertyOf ctlo:constantPartOf ;
-                      rdfs:domain ctlo:PhysicalEndurant ;
-                      rdfs:range cplace:HealthRegion .
-
-
-#################################################################
 #    Data properties
 #################################################################
 
@@ -119,6 +101,11 @@ cplace:HydrologicalStation rdf:type owl:Class ;
                            rdfs:subClassOf sosa:Platform ;
                            rdfs:isDefinedBy "International Glossary of Hydrology / Glossaire International d’Hydrologie. World Meteorological Organization, United Nations Educational, Scientific and Cultural Organization (eds.). WMO (Series), no385. WMO, Geneva (2016). ISBN 978-92-63-03385-8. ISBN 978-92-3-001154-3." ;
                            <http://www.w3.org/2004/02/skos/core#definition> "Hydrological station established for the observation of a specific element or elements in order to investigate hydrological events. (TR)" .
+
+
+###  http://www.semanticweb.org/crima/crima-place#RoadNetwork
+cplace:RoadNetwork rdf:type owl:Class ;
+                   rdfs:subClassOf dbo:Infrastructure .
 
 
 ###  http://www.semanticweb.org/crima/crima-place#Watercourse

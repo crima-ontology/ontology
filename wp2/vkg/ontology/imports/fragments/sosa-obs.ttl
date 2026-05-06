@@ -357,4 +357,3 @@ sosa:Observation a owl:Class ;
   Alternatively, applications may choose to encapsulate complexity by defining a complex property with multiple individual components, and a corresponding complex result (e.g., a vector). 
   This approach is not prohibited by the SSN Ontology, but the details are beyond the scope of SSN.
   """@en .
-
