@@ -75,15 +75,6 @@ ccore:Hazard rdf:type owl:Class .
                      rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
 
 
-###  http://www.semanticweb.org/crima/emdat#DisasterEvent
-:DisasterEvent rdf:type owl:Class ;
-               rdfs:subClassOf [ rdf:type owl:Class ;
-                                 owl:unionOf ( ccore:CascadingEvent
-                                               ccore:Hazard
-                                             )
-                               ] .
-
-
 ###  http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification
 :EMDAT-DisastersClassification rdf:type owl:Class ;
                                rdfs:subClassOf skos:ConceptScheme .

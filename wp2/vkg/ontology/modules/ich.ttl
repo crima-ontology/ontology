@@ -156,11 +156,7 @@ ich:Affects rdf:type owl:Class ;
 
 ###  http://www.semanticweb.org/crima/crima-impactchain#ConfidenceLevel
 ich:ConfidenceLevel rdf:type owl:Class ;
-                    rdfs:subClassOf skos:Concept ,
-                                    [ rdf:type owl:Restriction ;
-                                      owl:onProperty ich:confidence ;
-                                      owl:allValuesFrom ich:ConfidenceLevel
-                                    ] .
+                    rdfs:subClassOf skos:Concept .
 
 
 ###  http://www.semanticweb.org/crima/crima-impactchain#ConnectionTimeLag
