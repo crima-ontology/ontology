@@ -99,15 +99,15 @@ dpo:resultOf rdfs:domain :Impact ;
 
 ###  http://www.semanticweb.org/crima/crima-core#hasSpatialExtent
 :hasSpatialExtent rdf:type owl:ObjectProperty ;
-                  rdfs:subPropertyOf geo:hasGeometry ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
                   rdfs:range geo:SpatialObject ;
-                  rdfs:comment "The property is meant to be used to represent the spatial extension of any thing as assessed by an agent, not necessarily corresponding to the exact spatial extension of the phenomenon at the geophysical level." .
+                  rdfs:comment "The property is meant to be used to represent the spatial scope of any thing as assessed by an agent (e.g. a municipality, a point of interest), not necessarily corresponding to the exact spatial extension of the phenomenon at the geophysical level." .
 
 
 ###  http://www.semanticweb.org/crima/crima-core#hasTemporalExtent
 :hasTemporalExtent rdf:type owl:ObjectProperty ;
-                   rdfs:subPropertyOf time:hasTime ;
-                   rdfs:comment "The property is meant to be used to represent the temporal extension of any thing as assessed by an agent, not necessarily corresponding to the exact temporal extension of the phenomenon at the geophysical level." .
+                   rdfs:subPropertyOf owl:topObjectProperty ;
+                   rdfs:comment "The property is meant to be used to represent the temporal scope of any thing as assessed by an agent, not necessarily corresponding to the exact temporal extension of the phenomenon at the geophysical level." .
 
 
 ###  http://www.semanticweb.org/crima/crima-core#hasVulnerability
@@ -503,6 +503,10 @@ impactsOn(I, O), refersTo(I, G), dpo:dependsOn(I, V), dpo:dependsOn(I, Exp), dpo
 ∃ O, P, Q1, G. PhysicalEndurant(O) ∨ EcosystemService(O), ThreatPerdurant(P), Quality(Q1), Goal(G),
 participantOf(O, P), isQualityOf(Q1, O), intendedGoalFor(G, O),
 inheresIn(V, O), proxyContent(V, Q1), manifestedBy(V, P), refersTo(V, G) .""" .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/sosa/Property

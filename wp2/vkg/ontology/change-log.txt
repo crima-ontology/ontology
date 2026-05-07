@@ -4,3 +4,5 @@
 • <http://www.semanticweb.org/crima/emdat#DisasterEvent> has been removed. The mapping now makes use of <http://www.semanticweb.org/crima/crima-source#EMDAT-DisasterEvent>.
 • Cascading events are not Hazard, by definition: the ontology would be inconsistent in this case. --> ccore:CascadingEvent as a sibling of ccore:Hazard, subclass of ccore:ThreadPerdurant.
 • Fixed wrong prefix <http://www.semanticweb.org/owl/owlapi/turtle#> for <time:inXSDDate>.
+• From "Activity Streams" (data properties): (i) as:latitude; (ii) as:longitude; (iii) as:altitude. the first two were already included, the third has been added. Annotations for the first two report about the OGC documentation of GeoSPARQL where they are officially mentioned.
+• ccore:hasSpatialExtent and ccore:hasTemporalExtent are now first-level citizen in the property taxonomy. Minor changes in the annotations.
