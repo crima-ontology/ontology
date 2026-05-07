@@ -9,27 +9,28 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
-@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
 @base <http://example.org/ontology/> .
 
 <http://example.org/ontology/> rdf:type owl:Ontology ;
                                 owl:imports dbo: ,
+                                            dcterms: ,
                                             sosa-common: ;
                                 vann:preferredNamespacePrefix "ex" ;
                                 vann:preferredNamespaceUri "http://example.org/ontology/"^^xsd:anyURI ;
                                 voaf:metadataVoc vann: ,
                                                  <http://purl.org/vocommons/voaf> ;
                                 voaf:reliesOn dbo: ,
+                                              dcterms: ,
                                               geo: ,
                                               ccore: ,
                                               csrc: ,
                                               sosa-common: .
-
 
 #################################################################
 #    Annotation properties
@@ -712,36 +713,65 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
              rdfs:label "Road Network"@en .
 
 
+###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
+ccore:CascadingEvent rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/crima/crima-core#Hazard
 ccore:Hazard rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-source#EffisWildfire
-csrc:EFFISWildfire rdf:type owl:Class ;
-                   rdfs:subClassOf ccore:Hazard ;
-                   rdfs:comment "A wildfire event recorded in the European Forest Fire Information System (EFFIS)." ;
-                   rdfs:label "EFFIS Wildfire"@en .
+###  http://www.semanticweb.org/crima/crima-source#EFFIS-Wildfire
+csrc:EFFIS-Wildfire rdf:type owl:Class ;
+                    rdfs:subClassOf ccore:Hazard ;
+                    dcterms:references "https://dx.doi.org/10.2760/437309" ,
+                                       "https://dx.doi.org/10.2788/2175" ,
+                                       "https://dx.doi.org/10.2788/86859" ;
+                    dcterms:source "https://eo4multihazards.eurac.edu/" ;
+                    rdfs:comment "A wildfire event recorded in the European Forest Fire Information System (EFFIS)." ,
+                                 """EFFIS - European Forest Fire Information System - supports the services in charge of the protection of forests against fires in the EU and neighbor countries and provides the European Commission services and the European Parliament with updated and reliable information on wildfires in Europe. The fires mapped in EFFIS may include fires set intentionally for the purpose of vegetation management.
+Since 1998, EFFIS is supported by a network of experts from the countries in what is called the Expert Group on Forest Fires, which is registered under the Secretariat General of the European Commission. Currently, this group consists on experts from 43 countries in European, Middle East and North African countries. In 2015, EFFIS became one of the components of the Emergency Management Services in the EU Copernicus program.""" ;
+                    rdfs:label "EFFIS Wildfire"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-source#EMDAT-DisasterEvent
+csrc:EMDAT-DisasterEvent rdf:type owl:Class ;
+                         rdfs:subClassOf [ rdf:type owl:Class ;
+                                           owl:unionOf ( ccore:CascadingEvent
+                                                         ccore:Hazard
+                                                       )
+                                         ] ;
+                         dcterms:references "https://www.sciencedirect.com/science/article/pii/S2212420925003334" ;
+                         rdfs:comment """EM-DAT defines disasters as situations or events which overwhelm local capacity, necessitating a request for external assistance at the national or international level. Disasters are unforeseen and often sudden events that cause significant damage, destruction, and human suffering.
+The main objective of the database is to serve the purposes of humanitarian action at national and international levels. The initiative aims to rationalize decision-making for disaster preparedness and disaster risk reduction strategies, as well as provide an objective base for vulnerability assessment and priority setting.""" ;
+                         rdfs:seeAlso "https://www.emdat.be/" .
+
+
+###  http://www.semanticweb.org/crima/crima-source#EMDAT-Wildfire
+csrc:EMDAT-Wildfire rdf:type owl:Class ;
+                    rdfs:subClassOf ccore:Hazard ;
+                    dcterms:source "https://eo4multihazards.eurac.edu/" ;
+                    rdfs:comment "A wildfire event recorded in EM-DAT." ;
+                    rdfs:label "EM-DAT Wildfire"@en ;
+                    rdfs:seeAlso "https://www.emdat.be/" .
 
 
 ###  http://www.semanticweb.org/crima/crima-source#IFFI-Landslide
 csrc:IFFI-Landslide rdf:type owl:Class ;
                     rdfs:subClassOf ccore:Hazard ;
-                    rdfs:comment "A landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point at the highest initiation point (PIFF)."@en ;
-                    rdfs:label "IFFI Landslide"@en .
+                    dcterms:references "https://link.springer.com/article/10.1007%2Fs10346-010-0213-0" ,
+                                       "https://link.springer.com/chapter/10.1007/978-3-642-31325-7_38" ,
+                                       "https://sp.lyellcollection.org/content/322/1/121.abstract" ;
+                    dcterms:source "https://edp-portal.eurac.edu/discovery/3240b530-791c-4d61-9742-af037d712895" ;
+                    rdfs:comment """A landslide recorded in the Italian Landslide Inventory (IFFI), represented as a point at the highest initiation point (PIFF).
+The IFFI Inventory first aims at identifying and mapping landslides occurred in the whole Italian territory, following standardized criteria. IFFI has the scope, as well, to constitute an important base-knowledge tool to assess the landslide hazard of the River Basin Plans (PAI), for the preliminary design of slope instability and flood mitigation works as well as the protection of infrastructure networks. Moreover, IFFI contribute for the preparation of Civil Protection Emergency Plans."""@en ,
+                                 "Additional information available at: https://www.progettoiffi.isprambiente.it/?page_id=89&lang=en" ;
+                    rdfs:label "IFFI Landslide"@en ;
+                    rdfs:seeAlso "https://maps.eurac.edu/catalogue/#/dataset/1271" .
 
-###  http://www.semanticweb.org/crima/crima-source#DisasterEvent
-csrc:EMDATDisasterEvent rdf:type owl:Class ;
-               rdfs:subClassOf [ rdf:type owl:Class ;
-                                 owl:unionOf ( ccore:CascadingEvent
-                                               ccore:Hazard
-                                             )
-                               ] .
 
-###  http://www.semanticweb.org/crima/crima-source#EffisWildfire
-csrc:EMDATWildfire rdf:type owl:Class ;
-                   rdfs:subClassOf ccore:Hazard ;
-                   rdfs:comment "A wildfire event recorded in EMDAT." ;
-                   rdfs:label "EMDAT Wildfire"@en .
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
 
 
 ###  http://www.w3.org/ns/sosa/Property

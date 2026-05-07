@@ -72,17 +72,12 @@ ccore:CascadingEvent rdf:type owl:Class .
 ###  http://www.semanticweb.org/crima/crima-core#Hazard
 ccore:Hazard rdf:type owl:Class .
 
-:DisasterEvent rdf:type owl:Class ;
-               rdfs:subClassOf [ rdf:type owl:Class ;
-                                 owl:unionOf ( ccore:CascadingEvent
-                                               ccore:Hazard
-                                             )
-                               ] .
-
 
 ###  http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification
 :EMDAT-DisastersClassification rdf:type owl:Class ;
-                               rdfs:subClassOf skos:ConceptScheme .
+                               rdfs:subClassOf skos:ConceptScheme ;
+                               rdfs:isDefinedBy "https://council.science/wp-content/uploads/2019/12/Peril-Classification-and-Hazard-Glossary-1.pdf" ;
+                               rdfs:seeAlso "Integrated Research on Disaster Risk. (2014). Peril Classification and Hazard Glossary (IRDR DATA Publication No. 1). Beijing: Integrated Research on Disaster Risk." .
 
 
 ###  http://www.semanticweb.org/crima/emdat#emdat-classificationEntry

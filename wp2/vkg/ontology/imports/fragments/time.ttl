@@ -1,4 +1,3 @@
-@prefix : <http://www.semanticweb.org/owl/owlapi/turtle#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -319,8 +318,8 @@ time:notDisjoint rdf:type owl:ObjectProperty ;
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/owl/owlapi/turtle#inXSDDate
-:inXSDDate rdf:type owl:DatatypeProperty ;
+###  http://www.w3.org/2006/time#inXSDDate
+time:inXSDDate rdf:type owl:DatatypeProperty ;
            rdfs:domain time:Instant ;
            rdfs:range xsd:date ;
            rdfs:comment "Posición de un instante, expresado utilizando xsd:date."@es ,
