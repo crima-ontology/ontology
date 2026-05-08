@@ -194,7 +194,7 @@ dpo:influences(Exp, V) --> Exposure(Exp), Vulnerability(V) .""" .
 hasGeometry(E, G), hasTime(E, T), hasGeometry(P, G1), hasTime(P, T1),
 geo:sfIntersect(G, G1), time:notDisjoint(T, T1) .
 
-participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant), ThreatPerdurant(P)""" .
+participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPerdurant(P)""" .
 
 
 ###  http://www.semanticweb.org/crima/crima-core#proxyContent
