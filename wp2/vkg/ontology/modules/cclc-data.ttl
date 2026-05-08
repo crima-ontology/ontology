@@ -16,11 +16,6 @@
                                      vann:preferredNamespacePrefix "cclc" ;
                                      vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
 
-
-cclc:CorineValue a rdfs:Datatype ;
-    rdfs:label "CORINE value"@en ;
-    rdfs:comment "A numerical value from the CORINE Land Cover nomenclature" .
-
 ## cclc:clc-top-class a owl:NamedIndividual,
 ##        cclc:LandCoverClass ;
 ##    skos:definition "The top concept of the Corine land coverage, all coverage values are narrower concepts of this."@en ;
@@ -34,10 +29,7 @@ cclc:CorineValue a rdfs:Datatype ;
 cclc:corine-land-cover-classification a owl:NamedIndividual,
         cclc:CORINE-classification ;
     cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
-    dcterms:creator [ foaf:PersonalProfileDocument <https://www.linkedin.com/in/tatianatarasova> ],
-        <http://mynarz.net/#jindrich>,
-        <http://philarcher.org/foaf.rdf#me> ;
-    dcterms:description "A rendition of the CORINE nomenclature as a SKOS concept scheme" ;
+    dcterms:description "A rendition of the CORINE nomenclature as a SKOS concept scheme"@en ;
     dcterms:issued "2015-03-23"^^xsd:date ;
     dcterms:modified "2015-04-03"^^xsd:date ;
     dcterms:source <http://sia.eionet.europa.eu/CLC2000/classes> ;
@@ -1141,7 +1133,7 @@ cclc:clc32 a owl:NamedIndividual,
 
 cclc:clc42 a owl:NamedIndividual,
         cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc42 ;
+    skos:broader cclc:clc4 ;
     skos:definition "Non-wooded areas either tidally, seasonally or permanently waterlogged with brackish or saline water."@en ;
     skos:narrower cclc:clc421,
         cclc:clc422,

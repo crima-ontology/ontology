@@ -28,6 +28,16 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 
 
 #################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.semanticweb.org/crima/crima-clc#CorineValue
+cclc:CorineValue rdf:type rdfs:Datatype ;
+                 rdfs:comment "A numerical value from the CORINE Land Cover nomenclature" ;
+                 rdfs:label "CORINE value"@en .
+
+
+#################################################################
 #    Object Properties
 #################################################################
 

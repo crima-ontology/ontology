@@ -1,0 +1,181 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+cclc:ResourceShape a sh:NodeShape ;
+    sh:nodeKind sh:IRI ;
+    sh:target [
+        a sh:SPARQLTarget ;
+        sh:select """SELECT DISTINCT ?this { ?this ?p ?o }"""
+    ] ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:minCount 1 ;
+        sh:in ( cclc:CORINE-classification cclc:CORINE-Class_level1 cclc:CORINE-Class_level2 cclc:CORINE-Class_level3 owl:Ontology owl:NamedIndividual ) ;
+        sh:qualifiedValueShape [ sh:in ( cclc:CORINE-classification cclc:CORINE-Class_level1 cclc:CORINE-Class_level2 cclc:CORINE-Class_level3 owl:Ontology ) ] ;
+        sh:qualifiedMinCount 1 ;
+        sh:qualifiedMaxCount 1
+    ] .
+
+cclc:OntologyShape a sh:NodeShape ;
+    sh:targetClass owl:Ontology ;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-clc-data#$" ;
+    sh:closed true ;
+        sh:property [
+        sh:path rdf:type ;
+        sh:in ( owl:Ontology )
+    ] , [
+        sh:path owl:imports ;
+        sh:nodeKind sh:IRI
+    ] , [
+        sh:path vann:preferredNamespacePrefix ;
+        sh:datatype xsd:string
+    ] , [
+        sh:path vann:preferredNamespaceUri ;
+        sh:datatype xsd:anyURI
+    ] .
+
+cclc:CORINE-classification a sh:NodeShape ;
+    sh:targetClass cclc:CORINE-classification ;
+    sh:closed true ;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#corine-land-cover-classification$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( cclc:CORINE-classification skos:ConceptScheme owl:NamedIndividual )
+    ] , [
+        sh:path cc:license ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] , [
+        sh:path dcterms:title ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ], [
+        sh:path dcterms:description ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path dcterms:issued ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date
+    ] , [
+        sh:path dcterms:modified ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype xsd:date
+    ] , [
+        sh:path dcterms:source ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI
+    ] .
+
+cclc:CORINE-Class_level1 a sh:NodeShape ;
+    sh:targetClass cclc:CORINE-Class_level1 ;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( cclc:CORINE-Class_level1 skos:Concept owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" "sk" ) ;
+        sh:uniqueLang true
+    ] , [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path skos:notation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype cclc:CorineValue
+    ] , [
+        sh:path skos:narrower ;
+        sh:minCount 1 ;
+        sh:class cclc:CORINE-Class_level2
+    ] .
+
+cclc:CORINE-Class_level2 a sh:NodeShape ;
+    sh:targetClass cclc:CORINE-Class_level2 ;
+    sh:closed true;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]{2}$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( cclc:CORINE-Class_level2 skos:Concept owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" "sk" ) ;
+        sh:uniqueLang true
+    ] , [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path skos:notation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype cclc:CorineValue
+    ] , [
+        sh:path skos:broader ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class cclc:CORINE-Class_level1
+    ] , [
+        sh:path skos:narrower ;
+        sh:minCount 1 ;
+        sh:class cclc:CORINE-Class_level3
+    ] .
+
+cclc:CORINE-Class_level3 a sh:NodeShape ;
+    sh:targetClass cclc:CORINE-Class_level3 ;
+    sh:closed true ;
+    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]{3}$" ;
+    sh:property [
+        sh:path rdf:type ;
+        sh:in ( cclc:CORINE-Class_level3 skos:Concept owl:NamedIndividual )
+    ] , [
+        sh:path skos:prefLabel ;
+        sh:minCount 2 ;
+        sh:maxCount 2 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" "sk" ) ;
+        sh:uniqueLang true
+    ] , [
+        sh:path skos:definition ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype rdf:langString ;
+        sh:languageIn ( "en" )
+    ] , [
+        sh:path skos:notation ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:datatype cclc:CorineValue
+    ] , [
+        sh:path skos:broader ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class cclc:CORINE-Class_level2
+    ] .
