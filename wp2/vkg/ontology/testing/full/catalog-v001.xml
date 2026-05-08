@@ -42,6 +42,8 @@
     <uri id="ar6-cid" name="http://www.semanticweb.org/crima/ipcc-ar6-cid#" uri="../../modules/ar6-cid.ttl"/>
     <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="../../modules/ar6-impact.ttl"/>
     <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="../../modules/cbib.ttl"/>
+    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="../../modules/cclc-data.ttl"/>
+    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="../../modules/cclc.ttl"/>
     <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="../../modules/ccore.ttl"/>
     <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="../../modules/cplace.ttl"/>
     <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="../../modules/crid.ttl"/>

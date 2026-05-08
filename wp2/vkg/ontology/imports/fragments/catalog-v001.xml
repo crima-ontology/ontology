@@ -3,7 +3,6 @@
     <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="as.ttl"/>
     <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="bibo.ttl"/>
     <uri id="cc" name="http://creativecommons.org/ns#" uri="cc.ttl"/>
-    <uri id="clc" name="http://www.w3.org/2015/03/corine#" uri="clc.ttl"/>
     <uri id="dbo" name="http://dbpedia.org/ontology/" uri="dbo.ttl"/>
     <uri id="dcat" name="http://www.w3.org/ns/dcat" uri="dcat.ttl"/>
     <uri id="dcterms" name="http://purl.org/dc/terms/" uri="dcterms.ttl"/>
@@ -16,7 +15,7 @@
     <uri id="qudt-unit" name="http://qudt.org/vocab/unit" uri="qudt-unit.ttl"/>
     <uri id="qudt" name="http://qudt.org/schema/qudt" uri="qudt.ttl"/>
     <uri id="schema" name="http://schema.org/" uri="schema.ttl"/>
-    <uri id="skos" name="http://www.w3.org/2004/02/skos/core" uri="skos.ttl"/>
+    <uri id="skos" name="http://www.w3.org/2004/02/skos/core#" uri="skos.ttl"/>
     <uri id="sosa-common" name="http://www.w3.org/ns/sosa/common/" uri="sosa-common.ttl"/>
     <uri id="sosa-obs" name="http://www.w3.org/ns/sosa/obs/" uri="sosa-obs.ttl"/>
     <uri id="time" name="http://www.w3.org/2006/time" uri="time.ttl"/>

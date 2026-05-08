@@ -3,8 +3,6 @@
     <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="../imports/fragments/as.ttl"/>
     <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="../imports/fragments/bibo.ttl"/>
     <uri id="cc" name="http://creativecommons.org/ns#" uri="../imports/fragments/cc.ttl"/>
-    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="cclc.ttl"/>
-    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="cclc-data.ttl"/>
     <uri id="dbo" name="http://dbpedia.org/ontology/" uri="../imports/fragments/dbo.ttl"/>
     <uri id="dcat" name="http://www.w3.org/ns/dcat" uri="../imports/fragments/dcat.ttl"/>
     <uri id="dcterms" name="http://purl.org/dc/terms/" uri="../imports/fragments/dcterms.ttl"/>
@@ -17,7 +15,7 @@
     <uri id="qudt-unit" name="http://qudt.org/vocab/unit" uri="../imports/fragments/qudt-unit.ttl"/>
     <uri id="qudt" name="http://qudt.org/schema/qudt" uri="../imports/fragments/qudt.ttl"/>
     <uri id="schema" name="http://schema.org/" uri="../imports/fragments/schema.ttl"/>
-    <uri id="skos" name="http://www.w3.org/2004/02/skos/core" uri="../imports/fragments/skos.ttl"/>
+    <uri id="skos" name="http://www.w3.org/2004/02/skos/core#" uri="../imports/fragments/skos.ttl"/>
     <uri id="sosa-common" name="http://www.w3.org/ns/sosa/common/" uri="../imports/fragments/sosa-common.ttl"/>
     <uri id="sosa-obs" name="http://www.w3.org/ns/sosa/obs/" uri="../imports/fragments/sosa-obs.ttl"/>
     <uri id="time" name="http://www.w3.org/2006/time" uri="../imports/fragments/time.ttl"/>
@@ -29,6 +27,8 @@
     <uri id="ar6-cid" name="http://www.semanticweb.org/crima/ipcc-ar6-cid#" uri="ar6-cid.ttl"/>
     <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="ar6-impact.ttl"/>
     <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="cbib.ttl"/>
+    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="cclc-data.ttl"/>
+    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="cclc.ttl"/>
     <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="ccore.ttl"/>
     <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="cplace.ttl"/>
     <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="crid.ttl"/>
