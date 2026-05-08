@@ -1,4 +1,8 @@
 ///
+2026-05-08
+• ich:directMitigates, ich:directImpactsOn : added
+
+///
 2026-05-07:
 • Annotations and metadata have been added to various elements pre-fixed by csrc:.
 • <http://www.semanticweb.org/crima/emdat#DisasterEvent> has been removed. The mapping now makes use of <http://www.semanticweb.org/crima/crima-source#EMDAT-DisasterEvent>.

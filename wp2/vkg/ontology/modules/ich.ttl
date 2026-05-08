@@ -69,6 +69,10 @@ ich:contains rdf:type owl:ObjectProperty ;
 ich:directAffects rdf:type owl:ObjectProperty .
 
 
+###  http://www.semanticweb.org/crima/crima-impactchain#directImpactsOn
+ich:directImpactsOn rdf:type owl:ObjectProperty .
+
+
 ###  http://www.semanticweb.org/crima/crima-impactchain#directLeadsTo
 ich:directLeadsTo rdf:type owl:ObjectProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
@@ -81,6 +85,10 @@ ich:directLeadsTo rdf:type owl:ObjectProperty ;
                                              ich:ImpactFactor
                                            )
                              ] .
+
+
+###  http://www.semanticweb.org/crima/crima-impactchain#directMitigates
+ich:directMitigates rdf:type owl:ObjectProperty .
 
 
 ###  http://www.semanticweb.org/crima/crima-impactchain#isAbout
