@@ -1,6 +1,7 @@
 ///
 2026-05-08
 • ich:directMitigates, ich:directImpactsOn : added
+• CORINE Land Cover Classification : cclc.ttl (schema), cclc-data.ttl (data)
 
 ///
 2026-05-07:

@@ -3,7 +3,8 @@
     <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="../imports/fragments/as.ttl"/>
     <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="../imports/fragments/bibo.ttl"/>
     <uri id="cc" name="http://creativecommons.org/ns#" uri="../imports/fragments/cc.ttl"/>
-    <uri id="clc" name="http://www.w3.org/2015/03/corine#" uri="../imports/fragments/clc.ttl"/>
+    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="cclc.ttl"/>
+    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="cclc-data.ttl"/>
     <uri id="dbo" name="http://dbpedia.org/ontology/" uri="../imports/fragments/dbo.ttl"/>
     <uri id="dcat" name="http://www.w3.org/ns/dcat" uri="../imports/fragments/dcat.ttl"/>
     <uri id="dcterms" name="http://purl.org/dc/terms/" uri="../imports/fragments/dcterms.ttl"/>

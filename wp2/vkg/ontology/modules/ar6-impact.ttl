@@ -1,5 +1,5 @@
 @prefix : <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> .
-@prefix clc: <http://www.w3.org/2015/03/corine#> .
+@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -12,11 +12,11 @@
 
 <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> rdf:type owl:Ontology ;
                                                       owl:imports <http://www.w3.org/2004/02/skos/core> ,
-                                                                  clc: ;
+                                                                  <http://www.semanticweb.org/crima/crima-clc#> ;
                                                       vann:preferredNamespacePrefix "ar6-impact" ;
                                                       vann:preferredNamespaceUri "http://www.semanticweb.org/crima/ipcc-ar6-impacts#"^^xsd:anyURI ;
                                                       voaf:extends <http://www.w3.org/2004/02/skos/core> ,
-                                                                   clc: ;
+                                                                   <http://www.semanticweb.org/crima/crima-clc#> ;
                                                       voaf:metadataVoc vann: ,
                                                                        <http://purl.org/vocommons/voaf> ;
                                                       voaf:specializes <http://www.w3.org/2004/02/skos/core> .
@@ -86,7 +86,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 
 
 ###  http://www.w3.org/2015/03/corine#LandCoverClass
-clc:LandCoverClass rdfs:subClassOf [ rdf:type owl:Restriction ;
+cclc:LandCoverClass rdfs:subClassOf [ rdf:type owl:Restriction ;
                                      owl:onProperty skos:inScheme ;
                                      owl:allValuesFrom :ObservedImpacts
                                    ] .
