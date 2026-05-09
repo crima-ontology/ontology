@@ -1,117 +1,144 @@
-@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
-@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <http://www.semanticweb.org/crima/crima-clc-data#> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
+@base <http://www.semanticweb.org/crima/crima-clc-data#> .
 
 <http://www.semanticweb.org/crima/crima-clc-data#> rdf:type owl:Ontology ;
-                                     owl:imports <http://www.w3.org/2004/02/skos/core> ,
-                                                 <http://www.semanticweb.org/crima/crima-clc#> ;
-                                     vann:preferredNamespacePrefix "cclc" ;
-                                     vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
-
-## cclc:clc-top-class a owl:NamedIndividual,
-##        cclc:LandCoverClass ;
-##    skos:definition "The top concept of the Corine land coverage, all coverage values are narrower concepts of this."@en ;
-##    skos:narrower cclc:clc1,
-##        cclc:clc2,
-##        cclc:clc3,
-##        cclc:clc4,
-##        cclc:clc5 ;
-##    skos:prefLabel "Corine Land Cover"@en .
-
-cclc:corine-land-cover-classification a owl:NamedIndividual,
-        cclc:CORINE-classification ;
-    cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
-    dcterms:description "A rendition of the CORINE nomenclature as a SKOS concept scheme"@en ;
-    dcterms:issued "2015-03-23"^^xsd:date ;
-    dcterms:modified "2015-04-03"^^xsd:date ;
-    dcterms:source <http://sia.eionet.europa.eu/CLC2000/classes> ;
-    dcterms:title "The CORINE land cover nomenclature expressed in SKOS"@en .
+                                                    owl:imports cclc: ,
+                                                                <http://www.w3.org/2004/02/skos/core> ;
+                                                    vann:preferredNamespacePrefix "cclc" ;
+                                                    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
 
 
-cclc:clc111 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc11 ;
-    skos:definition """
-Most of the land is covered by structures and the transport network. 
-Buildings, roads and artificially surfaced areas cover more than 80% of the total surface. Non-linear areas of vegetation and bare soils are exceptional. 
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/crima/crima-clc#clc1
+cclc:clc1 rdf:type owl:NamedIndividual ,
+                   cclc:CORINE-Class_level1 ;
+          skos:inScheme cclc:corine-land-cover-classification ;
+          skos:notation "1"^^cclc:CorineValue ;
+          skos:definition "Any artificial land surface"@en ;
+          skos:prefLabel "Artificial surfaces"@en ,
+                         "Umele povrchy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc11
+cclc:clc11 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc1 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "1.1"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept to cover continuous or discontinuous urban fabric."@en ;
+           skos:prefLabel "Urban fabric"@en ,
+                          "Urbanizovana zastavba"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc111
+cclc:clc111 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc11 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.1.1"^^cclc:CorineValue ;
+            skos:definition """Most of the land is covered by structures and the transport network.
+Buildings, roads and artificially surfaced areas cover more than 80% of the total surface. Non-linear areas of vegetation and bare soils are exceptional.
 Extension:
- 80 % of the total surface at least should be impermeable. 
-This heading includes:  
+ 80 % of the total surface at least should be impermeable.
+This heading includes:
  urban centre types and dense ancient suburbs where buildings form a continuous and homogeneous fabric
  public services or local governments and commercial/industrial activities with their connected areas inside continuous urban fabric when their surface is less than 25 ha
  interstices of mineral areas, un-vegetated cemeteries and cemeteries less than 25 ha located inside continuous urban fabric."""@en ;
-    skos:notation "1.1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Continuous urban fabric"@en,
-        "Suvisla zastavba"@sk .
+            skos:prefLabel "Continuous urban fabric"@en ,
+                           "Suvisla zastavba"@sk .
 
-cclc:clc112 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc11 ;
-    skos:definition """
-Most of the land is covered by structures. Buildings, roads and artificially surfaced areas are associated with vegetated areas and bare soils, which occupy discontinuous but significant surfaces. 
-Extension: 
- Between 30 to 80 % of the total surface should be impermeable. 
- The continuous urban fabric class is assigned when the urban structures and transport network (i.e. impermeable surfaces) occupies more than 80 % of the surface area. This coverage percentage pertains to real ground surface. Therefore, localization of this cut-off-point requires particular attention to avoid confusion with the apparent vegetation (e.g. visible crown of trees) and permeable surfaces under trees. For example, in the streets bordered with trees, the real ground surface under the trees is mostly covered with asphalt or concrete. So, the vegetation percentage has to be estimated taking into account the shape structure and context visible on the satellite image. In particular, vegetation impact has to be underestimated in case of linear structure of vegetation. 
- The discrimination between continuous and discontinuous urban fabric is set from the presence of vegetation visible in the satellite image illustrating either single houses with gardens or scattered apartment blocks with green areas between them. 
- The density of houses is the main criteria to attribute a land cover class to the built-up areas or to the agricultural areas. In case of patchwork of small agricultural parcels and scattered houses, the cut-off-point to be applied for discontinuous urban fabric is 30 % at least of urban fabric within the patchwork area. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc112
+cclc:clc112 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc11 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.1.2"^^cclc:CorineValue ;
+            skos:definition """Most of the land is covered by structures. Buildings, roads and artificially surfaced areas are associated with vegetated areas and bare soils, which occupy discontinuous but significant surfaces.
+Extension:
+ Between 30 to 80 % of the total surface should be impermeable.
+ The continuous urban fabric class is assigned when the urban structures and transport network (i.e. impermeable surfaces) occupies more than 80 % of the surface area. This coverage percentage pertains to real ground surface. Therefore, localization of this cut-off-point requires particular attention to avoid confusion with the apparent vegetation (e.g. visible crown of trees) and permeable surfaces under trees. For example, in the streets bordered with trees, the real ground surface under the trees is mostly covered with asphalt or concrete. So, the vegetation percentage has to be estimated taking into account the shape structure and context visible on the satellite image. In particular, vegetation impact has to be underestimated in case of linear structure of vegetation.
+ The discrimination between continuous and discontinuous urban fabric is set from the presence of vegetation visible in the satellite image illustrating either single houses with gardens or scattered apartment blocks with green areas between them.
+ The density of houses is the main criteria to attribute a land cover class to the built-up areas or to the agricultural areas. In case of patchwork of small agricultural parcels and scattered houses, the cut-off-point to be applied for discontinuous urban fabric is 30 % at least of urban fabric within the patchwork area.
 This heading includes:
  private housing estates, residential suburbs made of individual houses with privative gardens and/or small squares,
  scattered blocks of residential flats, hamlets, small villages where numerous un-mineralized intersticial spaces : gardens, lawns can be distinguished,
  large blocks of flats where green spaces, parking areas and adventure playgrounds cover significant surface area,
  un-vegetated or smaller than 25 ha cemeteries included within discontinuous fabric,
  public utilities/communities surfaced areas less than 25 ha,
- holiday cottage houses are included in 112 if infrastructures like road network is visible in the satellite images. 
- They must also be connected to built-up areas. 
+ holiday cottage houses are included in 112 if infrastructures like road network is visible in the satellite images.
+ They must also be connected to built-up areas.
  troglodyte villages along streets and subterranean housings visible from the satellite image.
 This heading excludes:
- vacation houses areas which are only used for recreational purposes and defined as a specific unit in the satellite image should be classified as 142. 
- holiday settlements with bungalows have to be classified as 142. 
- scattered main and secondary residences implanted in natural or agricultural areas when their coverage is less than 30 % of the total surface. They are assigned 242 or 243 
+ vacation houses areas which are only used for recreational purposes and defined as a specific unit in the satellite image should be classified as 142.
+ holiday settlements with bungalows have to be classified as 142.
+ scattered main and secondary residences implanted in natural or agricultural areas when their coverage is less than 30 % of the total surface. They are assigned 242 or 243
  greenhouses are assigned to 211."""@en ;
-    skos:notation "1.1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Discontinuous urban fabric"@en,
-        "Nesuvisla zastavba"@sk .
+            skos:prefLabel "Discontinuous urban fabric"@en ,
+                           "Nesuvisla zastavba"@sk .
 
-cclc:clc121 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc12 ;
-    skos:definition """
-Artificially surfaced areas (cement, asphalt, tarmacadam or stabilized e.g. beaten earth) without vegetation occupy most of the area, which also contains building and/or vegetation. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc12
+cclc:clc12 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc1 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "1.2"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering industrial or commercial units, road and rail networks and associated land, port areas, airports"@en ;
+           skos:prefLabel "Industrial, commercial and transport units"@en ,
+                          "Priemysel, komercia a transport"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc121
+cclc:clc121 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc12 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.2.1"^^cclc:CorineValue ;
+            skos:definition """Artificially surfaced areas (cement, asphalt, tarmacadam or stabilized e.g. beaten earth) without vegetation occupy most of the area, which also contains building and/or vegetation.
 This heading includes:
- research and development establishments, 
- security, law and order services (fire stations, penal establishments), 
- company benefit schemes (old people's home, convalescent homes, orphanages, etc.), 
- stud farms, agricultural facilities (cooperatives, state farm centres, livestock farms, living and exploitation buildings), 
- exposition sites, fair sites, 
- nuclear power plants, military barracks, testing pistes, test fields, biological waste water treatment plants, water houses, transformers), 
- large shopping centres, 
- abandoned industrial sites and by-products of industrial activities where buildings are still present. 
- water retention and hydro-electric stations 
- telecommunication networks (relay stations for TV, telescopes, radars.) 
-This heading excludes: 
+ research and development establishments,
+ security, law and order services (fire stations, penal establishments),
+ company benefit schemes (old people's home, convalescent homes, orphanages, etc.),
+ stud farms, agricultural facilities (cooperatives, state farm centres, livestock farms, living and exploitation buildings),
+ exposition sites, fair sites,
+ nuclear power plants, military barracks, testing pistes, test fields, biological waste water treatment plants, water houses, transformers),
+ large shopping centres,
+ abandoned industrial sites and by-products of industrial activities where buildings are still present.
+ water retention and hydro-electric stations
+ telecommunication networks (relay stations for TV, telescopes, radars.)
+This heading excludes:
  extractive industry (class 131)
  oil terminals inside port activities (class 123)
  dumps , decanting basin structures (class 132)
  dockyards (class 123)
  merchant departments belonging to privative or public services (class 11x)
  places of worship : convents, monasteries, etc (class 142)"""@en ;
-    skos:notation "1.2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Industrial or commercial units"@en,
-        "Priemysel alebo komercia"@sk .
+            skos:prefLabel "Industrial or commercial units"@en ,
+                           "Priemysel alebo komercia"@sk .
 
-cclc:clc122 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc12 ;
-    skos:definition """
-Motorways and railways, including associated installations (stations, platforms, embankments). Minimum width for inclusion: 100m. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc122
+cclc:clc122 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc12 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.2.2"^^cclc:CorineValue ;
+            skos:definition """Motorways and railways, including associated installations (stations, platforms, embankments). Minimum width for inclusion: 100m.
 This heading includes:
  motorway rest areas, service stations, parking lot areas, haulage depots connected on motorway networks, services and maintenance activities for roads, toll-booths;
  marshalling yards, perimeter of stations, services and maintenance activities for trains;
@@ -120,15 +147,17 @@ This heading includes:
 This heading excludes:
  motorways and high-speed train under construction (133).
  closed-down transport network (classified under the real appropriate land cover category)"""@en ;
-    skos:notation "1.2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Road and rail networks and associated land"@en,
-        "Cesty a zeleznice s prilahlymi arealmi"@sk .
+            skos:prefLabel "Cesty a zeleznice s prilahlymi arealmi"@sk ,
+                           "Road and rail networks and associated land"@en .
 
-cclc:clc123 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc12 ;
-    skos:definition """
-Infrastructure of port areas, including quays, dockyards and marinas. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc123
+cclc:clc123 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc12 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.2.3"^^cclc:CorineValue ;
+            skos:definition """Infrastructure of port areas, including quays, dockyards and marinas.
 This heading includes:
  commercial and military ports;
  shipyards;
@@ -140,30 +169,46 @@ This heading includes:
  oil terminals.
 This heading excludes:
  industrial and commercial units larger than 25 ha associated with port activities (class 121)."""@en ;
-    skos:notation "1.2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Port areas"@en,
-        "Arealy pristavov"@sk .
+            skos:prefLabel "Arealy pristavov"@sk ,
+                           "Port areas"@en .
 
-cclc:clc124 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc12 ;
-    skos:definition """
-Airport installations: runways, buildings and associating lands. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc124
+cclc:clc124 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc12 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.2.4"^^cclc:CorineValue ;
+            skos:definition """Airport installations: runways, buildings and associating lands.
 Extension:
- Associating lands (mainly grassland). 
+ Associating lands (mainly grassland).
 This heading includes:
  military airports.
 This heading excludes:
  temporary airports with not asphalted runways and small buildings used for sporting, tourism, ambulance services and recreation purposes are assigned to142;
  disused airport or airfield should be assigned to 321."""@en ;
-    skos:notation "1.2.4"^^cclc:CorineValue ;
-    skos:prefLabel "Airports"@en,
-        "Arealy letisk"@sk .
+            skos:prefLabel "Airports"@en ,
+                           "Arealy letisk"@sk .
 
-cclc:clc131 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc13 ;
-    skos:definition """Areas with open-pit-extraction of construction material (sand pit, quarries) or other mineral (open-cast mines). Includes flooded gravel pits, except for river-bed extraction. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc13
+cclc:clc13 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc1 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "1.3"^^cclc:CorineValue ;
+           skos:definition "Mineral extraction sites, dump sites, construction sites"@en ;
+           skos:prefLabel "Arealy tazby, skladok a vystavby"@sk ,
+                          "The level 2 concept covering mines, dump and construction sites"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc131
+cclc:clc131 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc13 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.3.1"^^cclc:CorineValue ;
+            skos:definition """Areas with open-pit-extraction of construction material (sand pit, quarries) or other mineral (open-cast mines). Includes flooded gravel pits, except for river-bed extraction.
 This heading includes:
  ballast, sand, clay, kaolin, gravel, hard stones quarries;
  extraction and conglomeration areas of solid fuels (coal, lignite);
@@ -177,17 +222,19 @@ This heading excludes:
  coastal salines (class 422);
  scree-covered areas (class 332);
  extraction sites abandoned and reconverted to leisure areas (class 142)."""@en ;
-    skos:notation "1.3.1"^^cclc:CorineValue ;
-    skos:prefLabel "Mineral extraction sites"@en,
-        "Tazba nerastnych surovin"@sk .
+            skos:prefLabel "Mineral extraction sites"@en ,
+                           "Tazba nerastnych surovin"@sk .
 
-cclc:clc132 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc13 ;
-    skos:definition """
-Public, industrial or mine dump sites. 
-Extension: 
- Dump sites of raw materials or liquid wastes. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc132
+cclc:clc132 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc13 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.3.2"^^cclc:CorineValue ;
+            skos:definition """Public, industrial or mine dump sites.
+Extension:
+ Dump sites of raw materials or liquid wastes.
 This heading includes:
  dump sites areas within industrial units areas;
  liquid wastes originating in mainly chemical industry;
@@ -197,27 +244,43 @@ This heading excludes:
  decanting basins of biological water treatment plants by means of lagoonage processing (class 121);
  dump sites abandoned and reconverted to leisure areas (class 142);
  vegetated slag heaps (class 3xx)."""@en ;
-    skos:notation "1.3.2"^^cclc:CorineValue ;
-    skos:prefLabel "Dump sites"@en,
-        "Skladky a smetiska"@sk .
+            skos:prefLabel "Dump sites"@en ,
+                           "Skladky a smetiska"@sk .
 
-cclc:clc133 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc13 ;
-    skos:definition """
-Spaces under construction development, soil or bed rock excavations, earthworks. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc133
+cclc:clc133 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc13 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.3.3"^^cclc:CorineValue ;
+            skos:definition """Spaces under construction development, soil or bed rock excavations, earthworks.
 This heading includes:
  Public and industrial fabric structures, road and rail networks, etc under constructions.
 This heading excludes:
  completed parts of under construction transport networks when they are larger than 25 ha"""@en ;
-    skos:notation "1.3.3"^^cclc:CorineValue ;
-    skos:prefLabel "Construction sites"@en,
-        "Arealy vystavby"@sk .
+            skos:prefLabel "Arealy vystavby"@sk ,
+                           "Construction sites"@en .
 
-cclc:clc141 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc14 ;
-    skos:definition """Areas with vegetation within the urban fabric, including parks, cemeteries with vegetation, and mansions and their grounds.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc14
+cclc:clc14 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc1 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "1.4"^^cclc:CorineValue ;
+           skos:definition "Green urban areas, sport and leisure facilities"@en ;
+           skos:prefLabel "Artificial, non-agricultural vegetated areas"@en ,
+                          "Umela nepolnohospodarska zelen "@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc141
+cclc:clc141 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc14 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.4.1"^^cclc:CorineValue ;
+            skos:definition """Areas with vegetation within the urban fabric, including parks, cemeteries with vegetation, and mansions and their grounds.
 Extension:
 Cemeteries with important vegetation coverage.
 Green urban areas concern all laid out vegetated areas greater than 25 ha which are weither situated inside or in contact with urban fabrics.
@@ -236,15 +299,17 @@ This heading excludes:
 city gardens (class 242)
 vegetated cemeteries outside urban fabric (class 142);
 unvegetated cemeteries inside urban fabric (class 1.1.x)."""@en ;
-    skos:notation "1.4.1"^^cclc:CorineValue ;
-    skos:prefLabel "Green urban areas"@en,
-        "Mestska zelen"@sk .
+            skos:prefLabel "Green urban areas"@en ,
+                           "Mestska zelen"@sk .
 
-cclc:clc142 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc14 ;
-    skos:definition """
-Camping ground, sport ground, leasure parks, golf courses, race courses, etc. Includes formal parks not surrounded by urban areas. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc142
+cclc:clc142 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc14 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "1.4.2"^^cclc:CorineValue ;
+            skos:definition """Camping ground, sport ground, leasure parks, golf courses, race courses, etc. Includes formal parks not surrounded by urban areas.
 This heading includes:
  camping and caravaning parking organized for recreational purpose (excluding commercial activities);
  small airfields with grass runways and small buildings;
@@ -261,18 +326,41 @@ This heading excludes:
  beaches (class 331);
  camping areas within forests that are not specially prepared with this object (class 31x);
  stud farms (class 121)."""@en ;
-    skos:notation "1.4.2"^^cclc:CorineValue ;
-    skos:prefLabel "Sport and leisure facilities"@en,
-        "Arealy sportu a volneho casu "@sk .
+            skos:prefLabel "Arealy sportu a volneho casu "@sk ,
+                           "Sport and leisure facilities"@en .
 
-cclc:clc211 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc21 ;
-    skos:definition """
-Cereals, legumes, fodder crops, root crops and fallow land. Includes flowers and tree (nurseries cultivation) and vegetables, whether open field or under plastic or glass (includes market gardening). Includes aromatic, medicinal and culinary plants. Does not include permanent pasture. 
-Extension: 
- Includes flower, tree (nurseries) and vegetable cultivations. 
- Includes other annually harvested plants with more than 75 % of area under rotation system. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc2
+cclc:clc2 rdf:type owl:NamedIndividual ,
+                   cclc:CORINE-Class_level1 ;
+          skos:inScheme cclc:corine-land-cover-classification ;
+          skos:notation "2"^^cclc:CorineValue ;
+          skos:definition "Any area used for agriculture"@en ;
+          skos:prefLabel "Agricultural areas"@en ,
+                         "Polnohospodarske arealy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc21
+cclc:clc21 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc2 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "2.1"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering cultivated areas regularly ploughed and generally under a rotation system."@en ;
+           skos:prefLabel "Arable land"@en ,
+                          "Orna poda"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc211
+cclc:clc211 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc21 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.1.1"^^cclc:CorineValue ;
+            skos:definition """Cereals, legumes, fodder crops, root crops and fallow land. Includes flowers and tree (nurseries cultivation) and vegetables, whether open field or under plastic or glass (includes market gardening). Includes aromatic, medicinal and culinary plants. Does not include permanent pasture.
+Extension:
+ Includes flower, tree (nurseries) and vegetable cultivations.
+ Includes other annually harvested plants with more than 75 % of area under rotation system.
 This heading includes:
  leguminous permanent plants as asparagus;
  flooded crops as water cross beds;
@@ -300,17 +388,19 @@ This heading excludes:
  osier trees for wicker production (class 222);
  permanent plantations of roses (class 222);
  wine-growing nurseries (class 221)."""@en ;
-    skos:notation "2.1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Non-irrigated arable land"@en,
-        "Nezavlazovana orna poda"@sk .
+            skos:prefLabel "Nezavlazovana orna poda"@sk ,
+                           "Non-irrigated arable land"@en .
 
-cclc:clc212 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc21 ;
-    skos:definition """
-Crops irrigated permanently or periodically, using a permanent infrastructure (irrigation channels, drainage network). Most of these crops could not be cultivated without an artificial water supply. Does not include sporadically irrigated land. 
-Extension : 
- Excludes drainage network areas, which are assigned to 211, 231 or 242, applied for pumping infrastructure and irrigation system from superficial water supplying. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc212
+cclc:clc212 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc21 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.1.2"^^cclc:CorineValue ;
+            skos:definition """Crops irrigated permanently or periodically, using a permanent infrastructure (irrigation channels, drainage network). Most of these crops could not be cultivated without an artificial water supply. Does not include sporadically irrigated land.
+Extension :
+ Excludes drainage network areas, which are assigned to 211, 231 or 242, applied for pumping infrastructure and irrigation system from superficial water supplying.
 This heading includes:
  recently abandoned irrigation systems;
  sown grassland (as part of crop rotation) if the irrigation infrastructure is permanently present.
@@ -321,32 +411,47 @@ This heading excludes:
  spray sprinkler line (other cultivation classes);
  rotory sprinkler (other cultivation classes);
  rice fields (class 213)."""@en ;
-    skos:notation "2.1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Permanently irrigated land"@en,
-        "Permanentne zavlazovana orna poda"@sk .
+            skos:prefLabel "Permanently irrigated land"@en ,
+                           "Permanentne zavlazovana orna poda"@sk .
 
-cclc:clc213 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc21 ;
-    skos:definition """
-Land prepared for rice cultivation. Flat surfaces with irrigation channels. Surfaces periodically flooded. 
-Extension: 
- Abandoned rice field are not included. 
- A one or two yearsã rotation is applied for rice fields, therefore the land cover is mapped according to the presence at the time of satellite data acquisition. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc213
+cclc:clc213 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc21 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.1.3"^^cclc:CorineValue ;
+            skos:definition """Land prepared for rice cultivation. Flat surfaces with irrigation channels. Surfaces periodically flooded.
+Extension:
+ Abandoned rice field are not included.
+ A one or two yearsã rotation is applied for rice fields, therefore the land cover is mapped according to the presence at the time of satellite data acquisition.
 This heading excludes:
  ancient rice field with irrigation channels should be mapped according to their actual land cover (mainly classes 211 or 231);
   abandoned rice fields (class 2xx)."""@en ;
-    skos:notation "2.1.3"^^cclc:CorineValue ;
-    skos:prefLabel "Rice fields"@en,
-        "Ryzove polia"@sk .
+            skos:prefLabel "Rice fields"@en ,
+                           "Ryzove polia"@sk .
 
-cclc:clc221 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc22 ;
-    skos:definition """
-Areas planted with vines. 
-Extension: 
- Vineyard areas are classified as 221 if the vineyard parcels exceed 50 % of the area and/or they determine the land use of the area. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc22
+cclc:clc22 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc2 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "2.2"^^cclc:CorineValue ;
+           skos:definition "Crops not under a rotation system which provide repeated harvests and occupy the land for a long period before it is ploughed and replanted: mainly plantations of woody crops. Excludes pastures, grazing lands and forests."@en ;
+           skos:prefLabel "Permanent crops"@en ,
+                          "Trvale plodiny"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc221
+cclc:clc221 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc22 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.2.1"^^cclc:CorineValue ;
+            skos:definition """Areas planted with vines.
+Extension:
+ Vineyard areas are classified as 221 if the vineyard parcels exceed 50 % of the area and/or they determine the land use of the area.
 This heading includes:
  vine-growing nurseries inside vineyards areas;
  vineyards for wine production;
@@ -355,18 +460,20 @@ This heading includes:
 This heading excludes:
  vines mixed with arable land and/or meadows within a single parcel (class 241);
  vines mixed with arable land and/or meadows interspersed with significant amount of natural vegetation, and vineyards parcels cover less than 40% of the area (class 243)."""@en ;
-    skos:notation "2.2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Vineyards"@en,
-        "Vinohrady"@sk .
+            skos:prefLabel "Vineyards"@en ,
+                           "Vinohrady"@sk .
 
-cclc:clc222 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc22 ;
-    skos:definition """
-Parcels planted with fruit trees or shrubs: single or mixed fruit species, fruit trees associated with permanently grassed surfaces. Includes chestnut and walnut groves. 
-Extension: 
- Ligneous crops. 
- Includes chestnut and walnut trees orchards, intended for fruit production. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc222
+cclc:clc222 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc22 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.2.2"^^cclc:CorineValue ;
+            skos:definition """Parcels planted with fruit trees or shrubs: single or mixed fruit species, fruit trees associated with permanently grassed surfaces. Includes chestnut and walnut groves.
+Extension:
+ Ligneous crops.
+ Includes chestnut and walnut trees orchards, intended for fruit production.
 This heading includes:
  hop plantations;
  plantations of berry shrubs, black and/or red currants, raspberries, gooseberries, blackberry crops;
@@ -392,34 +499,50 @@ This heading excludes:
  date palm groves (class 224);
  orchards located in permanently irrigated lands (class 212);
  leguminous permanent plants as asparagus (class 211)."""@en ;
-    skos:notation "2.2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Fruit trees and berry plantations"@en,
-        "Ovocne sady a plantaze"@sk .
+            skos:prefLabel "Fruit trees and berry plantations"@en ,
+                           "Ovocne sady a plantaze"@sk .
 
-cclc:clc223 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc22 ;
-    skos:definition """Areas planted with olive trees, including mixed occurrence of olives trees and vines on the same parcel. 
-Extension: 
- Mediterranean plantations of Olea europaea. ssp europaea. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc223
+cclc:clc223 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc22 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.2.3"^^cclc:CorineValue ;
+            skos:definition """Areas planted with olive trees, including mixed occurrence of olives trees and vines on the same parcel.
+Extension:
+ Mediterranean plantations of Olea europaea. ssp europaea.
 This heading includes:
  olive groves shading herbaceous layer.
 This heading excludes:
  olive trees (Olea europaea ssp. sylvestris) as part of evergreen forest areas (class 311);
  wild olive trees (Oleaster) as part of sclerophyllous vegetation areas (class 323);
  abandoned olive groves (class 323)."""@en ;
-    skos:notation "2.2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Olive groves"@en,
-        "Olivove haje"@sk .
+            skos:prefLabel "Olive groves"@en ,
+                           "Olivove haje"@sk .
 
-cclc:clc231 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc23 ;
-    skos:definition """
-Dense grass cover, of floral composition, dominated by graminaceae, not under a rotation system. Mainly for grazing, but the folder may be harvested mechanically. Includes areas with hedges (bocage). 
-Extension: 
- Grazing used by cattle. 
- Pastures can be described as extensively used grass lands with presence of farm structure such as: fences, shelters, enclosures, watering places, drinking trough, or regular agricultural works: mowing, drainage, hay making, agricultural practices, manuring. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc23
+cclc:clc23 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc2 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "2.3"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering one level 3 concept of Pastures"@en ;
+           skos:prefLabel "Arealy trav"@sk ,
+                          "Pastures"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc231
+cclc:clc231 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc23 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.3.1"^^cclc:CorineValue ;
+            skos:definition """Dense grass cover, of floral composition, dominated by graminaceae, not under a rotation system. Mainly for grazing, but the folder may be harvested mechanically. Includes areas with hedges (bocage).
+Extension:
+ Grazing used by cattle.
+ Pastures can be described as extensively used grass lands with presence of farm structure such as: fences, shelters, enclosures, watering places, drinking trough, or regular agricultural works: mowing, drainage, hay making, agricultural practices, manuring.
 This heading includes:
  temporary and artificial pastures not under rotation system which become permanent grasslands five years after ploughing. Significant number of natural vegetation species are present (as Taraxacum Officinale, Ranunculus sp. Chrisanthemum Leucantemum, Knautia Arvensis Achillea Millefolium, Salvia sp., etc.);
  abandoned arable land not under rotation system used as pastures (after 3 years);
@@ -434,17 +557,30 @@ This heading excludes:
  derelicted grassland where semi-ligneous/ligneous vegetation cover at least 25 % of the parcel (class 322/324);
  strong humid meadows were hygrophyle plant species cover at least 25 % of the parcel (class 411);
  herbaceous grass cover composed of non-palatable and undesirable species for cattle as molinia and brachypodium species (class 321)."""@en ;
-    skos:notation "2.3.1"^^cclc:CorineValue ;
-    skos:prefLabel "Pastures"@en,
-        "Luky a pasienky"@sk .
+            skos:prefLabel "Luky a pasienky"@sk ,
+                           "Pastures"@en .
 
-cclc:clc241 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc24 ;
-    skos:definition """
-Non-permanent crops (arable land or pastures) associated with permanent crop on the same parcel. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc24
+cclc:clc24 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc2 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "2.4"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering Annual crops associated with permanent crops, Complex cultivation, Land principally occupied by agriculture, with significant areas of natural vegetation, Agro-forestry areas"@en ;
+           skos:prefLabel "Heterogeneous agricultural areas"@en ,
+                          "Heterogenne polnohospodarske arealy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc241
+cclc:clc241 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc24 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.4.1"^^cclc:CorineValue ;
+            skos:definition """Non-permanent crops (arable land or pastures) associated with permanent crop on the same parcel.
 Extension:
- Permanent crops are either in juxtaposition with arable lands/pastures or located along the border of the parcels. The occupying rate of non-permanent crops is more than 50 %. 
+ Permanent crops are either in juxtaposition with arable lands/pastures or located along the border of the parcels. The occupying rate of non-permanent crops is more than 50 %.
 This heading includes:
  non-permanent crops areas in which they are shaded by a fairly closed canopy of fruit trees or olive trees or vines;
  non-permanent crops areas which are bordered by a reticulated structure of fruit tree lines, vine lines;
@@ -454,17 +590,19 @@ This heading excludes:
  non-permanent crops associated with forest trees (class 244);
  natural grasslands shaded by permanent crops (class 324);
  pastures planted with trees (class 231)."""@en ;
-    skos:notation "2.4.1"^^cclc:CorineValue ;
-    skos:prefLabel "Annual crops associated with permanent crops"@en,
-        "Jednorocne plodiny s trvalymi kulturami"@sk .
+            skos:prefLabel "Annual crops associated with permanent crops"@en ,
+                           "Jednorocne plodiny s trvalymi kulturami"@sk .
 
-cclc:clc242 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc24 ;
-    skos:definition """
-Juxtaposition of small parcels of diverse annual crops, pasture and/or permanent crops. 
-Extension: 
- Juxtaposition of small parcels of, annual crops, city gardens pastures, fallow lands and/or permanent crops somewhere with scattered houses. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc242
+cclc:clc242 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc24 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.4.2"^^cclc:CorineValue ;
+            skos:definition """Juxtaposition of small parcels of diverse annual crops, pasture and/or permanent crops.
+Extension:
+ Juxtaposition of small parcels of, annual crops, city gardens pastures, fallow lands and/or permanent crops somewhere with scattered houses.
 This heading includes:
  mixed parcels of permanent crops (fruit trees, berry plantations, vineyards and olive groves);
  interstices of non-mineralized free spaces in discontinuous urban fabric > 25 ha;
@@ -475,14 +613,17 @@ This heading excludes:
  nurseries cultivation (class 211);
  in spite of strong fragmentation, the areas with more than 75 % of area under rotation system (class 211);
  areas with scattered houses when they occupy more than 30 % of the patchwork area (class 112)."""@en ;
-    skos:notation "2.4.2"^^cclc:CorineValue ;
-    skos:prefLabel "Complex cultivation patterns"@en,
-        "Mozaika poli, luk a trvalych kultur"@sk .
+            skos:prefLabel "Complex cultivation patterns"@en ,
+                           "Mozaika poli, luk a trvalych kultur"@sk .
 
-cclc:clc243 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc24 ;
-    skos:definition """Areas principally occupied by agriculture, interspersed with significant natural areas. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc243
+cclc:clc243 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc24 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.4.3"^^cclc:CorineValue ;
+            skos:definition """Areas principally occupied by agriculture, interspersed with significant natural areas.
 Extension:
  Land occupied by agriculture with areas of natural or semi-natural areas (including wetlands and water bodies, outcrops).
 This heading includes:
@@ -493,32 +634,57 @@ This heading excludes:
  agricultural lands associated with small plots of fruit trees/olive groves (class 242);
  areas in which the share of agricultural areas is above 75 % (classes 21x, 22x or 23x);
  areas in which semi-natural areas predominate (more 75 %) (classes 3xx)."""@en ;
-    skos:notation "2.4.3"^^cclc:CorineValue ;
-    skos:prefLabel "Land principally occupied by agriculture, with significant areas of natural vegetation"@en,
-        "Prevazne polnohospodarska krajina s vyraznym zastupenim prirodzenej vegetacie"@sk .
+            skos:prefLabel "Land principally occupied by agriculture, with significant areas of natural vegetation"@en ,
+                           "Prevazne polnohospodarska krajina s vyraznym zastupenim prirodzenej vegetacie"@sk .
 
-cclc:clc244 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc24 ;
-    skos:definition """
-Annual crops or grazing land under the wooded cover of forestry species.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc244
+cclc:clc244 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc24 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "2.4.4"^^cclc:CorineValue ;
+            skos:definition """Annual crops or grazing land under the wooded cover of forestry species.
 Extension:
- Annual crops or grazing land and fallow land do cover less than 50 % of the surface. 
+ Annual crops or grazing land and fallow land do cover less than 50 % of the surface.
 This heading includes:
  areas of forest trees imbricated with fruit trees/olive trees when both kind of trees are not dominating;
  carob trees shading agricultural lands;
  agricultural land shaded by palm trees in Mediterranean context."""@en ;
-    skos:notation "2.4.4"^^cclc:CorineValue ;
-    skos:prefLabel "Agro-forestry areas"@en,
-        "Agrolesnicke plochy"@sk .
+            skos:prefLabel "Agro-forestry areas"@en ,
+                           "Agrolesnicke plochy"@sk .
 
-cclc:clc311 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc31 ;
-    skos:definition """
-Vegetation formation composed principally of trees, including shrub and bush under storeys, where broad-leaved species predominate. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc3
+cclc:clc3 rdf:type owl:NamedIndividual ,
+                   cclc:CORINE-Class_level1 ;
+          skos:inScheme cclc:corine-land-cover-classification ;
+          skos:notation "3"^^cclc:CorineValue ;
+          skos:definition "Wooded and open areas"@en ;
+          skos:prefLabel "Forests and semi-natural areas"@en ,
+                         "Lesne a poloprirodne arealy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc31
+cclc:clc31 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc3 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "3.1"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering broadleaved, coniferous and mixed forest."@en ;
+           skos:prefLabel "Forests"@en ,
+                          "Lesy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc311
+cclc:clc311 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc31 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.1.1"^^cclc:CorineValue ;
+            skos:definition """Vegetation formation composed principally of trees, including shrub and bush under storeys, where broad-leaved species predominate.
 Extension:
- With a crown cover of more than 30 % or a 500 subjects/ha density for plantation structure, broad-leaved trees represent more than 75 % of the planting formation. Three heights under normal climatic conditions are higher than 5 m. 
+ With a crown cover of more than 30 % or a 500 subjects/ha density for plantation structure, broad-leaved trees represent more than 75 % of the planting formation. Three heights under normal climatic conditions are higher than 5 m.
 This heading includes:
  plantations of e.g. eucalyptus, poplars;
  walnut trees and chestnut trees used for wood production included into forest area context;
@@ -539,17 +705,19 @@ This heading excludes:
  vegetated areas where the crown cover of the broad-leaved trees is less than 25 % (class 324);
  forest nurseries situated inside deciduous wooded areas (324);
  wooded parks (class 141)."""@en ;
-    skos:notation "3.1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Broad-leaved forest"@en,
-        "Listnate lesy"@sk .
+            skos:prefLabel "Broad-leaved forest"@en ,
+                           "Listnate lesy"@sk .
 
-cclc:clc312 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc31 ;
-    skos:definition """
-Vegetation formation composed principally of trees, including shrub and bush under storey, where coniferous species predominate. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc312
+cclc:clc312 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc31 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.1.2"^^cclc:CorineValue ;
+            skos:definition """Vegetation formation composed principally of trees, including shrub and bush under storey, where coniferous species predominate.
 Extension:
- Coniferous trees represent more than 75 % of the formation. Three heights under normal climatic conditions are higher than 5 m. 
+ Coniferous trees represent more than 75 % of the formation. Three heights under normal climatic conditions are higher than 5 m.
 This heading includes:
  non-evergreen coniferous trees woodland composed of larix species;
  coniferous wooded dunes;
@@ -562,17 +730,19 @@ This heading excludes:
  sclerophyllous forests (class 311);
  forest nurseries situated inside coniferous wooded areas (324);
  vegetated areas where the crown cover of coniferous trees is less than 30 % (class 324)."""@en ;
-    skos:notation "3.1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Coniferous forest"@en,
-        "Ihlicnate lesy"@sk .
+            skos:prefLabel "Coniferous forest"@en ,
+                           "Ihlicnate lesy"@sk .
 
-cclc:clc313 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc31 ;
-    skos:definition """
-Vegetation formation composed principally of trees, including shrub and bush under storeys, where neither broad-leaved nor coniferous species predominate. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc313
+cclc:clc313 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc31 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.1.3"^^cclc:CorineValue ;
+            skos:definition """Vegetation formation composed principally of trees, including shrub and bush under storeys, where neither broad-leaved nor coniferous species predominate.
 Extension:
- With a crown cover of more than 30 % or a 500 subjects/ha density for plantation structure. The share of coniferous or broad-leaved species does not exceed 25 % in the canopy closure. Three heights under normal climatic conditions are higher than 5 m. 
+ With a crown cover of more than 30 % or a 500 subjects/ha density for plantation structure. The share of coniferous or broad-leaved species does not exceed 25 % in the canopy closure. Three heights under normal climatic conditions are higher than 5 m.
 This heading includes:
  mixed-forest wooded dunes;
  sub-arctic coniferous forests, not reaching the 5 m height.
@@ -581,17 +751,30 @@ This heading excludes:
  forest nurseries situated inside mixed-forest areas (324);
  woodlands with mixed species trees smaller than 5 m high (class 322);
  vegetated areas where the crown cover of mixed species trees is less than 30 % (class 324)."""@en ;
-    skos:notation "3.1.3"^^cclc:CorineValue ;
-    skos:prefLabel "Mixed forest"@en,
-        "Zmiesane lesy"@sk .
+            skos:prefLabel "Mixed forest"@en ,
+                           "Zmiesane lesy"@sk .
 
-cclc:clc321 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc32 ;
-    skos:definition """
-Low productivity grassland. Often situated in areas of rough, uneven ground. Frequently includes rocky areas, briars and heatland. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc32
+cclc:clc32 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc3 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "3.2"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering natural grassland, moors and heatland, sclerophyllous vegetation anad transitional woodland/shrub."@en ;
+           skos:prefLabel "Kroviny a travne arealy"@sk ,
+                          "Shrub and/or herbaceous vegetation associations"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc321
+cclc:clc321 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc32 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.2.1"^^cclc:CorineValue ;
+            skos:definition """Low productivity grassland. Often situated in areas of rough, uneven ground. Frequently includes rocky areas, briars and heatland.
 Extension:
- Natural grasslands are areas, where herbaceous vegetation (maximum height is 150 cm and gramineous species are prevailing) which cover at least 75 % of the surface covered by vegetation. 
+ Natural grasslands are areas, where herbaceous vegetation (maximum height is 150 cm and gramineous species are prevailing) which cover at least 75 % of the surface covered by vegetation.
 This heading includes:
  saline grasslands grown on temporally wet areas of saline soils;
  humid meadows where sedges, rushes, thistles, nettles cover more than 25 % of the parcel;
@@ -608,17 +791,19 @@ This heading excludes:
  grey dunes (class 331);
  swampy grassland (class 411);
  fallow-lands (class 211)."""@en ;
-    skos:notation "3.2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Natural grassland"@en,
-        "Prirodzene luky"@sk .
+            skos:prefLabel "Natural grassland"@en ,
+                           "Prirodzene luky"@sk .
 
-cclc:clc322 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc32 ;
-    skos:definition """
-Vegetation with low and closed cover, dominated by bushes, shrub and herbaceous plants (heather, briars, broom, gorse, laburnum). 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc322
+cclc:clc322 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc32 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.2.2"^^cclc:CorineValue ;
+            skos:definition """Vegetation with low and closed cover, dominated by bushes, shrub and herbaceous plants (heather, briars, broom, gorse, laburnum).
 Extension:
- Temperate shrubby area vegetation: includes dwarf forest trees with a 3 m maximum height in climax stage. 
+ Temperate shrubby area vegetation: includes dwarf forest trees with a 3 m maximum height in climax stage.
 This heading includes:
  wet heath distributed on humid or semi-peaty soils (peat depth < 30 cm) with Erica tetralix/ciliaris, Sphagnum spp. and Molinia spp.;
  Pinus mugo coverage above the upper tree limit in alpine zone or in the bottom of large depression with temperature inversion;
@@ -636,16 +821,19 @@ This heading includes:
 This heading excludes:
  low maquis/mattoral vegetation (class 323);
  heatland under recolonizing process where tree-like species cover more than 30 % of the surface (class 324)."""@en ;
-    skos:notation "3.2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Moors and heathland"@en,
-        "Vresoviska, slatiny a kosodrevina"@sk .
+            skos:prefLabel "Moors and heathland"@en ,
+                           "Vresoviska, slatiny a kosodrevina"@sk .
 
-cclc:clc323 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc32 ;
-    skos:definition """Bushy sclerophyllous vegetation, including maquis and garrigue. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc323
+cclc:clc323 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc32 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.2.3"^^cclc:CorineValue ;
+            skos:definition """Bushy sclerophyllous vegetation, including maquis and garrigue.
 Extension:
- Evergreen sclerophyllous bushes and scrubs, which compose maquis, garrigue, mattoral and phrygana. 
+ Evergreen sclerophyllous bushes and scrubs, which compose maquis, garrigue, mattoral and phrygana.
 This heading includes:
  mattoral of arid zone with pre-desert brushes and tall Ziziphus lotus;
  laurrel mattoral with Laurus nobilis;
@@ -656,14 +844,17 @@ This heading includes:
  abandoned olive groves.
 This heading excludes:
  arborescent mattorals which are a pre- or post-broad-leaved evergreen forest formation with more or less dense arborescent cover with a usually thick high evergreen shrub stratum organised around evergreen oaks (Quercus suber/ilex/rotundifolia) olive trees or pines the crown cover of which is more than 30 % (class 311). If the crown cover is less than 30 %, it is assigned to 324."""@en ;
-    skos:notation "3.2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Sclerophyllous vegetation"@en,
-        "Tvrdolista vegetacia"@sk .
+            skos:prefLabel "Sclerophyllous vegetation"@en ,
+                           "Tvrdolista vegetacia"@sk .
 
-cclc:clc324 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc32 ;
-    skos:definition """Bushy or herbaceous vegetation with scattered trees. Can represent either woodland degradation or forest regeneration / recolonization. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc324
+cclc:clc324 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc32 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.2.4"^^cclc:CorineValue ;
+            skos:definition """Bushy or herbaceous vegetation with scattered trees. Can represent either woodland degradation or forest regeneration / recolonization.
 This heading includes:
  arborescent mattorals which are pre- or post-formation of broad-leaved evergreen forest with a usually thick evergreen shrub stratum composed of evergreen oaks (Quercus suber, ilex, rotundifolia), olive trees, carob trees or pines the crown cover density of which is less than 30 % of the surface;
  agricultural lands (classes 2xx) under recolonizing process with occurrence of forest trees which cover more than 30 % of the surface (scattered trees or small plots of forests);
@@ -683,16 +874,30 @@ This heading excludes:
  agricultural lands (classes 2xx) with occurrence of forest vegetation with an overgrowing rate less than 50 % (class 243);
  stable/climax tree-like forest formations with a tree height less than 4 m and Pinus mugo forests (class 322);
  arborescent mattoral with trees the crown cover of witch is more than 30% (class 311)."""@en ;
-    skos:notation "3.2.4"^^cclc:CorineValue ;
-    skos:prefLabel "Transitional woodland-shrub"@en,
-        "Prechodne lesokroviny"@sk .
+            skos:prefLabel "Prechodne lesokroviny"@sk ,
+                           "Transitional woodland-shrub"@en .
 
-cclc:clc331 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc33 ;
-    skos:definition """Beaches, dunes and expanses of sand or pebble in coastal or continental locations, including beds of stream channels with torrential regime. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc33
+cclc:clc33 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc3 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "3.3"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering beaches, bare rock, sparsely vegetated areas, burnt areas, glaciers and perpetual snow."@en ;
+           skos:prefLabel "Holiny s riedkou vegetaciou alebo bez vegetacie"@sk ,
+                          "Open spaces with little or no vegetation"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc331
+cclc:clc331 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc33 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.3.1"^^cclc:CorineValue ;
+            skos:definition """Beaches, dunes and expanses of sand or pebble in coastal or continental locations, including beds of stream channels with torrential regime.
 Extension:
- Supra-littoral beaches and dune developed at the back of the beach from high water mark toward lands. 
+ Supra-littoral beaches and dune developed at the back of the beach from high water mark toward lands.
 This heading includes:
  river dune formation in the immediate vicinity of great rivers;
  inland and lacustrine dunes;
@@ -710,14 +915,17 @@ This heading excludes:
  humid dune-slacks (class 411);
  un-vegetated gravels on steep alpine mountain side (class 332);
  vegetated islands inside stream beds (class 3xx)."""@en ;
-    skos:notation "3.3.1"^^cclc:CorineValue ;
-    skos:prefLabel "Beaches, dunes, sands"@en,
-        "Plaze, duny, piesky"@sk .
+            skos:prefLabel "Beaches, dunes, sands"@en ,
+                           "Plaze, duny, piesky"@sk .
 
-cclc:clc332 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc33 ;
-    skos:definition """Scree, cliffs, rock outcrops, including active erosion, rocks and reef flats situated above the high-water mark. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc332
+cclc:clc332 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc33 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.3.2"^^cclc:CorineValue ;
+            skos:definition """Scree, cliffs, rock outcrops, including active erosion, rocks and reef flats situated above the high-water mark.
 This heading includes:
  unvegetated abandoned extraction sites;
  regs and hamadas in north-African area;
@@ -730,21 +938,23 @@ This heading excludes:
  white dunes (class 331);
  medio-littoral rocky sea beds (class 423);
  bare rocks with scattered trees that cover more than 10% of the surface (class 324)."""@en ;
-    skos:notation "3.3.2"^^cclc:CorineValue ;
-    skos:prefLabel "Bare rocks"@en,
-        "Skaly"@sk .
+            skos:prefLabel "Bare rocks"@en ,
+                           "Skaly"@sk .
 
-cclc:clc333 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc33 ;
-    skos:definition """
-Includes steppes, tundra and bad lands. Scattered high-altitude vegetation. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc333
+cclc:clc333 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc33 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.3.3"^^cclc:CorineValue ;
+            skos:definition """Includes steppes, tundra and bad lands. Scattered high-altitude vegetation.
 Extension:
- Scattered vegetation is composed of gramineous and/or ligneous and semi-ligneous species for determining the ground cover percentage, excluding cryptogams. 
+ Scattered vegetation is composed of gramineous and/or ligneous and semi-ligneous species for determining the ground cover percentage, excluding cryptogams.
 This heading includes:
  sparsely vegetated and instable areas of stones, boulders, or rubble on steep slopes where vegetated layer covers between 15 % and 50 % of the surface;
  sub-desertic steppes with gramineous species (Artemisia spp.) mixed with alfa (Stipa spp.) when they cover between 15 % and 50 % of the surface;
- vegetation of "lapie" areas or limestone paving;
+ vegetation of \"lapie\" areas or limestone paving;
  bare soils inside military training areas;
  karstic areas of gramineous, ligneous and semi-ligneous vegetation.
 This heading excludes:
@@ -752,38 +962,67 @@ This heading excludes:
  areas where ground covers more than 85 % of the surface (class 332);
  areas where vegetated layer covers more than 50 % of the surface (class 321);
  dense alfa (stipa) coverage (class 321)."""@en ;
-    skos:notation "3.3.3"^^cclc:CorineValue ;
-    skos:prefLabel "Sparsely vegetated areas"@en,
-        "Arealy s riedkou vegetaciou"@sk .
+            skos:prefLabel "Arealy s riedkou vegetaciou"@sk ,
+                           "Sparsely vegetated areas"@en .
 
-cclc:clc334 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc33 ;
-    skos:definition """Areas affected by recent fires, still mainly black.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc334
+cclc:clc334 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc33 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.3.4"^^cclc:CorineValue ;
+            skos:definition """Areas affected by recent fires, still mainly black.
 This heading includes:
  burns which are younger than three years and when they are still visible in the satellite images;
  all natural and semi-natural vegetated areas.
 This heading excludes:
  human farming management by burning arable lands (class 211)."""@en ;
-    skos:notation "3.3.4"^^cclc:CorineValue ;
-    skos:prefLabel "Burnt areas"@en,
-        "Spaleniska"@sk .
+            skos:prefLabel "Burnt areas"@en ,
+                           "Spaleniska"@sk .
 
-cclc:clc335 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc33 ;
-    skos:definition "Land covered by glaciers or permanent snowfields."@en ;
-    skos:notation "3.3.5"^^cclc:CorineValue ;
-    skos:prefLabel "Glaciers and perpetual snow"@en,
-        "Ladovce a trvaly sneh"@sk .
 
-cclc:clc411 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc41 ;
-    skos:definition """
-Low-lying land usually flooded in winter and more or less saturated by water all year round. 
+###  http://www.semanticweb.org/crima/crima-clc#clc335
+cclc:clc335 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc33 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "3.3.5"^^cclc:CorineValue ;
+            skos:definition "Land covered by glaciers or permanent snowfields."@en ;
+            skos:prefLabel "Glaciers and perpetual snow"@en ,
+                           "Ladovce a trvaly sneh"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc4
+cclc:clc4 rdf:type owl:NamedIndividual ,
+                   cclc:CORINE-Class_level1 ;
+          skos:inScheme cclc:corine-land-cover-classification ;
+          skos:notation "4"^^cclc:CorineValue ;
+          skos:definition "Any area dominated by water"@en ;
+          skos:prefLabel "Wetlands"@en ,
+                         "Zamokrene arealy"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc41
+cclc:clc41 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc4 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "4.1"^^cclc:CorineValue ;
+           skos:definition "Non-forested areas either partially, seasonally or permanently waterlogged. The water may be stagnant or circulating."@en ;
+           skos:prefLabel "Inland wetlands"@en ,
+                          "Vnutrozemske vody"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc411
+cclc:clc411 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc41 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "4.1.1"^^cclc:CorineValue ;
+            skos:definition """Low-lying land usually flooded in winter and more or less saturated by water all year round.
 Extension:
- Non-forested areas of low-lying land flooded or floodable by fresh, stagnant or circulating water. Covered by a specific low ligneous, semi-ligneous or herbaceous vegetation. 
+ Non-forested areas of low-lying land flooded or floodable by fresh, stagnant or circulating water. Covered by a specific low ligneous, semi-ligneous or herbaceous vegetation.
 This heading includes:
  Fens and transitional bogs without peat deposition or on peaty ground (peat layer is less than 30 cm thick) with specific vegetation composed of reeds, bulrushes, rushes, willows, sedges and tall herbs, sphagnum hummocks, often with alder or willows and other water plants;
  marsh vegetation located in margin zones of raised bogs;
@@ -801,14 +1040,17 @@ This heading excludes:
  polders with reticulated channels bordered by hydrophitic vegetation (class 2xx);
  humid forests with a crown cover more than 30 % (class 31x);
  low floating aquatic vegetation (class 512)."""@en ;
-    skos:notation "4.1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Inland marshes"@en,
-        "Mociare"@sk .
+            skos:prefLabel "Inland marshes"@en ,
+                           "Mociare"@sk .
 
-cclc:clc412 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc41 ;
-    skos:definition """Peatland consisting mainly of decomposed moss and vegetable matter. May or may not be exploited. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc412
+cclc:clc412 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc41 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "4.1.2"^^cclc:CorineValue ;
+            skos:definition """Peatland consisting mainly of decomposed moss and vegetable matter. May or may not be exploited.
 This heading includes:
  minerotrophic peat bogs fed by ground water or streams with mosses (Drepanocladus spp.) and Carex spp. or schoenus in alcaline bogs with occurence of Salix spp., Betula spp. and Alnus spp.;
  ombrotrophic peat bogs fed only by direct precipitation with sphagnum species which are abondant and dominant with other acido philous plants such as Eriophorum vaginatum, Scirpus spp., Carex spp., Vaccinium oxicoccos, Andromeda spp., Drosera spp. and lichens;
@@ -823,70 +1065,115 @@ This heading excludes:
  drained peat bogs (class 411);
  abandoned peat milling areas (class 32x);
  upland areas of blanket peat bogs where peat does not accumulate dominated by nardus or other deciduous grasses (class 321)."""@en ;
-    skos:notation "4.1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Peatbogs"@en,
-        "Raseliniska"@sk .
+            skos:prefLabel "Peatbogs"@en ,
+                           "Raseliniska"@sk .
 
-cclc:clc421 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc42 ;
-    skos:definition """Vegetated low-lying areas, above the high-tide line, susceptible to flooding by sea water. Often in the process of filling in gradually being colonized by halophytic plants.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc42
+cclc:clc42 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc4 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "4.2"^^cclc:CorineValue ;
+           skos:definition "Non-wooded areas either tidally, seasonally or permanently waterlogged with brackish or saline water."@en ;
+           skos:prefLabel "Maritime wetlands"@en ,
+                          "Primorske mociare"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc421
+cclc:clc421 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc42 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "4.2.1"^^cclc:CorineValue ;
+            skos:definition """Vegetated low-lying areas, above the high-tide line, susceptible to flooding by sea water. Often in the process of filling in gradually being colonized by halophytic plants.
 This heading includes:
  Intertidal sand, silt or mud-based habitats colonized by halophytic grasses such as: Puccinelia spp., Spartina spp, rushes such as Juncus spp. and Blismus rufus and herbs such as Limonium spp., Aster tripolium, Salicornia spp. Includes all flowering plant communities which are submerged by high tides and some stage of the annual cycle;
  salt meadow shep areas.
 This heading excludes:
  inland salt marshes with halophile and gypsophile communities (classes 333 or 411);
  humid meadows of low vegetation dominated by Joncus gerardis, Carex divisa, Hordeum marinum or Trifolium spp. and Lotus spp. of the edge of brackish lagoons (class 411)."""@en ;
-    skos:notation "4.2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Salt marshes"@en,
-        "Slane mociare"@sk .
+            skos:prefLabel "Salt marshes"@en ,
+                           "Slane mociare"@sk .
 
-cclc:clc422 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc42 ;
-    skos:definition """
-Salt pans, active or in process of abandonment. Sections of salt marsh exploited for the production of salt by evaporation. They are clearly distinguishable from the rest of the marsh by their parcellation and embankment systems.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc422
+cclc:clc422 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc42 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "4.2.2"^^cclc:CorineValue ;
+            skos:definition """Salt pans, active or in process of abandonment. Sections of salt marsh exploited for the production of salt by evaporation. They are clearly distinguishable from the rest of the marsh by their parcellation and embankment systems.
 This heading includes:
  salines organized for breeding shellfish, fishes."""@en ;
-    skos:notation "4.2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Salines"@en,
-        "Saliny"@sk .
+            skos:prefLabel "Salines"@en ,
+                           "Saliny"@sk .
 
-cclc:clc423 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc42 ;
-    skos:definition """
-Generally un-vegetated expenses of mud, sand or rock lying between high and low water mark. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc423
+cclc:clc423 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc42 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "4.2.3"^^cclc:CorineValue ;
+            skos:definition """Generally un-vegetated expenses of mud, sand or rock lying between high and low water mark.
 Extension:
- 0 m marine contour on maps. 
+ 0 m marine contour on maps.
 This heading includes:
  intertidal seaweed-covered boulders, un-vegetated shores, covered by shattered rocks or boulders, cliffs and out cropping base-rocks.
 This heading excludes:
  salt marshes (class 421);
  broadening of rivers entering the sea (class 522);
  part of lagoon area directly connected to the sea which is artificially separated (class 521)."""@en ;
-    skos:notation "4.2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Intertidal flats"@en,
-        "Prilivove uzemia"@sk .
+            skos:prefLabel "Intertidal flats"@en ,
+                           "Prilivove uzemia"@sk .
 
-cclc:clc511 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc51 ;
-    skos:definition """Natural or artificial water courses serving as water drainage channels. Includes canals. Minimum width for inclusion: 100 m.
+
+###  http://www.semanticweb.org/crima/crima-clc#clc5
+cclc:clc5 rdf:type owl:NamedIndividual ,
+                   cclc:CORINE-Class_level1 ;
+          skos:inScheme cclc:corine-land-cover-classification ;
+          skos:notation "5"^^cclc:CorineValue ;
+          skos:definition "Any body of water"@en ;
+          skos:prefLabel "Vody"@sk ,
+                         "Water bodies"@en .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc51
+cclc:clc51 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc5 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "5.1"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering inland water courses and water bodies."@en ;
+           skos:prefLabel "Inland waters"@en ,
+                          "Vnutrozemske vody"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc511
+cclc:clc511 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc51 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "5.1.1"^^cclc:CorineValue ;
+            skos:definition """Natural or artificial water courses serving as water drainage channels. Includes canals. Minimum width for inclusion: 100 m.
 This heading includes:
  sand or gravel accumulations along streams < 25 ha;
  rivers which have been canalized.
 This heading excludes:
  areas of water bodies connected to water courses (class 512);
  hydroelectric factory located on water courses > 25 ha (class 121)."""@en ;
-    skos:notation "5.1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Water courses"@en,
-        "Vodne toky"@sk .
+            skos:prefLabel "Vodne toky"@sk ,
+                           "Water courses"@en .
 
-cclc:clc512 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc51 ;
-    skos:definition """Natural or artificial stretches of water. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc512
+cclc:clc512 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc51 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "5.1.2"^^cclc:CorineValue ;
+            skos:definition """Natural or artificial stretches of water.
 This heading includes:
  low floating aquatic vegetation with species such as Nuphar spp., Nymphaea spp., Potamageton spp. and Lemna spp.;
  archipelago of lakes inside land areas;
@@ -894,14 +1181,28 @@ This heading includes:
 This heading excludes:
  surface plant species characteristic of standing water (e.g. Typha latifolia, Carex riparia, Glyceria maxima, Sparganium erectum and Phragmites communis (class 411);
  liquid wastes (class 132)."""@en ;
-    skos:notation "5.1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Water bodies"@en,
-        "Vodne plochy"@sk .
+            skos:prefLabel "Vodne plochy"@sk ,
+                           "Water bodies"@en .
 
-cclc:clc521 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc52 ;
-    skos:definition """Stretches of salt or brackish water in coastal areas, which are separated from the sea by a tongue of land or other similar topography. These water bodies can be connected to the sea at limited points, either permanently or for parts of the year only. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc52
+cclc:clc52 rdf:type owl:NamedIndividual ,
+                    cclc:CORINE-Class_level2 ;
+           skos:broader cclc:clc5 ;
+           skos:inScheme cclc:corine-land-cover-classification ;
+           skos:notation "5.2"^^cclc:CorineValue ;
+           skos:definition "The level 2 concept covering coastal lagoons, estuaries, sea and ocean"@en ;
+           skos:prefLabel "Marine waters"@en ,
+                          "Morske vody"@sk .
+
+
+###  http://www.semanticweb.org/crima/crima-clc#clc521
+cclc:clc521 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc52 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "5.2.1"^^cclc:CorineValue ;
+            skos:definition """Stretches of salt or brackish water in coastal areas, which are separated from the sea by a tongue of land or other similar topography. These water bodies can be connected to the sea at limited points, either permanently or for parts of the year only.
 This heading includes:
  only water surface, vegetation fringe should be separated;
  estuarine lagoon;
@@ -912,245 +1213,50 @@ This heading excludes:
  water courses (class 511);
  beaches (class 331);
  fresh water bodies along shore line (class 512)."""@en ;
-    skos:notation "5.2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Coastal lagoons"@en,
-        "Pobrezne laguny"@sk .
+            skos:prefLabel "Coastal lagoons"@en ,
+                           "Pobrezne laguny"@sk .
 
-cclc:clc522 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc52 ;
-    skos:definition """The mouth of a river, within which the tide ebbs and flows. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc522
+cclc:clc522 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc52 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "5.2.2"^^cclc:CorineValue ;
+            skos:definition """The mouth of a river, within which the tide ebbs and flows.
 This heading includes:
  the water and the channel bed with the fringing vegetation zone > 25 ha.
 This heading excludes:
  bays and narrow channels (class 523);
  fjords or fiards, ryas and straits (class 523);
  fringing vegetation along the estuary channel bed > 25 ha (class 421)."""@en ;
-    skos:notation "5.2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Estuaries"@en,
-        "Ustia riek"@sk .
+            skos:prefLabel "Estuaries"@en ,
+                           "Ustia riek"@sk .
 
-cclc:clc523 a owl:NamedIndividual,
-        cclc:CORINE-Class_level3 ;
-    skos:broader cclc:clc52 ;
-    skos:definition """Zones seaward of the lowest tide limit. 
+
+###  http://www.semanticweb.org/crima/crima-clc#clc523
+cclc:clc523 rdf:type owl:NamedIndividual ,
+                     cclc:CORINE-Class_level3 ;
+            skos:broader cclc:clc52 ;
+            skos:inScheme cclc:corine-land-cover-classification ;
+            skos:notation "5.2.3"^^cclc:CorineValue ;
+            skos:definition """Zones seaward of the lowest tide limit.
 This heading excludes:
  archipelago of lands located inside sea/ocean areas;
  sea water areas as part of port areas which include sea water to reach zone > 25 ha."""@en ;
-    skos:notation "5.2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Sea and ocean"@en,
-        "Moria a oceany"@sk .
+            skos:prefLabel "Moria a oceany"@sk ,
+                           "Sea and ocean"@en .
 
-cclc:clc23 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc2 ;
-    skos:definition "The level 2 concept covering one level 3 concept of Pastures"@en ;
-    skos:narrower cclc:clc231 ;
-    skos:notation "2.3"^^cclc:CorineValue ;
-    skos:prefLabel "Pastures"@en,
-        "Arealy trav"@sk .
 
-cclc:clc4 a owl:NamedIndividual,
-        cclc:CORINE-Class_level1 ;
-    skos:definition "Any area dominated by water"@en ;
-    skos:narrower cclc:clc41,
-        cclc:clc42 ;
-    skos:notation "4"^^cclc:CorineValue ;
-    skos:prefLabel "Wetlands"@en,
-        "Zamokrene arealy"@sk .
+###  http://www.semanticweb.org/crima/crima-clc#corine-land-cover-classification
+cclc:corine-land-cover-classification rdf:type owl:NamedIndividual ,
+                                               cclc:CORINE-classification ;
+                                      cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+                                      dcterms:description "A rendition of the CORINE nomenclature as a SKOS concept scheme"@en ;
+                                      dcterms:issued "2015-03-23"^^xsd:date ;
+                                      dcterms:modified "2015-04-03"^^xsd:date ;
+                                      dcterms:source "http://sia.eionet.europa.eu/CLC2000/classes"^^xsd:anyURI ;
+                                      dcterms:title "The CORINE land cover nomenclature expressed in SKOS"@en .
 
-cclc:clc11 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc1 ;
-    skos:definition "The level 2 concept to cover continuous or discontinuous urban fabric."@en ;
-    skos:narrower cclc:clc111,
-        cclc:clc112 ;
-    skos:notation "1.1"^^cclc:CorineValue ;
-    skos:prefLabel "Urban fabric"@en,
-        "Urbanizovana zastavba"@sk .
 
-cclc:clc14 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc1 ;
-    skos:definition "Green urban areas, sport and leisure facilities"@en ;
-    skos:narrower cclc:clc141,
-        cclc:clc142 ;
-    skos:notation "1.4"^^cclc:CorineValue ;
-    skos:prefLabel "Artificial, non-agricultural vegetated areas"@en,
-        "Umela nepolnohospodarska zelen "@sk .
-
-cclc:clc41 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc4 ;
-    skos:definition "Non-forested areas either partially, seasonally or permanently waterlogged. The water may be stagnant or circulating."@en ;
-    skos:narrower cclc:clc411,
-        cclc:clc412 ;
-    skos:notation "4.1"^^cclc:CorineValue ;
-    skos:prefLabel "Inland wetlands"@en,
-        "Vnutrozemske vody"@sk .
-
-cclc:clc5 a owl:NamedIndividual,
-        cclc:CORINE-Class_level1 ;
-    skos:definition "Any body of water"@en ;
-    skos:narrower cclc:clc51,
-        cclc:clc52 ;
-    skos:notation "5"^^cclc:CorineValue ;
-    skos:prefLabel "Water bodies"@en,
-        "Vody"@sk .
-
-cclc:clc51 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc5 ;
-    skos:definition "The level 2 concept covering inland water courses and water bodies."@en ;
-    skos:narrower cclc:clc511,
-        cclc:clc512 ;
-    skos:notation "5.1"^^cclc:CorineValue ;
-    skos:prefLabel "Inland waters"@en,
-        "Vnutrozemske vody"@sk .
-
-cclc:clc13 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc1 ;
-    skos:definition "Mineral extraction sites, dump sites, construction sites"@en ;
-    skos:narrower cclc:clc131,
-        cclc:clc132,
-        cclc:clc133 ;
-    skos:notation "1.3"^^cclc:CorineValue ;
-    skos:prefLabel "The level 2 concept covering mines, dump and construction sites"@en,
-        "Arealy tazby, skladok a vystavby"@sk .
-
-cclc:clc21 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc2 ;
-    skos:definition "The level 2 concept covering cultivated areas regularly ploughed and generally under a rotation system."@en ;
-    skos:narrower cclc:clc211,
-        cclc:clc212,
-        cclc:clc213 ;
-    skos:notation "2.1"^^cclc:CorineValue ;
-    skos:prefLabel "Arable land"@en,
-        "Orna poda"@sk .
-
-cclc:clc22 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc2 ;
-    skos:definition "Crops not under a rotation system which provide repeated harvests and occupy the land for a long period before it is ploughed and replanted: mainly plantations of woody crops. Excludes pastures, grazing lands and forests."@en ;
-    skos:narrower cclc:clc221,
-        cclc:clc222,
-        cclc:clc223 ;
-    skos:notation "2.2"^^cclc:CorineValue ;
-    skos:prefLabel "Permanent crops"@en,
-        "Trvale plodiny"@sk .
-
-cclc:clc3 a owl:NamedIndividual,
-        cclc:CORINE-Class_level1 ;
-    skos:definition "Wooded and open areas"@en ;
-    skos:narrower cclc:clc31,
-        cclc:clc32,
-        cclc:clc33 ;
-    skos:notation "3"^^cclc:CorineValue ;
-    skos:prefLabel "Forests and semi-natural areas"@en,
-        "Lesne a poloprirodne arealy"@sk .
-
-cclc:clc31 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc3 ;
-    skos:definition "The level 2 concept covering broadleaved, coniferous and mixed forest."@en ;
-    skos:narrower cclc:clc311,
-        cclc:clc312,
-        cclc:clc313 ;
-    skos:notation "3.1"^^cclc:CorineValue ;
-    skos:prefLabel "Forests"@en,
-        "Lesy"@sk .
-
-cclc:clc52 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc5 ;
-    skos:definition "The level 2 concept covering coastal lagoons, estuaries, sea and ocean"@en ;
-    skos:narrower cclc:clc521,
-        cclc:clc522,
-        cclc:clc523 ;
-    skos:notation "5.2"^^cclc:CorineValue ;
-    skos:prefLabel "Marine waters"@en,
-        "Morske vody"@sk .
-
-cclc:clc1 a owl:NamedIndividual,
-        cclc:CORINE-Class_level1 ;
-    skos:definition "Any artificial land surface"@en ;
-    skos:narrower cclc:clc11,
-        cclc:clc12,
-        cclc:clc13,
-        cclc:clc14 ;
-    skos:notation "1"^^cclc:CorineValue ;
-    skos:prefLabel "Artificial surfaces"@en,
-        "Umele povrchy"@sk .
-
-cclc:clc12 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc1 ;
-    skos:definition "The level 2 concept covering industrial or commercial units, road and rail networks and associated land, port areas, airports"@en ;
-    skos:narrower cclc:clc121,
-        cclc:clc122,
-        cclc:clc123,
-        cclc:clc124 ;
-    skos:notation "1.2"^^cclc:CorineValue ;
-    skos:prefLabel "Industrial, commercial and transport units"@en,
-        "Priemysel, komercia a transport"@sk .
-
-cclc:clc2 a owl:NamedIndividual,
-        cclc:CORINE-Class_level1 ;
-    skos:definition "Any area used for agriculture"@en ;
-    skos:narrower cclc:clc21,
-        cclc:clc22,
-        cclc:clc23,
-        cclc:clc24 ;
-    skos:notation "2"^^cclc:CorineValue ;
-    skos:prefLabel "Agricultural areas"@en,
-        "Polnohospodarske arealy"@sk .
-
-cclc:clc24 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc2 ;
-    skos:definition "The level 2 concept covering Annual crops associated with permanent crops, Complex cultivation, Land principally occupied by agriculture, with significant areas of natural vegetation, Agro-forestry areas"@en ;
-    skos:narrower cclc:clc241,
-        cclc:clc242,
-        cclc:clc243,
-        cclc:clc244 ;
-    skos:notation "2.4"^^cclc:CorineValue ;
-    skos:prefLabel "Heterogeneous agricultural areas"@en,
-        "Heterogenne polnohospodarske arealy"@sk .
-
-cclc:clc32 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc3 ;
-    skos:definition "The level 2 concept covering natural grassland, moors and heatland, sclerophyllous vegetation anad transitional woodland/shrub."@en ;
-    skos:narrower cclc:clc321,
-        cclc:clc322,
-        cclc:clc323,
-        cclc:clc324 ;
-    skos:notation "3.2"^^cclc:CorineValue ;
-    skos:prefLabel "Shrub and/or herbaceous vegetation associations"@en,
-        "Kroviny a travne arealy"@sk .
-
-cclc:clc42 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc4 ;
-    skos:definition "Non-wooded areas either tidally, seasonally or permanently waterlogged with brackish or saline water."@en ;
-    skos:narrower cclc:clc421,
-        cclc:clc422,
-        cclc:clc423 ;
-    skos:notation "4.2"^^cclc:CorineValue ;
-    skos:prefLabel "Maritime wetlands"@en,
-        "Primorske mociare"@sk .
-
-cclc:clc33 a owl:NamedIndividual,
-        cclc:CORINE-Class_level2 ;
-    skos:broader cclc:clc3 ;
-    skos:definition "The level 2 concept covering beaches, bare rock, sparsely vegetated areas, burnt areas, glaciers and perpetual snow."@en ;
-    skos:narrower cclc:clc331,
-        cclc:clc332,
-        cclc:clc333,
-        cclc:clc334,
-        cclc:clc335 ;
-    skos:notation "3.3"^^cclc:CorineValue ;
-    skos:prefLabel "Open spaces with little or no vegetation"@en,
-        "Holiny s riedkou vegetaciou alebo bez vegetacie"@sk .
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
