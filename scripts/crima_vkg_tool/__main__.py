@@ -3,6 +3,7 @@ import logging
 import click
 
 from crima_vkg_tool.catalog import cli_catalog
+from crima_vkg_tool.cclc import cli_cclc
 from crima_vkg_tool.download import cli_download
 from crima_vkg_tool.ecv import cli_ecv
 from crima_vkg_tool.hip import cli_hip
@@ -24,6 +25,7 @@ cli.add_command(cli_catalog)
 cli.add_command(cli_download)
 cli.add_command(cli_ecv)
 cli.add_command(cli_hip)
+cli.add_command(cli_cclc)
 cli.add_command(cli_merge)
 cli.add_command(cli_mermaid)
 cli.add_command(cli_sanitize)

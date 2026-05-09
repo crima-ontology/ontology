@@ -97,8 +97,8 @@ def _get(file: str, url: str | None, *, fmt: str | None = None, iri: str | URIRe
             return
         _LOGGER.info("Processing %s: %s", file, url)
         graph = create_graph()
-        for prefix, ns in Graph(bind_namespaces = "rdflib").namespaces():
-            if prefix != "schema": # we use the HTTP version of Schema.org
+        for prefix, ns in Graph(bind_namespaces="rdflib").namespaces():
+            if prefix != "schema":  # we use the HTTP version of Schema.org
                 graph.namespace_manager.bind(prefix, ns)
         if url:
             headers = {} if fmt else {"Accept": "text/turtle"}

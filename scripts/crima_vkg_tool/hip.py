@@ -187,10 +187,7 @@ def _reshape_terms(graph: Graph) -> None:
             replacements[s] = None
 
     # Replace bibo:Document/bibo:Image arbitrary IRIs with a templated one, moving original IRI as bibo:uri value
-    for s in (
-        set(graph.subjects(RDF.type, BIBO.Document)) |
-        set(graph.subjects(RDF.type, BIBO.Image))
-    ):
+    for s in set(graph.subjects(RDF.type, BIBO.Document)) | set(graph.subjects(RDF.type, BIBO.Image)):
         iri = graph.value(s, DCTERMS.identifier) or str(s)
         graph.remove((s, DCTERMS.identifier, None))
         graph.add((s, BIBO.uri, Literal(iri, datatype=XSD.anyURI)))
@@ -379,7 +376,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 "title": graph.value(SCHEME, DCTERMS.title).value,
                 "description": graph.value(SCHEME, DCTERMS.description).value,
                 "version": "2025 update; https://www.undrr.org/publication/"
-                    "2025-update-undrr-isc-hazard-information-profiles-hips"
+                "2025-update-undrr-isc-hazard-information-profiles-hips",
             }
             f.write(dedent(_HIP_OBDA_TEMPLATE.substitute(**template_args)).lstrip().encode("utf-8"))
 
@@ -392,7 +389,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 OPTIONAL { ?iri dcterms:accessRights ?access_rights }
                 OPTIONAL { ?iri rdfs:label ?label }
                 BIND(STRAFTER(STR(?iri), STR(hip-document:)) AS ?id)
-            } ORDER BY ?id"""
+            } ORDER BY ?id""",
         )
 
         emit_csv(
@@ -402,7 +399,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 ?iri a skos:Concept ; rdfs:label ?label
                 FILTER (STRSTARTS(STR(?iri), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#"))
                 BIND (STRAFTER(STR(?iri), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#") AS ?id)
-            } ORDER BY ?id"""
+            } ORDER BY ?id""",
         )
 
         emit_csv(
@@ -411,7 +408,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
             SELECT  ?id ?label {
                 ?iri a hip-schema:HazardType ; skos:prefLabel ?label
                 BIND (STRAFTER(STR(?iri), STR(hip-type:)) AS ?id)
-            } ORDER BY ?id"""
+            } ORDER BY ?id""",
         )
 
         emit_csv(
@@ -421,7 +418,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 ?iri a hip-schema:HazardCluster ; skos:broader ?hazard_type ; skos:prefLabel ?label
                 BIND (STRAFTER(STR(?iri), STR(hip-cluster:)) AS ?id)
                 BIND (STRAFTER(STR(?hazard_type), STR(hip-type:)) AS ?hazard_type_id)
-            } ORDER BY ?id"""
+            } ORDER BY ?id""",
         )
 
         emit_csv(
@@ -454,7 +451,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 BIND (STRAFTER(STR(?hazard_type), STR(hip-type:)) AS ?hazard_type_id)
                 BIND (STRAFTER(STR(?hazard_cluster), STR(hip-cluster:)) AS ?hazard_cluster_id)
             }
-            ORDER BY ?id"""
+            ORDER BY ?id""",
         )
 
         emit_csv(
@@ -463,7 +460,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
             SELECT ?specific_hazard_id ?alt_label {
                 ?iri a hip-schema:SpecificHazard ; skos:altLabel ?alt_label
                 BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?specific_hazard_id)
-            } ORDER BY ?specific_hazard_id ?alt_label"""
+            } ORDER BY ?specific_hazard_id ?alt_label""",
         )
 
         emit_csv(
@@ -475,7 +472,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 { ?cause xkos:causes ?effect } UNION { ?effect xkos:causedBy ?cause }
                 BIND (STRAFTER(STR(?cause), STR(hip-term:)) AS ?cause_id)
                 BIND (STRAFTER(STR(?effect), STR(hip-term:)) AS ?effect_id)
-            } ORDER BY ?cause_id ?effect_id"""
+            } ORDER BY ?cause_id ?effect_id""",
         )
 
         emit_csv(
@@ -499,7 +496,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 }
             }
             GROUP BY ?specific_hazard_id ?document_id
-            ORDER BY ?specific_hazard_id ?document_id"""
+            ORDER BY ?specific_hazard_id ?document_id""",
         )
 
         emit_csv(
@@ -510,7 +507,7 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 BIND (STRAFTER(STR(?iri), STR(hip-term:)) AS ?specific_hazard_id)
                 BIND (STRAFTER(STR(?substance), "https://unece.org/transport/dangerous-goods/ghs-rev10-2023#")
                       AS ?substance_id)
-            } ORDER BY ?specific_hazard_id ?substance_id"""
+            } ORDER BY ?specific_hazard_id ?substance_id""",
         )
 
 
