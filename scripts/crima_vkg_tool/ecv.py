@@ -7,11 +7,16 @@ import click
 from crima_vkg_tool.util import create_graph, rdf_read
 
 
-@click.command(name="ecv")
+@click.group(name="ecv")
+def cli_ecv() -> None:
+    """Utilities related to Essential Climate Variables (ECV) Abox data."""
+
+
+@cli_ecv.command(name="csv")
 @click.argument("input_file", metavar="INPUT_FILE")
 @click.option("-o", "--output-file", metavar="FILE", default="ecv.zip", help="output ZIP file")
 @click.option("-p", "--prefix", metavar="PREFIX", default="", help="optional prefix for generated SQL tables")
-def cli_ecv(input_file: str, output_file: str, prefix: str = "") -> None:
+def cli_ecv_csv(input_file: str, output_file: str, prefix: str = "") -> None:
     """
     Generate a ZIP with equivalent CSV files, SQL schema, and OBDA mappings for ECV RDF data.
 
@@ -60,11 +65,12 @@ def cli_ecv(input_file: str, output_file: str, prefix: str = "") -> None:
         emit_csv(
             "variable",
             """
-            SELECT ?id ?subdomain_id ?label ?definition {
+            SELECT ?id ?domain_id ?subdomain_id ?label ?definition {
                 ?iri a ecv:ECV-variable ; skos:broader ?subdomain ; rdfs:label ?label .
-                ?subdomain a ecv:ECV-subdomain .
+                ?subdomain a ecv:ECV-subdomain ; skos:broader ?domain .
                 OPTIONAL { ?iri skos:definition ?definition }
                 BIND(STRAFTER(STR(?iri), STR(ecv:)) AS ?id)
+                BIND(STRAFTER(STR(?domain), STR(ecv:)) AS ?domain_id)
                 BIND(STRAFTER(STR(?subdomain), STR(ecv:)) AS ?subdomain_id)
             } ORDER BY ?id
         """,
@@ -125,10 +131,12 @@ _ECV_SQL_TEMPLATE = Template("""
 
     CREATE TABLE ${prefix}variable (
         id VARCHAR NOT NULL,
+        domain_id VARCHAR NOT NULL,
         subdomain_id VARCHAR NOT NULL,
         label VARCHAR NOT NULL,
         definition VARCHAR,
         PRIMARY KEY (id),
+        FOREIGN KEY (domain_id) REFERENCES ${prefix}domain(id),
         FOREIGN KEY (subdomain_id) REFERENCES ${prefix}subdomain(id)
     );
 
@@ -210,6 +218,7 @@ _ECV_OBDA_TEMPLATE = Template("""
     mappingId   ${prefix}variable
     target      ecv:{id} a ecv:ECV-variable ;
                     skos:broader ecv:{subdomain_id} ;
+                    skos:broaderTransitive ecv:{domain_id} ;
                     rdfs:label "{label}"@en ;
                     skos:definition "{definition}"@en .
     source      SELECT * FROM ${prefix}variable

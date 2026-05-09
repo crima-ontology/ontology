@@ -24,8 +24,9 @@ Options:
 
 Commands:
   catalog   Generate catalog-v001.xml files for use in Protégé / OWL API.
+  cclc      Utilities related to CRIMA CORINE Land Cover (CCLC) Abox data.
   download  Download external vocabularies referenced by the CRIMA ontology into the directory specified.
-  ecv       Generate a ZIP with equivalent CSV files, SQL schema, and OBDA mappings for ECV RDF data.
+  ecv       Utilities related to Essential Climate Variables (ECV) Abox data.
   hip       Utilities related to HIP Abox data.
   merge     Merge multiple OWL/RDF files into a single one.
   mermaid   Generate a Markdown + Mermaid diagram of ontology voaf:reliesOn relations.
@@ -86,7 +87,7 @@ crima-vkg-tool mermaid \
 
 The following command will create a ZIP `unibz_ecv.zip` containing equivalent CSV files (one per table, prefixed by `unibz_ecv_`), a SQL schema, and OBDA mapping for ECV ABox data residing in `ontology/modules/ecv-data.ttl`:
 ```bash
-crima-vkg-tool ecv -o unibz_ecv.zip -p unibz_ecv_ ontology/modules/ecv-data.ttl
+crima-vkg-tool ecv csv -o unibz_ecv.zip -p unibz_ecv_ ontology/modules/ecv-data.ttl
 ```
 
 ## Dealing with HIP Data
@@ -104,6 +105,13 @@ crima-vkg-tool hip reshape hip-crawl.ttl | crima-vkg-tool sanitize -o ontology/m
 The following command will create a ZIP `unibz_hip.zip` containing equivalent CSV files (one per table, prefixed by `unibz_hip_`), a SQL schema, and OBDA mapping for reshaped HIP ABox data residing in `ontology/modules/hip-data.ttl`:
 ```bash
 crima-vkg-tool hip csv -o unibz_hip.zip -p unibz_hip_ ontology/modules/hip-data.ttl
+```
+
+## Dealing with CCLC Data
+
+The following command will create a ZIP `unibz_cclc.zip` containing equivalent CSV files (one table, prefixed by `unibz_cclc_`), a SQL schema, and OBDA mapping for CCLC ABox data residing in `ontology/modules/cclc-data.ttl`:
+```bash
+crima-vkg-tool cclc csv -o unibz_cclc.zip -p unibz_cclc_ ontology/modules/cclc-data.ttl
 ```
 
 ## Sanitize an RDF/OWL File
