@@ -1,4 +1,9 @@
 ///
+2026-05-10
+• ccore:Adaptantion --renamed as--> ccore:AdapatationOption
+• ccore:reduces [domain: ccore:AdapatationOption; range: ccore:Vulnerability or ccore:Exposure] added
+
+///
 2026-05-08
 • ich:directMitigates, ich:directImpactsOn : added
 • CORINE Land Cover Classification : cclc.ttl (schema), cclc-data.ttl (data)

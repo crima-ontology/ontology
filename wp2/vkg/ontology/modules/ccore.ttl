@@ -208,6 +208,16 @@ participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPer
 :proxyContentFor rdf:type owl:ObjectProperty .
 
 
+###  http://www.semanticweb.org/crima/crima-core#reduces
+:reduces rdf:type owl:ObjectProperty ;
+         rdfs:domain :AdaptationOption ;
+         rdfs:range [ rdf:type owl:Class ;
+                      owl:unionOf ( :Exposure
+                                    :Vulnerability
+                                  )
+                    ] .
+
+
 ###  http://www.semanticweb.org/crima/crima-core#refersTo
 :refersTo rdf:type owl:ObjectProperty ;
           rdfs:domain [ rdf:type owl:Class ;
@@ -247,11 +257,11 @@ time:intervalOverlaps(T, T1) .""" .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-core#Adaptation
-:Adaptation rdf:type owl:Class ;
-            rdfs:isDefinedBy "IPCC, 2021: Annex VII: Glossary [Matthews, J.B.R., V. Möller, R. van Diemen, J.S. Fuglestvedt, V. Masson-Delmotte, C. Méndez, S. Semenov, A. Reisinger (eds.)]. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 2215-2256, doi:10.1017/9781009157896.022." ,
-                             "Noble, I.R., S. Huq, Y.A. Anokhin, J. Carmin, D. Goudou, F.P. Lansigan, B. Osman-Elasha, and A. Villamizar, 2014: Adaptation needs and options. In: Climate Change 2014: Impacts, Adaptation, and Vulnerability. Part A: Global and Sectoral Aspects. Contribution of Working Group II to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change[Field, C.B., V.R. Barros, D.J. Dokken, K.J. Mach, M.D. Mastrandrea, T.E. Bilir, M. Chatterjee, K.L. Ebi, Y.O. Estrada, R.C. Genova, B. Girma, E.S. Kissel, A.N. Levy, S. MacCracken, P.R. Mastrandrea, and L.L. White (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 833-868." ;
-            skos:definition "In human systems, the process of adjustment to actual or expected climate and its effects, in order to moderate harm or exploit beneficial opportunities. In natural systems, the process of adjustment to actual climate and its effects; human intervention may facilitate adjustment to expected climate and its effects. See also Adaptation options, Adaptive capacity and Maladaptive actions (Maladaptation)." .
+###  http://www.semanticweb.org/crima/crima-core#AdaptationOption
+:AdaptationOption rdf:type owl:Class ;
+                  dcterms:source "IPCC, 2021: Annex VII: Glossary [Matthews, J.B.R., V. Möller, R. van Diemen, J.S. Fuglestvedt, V. Masson-Delmotte, C. Méndez, S. Semenov, A. Reisinger (eds.)]. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 2215-2256, doi:10.1017/9781009157896.022." ,
+                                 "Noble, I.R., S. Huq, Y.A. Anokhin, J. Carmin, D. Goudou, F.P. Lansigan, B. Osman-Elasha, and A. Villamizar, 2014: Adaptation needs and options. In: Climate Change 2014: Impacts, Adaptation, and Vulnerability. Part A: Global and Sectoral Aspects. Contribution of Working Group II to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change[Field, C.B., V.R. Barros, D.J. Dokken, K.J. Mach, M.D. Mastrandrea, T.E. Bilir, M. Chatterjee, K.L. Ebi, Y.O. Estrada, R.C. Genova, B. Girma, E.S. Kissel, A.N. Levy, S. MacCracken, P.R. Mastrandrea, and L.L. White (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 833-868." ;
+                  skos:definition "In human systems, the process of adjustment to actual or expected climate and its effects, in order to moderate harm or exploit beneficial opportunities. In natural systems, the process of adjustment to actual climate and its effects; human intervention may facilitate adjustment to expected climate and its effects. See also Adaptation options, Adaptive capacity and Maladaptive actions (Maladaptation)." .
 
 
 ###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
