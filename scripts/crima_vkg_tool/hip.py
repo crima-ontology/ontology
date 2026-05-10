@@ -429,14 +429,15 @@ def cli_hip_csv(input_files: list[str], output_file: str, prefix: str = "") -> N
                 ?created ?modified ?relation
             {
                 ?iri a hip-schema:SpecificHazard ;
-                    skos:broader ?hazard_type , ?hazard_cluster ;
+                    skos:broader ?hazard_cluster ;
                     skos:prefLabel ?label ;
                     skos:definition ?definition ;
                     skos:note ?note ;
                     dcterms:created ?created ;
                     dcterms:modified ?modified .
+                ?hazard_cluster a hip-schema:HazardCluster ;
+                    skos:broader ?hazard_type .
                 ?hazard_type a hip-schema:HazardType .
-                ?hazard_cluster a hip-schema:HazardCluster .
                 OPTIONAL { ?iri dcterms:relation ?relation }
                 OPTIONAL { ?iri skos:scopeNote [ dcterms:type "drivers" ; xkos:plainText ?note_drivers ] }
                 OPTIONAL { ?iri skos:scopeNote [ dcterms:type "impacts" ; xkos:plainText ?note_impacts ] }
@@ -688,8 +689,8 @@ _HIP_OBDA_TEMPLATE = Template("""
                     dcterms:rights "Creative Commons CC BY 4.0" ;
                     owl:versionInfo "${version}"@en ;
                     skos:inScheme hip-glossary:HIP-classification-system ;
-                    skos:broader hip-type:{hazard_type_id} ;
-                    skos:broader hip-cluster:{hazard_cluster_id} .
+                    skos:broader hip-cluster:{hazard_cluster_id} ;
+                    skos:broaderTransitive hip-type:{hazard_type_id} .
     source      SELECT *, upper(id) AS id_upper FROM ${prefix}specific_hazard
 
     mappingId   unibz_hip_specific_hazard_note_drivers
