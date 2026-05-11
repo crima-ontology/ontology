@@ -12,7 +12,7 @@
 @prefix hip-schema: <https://undrr-hip.org/> .
 @base <https://undrr-hip.org/hip-schema/> .
 
-<https://undrr-hip.org/hip-schema/> rdf:type owl:Ontology ;
+<https://undrr-hip.org/hip-schema/> rdf:type owl:Ontology ; dcterms:title "HIP" ;
                                      owl:imports dcterms: ,
                                                  <http://www.w3.org/2004/02/skos/core> ,
                                                  org: ;
