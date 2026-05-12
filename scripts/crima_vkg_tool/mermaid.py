@@ -7,7 +7,7 @@ from pathlib import Path
 from textwrap import dedent
 
 import click
-from rdflib import Graph, URIRef
+from rdflib import OWL, Graph, URIRef
 
 from crima_vkg_tool.util import MOD, VOAF, create_graph, rdf_read
 
@@ -15,10 +15,11 @@ from crima_vkg_tool.util import MOD, VOAF, create_graph, rdf_read
 @click.command(name="mermaid")
 @click.argument("inputs", metavar="INPUT_FILE...", nargs=-1)
 @click.option("-o", "--output-file", default="-", help="output markdown file ('-' for stdout, the default)")
+@click.option("--voaf", is_flag=True, help="use voaf:reliesOn instead of owl:imports to build the diagram")
 @click.option(
     "-e", "--extra-content", multiple=True, help="optional additional Mermaid code to inject into the diagram"
 )
-def cli_mermaid(inputs: list[str], output_file: str = "-", extra_content: tuple[str, ...] = ()) -> None:
+def cli_mermaid(inputs: list[str], output_file: str = "-", voaf: bool = False, extra_content: tuple[str, ...] = ()) -> None:  # noqa: FBT001, FBT002
     """
     Generate a Markdown + Mermaid diagram of ontology voaf:reliesOn relations.
 
@@ -32,7 +33,7 @@ def cli_mermaid(inputs: list[str], output_file: str = "-", extra_content: tuple[
         rdf_read(graph, input)
 
     nodes = _collect_nodes(graph)
-    edges = _collect_edges(graph)
+    edges = _collect_edges(graph, voaf)
     diagram = _mermaid(nodes, edges, extra_content)
 
     with sys.stdout if output_file == "-" else Path(output_file).open("w") as f:
@@ -70,19 +71,22 @@ def _collect_nodes(graph: Graph) -> dict[URIRef, Node]:
     return nodes
 
 
-def _collect_edges(graph: Graph) -> dict[URIRef, set[URIRef]]:
+def _collect_edges(graph: Graph, use_voaf: bool = False) -> dict[URIRef, set[URIRef]]:  # noqa: FBT002
 
     node_iris = {iri for iri, _, _ in graph.triples((None, MOD.hasSerialization, None)) if isinstance(iri, URIRef)}
 
-    props = (
-        VOAF.reliesOn,
-        VOAF.extends,
-        VOAF.metadataVoc,
-        VOAF.specializes,
-        VOAF.generalizes,
-        VOAF.hasEquivalencesWith,
-        VOAF.hasDisjunctionsWith,
-    )
+    if use_voaf:
+        props = (
+            VOAF.reliesOn,
+            VOAF.extends,
+            VOAF.metadataVoc,
+            VOAF.specializes,
+            VOAF.generalizes,
+            VOAF.hasEquivalencesWith,
+            VOAF.hasDisjunctionsWith,
+        )
+    else:
+        props = (OWL.imports, )
 
     edges = {iri: {o for p in props for o in graph.objects(iri, p) if o in node_iris and o != iri} for iri in node_iris}
 
