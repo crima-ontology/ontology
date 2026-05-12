@@ -2,7 +2,7 @@
 @prefix as: <https://www.w3.org/ns/activitystreams#> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix ex: <http://example.org/ontology/> .
-@prefix clc: <http://www.w3.org/2015/03/corine#> .
+@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
 @prefix ich: <http://www.semanticweb.org/crima/crima-impactchain#> .
@@ -111,7 +111,8 @@
                                                   ar6-impact: ,
                                                   <http://www.w3.org/2004/02/skos/core> ,
                                                   <http://www.w3.org/2006/time> ,
-                                                  clc: ,
+                                                  <http://www.semanticweb.org/crima/crima-clc#> ,
+                                                  <http://www.semanticweb.org/crima/crima-clc-data#> ,
                                                   <http://www.w3.org/ns/dcat> ,
                                                   org: ,
                                                   <http://www.w3.org/ns/prov-o#> ,
