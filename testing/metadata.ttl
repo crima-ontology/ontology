@@ -17,7 +17,6 @@ PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX ecv: <https://w3id.org/crima-ontology/ecv#>
 PREFIX emdat: <https://w3id.org/crima-ontology/emdat#>
-PREFIX ex: <http://example.org/ontology/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
 PREFIX ich: <https://w3id.org/crima-ontology/ich#>
@@ -226,10 +225,6 @@ ecv-data:
 emdat:
     mod:hasSerialization "modules/emdat.ttl" ;
     mod:definesNamespace "https://w3id.org/crima-ontology/emdat#"^^xsd:anyURI .
-
-ex:
-    mod:hasSerialization "modules/ex.ttl" ;
-    mod:definesNamespace "http://example.org/ontology/"^^xsd:anyURI .
 
 <https://undrr-hip.org/hip-data/>
     mod:hasSerialization "modules/hip-data.ttl" ;

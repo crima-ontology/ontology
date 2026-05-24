@@ -38,7 +38,6 @@
     <uri id="ecv-data" name="https://w3id.org/crima-ontology/ecv-data#" uri="modules/ecv-data.ttl"/>
     <uri id="ecv" name="https://w3id.org/crima-ontology/ecv#" uri="modules/ecv.ttl"/>
     <uri id="emdat" name="https://w3id.org/crima-ontology/emdat#" uri="modules/emdat.ttl"/>
-    <uri id="ex" name="http://example.org/ontology/" uri="modules/ex.ttl"/>
     <uri id="hip-data" name="https://undrr-hip.org/hip-data/" uri="modules/hip-data.ttl"/>
     <uri id="hip" name="https://undrr-hip.org/hip-schema/" uri="modules/hip.ttl"/>
     <uri id="ich" name="https://w3id.org/crima-ontology/ich#" uri="modules/ich.ttl"/>

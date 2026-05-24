@@ -1,7 +1,6 @@
 @prefix : <https://w3id.org/crima-ontology/crima#> .
 @prefix as: <https://www.w3.org/ns/activitystreams#> .
 @prefix cc: <http://creativecommons.org/ns#> .
-@prefix ex: <http://example.org/ontology/> .
 @prefix cclc: <https://w3id.org/crima-ontology/cclc#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix ecv: <https://w3id.org/crima-ontology/ecv#> .
@@ -37,7 +36,6 @@
                                     owl:imports wmdr-unit: ,
                                                 cc: ,
                                                 dbo: ,
-                                                ex: ,
                                                 <http://knowwheregraph/ontology/dpo> ,
                                                 dcterms: ,
                                                 bibo: ,
@@ -86,7 +84,6 @@
                                     voaf:reliesOn wmdr-unit: ,
                                                   cc: ,
                                                   dbo: ,
-                                                  ex: ,
                                                   <http://knowwheregraph/ontology/dpo> ,
                                                   bibo: ,
                                                   vann: ,
