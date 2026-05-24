@@ -1,17 +1,17 @@
-@prefix : <http://www.semanticweb.org/crima/crima-id#> .
+@prefix : <https://w3id.org/crima-ontology/crid#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix crid: <http://www.semanticweb.org/crima/crima-id#> .
+@prefix crid: <https://w3id.org/crima-ontology/crid#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@base <http://www.semanticweb.org/crima/crima-id#> .
+@base <https://w3id.org/crima-ontology/crid#> .
 
-<http://www.semanticweb.org/crima/crima-id#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/crid#> rdf:type owl:Ontology ;
                                               vann:preferredNamespacePrefix "crid" ;
-                                              vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-id#"^^xsd:anyURI ;
+                                              vann:preferredNamespaceUri "https://w3id.org/crima-ontology/crid#"^^xsd:anyURI ;
                                               voaf:metadataVoc vann: ,
                                                                <http://purl.org/vocommons/voaf> .
 
@@ -35,15 +35,15 @@ voaf:metadataVoc rdf:type owl:AnnotationProperty .
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-id#cadastralCode
+###  https://w3id.org/crima-ontology/crid#cadastralCode
 crid:cadastralCode rdf:type owl:DatatypeProperty .
 
 
-###  http://www.semanticweb.org/crima/crima-id#istatCode
+###  https://w3id.org/crima-ontology/crid#istatCode
 crid:istatCode rdf:type owl:DatatypeProperty .
 
 
-###  http://www.semanticweb.org/crima/crima-id#zipCode
+###  https://w3id.org/crima-ontology/crid#zipCode
 crid:zipCode rdf:type owl:DatatypeProperty ;
              rdfs:subPropertyOf owl:topDataProperty .
 

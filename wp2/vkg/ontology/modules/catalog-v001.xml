@@ -23,22 +23,22 @@
     <uri id="voaf" name="http://purl.org/vocommons/voaf" uri="../imports/fragments/voaf.ttl"/>
     <uri id="wmdr-unit" name="http://codes.wmo.int/wmdr/unit/" uri="../imports/fragments/wmdr-unit.ttl"/>
     <uri id="xkos" name="http://rdf-vocabulary.ddialliance.org/xkos" uri="../imports/fragments/xkos.ttl"/>
-    <uri id="ar5-adapt" name="http://www.semanticweb.org/crima/ipcc-ar5-adaptation#" uri="ar5-adapt.ttl"/>
-    <uri id="ar6-cid" name="http://www.semanticweb.org/crima/ipcc-ar6-cid#" uri="ar6-cid.ttl"/>
-    <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="ar6-impact.ttl"/>
-    <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="cbib.ttl"/>
-    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="cclc-data.ttl"/>
-    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="cclc.ttl"/>
-    <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="ccore.ttl"/>
-    <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="cplace.ttl"/>
-    <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="crid.ttl"/>
-    <uri id="ctlo" name="http://www.semanticweb.org/crima/crima-tlo#" uri="ctlo.ttl"/>
-    <uri id="cunit" name="http://www.semanticweb.org/crima/crima-unit#" uri="cunit.ttl"/>
-    <uri id="ecv-data" name="http://www.semanticweb.org/crima/crima-ecv-data#" uri="ecv-data.ttl"/>
-    <uri id="ecv" name="http://www.semanticweb.org/crima/crima-ecv#" uri="ecv.ttl"/>
-    <uri id="emdat" name="http://www.semanticweb.org/crima/emdat#" uri="emdat.ttl"/>
+    <uri id="ar5-adapt" name="https://w3id.org/crima-ontology/ar5-adapt#" uri="ar5-adapt.ttl"/>
+    <uri id="ar6-cid" name="https://w3id.org/crima-ontology/ar6-cid#" uri="ar6-cid.ttl"/>
+    <uri id="ar6-impact" name="https://w3id.org/crima-ontology/ar6-impact#" uri="ar6-impact.ttl"/>
+    <uri id="cbib" name="https://w3id.org/crima-ontology/cbib#" uri="cbib.ttl"/>
+    <uri id="cclc-data" name="https://w3id.org/crima-ontology/cclc-data#" uri="cclc-data.ttl"/>
+    <uri id="cclc" name="https://w3id.org/crima-ontology/cclc#" uri="cclc.ttl"/>
+    <uri id="ccore" name="https://w3id.org/crima-ontology/ccore#" uri="ccore.ttl"/>
+    <uri id="cplace" name="https://w3id.org/crima-ontology/cplace#" uri="cplace.ttl"/>
+    <uri id="crid" name="https://w3id.org/crima-ontology/crid#" uri="crid.ttl"/>
+    <uri id="ctlo" name="https://w3id.org/crima-ontology/ctlo#" uri="ctlo.ttl"/>
+    <uri id="cunit" name="https://w3id.org/crima-ontology/cunit#" uri="cunit.ttl"/>
+    <uri id="ecv-data" name="https://w3id.org/crima-ontology/ecv-data#" uri="ecv-data.ttl"/>
+    <uri id="ecv" name="https://w3id.org/crima-ontology/ecv#" uri="ecv.ttl"/>
+    <uri id="emdat" name="https://w3id.org/crima-ontology/emdat#" uri="emdat.ttl"/>
     <uri id="ex" name="http://example.org/ontology/" uri="ex.ttl"/>
     <uri id="hip-data" name="https://undrr-hip.org/hip-data/" uri="hip-data.ttl"/>
     <uri id="hip" name="https://undrr-hip.org/hip-schema/" uri="hip.ttl"/>
-    <uri id="ich" name="http://www.semanticweb.org/crima/crima-impactchain#" uri="ich.ttl"/>
+    <uri id="ich" name="https://w3id.org/crima-ontology/ich#" uri="ich.ttl"/>
 </catalog>

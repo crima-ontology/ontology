@@ -1,29 +1,29 @@
-@prefix : <http://www.semanticweb.org/crima/crima-clc-data#> .
+@prefix : <https://w3id.org/crima-ontology/cclc-data#> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix cclc: <https://w3id.org/crima-ontology/cclc#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <http://www.semanticweb.org/crima/crima-clc-data#> .
+@base <https://w3id.org/crima-ontology/cclc-data#> .
 
-<http://www.semanticweb.org/crima/crima-clc-data#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/cclc-data#> rdf:type owl:Ontology ;
                                                     owl:imports cclc: ,
                                                                 <http://www.w3.org/2004/02/skos/core> ;
                                                     vann:preferredNamespacePrefix "cclc" ;
-                                                    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
+                                                    vann:preferredNamespaceUri "https://w3id.org/crima-ontology/cclc#"^^xsd:anyURI .
 
 
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-clc#clc1
+###  https://w3id.org/crima-ontology/cclc#clc1
 cclc:clc1 rdf:type owl:NamedIndividual ,
                    cclc:CORINE-Class_level1 ;
           skos:inScheme cclc:corine-land-cover-classification ;
@@ -33,7 +33,7 @@ cclc:clc1 rdf:type owl:NamedIndividual ,
                          "Umele povrchy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc11
+###  https://w3id.org/crima-ontology/cclc#clc11
 cclc:clc11 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc1 ;
@@ -44,7 +44,7 @@ cclc:clc11 rdf:type owl:NamedIndividual ,
                           "Urbanizovana zastavba"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc111
+###  https://w3id.org/crima-ontology/cclc#clc111
 cclc:clc111 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc11 ;
@@ -62,7 +62,7 @@ This heading includes:
                            "Suvisla zastavba"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc112
+###  https://w3id.org/crima-ontology/cclc#clc112
 cclc:clc112 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc11 ;
@@ -92,7 +92,7 @@ This heading excludes:
                            "Nesuvisla zastavba"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc12
+###  https://w3id.org/crima-ontology/cclc#clc12
 cclc:clc12 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc1 ;
@@ -103,7 +103,7 @@ cclc:clc12 rdf:type owl:NamedIndividual ,
                           "Priemysel, komercia a transport"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc121
+###  https://w3id.org/crima-ontology/cclc#clc121
 cclc:clc121 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc12 ;
@@ -132,7 +132,7 @@ This heading excludes:
                            "Priemysel alebo komercia"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc122
+###  https://w3id.org/crima-ontology/cclc#clc122
 cclc:clc122 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc12 ;
@@ -151,7 +151,7 @@ This heading excludes:
                            "Road and rail networks and associated land"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc123
+###  https://w3id.org/crima-ontology/cclc#clc123
 cclc:clc123 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc12 ;
@@ -173,7 +173,7 @@ This heading excludes:
                            "Port areas"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc124
+###  https://w3id.org/crima-ontology/cclc#clc124
 cclc:clc124 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc12 ;
@@ -191,7 +191,7 @@ This heading excludes:
                            "Arealy letisk"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc13
+###  https://w3id.org/crima-ontology/cclc#clc13
 cclc:clc13 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc1 ;
@@ -202,7 +202,7 @@ cclc:clc13 rdf:type owl:NamedIndividual ,
                           "The level 2 concept covering mines, dump and construction sites"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc131
+###  https://w3id.org/crima-ontology/cclc#clc131
 cclc:clc131 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc13 ;
@@ -226,7 +226,7 @@ This heading excludes:
                            "Tazba nerastnych surovin"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc132
+###  https://w3id.org/crima-ontology/cclc#clc132
 cclc:clc132 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc13 ;
@@ -248,7 +248,7 @@ This heading excludes:
                            "Skladky a smetiska"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc133
+###  https://w3id.org/crima-ontology/cclc#clc133
 cclc:clc133 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc13 ;
@@ -263,7 +263,7 @@ This heading excludes:
                            "Construction sites"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc14
+###  https://w3id.org/crima-ontology/cclc#clc14
 cclc:clc14 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc1 ;
@@ -274,7 +274,7 @@ cclc:clc14 rdf:type owl:NamedIndividual ,
                           "Umela nepolnohospodarska zelen "@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc141
+###  https://w3id.org/crima-ontology/cclc#clc141
 cclc:clc141 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc14 ;
@@ -303,7 +303,7 @@ unvegetated cemeteries inside urban fabric (class 1.1.x)."""@en ;
                            "Mestska zelen"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc142
+###  https://w3id.org/crima-ontology/cclc#clc142
 cclc:clc142 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc14 ;
@@ -330,7 +330,7 @@ This heading excludes:
                            "Sport and leisure facilities"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc2
+###  https://w3id.org/crima-ontology/cclc#clc2
 cclc:clc2 rdf:type owl:NamedIndividual ,
                    cclc:CORINE-Class_level1 ;
           skos:inScheme cclc:corine-land-cover-classification ;
@@ -340,7 +340,7 @@ cclc:clc2 rdf:type owl:NamedIndividual ,
                          "Polnohospodarske arealy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc21
+###  https://w3id.org/crima-ontology/cclc#clc21
 cclc:clc21 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc2 ;
@@ -351,7 +351,7 @@ cclc:clc21 rdf:type owl:NamedIndividual ,
                           "Orna poda"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc211
+###  https://w3id.org/crima-ontology/cclc#clc211
 cclc:clc211 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc21 ;
@@ -392,7 +392,7 @@ This heading excludes:
                            "Non-irrigated arable land"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc212
+###  https://w3id.org/crima-ontology/cclc#clc212
 cclc:clc212 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc21 ;
@@ -415,7 +415,7 @@ This heading excludes:
                            "Permanentne zavlazovana orna poda"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc213
+###  https://w3id.org/crima-ontology/cclc#clc213
 cclc:clc213 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc21 ;
@@ -432,7 +432,7 @@ This heading excludes:
                            "Ryzove polia"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc22
+###  https://w3id.org/crima-ontology/cclc#clc22
 cclc:clc22 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc2 ;
@@ -443,7 +443,7 @@ cclc:clc22 rdf:type owl:NamedIndividual ,
                           "Trvale plodiny"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc221
+###  https://w3id.org/crima-ontology/cclc#clc221
 cclc:clc221 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc22 ;
@@ -464,7 +464,7 @@ This heading excludes:
                            "Vinohrady"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc222
+###  https://w3id.org/crima-ontology/cclc#clc222
 cclc:clc222 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc22 ;
@@ -503,7 +503,7 @@ This heading excludes:
                            "Ovocne sady a plantaze"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc223
+###  https://w3id.org/crima-ontology/cclc#clc223
 cclc:clc223 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc22 ;
@@ -522,7 +522,7 @@ This heading excludes:
                            "Olivove haje"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc23
+###  https://w3id.org/crima-ontology/cclc#clc23
 cclc:clc23 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc2 ;
@@ -533,7 +533,7 @@ cclc:clc23 rdf:type owl:NamedIndividual ,
                           "Pastures"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc231
+###  https://w3id.org/crima-ontology/cclc#clc231
 cclc:clc231 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc23 ;
@@ -561,7 +561,7 @@ This heading excludes:
                            "Pastures"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc24
+###  https://w3id.org/crima-ontology/cclc#clc24
 cclc:clc24 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc2 ;
@@ -572,7 +572,7 @@ cclc:clc24 rdf:type owl:NamedIndividual ,
                           "Heterogenne polnohospodarske arealy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc241
+###  https://w3id.org/crima-ontology/cclc#clc241
 cclc:clc241 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc24 ;
@@ -594,7 +594,7 @@ This heading excludes:
                            "Jednorocne plodiny s trvalymi kulturami"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc242
+###  https://w3id.org/crima-ontology/cclc#clc242
 cclc:clc242 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc24 ;
@@ -617,7 +617,7 @@ This heading excludes:
                            "Mozaika poli, luk a trvalych kultur"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc243
+###  https://w3id.org/crima-ontology/cclc#clc243
 cclc:clc243 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc24 ;
@@ -638,7 +638,7 @@ This heading excludes:
                            "Prevazne polnohospodarska krajina s vyraznym zastupenim prirodzenej vegetacie"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc244
+###  https://w3id.org/crima-ontology/cclc#clc244
 cclc:clc244 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc24 ;
@@ -655,7 +655,7 @@ This heading includes:
                            "Agrolesnicke plochy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc3
+###  https://w3id.org/crima-ontology/cclc#clc3
 cclc:clc3 rdf:type owl:NamedIndividual ,
                    cclc:CORINE-Class_level1 ;
           skos:inScheme cclc:corine-land-cover-classification ;
@@ -665,7 +665,7 @@ cclc:clc3 rdf:type owl:NamedIndividual ,
                          "Lesne a poloprirodne arealy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc31
+###  https://w3id.org/crima-ontology/cclc#clc31
 cclc:clc31 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc3 ;
@@ -676,7 +676,7 @@ cclc:clc31 rdf:type owl:NamedIndividual ,
                           "Lesy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc311
+###  https://w3id.org/crima-ontology/cclc#clc311
 cclc:clc311 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc31 ;
@@ -709,7 +709,7 @@ This heading excludes:
                            "Listnate lesy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc312
+###  https://w3id.org/crima-ontology/cclc#clc312
 cclc:clc312 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc31 ;
@@ -734,7 +734,7 @@ This heading excludes:
                            "Ihlicnate lesy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc313
+###  https://w3id.org/crima-ontology/cclc#clc313
 cclc:clc313 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc31 ;
@@ -755,7 +755,7 @@ This heading excludes:
                            "Zmiesane lesy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc32
+###  https://w3id.org/crima-ontology/cclc#clc32
 cclc:clc32 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc3 ;
@@ -766,7 +766,7 @@ cclc:clc32 rdf:type owl:NamedIndividual ,
                           "Shrub and/or herbaceous vegetation associations"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc321
+###  https://w3id.org/crima-ontology/cclc#clc321
 cclc:clc321 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc32 ;
@@ -795,7 +795,7 @@ This heading excludes:
                            "Prirodzene luky"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc322
+###  https://w3id.org/crima-ontology/cclc#clc322
 cclc:clc322 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc32 ;
@@ -825,7 +825,7 @@ This heading excludes:
                            "Vresoviska, slatiny a kosodrevina"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc323
+###  https://w3id.org/crima-ontology/cclc#clc323
 cclc:clc323 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc32 ;
@@ -848,7 +848,7 @@ This heading excludes:
                            "Tvrdolista vegetacia"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc324
+###  https://w3id.org/crima-ontology/cclc#clc324
 cclc:clc324 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc32 ;
@@ -878,7 +878,7 @@ This heading excludes:
                            "Transitional woodland-shrub"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc33
+###  https://w3id.org/crima-ontology/cclc#clc33
 cclc:clc33 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc3 ;
@@ -889,7 +889,7 @@ cclc:clc33 rdf:type owl:NamedIndividual ,
                           "Open spaces with little or no vegetation"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc331
+###  https://w3id.org/crima-ontology/cclc#clc331
 cclc:clc331 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc33 ;
@@ -919,7 +919,7 @@ This heading excludes:
                            "Plaze, duny, piesky"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc332
+###  https://w3id.org/crima-ontology/cclc#clc332
 cclc:clc332 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc33 ;
@@ -942,7 +942,7 @@ This heading excludes:
                            "Skaly"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc333
+###  https://w3id.org/crima-ontology/cclc#clc333
 cclc:clc333 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc33 ;
@@ -966,7 +966,7 @@ This heading excludes:
                            "Sparsely vegetated areas"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc334
+###  https://w3id.org/crima-ontology/cclc#clc334
 cclc:clc334 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc33 ;
@@ -982,7 +982,7 @@ This heading excludes:
                            "Spaleniska"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc335
+###  https://w3id.org/crima-ontology/cclc#clc335
 cclc:clc335 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc33 ;
@@ -993,7 +993,7 @@ cclc:clc335 rdf:type owl:NamedIndividual ,
                            "Ladovce a trvaly sneh"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc4
+###  https://w3id.org/crima-ontology/cclc#clc4
 cclc:clc4 rdf:type owl:NamedIndividual ,
                    cclc:CORINE-Class_level1 ;
           skos:inScheme cclc:corine-land-cover-classification ;
@@ -1003,7 +1003,7 @@ cclc:clc4 rdf:type owl:NamedIndividual ,
                          "Zamokrene arealy"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc41
+###  https://w3id.org/crima-ontology/cclc#clc41
 cclc:clc41 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc4 ;
@@ -1014,7 +1014,7 @@ cclc:clc41 rdf:type owl:NamedIndividual ,
                           "Vnutrozemske vody"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc411
+###  https://w3id.org/crima-ontology/cclc#clc411
 cclc:clc411 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc41 ;
@@ -1044,7 +1044,7 @@ This heading excludes:
                            "Mociare"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc412
+###  https://w3id.org/crima-ontology/cclc#clc412
 cclc:clc412 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc41 ;
@@ -1069,7 +1069,7 @@ This heading excludes:
                            "Raseliniska"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc42
+###  https://w3id.org/crima-ontology/cclc#clc42
 cclc:clc42 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc4 ;
@@ -1080,7 +1080,7 @@ cclc:clc42 rdf:type owl:NamedIndividual ,
                           "Primorske mociare"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc421
+###  https://w3id.org/crima-ontology/cclc#clc421
 cclc:clc421 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc42 ;
@@ -1097,7 +1097,7 @@ This heading excludes:
                            "Slane mociare"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc422
+###  https://w3id.org/crima-ontology/cclc#clc422
 cclc:clc422 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc42 ;
@@ -1110,7 +1110,7 @@ This heading includes:
                            "Saliny"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc423
+###  https://w3id.org/crima-ontology/cclc#clc423
 cclc:clc423 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc42 ;
@@ -1129,7 +1129,7 @@ This heading excludes:
                            "Prilivove uzemia"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc5
+###  https://w3id.org/crima-ontology/cclc#clc5
 cclc:clc5 rdf:type owl:NamedIndividual ,
                    cclc:CORINE-Class_level1 ;
           skos:inScheme cclc:corine-land-cover-classification ;
@@ -1139,7 +1139,7 @@ cclc:clc5 rdf:type owl:NamedIndividual ,
                          "Water bodies"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc51
+###  https://w3id.org/crima-ontology/cclc#clc51
 cclc:clc51 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc5 ;
@@ -1150,7 +1150,7 @@ cclc:clc51 rdf:type owl:NamedIndividual ,
                           "Vnutrozemske vody"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc511
+###  https://w3id.org/crima-ontology/cclc#clc511
 cclc:clc511 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc51 ;
@@ -1167,7 +1167,7 @@ This heading excludes:
                            "Water courses"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc512
+###  https://w3id.org/crima-ontology/cclc#clc512
 cclc:clc512 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc51 ;
@@ -1185,7 +1185,7 @@ This heading excludes:
                            "Water bodies"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc52
+###  https://w3id.org/crima-ontology/cclc#clc52
 cclc:clc52 rdf:type owl:NamedIndividual ,
                     cclc:CORINE-Class_level2 ;
            skos:broader cclc:clc5 ;
@@ -1196,7 +1196,7 @@ cclc:clc52 rdf:type owl:NamedIndividual ,
                           "Morske vody"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc521
+###  https://w3id.org/crima-ontology/cclc#clc521
 cclc:clc521 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc52 ;
@@ -1217,7 +1217,7 @@ This heading excludes:
                            "Pobrezne laguny"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc522
+###  https://w3id.org/crima-ontology/cclc#clc522
 cclc:clc522 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc52 ;
@@ -1234,7 +1234,7 @@ This heading excludes:
                            "Ustia riek"@sk .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#clc523
+###  https://w3id.org/crima-ontology/cclc#clc523
 cclc:clc523 rdf:type owl:NamedIndividual ,
                      cclc:CORINE-Class_level3 ;
             skos:broader cclc:clc52 ;
@@ -1248,7 +1248,7 @@ This heading excludes:
                            "Sea and ocean"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#corine-land-cover-classification
+###  https://w3id.org/crima-ontology/cclc#corine-land-cover-classification
 cclc:corine-land-cover-classification rdf:type owl:NamedIndividual ,
                                                cclc:CORINE-classification ;
                                       cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;

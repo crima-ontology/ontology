@@ -1,26 +1,26 @@
-PREFIX ar5-adapt: <http://www.semanticweb.org/crima/ipcc-ar5-adaptation#>
-PREFIX ar6-cid: <http://www.semanticweb.org/crima/ipcc-ar6-cid#>
-PREFIX ar6-impact: <http://www.semanticweb.org/crima/ipcc-ar6-impacts#>
+PREFIX ar5-adapt: <https://w3id.org/crima-ontology/ar5-adapt#>
+PREFIX ar6-cid: <https://w3id.org/crima-ontology/ar6-cid#>
+PREFIX ar6-impact: <https://w3id.org/crima-ontology/ar6-impact#>
 PREFIX as: <https://www.w3.org/ns/activitystreams#>
 PREFIX bibo: <http://purl.org/ontology/bibo/>
-PREFIX cbib: <http://www.semanticweb.org/crima/crima-bib#>
+PREFIX cbib: <https://w3id.org/crima-ontology/cbib#>
 PREFIX cc: <http://creativecommons.org/ns#>
-PREFIX ccore: <http://www.semanticweb.org/crima/crima-core#>
-PREFIX cclc: <http://www.semanticweb.org/crima/crima-clc#>
-PREFIX cplace: <http://www.semanticweb.org/crima/crima-place#>
-PREFIX crid: <http://www.semanticweb.org/crima/crima-id#>
-PREFIX ecv-data: <http://www.semanticweb.org/crima/crima-ecv-data#>
-PREFIX ctlo: <http://www.semanticweb.org/crima/crima-tlo#>
-PREFIX cunit: <http://www.semanticweb.org/crima/crima-unit#>
+PREFIX ccore: <https://w3id.org/crima-ontology/ccore#>
+PREFIX cclc: <https://w3id.org/crima-ontology/cclc#>
+PREFIX cplace: <https://w3id.org/crima-ontology/cplace#>
+PREFIX crid: <https://w3id.org/crima-ontology/crid#>
+PREFIX ecv-data: <https://w3id.org/crima-ontology/ecv-data#>
+PREFIX ctlo: <https://w3id.org/crima-ontology/ctlo#>
+PREFIX cunit: <https://w3id.org/crima-ontology/cunit#>
 PREFIX dbo: <http://dbpedia.org/ontology/>
 PREFIX dcat: <http://www.w3.org/ns/dcat#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
-PREFIX ecv: <http://www.semanticweb.org/crima/crima-ecv#>
-PREFIX emdat: <http://www.semanticweb.org/crima/emdat#>
+PREFIX ecv: <https://w3id.org/crima-ontology/ecv#>
+PREFIX emdat: <https://w3id.org/crima-ontology/emdat#>
 PREFIX ex: <http://example.org/ontology/>
 PREFIX foaf: <http://xmlns.com/foaf/0.1/>
 PREFIX geo: <http://www.opengis.net/ont/geosparql#>
-PREFIX ich: <http://www.semanticweb.org/crima/crima-impactchain#>
+PREFIX ich: <https://w3id.org/crima-ontology/ich#>
 PREFIX mod: <mod:>
 PREFIX org: <http://www.w3.org/ns/org#>
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
@@ -144,19 +144,19 @@ wmdr-unit:
 
 ar5-adapt:
     mod:hasSerialization "modules/ar5-adapt.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/ipcc-ar5-adaptation#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/ar5-adapt#"^^xsd:anyURI .
 
 ar6-cid:
     mod:hasSerialization "modules/ar6-cid.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/ipcc-ar6-cid#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/ar6-cid#"^^xsd:anyURI .
 
 ar6-impact:
     mod:hasSerialization "modules/ar6-impact.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/ipcc-ar6-impacts#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/ar6-impact#"^^xsd:anyURI .
 
 cbib:
     mod:hasSerialization "modules/cbib.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-bib#"^^xsd:anyURI ;
+    mod:definesNamespace "https://w3id.org/crima-ontology/cbib#"^^xsd:anyURI ;
     mod:includesStatementsWith
         ( dcterms:date skos:scopeNote ) ,
         ( dcterms:hasPart skos:note ) ,
@@ -179,21 +179,21 @@ cbib:
 
 cclc:
     mod:hasSerialization "modules/clcc.ttl" ;
-    mod:definesNamespaceTBox "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
+    mod:definesNamespaceTBox "https://w3id.org/crima-ontology/cclc#"^^xsd:anyURI .
 
-<http://www.semanticweb.org/crima/crima-clc-data#>
+<https://w3id.org/crima-ontology/cclc-data#>
     mod:hasSerialization "modules/clcc-data.ttl" ;
-    mod:definesNamespaceABox "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
+    mod:definesNamespaceABox "https://w3id.org/crima-ontology/cclc#"^^xsd:anyURI .
 
 ccore:
     mod:hasSerialization "modules/ccore.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-core#"^^xsd:anyURI ;
+    mod:definesNamespace "https://w3id.org/crima-ontology/ccore#"^^xsd:anyURI ;
     mod:includesStatementsWith
         ( sosa:Property ctlo:Quality ) .
 
 cplace:
     mod:hasSerialization "modules/cplace.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-place#"^^xsd:anyURI ;
+    mod:definesNamespace "https://w3id.org/crima-ontology/cplace#"^^xsd:anyURI ;
     mod:includesStatementsWith
         ( as:latitude geo:hasSerialization ) ,
         ( as:longitude geo:hasSerialization ) ,
@@ -205,27 +205,27 @@ cplace:
 
 crid:
     mod:hasSerialization "modules/crid.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-id#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/crid#"^^xsd:anyURI .
 
 ctlo:
     mod:hasSerialization "modules/ctlo.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-tlo#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/ctlo#"^^xsd:anyURI .
 
 cunit:
     mod:hasSerialization "modules/cunit.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-unit#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/cunit#"^^xsd:anyURI .
 
 ecv:
     mod:hasSerialization "modules/ecv.ttl" ;
-    mod:definesNamespaceTBox "http://www.semanticweb.org/crima/crima-ecv#"^^xsd:anyURI .
+    mod:definesNamespaceTBox "https://w3id.org/crima-ontology/ecv#"^^xsd:anyURI .
 
 ecv-data:
     mod:hasSerialization "modules/ecv-data.ttl" ;
-    mod:definesNamespaceABox "http://www.semanticweb.org/crima/crima-ecv#"^^xsd:anyURI .
+    mod:definesNamespaceABox "https://w3id.org/crima-ontology/ecv#"^^xsd:anyURI .
 
 emdat:
     mod:hasSerialization "modules/emdat.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/emdat#"^^xsd:anyURI .
+    mod:definesNamespace "https://w3id.org/crima-ontology/emdat#"^^xsd:anyURI .
 
 ex:
     mod:hasSerialization "modules/ex.ttl" ;
@@ -255,13 +255,13 @@ ex:
 
 ich:
     mod:hasSerialization "modules/ich.ttl" ;
-    mod:definesNamespace "http://www.semanticweb.org/crima/crima-impactchain#"^^xsd:anyURI ;
+    mod:definesNamespace "https://w3id.org/crima-ontology/ich#"^^xsd:anyURI ;
     mod:includesObjectsOf rdfs:isDefinedBy .
 
 
 # ONTOLOGY MAIN FILE
 
-<http://www.semanticweb.org/crima>
+<https://w3id.org/crima-ontology/crima#>
     mod:hasSerialization "crima.ttl" ;
     mod:includesObjectsOf
         dcterms:license ,

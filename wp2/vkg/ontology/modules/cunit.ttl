@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix : <https://w3id.org/crima-ontology/cunit#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -8,16 +8,17 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix cquak: <https://w3id.org/crima-ontology/cquak#> .
+@prefix cunit: <https://w3id.org/crima-ontology/cunit#> .
 @prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
-@base <http://www.semanticweb.org/crima/crima-unit#> .
+@base <https://w3id.org/crima-ontology/cunit#> .
 
-<http://www.semanticweb.org/crima/crima-unit#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/cunit#> rdf:type owl:Ontology ;
                                                 owl:imports wmdr-unit: ,
                                                             <http://qudt.org/schema/qudt> ,
                                                             <http://www.w3.org/2004/02/skos/core> ;
                                                 vann:preferredNamespacePrefix "cunit" ;
-                                                vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-unit#"^^xsd:anyURI ;
+                                                vann:preferredNamespaceUri "https://w3id.org/crima-ontology/cunit#"^^xsd:anyURI ;
                                                 voaf:generalizes wmdr-unit: ,
                                                                  <http://qudt.org/schema/qudt> ;
                                                 voaf:metadataVoc vann: ,
@@ -57,7 +58,7 @@ wmdr-unit:Unit rdfs:subClassOf cunit:Unit .
 qudt:Unit rdfs:subClassOf cunit:Unit .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#Unit
+###  https://w3id.org/crima-ontology/cunit#Unit
 cunit:Unit rdf:type owl:Class ;
            rdfs:subClassOf skos:Concept .
 
@@ -66,73 +67,73 @@ cunit:Unit rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-unit#GigaM3-PER-YR
+###  https://w3id.org/crima-ontology/cunit#GigaM3-PER-YR
 cunit:GigaM3-PER-YR rdf:type owl:NamedIndividual ,
                              cunit:Unit ;
                     rdfs:label "Cubic gigametre per year"@en ,
                                "Cubic gigametre per year" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#KiloGM-CO2-PER-M2-PER-SEC
+###  https://w3id.org/crima-ontology/cunit#KiloGM-CO2-PER-M2-PER-SEC
 cunit:KiloGM-CO2-PER-M2-PER-SEC rdf:type owl:NamedIndividual ,
                                          cunit:Unit ;
                                 rdfs:label "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions"@en ,
                                            "Kilograms of equivalent per square metre per year: Mass flux of carbon dioxide equivalent emissions" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CH4-PER-YR
+###  https://w3id.org/crima-ontology/cunit#MegaGM-CH4-PER-YR
 cunit:MegaGM-CH4-PER-YR rdf:type owl:NamedIndividual ,
                                  cunit:Unit ;
                         rdfs:label "Megagrams of Methane per year"@en ,
                                    "Megagrams of Methane per year" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CO2-PER-YR
+###  https://w3id.org/crima-ontology/cunit#MegaGM-CO2-PER-YR
 cunit:MegaGM-CO2-PER-YR rdf:type owl:NamedIndividual ,
                                  cunit:Unit ;
                         rdfs:label "Megagrams of Carbon Dioxide per year"@en ,
                                    "Megagrams of Carbon Dioxide per year" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#MegaGM-CO2eq-PER-YR
+###  https://w3id.org/crima-ontology/cunit#MegaGM-CO2eq-PER-YR
 cunit:MegaGM-CO2eq-PER-YR rdf:type owl:NamedIndividual ,
                                    cunit:Unit ;
                           rdfs:label "Megagrams of carbon dioxide equivalent per year"@en ,
                                      "Megagrams of carbon dioxide equivalent per year" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#MegaGM-N2O-PER-YR
+###  https://w3id.org/crima-ontology/cunit#MegaGM-N2O-PER-YR
 cunit:MegaGM-N2O-PER-YR rdf:type owl:NamedIndividual ,
                                  cunit:Unit ;
                         rdfs:label "Megagrams of nitrous oxide per year"@en ,
                                    "Megagrams of nitrous oxide per year" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#MoleculesPerSquareCentimeter
+###  https://w3id.org/crima-ontology/cunit#MoleculesPerSquareCentimeter
 cunit:MoleculesPerSquareCentimeter rdf:type owl:NamedIndividual ,
                                             cunit:Unit ;
                                    rdfs:label "Molecules per square centimeter" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea
+###  https://w3id.org/crima-ontology/cunit#NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea
 cunit:NumberOfMolecularBiologyGroupsPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
                                                                  cunit:Unit ;
                                                         rdfs:label "Number of molecular biology groups per unit volume or area" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#NumberOfSpeciesPerUnitVolumeOrArea
+###  https://w3id.org/crima-ontology/cunit#NumberOfSpeciesPerUnitVolumeOrArea
 cunit:NumberOfSpeciesPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
                                                   cunit:Unit ;
                                          rdfs:label "Number of species per unit volume or area" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#NumberOfTraitsPerUnitVolumeOrArea
+###  https://w3id.org/crima-ontology/cunit#NumberOfTraitsPerUnitVolumeOrArea
 cunit:NumberOfTraitsPerUnitVolumeOrArea rdf:type owl:NamedIndividual ,
                                                  cunit:Unit ;
                                         rdfs:label "Number of traits per unit volume or area" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#StrokesPerSquareKilometerPerYear
+###  https://w3id.org/crima-ontology/cunit#StrokesPerSquareKilometerPerYear
 cunit:StrokesPerSquareKilometerPerYear rdf:type owl:NamedIndividual ,
                                                 cunit:Unit ;
                                        skos:notation "Strokes per km2 y-1" ;
@@ -140,11 +141,26 @@ cunit:StrokesPerSquareKilometerPerYear rdf:type owl:NamedIndividual ,
 2022 edition - Updated in 2025""" .
 
 
-###  http://www.semanticweb.org/crima/crima-unit#kiloM3-PER-YR
+###  https://w3id.org/crima-ontology/cunit#kiloM3-PER-YR
 cunit:kiloM3-PER-YR rdf:type owl:NamedIndividual ,
                              cunit:Unit ;
                     rdfs:label "Cubic Kilometers per Year"@en ,
                                "Cubic Kilometers per Year" .
 
+
+cquak:MinAmbientTemperature a qudt:QuantityKind ;
+    rdfs:label "minimum ambient temperature"@en ;
+    skos:definition "The minimum ambient temperature in the environment."@en ;
+    rdfs:isDefinedBy <https://w3id.org/crima-ontology/cquak#> .
+
+cquak:MaxAmbientTemperature a qudt:QuantityKind ;
+    rdfs:label "maximum ambient temperature"@en ;
+    skos:definition "The maximum ambient temperature in the environment."@en ;
+    rdfs:isDefinedBy <https://w3id.org/crima-ontology/cquak#> .
+
+cquak:MeanAmbientTemperature a qudt:QuantityKind ;
+    rdfs:label "mean ambient temperature"@en ;
+    skos:definition "The average value is derived from a set of air temperature measurements that were recorded over a specific time period. "@en ;
+    rdfs:isDefinedBy <https://w3id.org/crima-ontology/cquak#> .
 
 ###  Generated by the OWL API (version 4.5.29) https://github.com/owlcs/owlapi

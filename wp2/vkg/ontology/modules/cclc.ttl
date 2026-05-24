@@ -1,19 +1,19 @@
-@prefix : <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix : <https://w3id.org/crima-ontology/cclc#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix cclc: <https://w3id.org/crima-ontology/cclc#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <http://www.semanticweb.org/crima/crima-clc#> .
+@base <https://w3id.org/crima-ontology/cclc#> .
 
-<http://www.semanticweb.org/crima/crima-clc#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/cclc#> rdf:type owl:Ontology ;
                                                owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                                vann:preferredNamespacePrefix "cclc" ;
-                                               vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-clc#"^^xsd:anyURI .
+                                               vann:preferredNamespaceUri "https://w3id.org/crima-ontology/cclc#"^^xsd:anyURI .
 
 #################################################################
 #    Annotation properties
@@ -31,7 +31,7 @@ vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
 #    Datatypes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-clc#CorineValue
+###  https://w3id.org/crima-ontology/cclc#CorineValue
 cclc:CorineValue rdf:type rdfs:Datatype ;
                  rdfs:comment "A numerical value from the CORINE Land Cover nomenclature" ;
                  rdfs:label "CORINE value"@en .
@@ -53,7 +53,7 @@ skos:narrower rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-clc#CORINE-Class_level1
+###  https://w3id.org/crima-ontology/cclc#CORINE-Class_level1
 cclc:CORINE-Class_level1 rdf:type owl:Class ;
                          rdfs:subClassOf skos:Concept ,
                                          [ rdf:type owl:Restriction ;
@@ -66,7 +66,7 @@ cclc:CORINE-Class_level1 rdf:type owl:Class ;
                                          ] .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#CORINE-Class_level2
+###  https://w3id.org/crima-ontology/cclc#CORINE-Class_level2
 cclc:CORINE-Class_level2 rdf:type owl:Class ;
                          rdfs:subClassOf skos:Concept ,
                                          [ rdf:type owl:Restriction ;
@@ -79,7 +79,7 @@ cclc:CORINE-Class_level2 rdf:type owl:Class ;
                                          ] .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#CORINE-Class_level3
+###  https://w3id.org/crima-ontology/cclc#CORINE-Class_level3
 cclc:CORINE-Class_level3 rdf:type owl:Class ;
                          rdfs:subClassOf skos:Concept ,
                                          [ rdf:type owl:Restriction ;
@@ -88,7 +88,7 @@ cclc:CORINE-Class_level3 rdf:type owl:Class ;
                                          ] .
 
 
-###  http://www.semanticweb.org/crima/crima-clc#CORINE-classification
+###  https://w3id.org/crima-ontology/cclc#CORINE-classification
 cclc:CORINE-classification rdf:type owl:Class ;
                            rdfs:subClassOf skos:ConceptScheme .
 

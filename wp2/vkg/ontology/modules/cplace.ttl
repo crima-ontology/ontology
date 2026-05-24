@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/crima-place#> .
+@prefix : <https://w3id.org/crima-ontology/cplace#> .
 @prefix as: <https://www.w3.org/ns/activitystreams#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
@@ -6,22 +6,22 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix ctlo: <https://w3id.org/crima-ontology/ctlo#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
+@prefix cplace: <https://w3id.org/crima-ontology/cplace#> .
 @prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
-@base <http://www.semanticweb.org/crima/crima-place#> .
+@base <https://w3id.org/crima-ontology/cplace#> .
 
-<http://www.semanticweb.org/crima/crima-place#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/cplace#> rdf:type owl:Ontology ;
                                                  owl:imports dbo: ,
                                                              <http://www.opengis.net/ont/geosparql> ,
                                                              ctlo: ,
                                                              sosa-common: ;
                                                  vann:preferredNamespacePrefix "cplace" ;
-                                                 vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-place#"^^xsd:anyURI ;
+                                                 vann:preferredNamespaceUri "https://w3id.org/crima-ontology/cplace#"^^xsd:anyURI ;
                                                  voaf:extends ctlo: ;
                                                  voaf:metadataVoc vann: ,
                                                                   <http://purl.org/vocommons/voaf> ;
@@ -74,41 +74,41 @@ dbo:Place rdfs:subClassOf geo:Feature ,
                           sosa:FeatureOfInterest .
 
 
-###  http://www.semanticweb.org/crima/crima-place#CommunityDistrict
+###  https://w3id.org/crima-ontology/cplace#CommunityDistrict
 cplace:CommunityDistrict rdf:type owl:Class ;
                          rdfs:subClassOf dbo:District ;
                          rdfs:comment "es. BURGRAVIATO, VALVENOSTA, BASSAATESINA,..." .
 
 
-###  http://www.semanticweb.org/crima/crima-place#DrainageBasin
+###  https://w3id.org/crima-ontology/cplace#DrainageBasin
 cplace:DrainageBasin rdf:type owl:Class ;
                      rdfs:subClassOf dbo:NaturalPlace .
 
 
-###  http://www.semanticweb.org/crima/crima-place#HealthDistrict
+###  https://w3id.org/crima-ontology/cplace#HealthDistrict
 cplace:HealthDistrict rdf:type owl:Class ;
                       rdfs:subClassOf dbo:District .
 
 
-###  http://www.semanticweb.org/crima/crima-place#HealthRegion
+###  https://w3id.org/crima-ontology/cplace#HealthRegion
 cplace:HealthRegion rdf:type owl:Class ;
                     rdfs:subClassOf dbo:GovernmentalAdministrativeRegion ;
                     rdfs:comment "The sum of multiple contingous health districts (tentative)." .
 
 
-###  http://www.semanticweb.org/crima/crima-place#HydrologicalStation
+###  https://w3id.org/crima-ontology/cplace#HydrologicalStation
 cplace:HydrologicalStation rdf:type owl:Class ;
                            rdfs:subClassOf sosa:Platform ;
                            rdfs:isDefinedBy "International Glossary of Hydrology / Glossaire International d’Hydrologie. World Meteorological Organization, United Nations Educational, Scientific and Cultural Organization (eds.). WMO (Series), no385. WMO, Geneva (2016). ISBN 978-92-63-03385-8. ISBN 978-92-3-001154-3." ;
                            <http://www.w3.org/2004/02/skos/core#definition> "Hydrological station established for the observation of a specific element or elements in order to investigate hydrological events. (TR)" .
 
 
-###  http://www.semanticweb.org/crima/crima-place#RoadNetwork
+###  https://w3id.org/crima-ontology/cplace#RoadNetwork
 cplace:RoadNetwork rdf:type owl:Class ;
                    rdfs:subClassOf dbo:Infrastructure .
 
 
-###  http://www.semanticweb.org/crima/crima-place#Watercourse
+###  https://w3id.org/crima-ontology/cplace#Watercourse
 cplace:Watercourse rdf:type owl:Class ;
                    rdfs:subClassOf dbo:Stream ;
                    <http://purl.org/dc/terms/description> "Natural or man-made channel through or along which water may flow [9], including large interstices in the ground, such as cave, cavern or a group of these in karst terrain." ;
@@ -118,7 +118,7 @@ cplace:Watercourse rdf:type owl:Class ;
                                 "http://purl.obolibrary.org/obo/ENVO_00000029 " .
 
 
-###  http://www.semanticweb.org/crima/crima-place#WeatherStation
+###  https://w3id.org/crima-ontology/cplace#WeatherStation
 cplace:WeatherStation rdf:type owl:Class ;
                       rdfs:subClassOf sosa:Platform ;
                       rdfs:isDefinedBy "https://en.wikipedia.org/wiki/Weather_station" ;

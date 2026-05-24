@@ -1,17 +1,17 @@
-@prefix : <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix : <https://w3id.org/crima-ontology/ctlo#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix ctlo: <https://w3id.org/crima-ontology/ctlo#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@base <http://www.semanticweb.org/crima/crima-tlo#> .
+@base <https://w3id.org/crima-ontology/ctlo#> .
 
-<http://www.semanticweb.org/crima/crima-tlo#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ctlo#> rdf:type owl:Ontology ;
                                                vann:preferredNamespacePrefix "ctlo" ;
-                                               vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-tlo#"^^xsd:anyURI ;
+                                               vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ctlo#"^^xsd:anyURI ;
                                                voaf:metadataVoc vann: ,
                                                                 <http://purl.org/vocommons/voaf> .
 
@@ -35,14 +35,14 @@ voaf:metadataVoc rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-tlo#constantPartOf
+###  https://w3id.org/crima-ontology/ctlo#constantPartOf
 ctlo:constantPartOf rdf:type owl:ObjectProperty ;
                     rdfs:domain ctlo:PhysicalEndurant ;
                     rdfs:range ctlo:PhysicalEndurant ;
                     rdfs:comment "Borrowed from DOLCE ontology as: \"ConstantPartOf is the constant version of Temporary Parthood which is a ternary relation between two endurants x, y and a time interval t. The intended interpretation is that the endurant x is a part of the endurant y over the time interval t. In this constant version, the endurant x is part of the endurant y during the whole existence of y.\"" .
 
 
-###  http://www.semanticweb.org/crima/crima-tlo#locatedIn
+###  https://w3id.org/crima-ontology/ctlo#locatedIn
 ctlo:locatedIn rdf:type owl:ObjectProperty ;
                owl:inverseOf ctlo:locationOf ;
                rdfs:comment "The primitive instance-level relation c locatedIn r at t reflects the fact that each continuant is at any given time associated with exactly one spatial region, namely its exact location. Following we can use this relation to define a further instance-level location relation - not between a continuant and the region which it exactly occupies, but rather between one continuant and another. c is located in c1, in this sense, whenever the spatial region occupied by c is partOf the spatial region occupied by c1. Note that this relation comprehends both the relation of exact location between one continuant and another which obtains when r and r1 are identical (for example, when a portion of fluid exactly fills a cavity), as well as those sorts of inexact location relations which obtain, for example, between brain and head or between ovum and uterus." ;
@@ -51,7 +51,7 @@ ctlo:locatedIn rdf:type owl:ObjectProperty ;
                             "https://obofoundry.org/ontology/ro.html" .
 
 
-###  http://www.semanticweb.org/crima/crima-tlo#locationOf
+###  https://w3id.org/crima-ontology/ctlo#locationOf
 ctlo:locationOf rdf:type owl:ObjectProperty .
 
 
@@ -59,19 +59,19 @@ ctlo:locationOf rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-tlo#Event
+###  https://w3id.org/crima-ontology/ctlo#Event
 ctlo:Event rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-tlo#PhysicalEndurant
+###  https://w3id.org/crima-ontology/ctlo#PhysicalEndurant
 ctlo:PhysicalEndurant rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-tlo#Process
+###  https://w3id.org/crima-ontology/ctlo#Process
 ctlo:Process rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-tlo#Quality
+###  https://w3id.org/crima-ontology/ctlo#Quality
 ctlo:Quality rdf:type owl:Class .
 
 

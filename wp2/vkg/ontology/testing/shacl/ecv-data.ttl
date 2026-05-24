@@ -1,5 +1,5 @@
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
-@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix cunit: <https://w3id.org/crima-ontology/cunit#> .
+@prefix ecv: <https://w3id.org/crima-ontology/ecv#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
@@ -11,7 +11,7 @@
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix : <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix : <https://w3id.org/crima-ontology/ecv#> .
 
 ecv:ResourceShape a sh:NodeShape ;
     sh:target [
@@ -19,7 +19,7 @@ ecv:ResourceShape a sh:NodeShape ;
         sh:select """SELECT DISTINCT ?this { ?this ?p ?o }"""
     ] ;
     sh:nodeKind sh:IRI ;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-ecv(-data#|#[A-Za-z0-9_-]*)$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/ecv(-data#|#[A-Za-z0-9_-]*)$" ;
     sh:property [
         sh:path rdf:type ;
         sh:minCount 1 ;

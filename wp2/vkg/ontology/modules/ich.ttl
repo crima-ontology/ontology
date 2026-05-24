@@ -1,5 +1,5 @@
-@prefix : <http://www.semanticweb.org/crima/crima-impactchain#> .
-@prefix ich: <http://www.semanticweb.org/crima/crima-impactchain#> .
+@prefix : <https://w3id.org/crima-ontology/ich#> .
+@prefix ich: <https://w3id.org/crima-ontology/ich#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -10,13 +10,13 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix swrl-var: <urn:swrl:var#> .
-@base <http://www.semanticweb.org/crima/crima-impactchain#> .
+@base <https://w3id.org/crima-ontology/ich#> .
 
-<http://www.semanticweb.org/crima/crima-impactchain#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ich#> rdf:type owl:Ontology ;
                                                        owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                                        <http://purl.org/dc/terms/title> "Impact Chain Module"@en ;
                                                        vann:preferredNamespacePrefix "ich" ;
-                                                       vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-impactchain#"^^xsd:anyURI ;
+                                                       vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ich#"^^xsd:anyURI ;
                                                        voaf:metadataVoc vann: ,
                                                                         <http://purl.org/vocommons/voaf> ,
                                                                         <http://www.w3.org/2004/02/skos/core> ;
@@ -46,7 +46,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-impactchain#confidence
+###  https://w3id.org/crima-ontology/ich#confidence
 ich:confidence rdf:type owl:ObjectProperty ;
                rdfs:domain [ rdf:type owl:Class ;
                              owl:unionOf ( ich:ImpactChainConnection
@@ -58,7 +58,7 @@ ich:confidence rdf:type owl:ObjectProperty ;
                rdfs:label "confidence"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#contains
+###  https://w3id.org/crima-ontology/ich#contains
 ich:contains rdf:type owl:ObjectProperty ;
              rdfs:domain ich:ImpactChainModel ;
              rdfs:range [ rdf:type owl:Class ;
@@ -70,19 +70,19 @@ ich:contains rdf:type owl:ObjectProperty ;
              rdfs:label "contains"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#directAffects
+###  https://w3id.org/crima-ontology/ich#directAffects
 ich:directAffects rdf:type owl:ObjectProperty ;
                   rdfs:comment "'Affects connection' represented through an object property directly linking the involved factors, in addition to a reified relationship individual."@en ;
                   rdfs:label "direct affects"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#directImpactsOn
+###  https://w3id.org/crima-ontology/ich#directImpactsOn
 ich:directImpactsOn rdf:type owl:ObjectProperty ;
                     rdfs:comment "'Impacts on' connection represented through an object property directly linking the involved factors, in addition to a reified relationship individual."@en ;
                     rdfs:label "direct impacts on"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#directLeadsTo
+###  https://w3id.org/crima-ontology/ich#directLeadsTo
 ich:directLeadsTo rdf:type owl:ObjectProperty ;
                   rdfs:domain [ rdf:type owl:Class ;
                                 owl:unionOf ( ich:HazardFactor
@@ -98,13 +98,13 @@ ich:directLeadsTo rdf:type owl:ObjectProperty ;
                   rdfs:label "direct leads to"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#directMitigates
+###  https://w3id.org/crima-ontology/ich#directMitigates
 ich:directMitigates rdf:type owl:ObjectProperty ;
                     rdfs:comment "'Mitigates' connection represented through an object property directly linking the involved factors, in addition to a reified relationship individual."@en ;
                     rdfs:label "direct mitigates"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#isAbout
+###  https://w3id.org/crima-ontology/ich#isAbout
 ich:isAbout rdf:type owl:ObjectProperty ;
             rdfs:range ich:ImpactChainConnection ,
                        ich:ImpactChainFactor ;
@@ -121,13 +121,13 @@ With contributions from:
 Trond Aalberg, Jérôme Barthélémy, Chryssoula Bekiari, Guillaume Boutard, Martin Doerr, Günther Görz, Dolores Iorizzo, Max Jacob, Carlos Lamsfus, Patrick Le Bœuf, Mika Nyman, João Oliveira, Christian Emil Ore, Allen H. Renear, Pat Riva, Richard Smiraglia, Stephen Stead, Maja Žumer, and others"""@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#saturatedAffects
+###  https://w3id.org/crima-ontology/ich#saturatedAffects
 ich:saturatedAffects rdf:type owl:ObjectProperty ;
                      rdfs:comment "Chain of 'Affects' connections represented through an object property."@en ;
                      rdfs:label "saturated affects"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#saturatedLeadsTo
+###  https://w3id.org/crima-ontology/ich#saturatedLeadsTo
 ich:saturatedLeadsTo rdf:type owl:ObjectProperty ;
                      rdfs:domain [ rdf:type owl:Class ;
                                    owl:unionOf ( ich:HazardFactor
@@ -143,19 +143,19 @@ ich:saturatedLeadsTo rdf:type owl:ObjectProperty ;
                      rdfs:label "saturated affects"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#source
+###  https://w3id.org/crima-ontology/ich#source
 ich:source rdf:type owl:ObjectProperty ;
            rdfs:comment "[ICconnection --source--> ICFactor]: This property is meant to be used to link the reification of an Impact Chain binary connection with its first argument."@en ;
            rdfs:label "source"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#target
+###  https://w3id.org/crima-ontology/ich#target
 ich:target rdf:type owl:ObjectProperty ;
            rdfs:comment "[ICconnections --target--> ICFactor]: This property is meant to be used to link the reification of an Impact Chain binary connection with its secoond argument."@en ;
            rdfs:label "target"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#timeLag
+###  https://w3id.org/crima-ontology/ich#timeLag
 ich:timeLag rdf:type owl:ObjectProperty ;
             rdfs:domain ich:ImpactChainConnection ;
             rdfs:range ich:ConnectionTimeLag ;
@@ -167,7 +167,7 @@ ich:timeLag rdf:type owl:ObjectProperty ;
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-impactchain#AdaptationFactor
+###  https://w3id.org/crima-ontology/ich#AdaptationFactor
 ich:AdaptationFactor rdf:type owl:Class ;
                      rdfs:subClassOf ich:ImpactChainFactor ;
                      rdfs:comment "Adaptation / Risk Mitigation Measure factor of an Impact Chain model."@en ;
@@ -177,7 +177,7 @@ ich:AdaptationFactor rdf:type owl:Class ;
                      skos:definition "Measure to decrease the negative consequences of an impact by addressing one or more vulnerabilities or impacting mechanisms."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#Affects
+###  https://w3id.org/crima-ontology/ich#Affects
 ich:Affects rdf:type owl:Class ;
             rdfs:subClassOf ich:ImpactChainConnection ,
                             [ rdf:type owl:Restriction ;
@@ -196,21 +196,21 @@ ich:Affects rdf:type owl:Class ;
             rdfs:label "Affects"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ConfidenceLevel
+###  https://w3id.org/crima-ontology/ich#ConfidenceLevel
 ich:ConfidenceLevel rdf:type owl:Class ;
                     rdfs:subClassOf skos:Concept ;
                     rdfs:comment "Enumeration of confidence values. Applicable to Impact Chain elements such as factors and connections. Evaluated using a qualitative method based on evidence, reflecting the IPCC's approach to evaluating the validity of elements."@en ;
                     rdfs:label "Confidence level"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ConnectionTimeLag
+###  https://w3id.org/crima-ontology/ich#ConnectionTimeLag
 ich:ConnectionTimeLag rdf:type owl:Class ;
                       rdfs:subClassOf skos:Concept ;
                       rdfs:comment "Enumeration of time lag values. Applicable in the context of a connection between two factors. Refers to the time lapse between the incidence of the source factor and the subsequent factor, especially in relation to the interactions from hazard to hazard, hazard to impact, and impact to impact. Example for Increased in extreme heat -> Increased in heat stress: Although the response to heat is immediate, prolonged exposure time is required to generate heat stress, and this duration can vary from hours to days, depending on the element exposed."@en ;
                       rdfs:label "connection time lag"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ExposureFactor
+###  https://w3id.org/crima-ontology/ich#ExposureFactor
 ich:ExposureFactor rdf:type owl:Class ;
                    rdfs:subClassOf ich:ImpactChainFactor ;
                    rdfs:comment "Exposure factor of an Impact Chain model."@en ;
@@ -219,7 +219,7 @@ ich:ExposureFactor rdf:type owl:Class ;
                    skos:definition "The (presence of) people, livelihoods, species or ecosystems, environmental functions, services, and resources, infrastructure, or economic, social, or cultural assets in places and settings that could be adversely affected (IPCC, 2021)."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#HazardFactor
+###  https://w3id.org/crima-ontology/ich#HazardFactor
 ich:HazardFactor rdf:type owl:Class ;
                  rdfs:subClassOf ich:ImpactChainFactor ;
                  rdfs:comment "Hazard factor of an Impact Chain model, including climatic drivers."@en ;
@@ -228,23 +228,23 @@ ich:HazardFactor rdf:type owl:Class ;
                  skos:definition "Climatic influence, climatic or non-climatic event or trend that may constitute a hazard to the exposed assets and systems and result in an impact and possibly a risk (with damage or loss)."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainConnection
+###  https://w3id.org/crima-ontology/ich#ImpactChainConnection
 ich:ImpactChainConnection rdf:type owl:Class ;
                           rdfs:label "Impact Chain connection"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainFactor
+###  https://w3id.org/crima-ontology/ich#ImpactChainFactor
 ich:ImpactChainFactor rdf:type owl:Class ;
                       rdfs:comment "Factor of an Impact Chain model."@en ;
                       rdfs:label "Impact Chain factor"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ImpactChainModel
+###  https://w3id.org/crima-ontology/ich#ImpactChainModel
 ich:ImpactChainModel rdf:type owl:Class ;
                      rdfs:label "Impact Chain model"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ImpactFactor
+###  https://w3id.org/crima-ontology/ich#ImpactFactor
 ich:ImpactFactor rdf:type owl:Class ;
                  rdfs:subClassOf ich:ImpactChainFactor ;
                  rdfs:comment "Impact factor of an Impact Chain model."@en ;
@@ -253,7 +253,7 @@ ich:ImpactFactor rdf:type owl:Class ;
                  skos:definition "Effect or consequence caused by a hazard or another impact. Within an Impact Chain model, Impacts relate to adverse (negative) consequences that can be considered as potential materializations of risks."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#ImpactsOn
+###  https://w3id.org/crima-ontology/ich#ImpactsOn
 ich:ImpactsOn rdf:type owl:Class ;
               rdfs:subClassOf ich:ImpactChainConnection ,
                               [ rdf:type owl:Restriction ;
@@ -268,7 +268,7 @@ ich:ImpactsOn rdf:type owl:Class ;
               rdfs:label "Impacts on"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#LeadsTo
+###  https://w3id.org/crima-ontology/ich#LeadsTo
 ich:LeadsTo rdf:type owl:Class ;
             rdfs:subClassOf ich:ImpactChainConnection ,
                             [ rdf:type owl:Restriction ;
@@ -291,7 +291,7 @@ ich:LeadsTo rdf:type owl:Class ;
             rdfs:label "Leads to"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#Mitigates
+###  https://w3id.org/crima-ontology/ich#Mitigates
 ich:Mitigates rdf:type owl:Class ;
               rdfs:subClassOf ich:ImpactChainConnection ,
                               [ rdf:type owl:Restriction ;
@@ -310,7 +310,7 @@ ich:Mitigates rdf:type owl:Class ;
               rdfs:label "Mitigates"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#RiskFactor
+###  https://w3id.org/crima-ontology/ich#RiskFactor
 ich:RiskFactor rdf:type owl:Class ;
                rdfs:subClassOf ich:ImpactChainFactor ;
                rdfs:comment "Risk factor of an Impact Chain model."@en ;
@@ -320,7 +320,7 @@ ich:RiskFactor rdf:type owl:Class ;
                skos:definition "Combined impacts, exposure elements and vulnerabilities that describe potential risks highly relevant in the scope of the Impact Chain model."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#UnderlyingRiskDriverFactor
+###  https://w3id.org/crima-ontology/ich#UnderlyingRiskDriverFactor
 ich:UnderlyingRiskDriverFactor rdf:type owl:Class ;
                                rdfs:subClassOf ich:ImpactChainFactor ;
                                rdfs:comment "Underlying risk driver factor of an Impact Chain model."@en ;
@@ -329,7 +329,7 @@ ich:UnderlyingRiskDriverFactor rdf:type owl:Class ;
                                skos:definition "It refers to the (non-climatic) risk drivers that may significantly alter the socio-economic or environmental situations and possibly amplify the negative consequences of impacts by acting on their determinants (e.g., vulnerability or exposure) but cannot be mitigated or controlled within the scope of the Impact Chain model."@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#VulnerabilityFactor
+###  https://w3id.org/crima-ontology/ich#VulnerabilityFactor
 ich:VulnerabilityFactor rdf:type owl:Class ;
                         rdfs:subClassOf ich:ImpactChainFactor ;
                         rdfs:comment "Vulnerability factor of an Impact Chain model."@en ;
@@ -342,7 +342,7 @@ ich:VulnerabilityFactor rdf:type owl:Class ;
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-impactchain#daysToWeeks
+###  https://w3id.org/crima-ontology/ich#daysToWeeks
 ich:daysToWeeks rdf:type owl:NamedIndividual ,
                          ich:ConnectionTimeLag ;
                 rdfs:comment "Example: Dengue infection leading to health deterioration."@en ;
@@ -350,14 +350,14 @@ ich:daysToWeeks rdf:type owl:NamedIndividual ,
                 rdfs:label "days to weeks"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#high
+###  https://w3id.org/crima-ontology/ich#high
 ich:high rdf:type owl:NamedIndividual ,
                   ich:ConfidenceLevel ;
          rdfs:comment "High confidence level. This refers to robust evidence, which includes data from official entities, scientific articles, books, and multiple credible sources."@en ;
          rdfs:label "high"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#hoursToDays
+###  https://w3id.org/crima-ontology/ich#hoursToDays
 ich:hoursToDays rdf:type owl:NamedIndividual ,
                          ich:ConnectionTimeLag ;
                 rdfs:comment "Example: Prolonged rainfall leading to flooding."@en ;
@@ -365,21 +365,21 @@ ich:hoursToDays rdf:type owl:NamedIndividual ,
                 rdfs:label "hours to days"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#low
+###  https://w3id.org/crima-ontology/ich#low
 ich:low rdf:type owl:NamedIndividual ,
                  ich:ConfidenceLevel ;
         rdfs:comment "Low confidence level. This refers to limited evidence, ranging from having no data supporting the element to only newspaper articles supporting it."@en ;
         rdfs:label "low"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#medium
+###  https://w3id.org/crima-ontology/ich#medium
 ich:medium rdf:type owl:NamedIndividual ,
                     ich:ConfidenceLevel ;
            rdfs:comment "Medium confidence level. This refers to moderate evidence, which includes news reports, stakeholder input, expert opinions, and combinations of these sources."@en ;
            rdfs:label "medium"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#minutesToHours
+###  https://w3id.org/crima-ontology/ich#minutesToHours
 ich:minutesToHours rdf:type owl:NamedIndividual ,
                             ich:ConnectionTimeLag ;
                    rdfs:comment "Example: An Earthquake (hazard) can trigger (leads to) a landslide."@en ;
@@ -387,7 +387,7 @@ ich:minutesToHours rdf:type owl:NamedIndividual ,
                    rdfs:label "minutes to hours"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#monthsToYears
+###  https://w3id.org/crima-ontology/ich#monthsToYears
 ich:monthsToYears rdf:type owl:NamedIndividual ,
                            ich:ConnectionTimeLag ;
                   rdfs:comment "Example: Unsustainable agricultural practices leading to soil erosion."@en ;
@@ -395,7 +395,7 @@ ich:monthsToYears rdf:type owl:NamedIndividual ,
                   rdfs:label "months to years"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-impactchain#weeksToMonths
+###  https://w3id.org/crima-ontology/ich#weeksToMonths
 ich:weeksToMonths rdf:type owl:NamedIndividual ,
                            ich:ConnectionTimeLag ;
                   rdfs:comment "Example: Reduced irrigation (during a drought) leading to crop loss."@en ;

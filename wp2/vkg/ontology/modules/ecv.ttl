@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix : <https://w3id.org/crima-ontology/ecv#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -10,19 +10,19 @@
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
+@prefix cunit: <https://w3id.org/crima-ontology/cunit#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
-@base <http://www.semanticweb.org/crima/crima-ecv#> .
+@base <https://w3id.org/crima-ontology/ecv#> .
 
-<http://www.semanticweb.org/crima/crima-ecv#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ecv#> rdf:type owl:Ontology ;
                                                owl:imports <http://qudt.org/schema/qudt> ,
                                                            <http://www.opengis.net/ont/geosparql> ,
                                                            cunit: ,
                                                            <http://www.w3.org/2004/02/skos/core> ,
                                                            sosa-common: ;
                                                vann:preferredNamespacePrefix "ecv" ;
-                                               vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-ecv#"^^xsd:anyURI ;
+                                               vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ecv#"^^xsd:anyURI ;
                                                voaf:extends <http://qudt.org/schema/qudt> ,
                                                             cunit: ,
                                                             <http://www.w3.org/2004/02/skos/core> ;
@@ -45,7 +45,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-ecv#isProductOf
+###  https://w3id.org/crima-ontology/ecv#isProductOf
 :isProductOf rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf sosa:isPropertyOf .
 
@@ -54,7 +54,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-ecv#ECV-domain
+###  https://w3id.org/crima-ontology/ecv#ECV-domain
 :ECV-domain rdf:type owl:Class ;
             rdfs:subClassOf skos:Concept ,
                             [ rdf:type owl:Restriction ;
@@ -63,7 +63,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
                             ] .
 
 
-###  http://www.semanticweb.org/crima/crima-ecv#ECV-product
+###  https://w3id.org/crima-ontology/ecv#ECV-product
 :ECV-product rdf:type owl:Class ;
              rdfs:subClassOf skos:Concept ,
                              sosa:Property ,
@@ -81,7 +81,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
                              ] .
 
 
-###  http://www.semanticweb.org/crima/crima-ecv#ECV-subdomain
+###  https://w3id.org/crima-ontology/ecv#ECV-subdomain
 :ECV-subdomain rdf:type owl:Class ;
                rdfs:subClassOf skos:Concept ,
                                [ rdf:type owl:Restriction ;
@@ -94,7 +94,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
                                ] .
 
 
-###  http://www.semanticweb.org/crima/crima-ecv#ECV-variable
+###  https://w3id.org/crima-ontology/ecv#ECV-variable
 :ECV-variable rdf:type owl:Class ;
               rdfs:subClassOf geo:Feature ,
                               skos:Concept ,
@@ -109,7 +109,7 @@ dcterms:creator rdf:type owl:AnnotationProperty .
                               ] .
 
 
-###  http://www.semanticweb.org/crima/crima-ecv#EssentialClimaticVariables
+###  https://w3id.org/crima-ontology/ecv#EssentialClimaticVariables
 :EssentialClimaticVariables rdf:type owl:Class ;
                             rdfs:subClassOf skos:ConceptScheme ;
                             dcterms:creator "World Meteorological Organization (WMO); Intergovernmental Oceanographic Commission of the United Nations Educational, Scientific and Cultural Organization (IOC-UNESCO); International Science Council (ISC); United Nations Environment Programme (UNEP); Copernicus Climate Change Service (C3S)" ;

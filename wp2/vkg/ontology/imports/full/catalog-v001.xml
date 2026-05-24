@@ -13,8 +13,8 @@
     <uri id="foaf" name="http://xmlns.com/foaf/0.1/" uri="foaf.ttl"/>
     <uri id="geo" name="http://www.opengis.net/ont/geosparql" uri="geo.ttl"/>
     <uri id="org" name="http://www.w3.org/ns/org#" uri="org.ttl"/>
-    <uri id="prov (1)" name="http://www.w3.org/ns/prov#" uri="prov.ttl"/>
-    <uri id="prov (2)" name="http://www.w3.org/ns/prov-o#" uri="prov.ttl"/>
+    <uri id="prov-1" name="http://www.w3.org/ns/prov#" uri="prov.ttl"/>
+    <uri id="prov-2" name="http://www.w3.org/ns/prov-o#" uri="prov.ttl"/>
     <uri id="qudt-coords" name="http://qudt.org/schema/coordinateSystems" uri="qudt-coords.ttl"/>
     <uri id="qudt-datatype" name="http://qudt.org/schema/datatype" uri="qudt-datatype.ttl"/>
     <uri id="qudt-facade" name="http://qudt.org/schema/facade/qudt" uri="qudt-facade.ttl"/>

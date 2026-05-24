@@ -11,7 +11,7 @@
 ///
 2026-05-07:
 • Annotations and metadata have been added to various elements pre-fixed by csrc:.
-• <http://www.semanticweb.org/crima/emdat#DisasterEvent> has been removed. The mapping now makes use of <http://www.semanticweb.org/crima/crima-source#EMDAT-DisasterEvent>.
+• <https://w3id.org/crima-ontology/emdat#DisasterEvent> has been removed. The mapping now makes use of <https://w3id.org/crima-ontology/csrc#EMDAT-DisasterEvent>.
 • Cascading events are not Hazard, by definition: the ontology would be inconsistent in this case. --> ccore:CascadingEvent as a sibling of ccore:Hazard, subclass of ccore:ThreadPerdurant.
 • Fixed wrong prefix <http://www.semanticweb.org/owl/owlapi/turtle#> for <time:inXSDDate>.
 • From "Activity Streams" (data properties): (i) as:latitude; (ii) as:longitude; (iii) as:altitude. the first two were already included, the third has been added. Annotations for the first two report about the OGC documentation of GeoSPARQL where they are officially mentioned.

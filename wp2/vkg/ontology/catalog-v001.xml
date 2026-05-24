@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="public">
-    <uri id="crima" name="http://www.semanticweb.org/crima" uri="crima.ttl"/>
+    <uri id="crima" name="https://w3id.org/crima-ontology/crima#" uri="crima.ttl"/>
     <uri id="as" name="https://www.w3.org/ns/activitystreams#" uri="imports/fragments/as.ttl"/>
     <uri id="bibo" name="http://purl.org/ontology/bibo/" uri="imports/fragments/bibo.ttl"/>
     <uri id="cc" name="http://creativecommons.org/ns#" uri="imports/fragments/cc.ttl"/>
@@ -24,22 +24,22 @@
     <uri id="voaf" name="http://purl.org/vocommons/voaf" uri="imports/fragments/voaf.ttl"/>
     <uri id="wmdr-unit" name="http://codes.wmo.int/wmdr/unit/" uri="imports/fragments/wmdr-unit.ttl"/>
     <uri id="xkos" name="http://rdf-vocabulary.ddialliance.org/xkos" uri="imports/fragments/xkos.ttl"/>
-    <uri id="ar5-adapt" name="http://www.semanticweb.org/crima/ipcc-ar5-adaptation#" uri="modules/ar5-adapt.ttl"/>
-    <uri id="ar6-cid" name="http://www.semanticweb.org/crima/ipcc-ar6-cid#" uri="modules/ar6-cid.ttl"/>
-    <uri id="ar6-impact" name="http://www.semanticweb.org/crima/ipcc-ar6-impacts#" uri="modules/ar6-impact.ttl"/>
-    <uri id="cbib" name="http://www.semanticweb.org/crima/crima-bib#" uri="modules/cbib.ttl"/>
-    <uri id="cclc-data" name="http://www.semanticweb.org/crima/crima-clc-data#" uri="modules/cclc-data.ttl"/>
-    <uri id="cclc" name="http://www.semanticweb.org/crima/crima-clc#" uri="modules/cclc.ttl"/>
-    <uri id="ccore" name="http://www.semanticweb.org/crima/crima-core#" uri="modules/ccore.ttl"/>
-    <uri id="cplace" name="http://www.semanticweb.org/crima/crima-place#" uri="modules/cplace.ttl"/>
-    <uri id="crid" name="http://www.semanticweb.org/crima/crima-id#" uri="modules/crid.ttl"/>
-    <uri id="ctlo" name="http://www.semanticweb.org/crima/crima-tlo#" uri="modules/ctlo.ttl"/>
-    <uri id="cunit" name="http://www.semanticweb.org/crima/crima-unit#" uri="modules/cunit.ttl"/>
-    <uri id="ecv-data" name="http://www.semanticweb.org/crima/crima-ecv-data#" uri="modules/ecv-data.ttl"/>
-    <uri id="ecv" name="http://www.semanticweb.org/crima/crima-ecv#" uri="modules/ecv.ttl"/>
-    <uri id="emdat" name="http://www.semanticweb.org/crima/emdat#" uri="modules/emdat.ttl"/>
+    <uri id="ar5-adapt" name="https://w3id.org/crima-ontology/ar5-adapt#" uri="modules/ar5-adapt.ttl"/>
+    <uri id="ar6-cid" name="https://w3id.org/crima-ontology/ar6-cid#" uri="modules/ar6-cid.ttl"/>
+    <uri id="ar6-impact" name="https://w3id.org/crima-ontology/ar6-impact#" uri="modules/ar6-impact.ttl"/>
+    <uri id="cbib" name="https://w3id.org/crima-ontology/cbib#" uri="modules/cbib.ttl"/>
+    <uri id="cclc-data" name="https://w3id.org/crima-ontology/cclc-data#" uri="modules/cclc-data.ttl"/>
+    <uri id="cclc" name="https://w3id.org/crima-ontology/cclc#" uri="modules/cclc.ttl"/>
+    <uri id="ccore" name="https://w3id.org/crima-ontology/ccore#" uri="modules/ccore.ttl"/>
+    <uri id="cplace" name="https://w3id.org/crima-ontology/cplace#" uri="modules/cplace.ttl"/>
+    <uri id="crid" name="https://w3id.org/crima-ontology/crid#" uri="modules/crid.ttl"/>
+    <uri id="ctlo" name="https://w3id.org/crima-ontology/ctlo#" uri="modules/ctlo.ttl"/>
+    <uri id="cunit" name="https://w3id.org/crima-ontology/cunit#" uri="modules/cunit.ttl"/>
+    <uri id="ecv-data" name="https://w3id.org/crima-ontology/ecv-data#" uri="modules/ecv-data.ttl"/>
+    <uri id="ecv" name="https://w3id.org/crima-ontology/ecv#" uri="modules/ecv.ttl"/>
+    <uri id="emdat" name="https://w3id.org/crima-ontology/emdat#" uri="modules/emdat.ttl"/>
     <uri id="ex" name="http://example.org/ontology/" uri="modules/ex.ttl"/>
     <uri id="hip-data" name="https://undrr-hip.org/hip-data/" uri="modules/hip-data.ttl"/>
     <uri id="hip" name="https://undrr-hip.org/hip-schema/" uri="modules/hip.ttl"/>
-    <uri id="ich" name="http://www.semanticweb.org/crima/crima-impactchain#" uri="modules/ich.ttl"/>
+    <uri id="ich" name="https://w3id.org/crima-ontology/ich#" uri="modules/ich.ttl"/>
 </catalog>

@@ -1,39 +1,39 @@
-@prefix : <http://www.semanticweb.org/crima#> .
+@prefix : <https://w3id.org/crima-ontology/crima#> .
 @prefix as: <https://www.w3.org/ns/activitystreams#> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix ex: <http://example.org/ontology/> .
-@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix cclc: <https://w3id.org/crima-ontology/cclc#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
-@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
-@prefix ich: <http://www.semanticweb.org/crima/crima-impactchain#> .
+@prefix ecv: <https://w3id.org/crima-ontology/ecv#> .
+@prefix ich: <https://w3id.org/crima-ontology/ich#> .
 @prefix org: <http://www.w3.org/ns/org#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix bibo: <http://purl.org/ontology/bibo/> .
-@prefix crid: <http://www.semanticweb.org/crima/crima-id#> .
-@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix crid: <https://w3id.org/crima-ontology/crid#> .
+@prefix ctlo: <https://w3id.org/crima-ontology/ctlo#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
-@prefix emdat: <http://www.semanticweb.org/crima/emdat#> .
-@prefix cplace: <http://www.semanticweb.org/crima/crima-place#> .
+@prefix ccore: <https://w3id.org/crima-ontology/ccore#> .
+@prefix cunit: <https://w3id.org/crima-ontology/cunit#> .
+@prefix emdat: <https://w3id.org/crima-ontology/emdat#> .
+@prefix cplace: <https://w3id.org/crima-ontology/cplace#> .
 @prefix schema: <http://schema.org/> .
-@prefix ar6-cid: <http://www.semanticweb.org/crima/ipcc-ar6-cid#> .
+@prefix ar6-cid: <https://w3id.org/crima-ontology/ar6-cid#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sosa-obs: <http://www.w3.org/ns/sosa/obs/> .
-@prefix ar5-adapt: <http://www.semanticweb.org/crima/ipcc-ar5-adaptation#> .
+@prefix ar5-adapt: <https://w3id.org/crima-ontology/ar5-adapt#> .
 @prefix wmdr-unit: <http://codes.wmo.int/wmdr/unit/> .
-@prefix ar6-impact: <http://www.semanticweb.org/crima/ipcc-ar6-impacts#> .
+@prefix ar6-impact: <https://w3id.org/crima-ontology/ar6-impact#> .
 @prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
-@base <http://www.semanticweb.org/crima#> .
+@base <https://w3id.org/crima-ontology/crima#> .
 
-<http://www.semanticweb.org/crima> rdf:type owl:Ontology ;
-                                    owl:versionIRI <http://www.semanticweb.org/crima/1.0> ;
+<https://w3id.org/crima-ontology/crima#> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://w3id.org/crima-ontology/crima/1.0> ;
                                     owl:imports wmdr-unit: ,
                                                 cc: ,
                                                 dbo: ,
@@ -49,12 +49,12 @@
                                                 schema: ,
                                                 <http://www.linkedmodel.org/schema/dtype> ,
                                                 <http://www.opengis.net/ont/geosparql> ,
-                                                <http://www.semanticweb.org/crima/crima-bib#> ,
-                                                <http://www.semanticweb.org/crima/crima-clc#> ,
-                                                <http://www.semanticweb.org/crima/crima-clc-data#> ,
+                                                <https://w3id.org/crima-ontology/cbib#> ,
+                                                <https://w3id.org/crima-ontology/cclc#> ,
+                                                <https://w3id.org/crima-ontology/cclc-data#> ,
                                                 ccore: ,
                                                 ecv: ,
-                                                <http://www.semanticweb.org/crima/crima-ecv-data#> ,
+                                                <https://w3id.org/crima-ontology/ecv-data#> ,
                                                 crid: ,
                                                 ich: ,
                                                 cplace: ,
@@ -96,10 +96,10 @@
                                                   schema: ,
                                                   <http://www.linkedmodel.org/schema/dtype> ,
                                                   <http://www.opengis.net/ont/geosparql> ,
-                                                  <http://www.semanticweb.org/crima/crima-bib#> ,
+                                                  <https://w3id.org/crima-ontology/cbib#> ,
                                                   ccore: ,
                                                   ecv: ,
-                                                  <http://www.semanticweb.org/crima/crima-ecv-data#> ,
+                                                  <https://w3id.org/crima-ontology/ecv-data#> ,
                                                   crid: ,
                                                   ich: ,
                                                   cplace: ,
@@ -111,8 +111,8 @@
                                                   ar6-impact: ,
                                                   <http://www.w3.org/2004/02/skos/core> ,
                                                   <http://www.w3.org/2006/time> ,
-                                                  <http://www.semanticweb.org/crima/crima-clc#> ,
-                                                  <http://www.semanticweb.org/crima/crima-clc-data#> ,
+                                                  <https://w3id.org/crima-ontology/cclc#> ,
+                                                  <https://w3id.org/crima-ontology/cclc-data#> ,
                                                   <http://www.w3.org/ns/dcat> ,
                                                   org: ,
                                                   <http://www.w3.org/ns/prov-o#> ,

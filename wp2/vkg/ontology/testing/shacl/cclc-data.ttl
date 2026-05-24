@@ -1,5 +1,5 @@
 @prefix cc: <http://creativecommons.org/ns#> .
-@prefix cclc: <http://www.semanticweb.org/crima/crima-clc#> .
+@prefix cclc: <https://w3id.org/crima-ontology/cclc#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -25,7 +25,7 @@ cclc:ResourceShape a sh:NodeShape ;
 
 cclc:OntologyShape a sh:NodeShape ;
     sh:targetClass owl:Ontology ;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-clc-data#$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/cclc-data#$" ;
     sh:closed true ;
         sh:property [
         sh:path rdf:type ;
@@ -44,7 +44,7 @@ cclc:OntologyShape a sh:NodeShape ;
 cclc:CORINE-classification a sh:NodeShape ;
     sh:targetClass cclc:CORINE-classification ;
     sh:closed true ;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#corine-land-cover-classification$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/cclc#corine-land-cover-classification$" ;
     sh:property [
         sh:path rdf:type ;
         sh:in ( cclc:CORINE-classification skos:ConceptScheme owl:NamedIndividual )
@@ -84,7 +84,7 @@ cclc:CORINE-classification a sh:NodeShape ;
 
 cclc:CORINE-Class_level1 a sh:NodeShape ;
     sh:targetClass cclc:CORINE-Class_level1 ;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/cclc#clc[1-9]$" ;
     sh:property [
         sh:path rdf:type ;
         sh:in ( cclc:CORINE-Class_level1 skos:Concept owl:NamedIndividual )
@@ -115,7 +115,7 @@ cclc:CORINE-Class_level1 a sh:NodeShape ;
 cclc:CORINE-Class_level2 a sh:NodeShape ;
     sh:targetClass cclc:CORINE-Class_level2 ;
     sh:closed true;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]{2}$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/cclc#clc[1-9]{2}$" ;
     sh:property [
         sh:path rdf:type ;
         sh:in ( cclc:CORINE-Class_level2 skos:Concept owl:NamedIndividual )
@@ -151,7 +151,7 @@ cclc:CORINE-Class_level2 a sh:NodeShape ;
 cclc:CORINE-Class_level3 a sh:NodeShape ;
     sh:targetClass cclc:CORINE-Class_level3 ;
     sh:closed true ;
-    sh:pattern "^http://www.semanticweb.org/crima/crima-clc#clc[1-9]{3}$" ;
+    sh:pattern "^https://w3id.org/crima-ontology/cclc#clc[1-9]{3}$" ;
     sh:property [
         sh:path rdf:type ;
         sh:in ( cclc:CORINE-Class_level3 skos:Concept owl:NamedIndividual )

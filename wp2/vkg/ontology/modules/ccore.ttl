@@ -1,11 +1,11 @@
-@prefix : <http://www.semanticweb.org/crima/crima-core#> .
+@prefix : <https://w3id.org/crima-ontology/ccore#> .
 @prefix dpo: <http://knowwheregraph/ontology/dpo#> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix ctlo: <http://www.semanticweb.org/crima/crima-tlo#> .
+@prefix ctlo: <https://w3id.org/crima-ontology/ctlo#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
@@ -16,9 +16,9 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sosa-obs: <http://www.w3.org/ns/sosa/obs/> .
 @prefix swrl-var: <urn:swrl:var#> .
-@base <http://www.semanticweb.org/crima/crima-core#> .
+@base <https://w3id.org/crima-ontology/ccore#> .
 
-<http://www.semanticweb.org/crima/crima-core#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ccore#> rdf:type owl:Ontology ;
                                                 owl:imports <http://knowwheregraph/ontology/dpo> ,
                                                             <http://www.opengis.net/ont/geosparql> ,
                                                             ctlo: ,
@@ -26,7 +26,7 @@
                                                             <http://www.w3.org/2006/time> ,
                                                             sosa-obs: ;
                                                 vann:preferredNamespacePrefix "ccore" ;
-                                                vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-core#"^^xsd:anyURI ;
+                                                vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ccore#"^^xsd:anyURI ;
                                                 voaf:extends <http://knowwheregraph/ontology/dpo> ,
                                                              <http://www.opengis.net/ont/geosparql> ,
                                                              ctlo: ,
@@ -66,17 +66,17 @@ dpo:resultOf rdfs:domain :Impact ;
              rdfs:range :ThreatPerdurant .
 
 
-###  http://www.semanticweb.org/crima/crima-core#classifiedBy
+###  https://w3id.org/crima-ontology/ccore#classifiedBy
 :classifiedBy rdf:type owl:ObjectProperty ;
               owl:inverseOf :classifies .
 
 
-###  http://www.semanticweb.org/crima/crima-core#classifies
+###  https://w3id.org/crima-ontology/ccore#classifies
 :classifies rdf:type owl:ObjectProperty ;
             rdfs:domain skos:Concept .
 
 
-###  http://www.semanticweb.org/crima/crima-core#exposedElement
+###  https://w3id.org/crima-ontology/ccore#exposedElement
 :exposedElement rdf:type owl:ObjectProperty ;
                 owl:inverseOf :exposedElementOf ;
                 rdfs:domain :Exposure ;
@@ -87,40 +87,40 @@ dpo:resultOf rdfs:domain :Impact ;
                            ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#exposedElementOf
+###  https://w3id.org/crima-ontology/ccore#exposedElementOf
 :exposedElementOf rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/crima/crima-core#exposedTo
+###  https://w3id.org/crima-ontology/ccore#exposedTo
 :exposedTo rdf:type owl:ObjectProperty ;
            rdfs:domain :Exposure ;
            rdfs:range :ThreatPerdurant .
 
 
-###  http://www.semanticweb.org/crima/crima-core#hasSpatialExtent
+###  https://w3id.org/crima-ontology/ccore#hasSpatialExtent
 :hasSpatialExtent rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf owl:topObjectProperty ;
                   rdfs:range geo:SpatialObject ;
                   rdfs:comment "The property is meant to be used to represent the spatial scope of any thing as assessed by an agent (e.g. a municipality, a point of interest), not necessarily corresponding to the exact spatial extension of the phenomenon at the geophysical level." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#hasTemporalExtent
+###  https://w3id.org/crima-ontology/ccore#hasTemporalExtent
 :hasTemporalExtent rdf:type owl:ObjectProperty ;
                    rdfs:subPropertyOf owl:topObjectProperty ;
                    rdfs:comment "The property is meant to be used to represent the temporal scope of any thing as assessed by an agent, not necessarily corresponding to the exact temporal extension of the phenomenon at the geophysical level." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#hasVulnerability
+###  https://w3id.org/crima-ontology/ccore#hasVulnerability
 :hasVulnerability rdf:type owl:ObjectProperty ;
                   owl:inverseOf :inheresIn .
 
 
-###  http://www.semanticweb.org/crima/crima-core#impactedBy
+###  https://w3id.org/crima-ontology/ccore#impactedBy
 :impactedBy rdf:type owl:ObjectProperty ;
             owl:inverseOf :impactsOn .
 
 
-###  http://www.semanticweb.org/crima/crima-core#impactsOn
+###  https://w3id.org/crima-ontology/ccore#impactsOn
 :impactsOn rdf:type owl:ObjectProperty ;
            rdfs:domain :Impact ;
            rdfs:range [ rdf:type owl:Class ;
@@ -130,7 +130,7 @@ dpo:resultOf rdfs:domain :Impact ;
                       ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#influences
+###  https://w3id.org/crima-ontology/ccore#influences
 :influences rdf:type owl:ObjectProperty ;
             rdfs:domain :Exposure ;
             rdfs:range :Vulnerability ;
@@ -143,7 +143,7 @@ inheresIn(V, O), manifestedBy(V, P) .
 dpo:influences(Exp, V) --> Exposure(Exp), Vulnerability(V) .""" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#inheresIn
+###  https://w3id.org/crima-ontology/ccore#inheresIn
 :inheresIn rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :isQualityOf ;
            rdfs:domain :Vulnerability ;
@@ -154,7 +154,7 @@ dpo:influences(Exp, V) --> Exposure(Exp), Vulnerability(V) .""" .
                       ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#intendedGoal
+###  https://w3id.org/crima-ontology/ccore#intendedGoal
 :intendedGoal rdf:type owl:ObjectProperty ;
               rdfs:domain :Goal ;
               rdfs:range [ rdf:type owl:Class ;
@@ -164,7 +164,7 @@ dpo:influences(Exp, V) --> Exposure(Exp), Vulnerability(V) .""" .
                          ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#isQualityOf
+###  https://w3id.org/crima-ontology/ccore#isQualityOf
 :isQualityOf rdf:type owl:ObjectProperty ;
              rdfs:domain ctlo:Quality ;
              rdfs:range [ rdf:type owl:Class ;
@@ -175,13 +175,13 @@ dpo:influences(Exp, V) --> Exposure(Exp), Vulnerability(V) .""" .
                         ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#manifestedBy
+###  https://w3id.org/crima-ontology/ccore#manifestedBy
 :manifestedBy rdf:type owl:ObjectProperty ;
               rdfs:domain :Vulnerability ;
               rdfs:range :ThreatPerdurant .
 
 
-###  http://www.semanticweb.org/crima/crima-core#participantOf
+###  https://w3id.org/crima-ontology/ccore#participantOf
 :participantOf rdf:type owl:ObjectProperty ;
                rdfs:domain [ rdf:type owl:Class ;
                              owl:unionOf ( :EcosystemService
@@ -197,18 +197,18 @@ geo:sfIntersect(G, G1), time:notDisjoint(T, T1) .
 participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPerdurant(P)""" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#proxyContent
+###  https://w3id.org/crima-ontology/ccore#proxyContent
 :proxyContent rdf:type owl:ObjectProperty ;
               owl:inverseOf :proxyContentFor ;
               rdfs:domain :Vulnerability ;
               rdfs:range ctlo:Quality .
 
 
-###  http://www.semanticweb.org/crima/crima-core#proxyContentFor
+###  https://w3id.org/crima-ontology/ccore#proxyContentFor
 :proxyContentFor rdf:type owl:ObjectProperty .
 
 
-###  http://www.semanticweb.org/crima/crima-core#reduces
+###  https://w3id.org/crima-ontology/ccore#reduces
 :reduces rdf:type owl:ObjectProperty ;
          rdfs:domain :AdaptationOption ;
          rdfs:range [ rdf:type owl:Class ;
@@ -218,7 +218,7 @@ participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPer
                     ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#refersTo
+###  https://w3id.org/crima-ontology/ccore#refersTo
 :refersTo rdf:type owl:ObjectProperty ;
           rdfs:domain [ rdf:type owl:Class ;
                         owl:unionOf ( :Impact
@@ -228,7 +228,7 @@ participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPer
           rdfs:range :Goal .
 
 
-###  http://www.semanticweb.org/crima/crima-core#temporalPrecision
+###  https://w3id.org/crima-ontology/ccore#temporalPrecision
 :temporalPrecision rdf:type owl:ObjectProperty ;
                    rdfs:domain time:TemporalEntity ;
                    rdfs:range :TemporalPrecision ;
@@ -236,13 +236,13 @@ participantOf(E, P) --> (EcosystemService(E) ∨ PhysicalEndurant(E)), ThreatPer
                    rdfs:label "temporal precision"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#threatPerdurant
+###  https://w3id.org/crima-ontology/ccore#threatPerdurant
 :threatPerdurant rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf owl:topObjectProperty ;
                  rdfs:range :ThreatPerdurant .
 
 
-###  http://www.semanticweb.org/crima/crima-core#triggers
+###  https://w3id.org/crima-ontology/ccore#triggers
 :triggers rdf:type owl:ObjectProperty ;
           rdfs:domain :ThreatPerdurant ;
           rdfs:range :ThreatPerdurant ;
@@ -257,14 +257,14 @@ time:intervalOverlaps(T, T1) .""" .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-core#AdaptationOption
+###  https://w3id.org/crima-ontology/ccore#AdaptationOption
 :AdaptationOption rdf:type owl:Class ;
                   dcterms:source "IPCC, 2021: Annex VII: Glossary [Matthews, J.B.R., V. Möller, R. van Diemen, J.S. Fuglestvedt, V. Masson-Delmotte, C. Méndez, S. Semenov, A. Reisinger (eds.)]. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 2215-2256, doi:10.1017/9781009157896.022." ,
                                  "Noble, I.R., S. Huq, Y.A. Anokhin, J. Carmin, D. Goudou, F.P. Lansigan, B. Osman-Elasha, and A. Villamizar, 2014: Adaptation needs and options. In: Climate Change 2014: Impacts, Adaptation, and Vulnerability. Part A: Global and Sectoral Aspects. Contribution of Working Group II to the Fifth Assessment Report of the Intergovernmental Panel on Climate Change[Field, C.B., V.R. Barros, D.J. Dokken, K.J. Mach, M.D. Mastrandrea, T.E. Bilir, M. Chatterjee, K.L. Ebi, Y.O. Estrada, R.C. Genova, B. Girma, E.S. Kissel, A.N. Levy, S. MacCracken, P.R. Mastrandrea, and L.L. White (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 833-868." ;
                   skos:definition "In human systems, the process of adjustment to actual or expected climate and its effects, in order to moderate harm or exploit beneficial opportunities. In natural systems, the process of adjustment to actual climate and its effects; human intervention may facilitate adjustment to expected climate and its effects. See also Adaptation options, Adaptive capacity and Maladaptive actions (Maladaptation)." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
+###  https://w3id.org/crima-ontology/ccore#CascadingEvent
 :CascadingEvent rdf:type owl:Class ;
                 rdfs:subClassOf :ThreatPerdurant ,
                                 [ rdf:type owl:Restriction ;
@@ -275,7 +275,7 @@ time:intervalOverlaps(T, T1) .""" .
                 rdfs:comment "CascadingEvent(E) --> ∃ E1 ThreatPerdurant(E), triggers(E1, E) ." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#ClimaticImpactDriver
+###  https://w3id.org/crima-ontology/ccore#ClimaticImpactDriver
 :ClimaticImpactDriver rdf:type owl:Class ;
                       rdfs:subClassOf [ rdf:type owl:Class ;
                                         owl:unionOf ( ctlo:Event
@@ -286,14 +286,14 @@ time:intervalOverlaps(T, T1) .""" .
                       skos:definition "Climatic impact-driver (CID) Climatic impact-drivers (CIDs) are physical climate system conditions (e.g., means, events, extremes) that affect an element of society or ecosystems. Depending on system tolerance, CIDs and their changes can be detrimental, beneficial, neutral or a mixture of each across interacting system elements and regions. See also Risk, Hazard and Impacts (consequences, outcomes)." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Commitment-based
+###  https://w3id.org/crima-ontology/ccore#Commitment-based
 :Commitment-based rdf:type owl:Class ;
                   rdfs:subClassOf :EcosystemService ;
                   dcterms:references "Adamo, G., & Willis, M. (2022, May). Conceptual integration for social-ecological systems: An ontological approach. In International Conference on Research Challenges in Information Science (pp. 321-337). Cham: Springer International Publishing." ;
                   rdfs:label "CommitmentBasedService" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#EcosystemService
+###  https://w3id.org/crima-ontology/ccore#EcosystemService
 :EcosystemService rdf:type owl:Class ;
                   dcterms:references "Adamo, G., & Willis, M. (2022, May). Conceptual integration for social-ecological systems: An ontological approach. In International Conference on Research Challenges in Information Science (pp. 321-337). Cham: Springer International Publishing." ,
                                      "Haines-Young, R., & Potschin, M. (2010). The links between biodiversity, ecosystem services and human well-being. Ecosystem Ecology: a new synthesis, 1, 110-139." ,
@@ -303,7 +303,7 @@ time:intervalOverlaps(T, T1) .""" .
                   rdfs:label "EcosystemService" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#ElementAtRisk
+###  https://w3id.org/crima-ontology/ccore#ElementAtRisk
 :ElementAtRisk rdf:type owl:Class ;
                rdfs:subClassOf [ rdf:type owl:Restriction ;
                                  owl:onProperty :threatPerdurant ;
@@ -327,7 +327,7 @@ threatPerdurant(O, P) .""" ,
                             "We say that an element is 'at risk' with respect to a certain threat perdurant if it is a service or a physical endurant for which an impact has been documented that results from the same threat perdurant and impacts on that element." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Exposure
+###  https://w3id.org/crima-ontology/ccore#Exposure
 :Exposure rdf:type owl:Class ;
           rdfs:subClassOf ctlo:Quality ,
                           [ rdf:type owl:Restriction ;
@@ -348,18 +348,18 @@ threatPerdurant(O, P) .""" ,
           skos:definition "The presence of people; livelihoods; species or ecosystems; environmental functions, services, and resources; infrastructure; or economic, social, or cultural assets in places and settings that could be adversely affected." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#ExtrinsicVulnerability
+###  https://w3id.org/crima-ontology/ccore#ExtrinsicVulnerability
 :ExtrinsicVulnerability rdf:type owl:Class ;
                         rdfs:subClassOf :Vulnerability .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Goal
+###  https://w3id.org/crima-ontology/ccore#Goal
 :Goal rdf:type owl:Class ;
       rdfs:comment """\"Things do not just have value, they have value for someone, and in case their aﬀordances enable certain happenings that positively contribute to the achievement of one's goals. Analogously, things are only at risk from one's perspective, in case their vulnerabilities enable happenings that hurt one's goals.\"
 Sales, T. P., Baião, F., Guizzardi, G., Almeida, J. P. A., Guarino, N., & Mylopoulos, J. (2018, September). The common ontology of value and risk. In International conference on conceptual modeling (pp. 121-135). Cham: Springer International Publishing.""" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Hazard
+###  https://w3id.org/crima-ontology/ccore#Hazard
 :Hazard rdf:type owl:Class ;
         rdfs:subClassOf :ThreatPerdurant ,
                         [ rdf:type owl:Restriction ;
@@ -374,7 +374,7 @@ Sales, T. P., Baião, F., Guizzardi, G., Almeida, J. P. A., Guarino, N., & Mylop
         skos:definition "The potential occurrence of a natural or human-induced physical event or trend that may cause loss of life, injury, or other health impacts, as well as damage and loss to property, infrastructure, livelihoods, service provision, ecosystems and environmental resources. See also Impacts (consequences, outcomes) and Risk." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Impact
+###  https://w3id.org/crima-ontology/ccore#Impact
 :Impact rdf:type owl:Class ;
         rdfs:subClassOf [ rdf:type owl:Restriction ;
                           owl:onProperty dpo:dependsOn ;
@@ -455,23 +455,23 @@ impactsOn(I, O), refersTo(I, G), dpo:dependsOn(I, V), dpo:dependsOn(I, Exp), dpo
         skos:definition "The consequences of realized risks on natural and human systems, where risks result from the interactions of climate-related hazards (including extreme weather/climate events), exposure, and vulnerability. Impacts generally refer to effects on lives, livelihoods, health and well-being, ecosystems and species, economic, social and cultural assets, services (including ecosystem services), and infrastructure. Impacts may be referred to as consequences or outcomes and can be adverse or beneficial. See also Adaptation, Exposure, Hazard, Vulnerability and Risk." .
 
 
-###  http://www.semanticweb.org/crima/crima-core#IntrinsicVulnerability
+###  https://w3id.org/crima-ontology/ccore#IntrinsicVulnerability
 :IntrinsicVulnerability rdf:type owl:Class ;
                         rdfs:subClassOf :Vulnerability .
 
 
-###  http://www.semanticweb.org/crima/crima-core#MeteorologicalObservation
+###  https://w3id.org/crima-ontology/ccore#MeteorologicalObservation
 :MeteorologicalObservation rdf:type owl:Class ;
                            rdfs:subClassOf sosa:Observation .
 
 
-###  http://www.semanticweb.org/crima/crima-core#TemporalPrecision
+###  https://w3id.org/crima-ontology/ccore#TemporalPrecision
 :TemporalPrecision rdf:type owl:Class ;
                    rdfs:comment "A classification of the granularity at which a temporal value is known." ;
                    rdfs:label "Temporal Precision" .
 
 
-###  http://www.semanticweb.org/crima/crima-core#ThreatPerdurant
+###  https://w3id.org/crima-ontology/ccore#ThreatPerdurant
 :ThreatPerdurant rdf:type owl:Class ;
                  rdfs:subClassOf [ rdf:type owl:Class ;
                                    owl:unionOf ( ctlo:Event
@@ -480,12 +480,12 @@ impactsOn(I, O), refersTo(I, G), dpo:dependsOn(I, V), dpo:dependsOn(I, Exp), dpo
                                  ] .
 
 
-###  http://www.semanticweb.org/crima/crima-core#UnintensionallyProvided
+###  https://w3id.org/crima-ontology/ccore#UnintensionallyProvided
 :UnintensionallyProvided rdf:type owl:Class ;
                          rdfs:subClassOf :EcosystemService .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Vulnerability
+###  https://w3id.org/crima-ontology/ccore#Vulnerability
 :Vulnerability rdf:type owl:Class ;
                rdfs:subClassOf ctlo:Quality ,
                                [ rdf:type owl:Restriction ;
@@ -526,32 +526,32 @@ sosa:Property rdfs:subClassOf ctlo:Quality .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-core#DayPrecision
+###  https://w3id.org/crima-ontology/ccore#DayPrecision
 :DayPrecision rdf:type owl:NamedIndividual ,
                        :TemporalPrecision ;
               rdfs:label "day precision"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#ExactPrecision
+###  https://w3id.org/crima-ontology/ccore#ExactPrecision
 :ExactPrecision rdf:type owl:NamedIndividual ,
                          :TemporalPrecision ;
                 rdfs:comment "Indicates that the temporal value is known exactly at its stated resolution."@en ;
                 rdfs:label "exact precision"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#MonthPrecision
+###  https://w3id.org/crima-ontology/ccore#MonthPrecision
 :MonthPrecision rdf:type owl:NamedIndividual ,
                          :TemporalPrecision ;
                 rdfs:label "month precision"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#SecondPrecision
+###  https://w3id.org/crima-ontology/ccore#SecondPrecision
 :SecondPrecision rdf:type owl:NamedIndividual ,
                           :TemporalPrecision ;
                  rdfs:label "second precision"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#YearPrecision
+###  https://w3id.org/crima-ontology/ccore#YearPrecision
 :YearPrecision rdf:type owl:NamedIndividual ,
                         :TemporalPrecision ;
                rdfs:label "year precision"@en .

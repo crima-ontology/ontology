@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/emdat#> .
+@prefix : <https://w3id.org/crima-ontology/emdat#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,13 +7,13 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
-@base <http://www.semanticweb.org/crima/emdat#> .
+@prefix ccore: <https://w3id.org/crima-ontology/ccore#> .
+@base <https://w3id.org/crima-ontology/emdat#> .
 
-<http://www.semanticweb.org/crima/emdat#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/emdat#> rdf:type owl:Ontology ;
                                            owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                            vann:preferredNamespacePrefix "emdat" ;
-                                           vann:preferredNamespaceUri "http://www.semanticweb.org/crima/emdat#"^^xsd:anyURI ;
+                                           vann:preferredNamespaceUri "https://w3id.org/crima-ontology/emdat#"^^xsd:anyURI ;
                                            voaf:extends <http://www.w3.org/2004/02/skos/core> ;
                                            voaf:metadataVoc vann: ,
                                                             <http://purl.org/vocommons/voaf> ;
@@ -47,7 +47,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Object Properties
 #################################################################
 
-###  http://www.semanticweb.org/crima/emdat#hasSubtype
+###  https://w3id.org/crima-ontology/emdat#hasSubtype
 :hasSubtype rdf:type owl:ObjectProperty ;
             rdfs:range :emdat-subtype ;
             rdfs:comment "Links a record-level EM-DAT classification to its leaf subtype concept." .
@@ -65,28 +65,28 @@ skos:inScheme rdf:type owl:ObjectProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
+###  https://w3id.org/crima-ontology/ccore#CascadingEvent
 ccore:CascadingEvent rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Hazard
+###  https://w3id.org/crima-ontology/ccore#Hazard
 ccore:Hazard rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/emdat#EMDAT-DisastersClassification
+###  https://w3id.org/crima-ontology/emdat#EMDAT-DisastersClassification
 :EMDAT-DisastersClassification rdf:type owl:Class ;
                                rdfs:subClassOf skos:ConceptScheme ;
                                rdfs:isDefinedBy "https://council.science/wp-content/uploads/2019/12/Peril-Classification-and-Hazard-Glossary-1.pdf" ;
                                rdfs:seeAlso "Integrated Research on Disaster Risk. (2014). Peril Classification and Hazard Glossary (IRDR DATA Publication No. 1). Beijing: Integrated Research on Disaster Risk." .
 
 
-###  http://www.semanticweb.org/crima/emdat#emdat-classificationEntry
+###  https://w3id.org/crima-ontology/emdat#emdat-classificationEntry
 :emdat-classificationEntry rdf:type owl:Class ;
                            rdfs:subClassOf skos:Concept ;
                            rdfs:comment "A record-level EM-DAT classification identified by classification_key, corresponding to one full classification path in the source table." .
 
 
-###  http://www.semanticweb.org/crima/emdat#emdat-group
+###  https://w3id.org/crima-ontology/emdat#emdat-group
 :emdat-group rdf:type owl:Class ;
              rdfs:subClassOf skos:Concept ,
                              [ rdf:type owl:Restriction ;
@@ -95,7 +95,7 @@ ccore:Hazard rdf:type owl:Class .
                              ] .
 
 
-###  http://www.semanticweb.org/crima/emdat#emdat-subgroup
+###  https://w3id.org/crima-ontology/emdat#emdat-subgroup
 :emdat-subgroup rdf:type owl:Class ;
                 rdfs:subClassOf skos:Concept ,
                                 [ rdf:type owl:Restriction ;
@@ -108,7 +108,7 @@ ccore:Hazard rdf:type owl:Class .
                                 ] .
 
 
-###  http://www.semanticweb.org/crima/emdat#emdat-subtype
+###  https://w3id.org/crima-ontology/emdat#emdat-subtype
 :emdat-subtype rdf:type owl:Class ;
                rdfs:subClassOf skos:Concept ,
                                [ rdf:type owl:Restriction ;
@@ -121,7 +121,7 @@ ccore:Hazard rdf:type owl:Class .
                                ] .
 
 
-###  http://www.semanticweb.org/crima/emdat#emdat-type
+###  https://w3id.org/crima-ontology/emdat#emdat-type
 :emdat-type rdf:type owl:Class ;
             rdfs:subClassOf skos:Concept ,
                             [ rdf:type owl:Restriction ;
@@ -146,7 +146,7 @@ skos:ConceptScheme rdf:type owl:Class .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/emdat#emdat-disasters-classification
+###  https://w3id.org/crima-ontology/emdat#emdat-disasters-classification
 :emdat-disasters-classification rdf:type owl:NamedIndividual ,
                                          :EMDAT-DisastersClassification ;
                                 rdfs:comment "The main classification tree has four levels of depth, so disasters are divided into groups, subgroups, types, and subtypes, as presented in the EM-DAT Public Table columns. The two EM-DAT disaster groups are 'Natural' and 'Technological'. The table below shows the complete tree for the 'Natural' and 'Technological' groups, with the occurrence for each subtype. Their corresponding definitions are available in the Classification Glossary." ;

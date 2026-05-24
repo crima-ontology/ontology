@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/ipcc-ar6-cid#> .
+@prefix : <https://w3id.org/crima-ontology/ar6-cid#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,12 +7,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@base <http://www.semanticweb.org/crima/ipcc-ar6-cid#> .
+@base <https://w3id.org/crima-ontology/ar6-cid#> .
 
-<http://www.semanticweb.org/crima/ipcc-ar6-cid#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ar6-cid#> rdf:type owl:Ontology ;
                                                   owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                                   vann:preferredNamespacePrefix "ar5-cid" ;
-                                                  vann:preferredNamespaceUri "http://www.semanticweb.org/crima/ipcc-ar6-cid#"^^xsd:anyURI ;
+                                                  vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ar6-cid#"^^xsd:anyURI ;
                                                   voaf:extends <http://www.w3.org/2004/02/skos/core> ;
                                                   voaf:metadataVoc vann: ,
                                                                    <http://purl.org/vocommons/voaf> ;
@@ -46,7 +46,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#CID-category
+###  https://w3id.org/crima-ontology/ar6-cid#CID-category
 :CID-category rdf:type owl:Class ;
               rdfs:subClassOf skos:Concept ,
                               [ rdf:type owl:Restriction ;
@@ -56,7 +56,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
               rdfs:isDefinedBy "Ranasinghe, R., A.C. Ruane, R. Vautard, N. Arnell, E. Coppola, F.A. Cruz, S. Dessai, A.S. Islam, M. Rahimi, D. Ruiz Carrascal, J. Sillmann, M.B. Sylla, C. Tebaldi, W. Wang, and R. Zaaboul, 2021: Climate Change Information for Regional Impact and for Risk Assessment. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 1767-1926, doi:10.1017/9781009157896.014." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#CID-type
+###  https://w3id.org/crima-ontology/ar6-cid#CID-type
 :CID-type rdf:type owl:Class ;
           rdfs:subClassOf skos:Concept ,
                           [ rdf:type owl:Restriction ;
@@ -68,7 +68,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
           rdfs:isDefinedBy "Ranasinghe, R., A.C. Ruane, R. Vautard, N. Arnell, E. Coppola, F.A. Cruz, S. Dessai, A.S. Islam, M. Rahimi, D. Ruiz Carrascal, J. Sillmann, M.B. Sylla, C. Tebaldi, W. Wang, and R. Zaaboul, 2021: Climate Change Information for Regional Impact and for Risk Assessment. In Climate Change 2021: The Physical Science Basis. Contribution of Working Group I to the Sixth Assessment Report of the Intergovernmental Panel on Climate Change [Masson-Delmotte, V., P. Zhai, A. Pirani, S.L. Connors, C. Péan, S. Berger, N. Caud, Y. Chen, L. Goldfarb, M.I. Gomis, M. Huang, K. Leitzell, E. Lonnoy, J.B.R. Matthews, T.K. Maycock, T. Waterfield, O. Yelekçi, R. Yu, and B. Zhou (eds.)]. Cambridge University Press, Cambridge, United Kingdom and New York, NY, USA, pp. 1767-1926, doi:10.1017/9781009157896.014." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#ClimaticImpactDriverList
+###  https://w3id.org/crima-ontology/ar6-cid#ClimaticImpactDriverList
 :ClimaticImpactDriverList rdf:type owl:Class ;
                           rdfs:subClassOf skos:ConceptScheme .
 
@@ -77,245 +77,245 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#AgriculturalAndEcologicalDrought
+###  https://w3id.org/crima-ontology/ar6-cid#AgriculturalAndEcologicalDrought
 :AgriculturalAndEcologicalDrought rdf:type owl:NamedIndividual ,
                                            :CID-category ;
                                   skos:definition "Episodic combination of soil moisture supply deficit and atmospheric demand requirements that challenges the vegetation's ability to meet its water needs for transpiration and growth. Note: 'agricultural' vs. 'ecological' term depends on affected biome." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#AirPollutionWeather
+###  https://w3id.org/crima-ontology/ar6-cid#AirPollutionWeather
 :AirPollutionWeather rdf:type owl:NamedIndividual ,
                               :CID-category ;
                      skos:definition "Atmospheric conditions that increase the likelihood of high particulate matter or ozone concentrations or chemical processes generating air pollutants. Note: distinct from aerosol emissions or air pollution concentrations themselves." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Aridity
+###  https://w3id.org/crima-ontology/ar6-cid#Aridity
 :Aridity rdf:type owl:NamedIndividual ,
                   :CID-category ;
          skos:definition "Mean conditions of precipitation and evapotranspiration compared to potential atmospheric and surface water demand, resulting in low mean surface water, low soil moisture and/or low relative humidity." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#AtmosphericCO2AtSurface
+###  https://w3id.org/crima-ontology/ar6-cid#AtmosphericCO2AtSurface
 :AtmosphericCO2AtSurface rdf:type owl:NamedIndividual ,
                                   :CID-category ;
                          skos:definition "Concentration of atmospheric carbon dioxide (CO2) at the surface. Note: distinct from overall radiative effect of CO2 as greenhouse gas." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Coastal
+###  https://w3id.org/crima-ontology/ar6-cid#Coastal
 :Coastal rdf:type owl:NamedIndividual ,
                   :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#CoastalErosion
+###  https://w3id.org/crima-ontology/ar6-cid#CoastalErosion
 :CoastalErosion rdf:type owl:NamedIndividual ,
                          :CID-category ;
                 skos:definition "Long term or episodic change in shoreline position caused by relative sea level rise, nearshore currents, waves and storm surge." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#CoastalFlood
+###  https://w3id.org/crima-ontology/ar6-cid#CoastalFlood
 :CoastalFlood rdf:type owl:NamedIndividual ,
                        :CID-category ;
               skos:definition "Flooding driven by episodic high coastal water levels that result from a combination of relative sea level rise, tides, storm surge and wave setup." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#ColdSpell
+###  https://w3id.org/crima-ontology/ar6-cid#ColdSpell
 :ColdSpell rdf:type owl:NamedIndividual ,
                     :CID-category ;
            skos:definition "Episodic cold surface air temperature events potentially exacerbated by wind." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#DissolvedOxygen
+###  https://w3id.org/crima-ontology/ar6-cid#DissolvedOxygen
 :DissolvedOxygen rdf:type owl:NamedIndividual ,
                           :CID-category ;
                  skos:definition "Profile of ocean water dissolved oxygen and episodic low oxygen events." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#ExtremeHeat
+###  https://w3id.org/crima-ontology/ar6-cid#ExtremeHeat
 :ExtremeHeat rdf:type owl:NamedIndividual ,
                       :CID-category ;
              skos:definition "Episodic high surface air temperature events potentially exacerbated by humidity." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#FireWeather
+###  https://w3id.org/crima-ontology/ar6-cid#FireWeather
 :FireWeather rdf:type owl:NamedIndividual ,
                       :CID-category ;
              skos:definition "Weather conditions conducive to triggering and sustaining wildfires, usually based on a set of indicators and combinations of indicators including temperature, soil moisture, humidity and wind. Fire weather does not include the presence or absence of fuel load. Note: distinct from wildfire occurrence and area burned." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Frost
+###  https://w3id.org/crima-ontology/ar6-cid#Frost
 :Frost rdf:type owl:NamedIndividual ,
                 :CID-category ;
        skos:definition "Freeze and thaw events near the land surface and their seasonality." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Hail
+###  https://w3id.org/crima-ontology/ar6-cid#Hail
 :Hail rdf:type owl:NamedIndividual ,
                :CID-category ;
       skos:definition "Storms producing solid hailstones." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#HeatAndCold
+###  https://w3id.org/crima-ontology/ar6-cid#HeatAndCold
 :HeatAndCold rdf:type owl:NamedIndividual ,
                       :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#HeavyPrecipitationAndPluvialFlood
+###  https://w3id.org/crima-ontology/ar6-cid#HeavyPrecipitationAndPluvialFlood
 :HeavyPrecipitationAndPluvialFlood rdf:type owl:NamedIndividual ,
                                             :CID-category ;
                                    skos:definition "High rates of precipitation and resulting episodic, localized flooding of streams and flat lands." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#HeavySnowfallAndIceStorm
+###  https://w3id.org/crima-ontology/ar6-cid#HeavySnowfallAndIceStorm
 :HeavySnowfallAndIceStorm rdf:type owl:NamedIndividual ,
                                    :CID-category ;
                           skos:definition "High snowfall and ice storm events including freezing rain and rain-on-snow conditions." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#HydrologicalDrought
+###  https://w3id.org/crima-ontology/ar6-cid#HydrologicalDrought
 :HydrologicalDrought rdf:type owl:NamedIndividual ,
                               :CID-category ;
                      skos:definition "Episodic combination of runoff deficit and evaporative demand that affects surface water or groundwater availability." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#LOceanSalinity
+###  https://w3id.org/crima-ontology/ar6-cid#LOceanSalinity
 :LOceanSalinity rdf:type owl:NamedIndividual ,
                          :CID-category .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#LakeRiverAndSeaIce
+###  https://w3id.org/crima-ontology/ar6-cid#LakeRiverAndSeaIce
 :LakeRiverAndSeaIce rdf:type owl:NamedIndividual ,
                              :CID-category ;
                     skos:definition "The seasonality and characteristics of ice formations on the ocean and freshwater bodies of water." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Landslide
+###  https://w3id.org/crima-ontology/ar6-cid#Landslide
 :Landslide rdf:type owl:NamedIndividual ,
                     :CID-category ;
            skos:definition "Ground and atmospheric conditions that lead to geological mass movements, including landslide, mudslide and rockfall." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#MarineHeatwave
+###  https://w3id.org/crima-ontology/ar6-cid#MarineHeatwave
 :MarineHeatwave rdf:type owl:NamedIndividual ,
                          :CID-category ;
                 skos:definition "Episodic extreme ocean temperatures." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#MeanAirTemperature
+###  https://w3id.org/crima-ontology/ar6-cid#MeanAirTemperature
 :MeanAirTemperature rdf:type owl:NamedIndividual ,
                              :CID-category ;
                     skos:definition "Mean surface air temperature and its diurnal and seasonal cycles." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#MeanOceanTemperature
+###  https://w3id.org/crima-ontology/ar6-cid#MeanOceanTemperature
 :MeanOceanTemperature rdf:type owl:NamedIndividual ,
                                :CID-category ;
                       skos:definition "Mean temperature profile of ocean through the seasons, including heat content at different depths and associated stratification." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#MeanPrecipitation
+###  https://w3id.org/crima-ontology/ar6-cid#MeanPrecipitation
 :MeanPrecipitation rdf:type owl:NamedIndividual ,
                             :CID-category ;
                    skos:definition "Mean precipitation and its diurnal and seasonal cycles." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#MeanWindSpeed
+###  https://w3id.org/crima-ontology/ar6-cid#MeanWindSpeed
 :MeanWindSpeed rdf:type owl:NamedIndividual ,
                         :CID-category ;
                skos:definition "Mean wind speeds and transport patterns and their diurnal and seasonal cycles." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#OceanAcidity
+###  https://w3id.org/crima-ontology/ar6-cid#OceanAcidity
 :OceanAcidity rdf:type owl:NamedIndividual ,
                        :CID-category ;
               skos:definition "Profile of ocean water pH levels and accompanying concentrations of carbonate and bicarbonate ions." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#OceanSalinity
+###  https://w3id.org/crima-ontology/ar6-cid#OceanSalinity
 :OceanSalinity rdf:type owl:NamedIndividual ,
                         :CID-category ;
                skos:definition "Profile of ocean salinity and associated seasonal stratification. Note: distinct from salinization of freshwater resources" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#OpenOcean
+###  https://w3id.org/crima-ontology/ar6-cid#OpenOcean
 :OpenOcean rdf:type owl:NamedIndividual ,
                     :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Other
+###  https://w3id.org/crima-ontology/ar6-cid#Other
 :Other rdf:type owl:NamedIndividual ,
                 :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Permafrost
+###  https://w3id.org/crima-ontology/ar6-cid#Permafrost
 :Permafrost rdf:type owl:NamedIndividual ,
                      :CID-category ;
             skos:definition "Permanently frozen deep soil layers, their ice characteristics, and the characteristics of seasonally frozen soils above." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#RadiationAtSurface
+###  https://w3id.org/crima-ontology/ar6-cid#RadiationAtSurface
 :RadiationAtSurface rdf:type owl:NamedIndividual ,
                              :CID-category ;
                     skos:definition "Balance of net shortwave, longwave and ultraviolet radiation at the Earth's surface and their diurnal and seasonal patterns." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#RelativeSeaLevel
+###  https://w3id.org/crima-ontology/ar6-cid#RelativeSeaLevel
 :RelativeSeaLevel rdf:type owl:NamedIndividual ,
                            :CID-category ;
                   skos:definition "The local mean sea surface height relative to the local solid surface." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#RiverFlood
+###  https://w3id.org/crima-ontology/ar6-cid#RiverFlood
 :RiverFlood rdf:type owl:NamedIndividual ,
                      :CID-category ;
             skos:definition "Episodic high water levels in streams and rivers driven by basin runoff and the expected seasonal cycle of flooding." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#SandAndDustStorm
+###  https://w3id.org/crima-ontology/ar6-cid#SandAndDustStorm
 :SandAndDustStorm rdf:type owl:NamedIndividual ,
                            :CID-category ;
                   skos:definition "Storms causing the transport of soil and fine dust particles." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#SevereWindStorm
+###  https://w3id.org/crima-ontology/ar6-cid#SevereWindStorm
 :SevereWindStorm rdf:type owl:NamedIndividual ,
                           :CID-category ;
                  skos:definition "Episodic severe storms including extratropical cyclone wind storms, thunderstorms, wind gusts, derechos and tornadoes." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#SnowAndIce
+###  https://w3id.org/crima-ontology/ar6-cid#SnowAndIce
 :SnowAndIce rdf:type owl:NamedIndividual ,
                      :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#SnowAvalanche
+###  https://w3id.org/crima-ontology/ar6-cid#SnowAvalanche
 :SnowAvalanche rdf:type owl:NamedIndividual ,
                         :CID-category ;
                skos:definition "Cryospheric mass movements and the conditions of collapsing snowpack." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#SnowGlacierAndIceSheet
+###  https://w3id.org/crima-ontology/ar6-cid#SnowGlacierAndIceSheet
 :SnowGlacierAndIceSheet rdf:type owl:NamedIndividual ,
                                  :CID-category ;
                         skos:definition "Snowpack seasonality and characteristics of glaciers and ice sheets including calving events and meltwater" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#TropicalCyclone
+###  https://w3id.org/crima-ontology/ar6-cid#TropicalCyclone
 :TropicalCyclone rdf:type owl:NamedIndividual ,
                           :CID-category ;
                  skos:definition "Strong, rotating storm originating over tropical oceans accompanied by high winds, rainfall and storm surges." .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#WetAndDry
+###  https://w3id.org/crima-ontology/ar6-cid#WetAndDry
 :WetAndDry rdf:type owl:NamedIndividual ,
                     :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#Wind
+###  https://w3id.org/crima-ontology/ar6-cid#Wind
 :Wind rdf:type owl:NamedIndividual ,
                :CID-type .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar6-cid#climatic-impact-driver-list
+###  https://w3id.org/crima-ontology/ar6-cid#climatic-impact-driver-list
 :climatic-impact-driver-list rdf:type owl:NamedIndividual ,
                                       :ClimaticImpactDriverList ;
                              rdfs:comment "The climatic impact-driver (CID) framework adopted in Chapter 12 allows for assessment of changing climate conditions that are relevant for regional impacts and risk assessment. CIDs are physical climate system conditions (e.g., means, events, extremes) that affect an element of society or ecosystems and are thus a priority for climate information provision. Depending on system tolerance, CIDs and their changes can be detrimental, beneficial, neutral or a mixture of each across interacting system elements, regions and society sectors. Each sector is affected by multiple CIDs and each CID affects multiple sectors. A CID can be measured by indices to represent related tolerance thresholds." ;

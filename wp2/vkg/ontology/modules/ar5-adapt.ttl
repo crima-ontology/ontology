@@ -1,4 +1,4 @@
-@prefix : <http://www.semanticweb.org/crima/ipcc-ar5-adaptation#> .
+@prefix : <https://w3id.org/crima-ontology/ar5-adapt#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -7,12 +7,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@base <http://www.semanticweb.org/crima/ipcc-ar5-adaptation#> .
+@base <https://w3id.org/crima-ontology/ar5-adapt#> .
 
-<http://www.semanticweb.org/crima/ipcc-ar5-adaptation#> rdf:type owl:Ontology ;
+<https://w3id.org/crima-ontology/ar5-adapt#> rdf:type owl:Ontology ;
                                                          owl:imports <http://www.w3.org/2004/02/skos/core> ;
                                                          vann:preferredNamespacePrefix "ar5-adapt" ;
-                                                         vann:preferredNamespaceUri "http://www.semanticweb.org/crima/ipcc-ar5-adaptation#"^^xsd:anyURI ;
+                                                         vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ar5-adapt#"^^xsd:anyURI ;
                                                          voaf:extends <http://www.w3.org/2004/02/skos/core> ;
                                                          voaf:metadataVoc vann: ,
                                                                           <http://purl.org/vocommons/voaf> ;
@@ -46,7 +46,7 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Adaptation-category
+###  https://w3id.org/crima-ontology/ar5-adapt#Adaptation-category
 :Adaptation-category rdf:type owl:Class ;
                      rdfs:subClassOf skos:Concept ,
                                      [ rdf:type owl:Restriction ;
@@ -55,12 +55,12 @@ voaf:specializes rdf:type owl:AnnotationProperty .
                                      ] .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Adaptation-scheme
+###  https://w3id.org/crima-ontology/ar5-adapt#Adaptation-scheme
 :Adaptation-scheme rdf:type owl:Class ;
                    rdfs:subClassOf skos:ConceptScheme .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Adaptation-subcategory
+###  https://w3id.org/crima-ontology/ar5-adapt#Adaptation-subcategory
 :Adaptation-subcategory rdf:type owl:Class ;
                         rdfs:subClassOf skos:Concept ,
                                         [ rdf:type owl:Restriction ;
@@ -77,80 +77,80 @@ voaf:specializes rdf:type owl:AnnotationProperty .
 #    Individuals
 #################################################################
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Behavioral
+###  https://w3id.org/crima-ontology/ar5-adapt#Behavioral
 :Behavioral rdf:type owl:NamedIndividual ,
                      :Adaptation-subcategory ;
             rdfs:comment "Accommodation (5.5.2); household preparation and evacuation planning (23.7.3); retreat (5.5.2) and migration (29.6.2.4), which has its own implications for human health (11.7.4) and human security (12.4.2); soil and water conservation (23.6.2 and 27.3.4.2); livelihood diversifi cation (7.5.1.1, 7.5.2, and 22.4.5.2); changing livestock and aquaculture practices (7.5.1.1); crop-switching (22.3.4.1); changing cropping practices, patterns, and planting dates (7.5.1.1.1, 23.4.1, 26.5.4, and 27.3.4.2; Table 24-2); silvicultural options (25.7.1.2); reliance on social networks (Section 29.6.2.2)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Economic
+###  https://w3id.org/crima-ontology/ar5-adapt#Economic
 :Economic rdf:type owl:NamedIndividual ,
                    :Adaptation-subcategory .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Ecosystem-based
+###  https://w3id.org/crima-ontology/ar5-adapt#Ecosystem-based
 :Ecosystem-based rdf:type owl:NamedIndividual ,
                           :Adaptation-subcategory ;
                  rdfs:comment "Cross Chapter Box CC-EA, Ecological restoration (5.5.2, 5.5.7, 9.4.3.3, and 27.3.2.2; Box 15-1) including wetland and fl oodplain conservation and restoration; increasing biological diversity (26.4.3); afforestation and reforestation (Box 22-2); conservation and replanting mangrove forest (15.3.4 and 29.7.2); bushfi re reduction and prescribed fi re (Section 24.4.2.5; Box 26-2); green infrastructure (e.g., shade trees, green roofs) (8.2.4.5, 8.3.3, 11.7.4, and 23.7.4); controlling overfi shing (28.2.5.1 and 30.6.1); fi sheries co-management (9.4.3.4 and 27.3.3.1); assisted migration or managed translocation (4.4.2.4, 24.4.2.5, 24.4.3.5, and 25.6.2.3); ecological corridors (4.4.2.4); ex situ conservation and seed banks (4.4.2.5); community-based natural resource management (CBNRM) (22.4.5.6); adaptive land use management (Section 23.6.2)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Educational
+###  https://w3id.org/crima-ontology/ar5-adapt#Educational
 :Educational rdf:type owl:NamedIndividual ,
                       :Adaptation-subcategory ;
              rdfs:comment "Awareness raising and integrating into education (11.7, 15.2, and 22.4.5.5); gender equity in education (Box 9-2); extension services (9.4.4); sharing local and traditional knowledge (12.3.4 and 28.4.1) including integrating into adaptation planning (29.6.2.1); participatory action research and social learning (22.4.5.3); community surveys (Section 8.4.2.2); knowledge-sharing and learning platforms (8.3.2.2, 8.4.2.4, 15.2.4.2, and 22.4.5.4); international conferences and research networks (8.4.2.5); communication through media (22.4.5.5)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#EngineeredAndBuiltEnvironment
+###  https://w3id.org/crima-ontology/ar5-adapt#EngineeredAndBuiltEnvironment
 :EngineeredAndBuiltEnvironment rdf:type owl:NamedIndividual ,
                                         :Adaptation-subcategory ;
                                rdfs:comment "Sea walls and coastal protection structures (5.5.2 and 24.4.3.5; Figure 5-5); flood levees and culverts (26.3.3); water storage and pump storage (Section 23.3.4); sewage works (3.5.2.3); improved drainage (24.4.5.5); beach nourishment (5.4.2.1); flood and cyclone shelters (11.7); building codes (Section 8.1.5); storm and waste water management (8.2.4.1); transport and road infrastructure adaptation (8.3.3.6); floating houses (8.3.3.4); adjusting power plants and electricity grids (10.2.2; Table 10-2)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#GovernmentPoliciesAndPrograms
+###  https://w3id.org/crima-ontology/ar5-adapt#GovernmentPoliciesAndPrograms
 :GovernmentPoliciesAndPrograms rdf:type owl:NamedIndividual ,
                                         :Adaptation-subcategory ;
                                rdfs:comment "National and regional adaptation plans (15.2 and 22.4.4.2; Box 23-3) including mainstreaming climate change; sub-national and local adaptation plans (15.2.1.3 and 22.4.4.4; Box 23-3); urban upgrading programs (8.3.2.2); municipal water management programs (8.3.3.4; Box 25-2); disaster planning and preparedness (11.7); city-level plans (8.3.3.3 and 27.3.5.2; Boxes 26-3 and 27-1), district-level plans (26.3.3), sector plans (26.5.4), which may include integrated water resource management (3.6.1 and 23.7.2), landscape and watershed management (4.4.2.3), integrated coastal zone management (2.4.3, 5.5.4.1, and 23.7.1), adaptive management (2.2.1.3 and 5.5.1.4; Box 5-2), ecosystem-based management (6.4.2.1), sustainable forest management (2.3.4), fisheries management (7.5.1.1.3 and 30.6.2.1), and community-based adaptation (5.5.4.1, 8.4, 15.2.2, 21.3.2, 22.4.4.5, 24.5.2, 29.6.2.2, and 29.6.2.3; Tables 5-4 and 8-4; FAQ 15.1)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Informational
+###  https://w3id.org/crima-ontology/ar5-adapt#Informational
 :Informational rdf:type owl:NamedIndividual ,
                         :Adaptation-subcategory ;
                rdfs:comment "Hazard and vulnerability mapping (11.7.2, 8.4.1.5); early warning and response systems (15.4.2.3 and 22.4.5.2) including health early warning systems (11.7.3, 23.5.1, 24.4.6.5, and 26.6.3); systematic monitoring and remote sensing (15.4.2.1 and 28.6); climate services (2.3.3) including improved forecasts (27.3.4.2); downscaling climate scenarios (8.4.1.5); longitudinal data sets (26.6.2); integrating indigenous climate observations (22.4.5.4, 25.8.2.1, and 28.2.6.1); community-based adaptation plans (5.5.1.4 and 24.4.6.5) including community-driven slum upgrading (8.3.2.2) and participatory scenario development (22.4.4.5)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#InstitutionalOption
+###  https://w3id.org/crima-ontology/ar5-adapt#InstitutionalOption
 :InstitutionalOption rdf:type owl:NamedIndividual ,
                               :Adaptation-category .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#LawsAndRegulations
+###  https://w3id.org/crima-ontology/ar5-adapt#LawsAndRegulations
 :LawsAndRegulations rdf:type owl:NamedIndividual ,
                              :Adaptation-subcategory .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Services
+###  https://w3id.org/crima-ontology/ar5-adapt#Services
 :Services rdf:type owl:NamedIndividual ,
                    :Adaptation-subcategory ;
           rdfs:comment "Social safety nets and social protection (Box 13-2; 8.3, 17.5.1, and 22.4.5.2); food banks and distribution of food surplus (29.6.2.1); municipal services including water and sanitation (3.5.2.3 and 8.3.3.4); vaccination programs (11.7.1), essential public health services (11.7.2) including reproductive health services (11.9.2) and enhanced emergency medical services (8.3.3.8); international trade (9.3, 9.4, and 23.9.2)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#SocialOption
+###  https://w3id.org/crima-ontology/ar5-adapt#SocialOption
 :SocialOption rdf:type owl:NamedIndividual ,
                        :Adaptation-category .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#StructuralAndPhysicalOption
+###  https://w3id.org/crima-ontology/ar5-adapt#StructuralAndPhysicalOption
 :StructuralAndPhysicalOption rdf:type owl:NamedIndividual ,
                                       :Adaptation-category .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#Technological
+###  https://w3id.org/crima-ontology/ar5-adapt#Technological
 :Technological rdf:type owl:NamedIndividual ,
                         :Adaptation-subcategory ;
                rdfs:comment "New crop and animal varieties (7.5.1.1.1, 7.5.1.1.3, 7.5.1.3; Box 9-3; Table 9-7); genetic techniques (27.3.4.2); traditional technologies and methods (7.5.2, 27.3.4.2, 28.2.6.1, and 29.6.2.1); effi cient irrigation (10.3.6 and 22.4.5.7; Box 20-4); water saving technologies (24.4.1.5 and 26.3.3) including rainwater harvesting (8.3.3.4); conservation agriculture (9.4.3.1 and 22.4.5.7); food storage and preservation facilities (22.4.5.7); hazard mapping and monitoring technology (15.3.2.3 and 28.4.1); early warning systems (7.5.1.1, 8.1.4.2, 8.3.3.3, 11.7.3, 15.4.3.2, 18.6.4, 22.2.2.1, 22.3.5.3, and 22.4.5.2); building insulation (8.3.3.3); mechanical and passive cooling (8.3.3.3); renewable energy technologies (29.7.2); second-generation biofuels (27.3.6.2)" .
 
 
-###  http://www.semanticweb.org/crima/ipcc-ar5-adaptation#adaptation-option-categories
+###  https://w3id.org/crima-ontology/ar5-adapt#adaptation-option-categories
 :adaptation-option-categories rdf:type owl:NamedIndividual ,
                                        :Adaptation-scheme .
 

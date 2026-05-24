@@ -5,13 +5,13 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix csrc: <http://www.semanticweb.org/crima/crima-source#> .
+@prefix csrc: <https://w3id.org/crima-ontology/csrc#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix ccore: <http://www.semanticweb.org/crima/crima-core#> .
+@prefix ccore: <https://w3id.org/crima-ontology/ccore#> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix sosa-common: <http://www.w3.org/ns/sosa/common/> .
@@ -713,15 +713,15 @@ voaf:reliesOn rdf:type owl:AnnotationProperty .
              rdfs:label "Road Network"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-core#CascadingEvent
+###  https://w3id.org/crima-ontology/ccore#CascadingEvent
 ccore:CascadingEvent rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-core#Hazard
+###  https://w3id.org/crima-ontology/ccore#Hazard
 ccore:Hazard rdf:type owl:Class .
 
 
-###  http://www.semanticweb.org/crima/crima-source#EFFIS-Wildfire
+###  https://w3id.org/crima-ontology/csrc#EFFIS-Wildfire
 csrc:EFFIS-Wildfire rdf:type owl:Class ;
                     rdfs:subClassOf ccore:Hazard ;
                     dcterms:references "https://dx.doi.org/10.2760/437309" ,
@@ -734,7 +734,7 @@ Since 1998, EFFIS is supported by a network of experts from the countries in wha
                     rdfs:label "EFFIS Wildfire"@en .
 
 
-###  http://www.semanticweb.org/crima/crima-source#EMDAT-DisasterEvent
+###  https://w3id.org/crima-ontology/csrc#EMDAT-DisasterEvent
 csrc:EMDAT-DisasterEvent rdf:type owl:Class ;
                          rdfs:subClassOf [ rdf:type owl:Class ;
                                            owl:unionOf ( ccore:CascadingEvent
@@ -747,7 +747,7 @@ The main objective of the database is to serve the purposes of humanitarian acti
                          rdfs:seeAlso "https://www.emdat.be/" .
 
 
-###  http://www.semanticweb.org/crima/crima-source#EMDAT-Wildfire
+###  https://w3id.org/crima-ontology/csrc#EMDAT-Wildfire
 csrc:EMDAT-Wildfire rdf:type owl:Class ;
                     rdfs:subClassOf ccore:Hazard ;
                     dcterms:source "https://eo4multihazards.eurac.edu/" ;
@@ -756,7 +756,7 @@ csrc:EMDAT-Wildfire rdf:type owl:Class ;
                     rdfs:seeAlso "https://www.emdat.be/" .
 
 
-###  http://www.semanticweb.org/crima/crima-source#IFFI-Landslide
+###  https://w3id.org/crima-ontology/csrc#IFFI-Landslide
 csrc:IFFI-Landslide rdf:type owl:Class ;
                     rdfs:subClassOf ccore:Hazard ;
                     dcterms:references "https://link.springer.com/article/10.1007%2Fs10346-010-0213-0" ,

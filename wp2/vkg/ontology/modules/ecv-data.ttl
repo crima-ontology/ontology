@@ -1,5 +1,5 @@
-@prefix cunit: <http://www.semanticweb.org/crima/crima-unit#> .
-@prefix ecv: <http://www.semanticweb.org/crima/crima-ecv#> .
+@prefix cunit: <https://w3id.org/crima-ontology/cunit#> .
+@prefix ecv: <https://w3id.org/crima-ontology/ecv#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix qudt: <http://qudt.org/schema/qudt/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -1395,9 +1395,9 @@ ecv:pCO2 a ecv:ECV-product,
     skos:definition "Surface ocean partial pressure of CO₂."@en ;
     skos:note "Unit: μatm (micro-ATM)."@en .
 
-<http://www.semanticweb.org/crima/crima-ecv-data#> a owl:Ontology ;
+<https://w3id.org/crima-ontology/ecv-data#> a owl:Ontology ;
     vann:preferredNamespacePrefix "ecv" ;
-    vann:preferredNamespaceUri "http://www.semanticweb.org/crima/crima-ecv#"^^xsd:anyURI ;
+    vann:preferredNamespaceUri "https://w3id.org/crima-ontology/ecv#"^^xsd:anyURI ;
     voaf:metadataVoc vann:,
         <http://purl.org/vocommons/voaf> ;
     voaf:reliesOn wmdr-unit:,
