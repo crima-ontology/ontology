@@ -52,7 +52,7 @@ def cli_catalog(inputs: list[str], output_file: str = "-") -> None:
             _LOGGER.warning("File '%s' has multiple owl:Ontology declarations: generating multiple catalog entries", f)
             id_base = f.as_posix().rsplit("/", 1)[-1].split(".", 1)[0]
             for idx, iri in enumerate(sorted(iris)):
-                id = f"{id_base} ({idx + 1})"
+                id = f"{id_base}-{idx + 1}"
                 ET.SubElement(root, "uri", attrib={"id": id, "name": str(iri), "uri": f.as_posix()})
 
     # Emit pretty-printed XML file (need to serialize, parse into DOM, serialize-again)
