@@ -1,4 +1,4 @@
-# CRIMA: The Ontology for Evidence-based Management of Climate Risks
+## CRIMA: The Ontology for Evidence-based Management of Climate Risks
 
 
 ## Overview
