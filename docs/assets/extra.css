@@ -1,0 +1,94 @@
+.md-grid {
+    max-width: 1600px;
+}
+
+h1:has(+ div.pylode) {
+    margin-bottom: .5em;
+}
+
+div.pylode a.md-button {
+    font-size: .64rem;
+    font-weight: 400;
+    padding: 0em 2em!important
+}
+
+div.pylode dd,
+div.pylode dd p {
+    font-size: .64rem;
+    font-weight: 400;
+    margin-top: 0px!important;
+    margin-bottom: 1em!important;
+}
+
+div.pylode td {
+    width: 100%;
+    border: none!important;
+    padding: .5em 1.25em!important;
+}
+div.pylode th {
+    width: 150px;
+    min-width: 150px!important;
+    padding: .5em 1.25em!important;
+}
+div.pylode ul {
+    list-style-type: none;
+    margin: 0px!important;
+}
+div.pylode ul li {
+    margin: 0px!important;
+}
+div.pylode ul p {
+    margin: 0px;
+}
+div.pylode .hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+div.pylode .md-typeset__table {
+    width: 100%;
+    margin-bottom: 0px!important;
+}
+
+.sup-c,
+.sup-op,
+.sup-fp,
+.sup-dp,
+.sup-ap,
+.sup-p,
+.sup-ni,
+.sup-con,
+.sup-col {
+    cursor:help;
+}
+.sup-c {
+    color:orange;
+}
+.sup-op {
+    color:navy;
+}
+.sup-fp {
+    color:lightskyblue;
+}
+.sup-dp {
+    color:green;
+}
+.sup-ap {
+    color:darkred;
+}
+.sup-p {
+    color:black;
+}
+.sup-ni {
+    color:brown;
+}
+.sup-con {
+    color:orange;
+}
+.sup-col {
+    color:darkred;
+}
+.cardinality {
+    font-style: italic;
+    color: #aa00aa;
+}

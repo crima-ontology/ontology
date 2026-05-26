@@ -1,0 +1,108 @@
+site_name: CRIMA Ontology
+site_url: https://crima-ontology.github.io/
+
+repo_name: crima-ontology/ontology
+repo_url: https://github.com/crima-ontology/ontology
+
+copyright: Copyright &copy; 2026 - the CRIMA ontology authors
+
+use_directory_urls: false
+
+nav:
+  - Home: index.md
+  - Main modules:
+    - main/index.md
+    - ctlo: modules/ctlo/ctlo.md
+    - ccore: modules/ccore/ccore.md
+    - ich: modules/ich/ich.md
+  - Terminology modules:
+    - terminology/index.md
+    - ar5-adapt: modules/ar5-adapt/ar5-adapt.md
+    - ar6-cid: modules/ar6-cid/ar6-cid.md
+    - ar6-impact: modules/ar6-impact/ar6-impact.md
+    - cclc: modules/cclc/cclc.md
+    - ecv: modules/ecv/ecv.md
+    - emdat: modules/emdat/emdat.md
+    - hip: modules/hip/hip.md
+    - cunit: modules/cunit/cunit.md
+  - Helper modules:
+    - helper/index.md
+    - cbib: modules/cbib/cbib.md
+    - cplace: modules/cplace/cplace.md
+    - crid: modules/crid/crid.md
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.path
+    - navigation.top
+    - search.suggest
+    - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+plugins:
+  - search
+  - offline
+  - meta
+  - mike
+  - pylode:
+      prefixes: testing/prefixes.ttl
+      output: modules
+      input:
+        - modules/ctlo.ttl
+        - modules/ccore.ttl
+        - modules/ich.ttl
+        - modules/ar5-adapt.ttl
+        - modules/ar6-cid.ttl
+        - modules/ar6-impact.ttl
+        - modules/cclc.ttl
+        - modules/ecv.ttl
+        - modules/emdat.ttl
+        - modules/hip.ttl
+        - modules/cunit.ttl
+        - modules/cbib.ttl
+        - modules/cplace.ttl
+        - modules/crid.ttl
+
+extra_css:
+  - assets/extra.css
+
+markdown_extensions:
+  - md_in_html
+  - attr_list
+  - abbr
+  - toc:
+      title: On this page
+      permalink: true
+  - pymdownx.snippets:
+      auto_append:
+        - docs/abbreviations.md
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/crima-ontology/ontology
+      name: CRIMA ontology on GitHub
+  version:
+    provider: mike
+    default: latest
+    alias: true
