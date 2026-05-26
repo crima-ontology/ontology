@@ -3,7 +3,7 @@
 
 ## Overview
 
-**CRIMA** is a modular domain ontology that formalises key concepts related to *climate risk*.
+**CRIMA** is a modular domain ontology that formalises key concepts related to *climate risk* (e.g., hazard, exposure, vulnerability).
 It enables the interlinking of:
 
 1. qualitative domain knowledge captured through [*Impact Chains*](https://link.springer.com/chapter/10.1007/978-3-030-86211-4_25),
