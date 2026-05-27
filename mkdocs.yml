@@ -58,7 +58,9 @@ plugins:
   - search
   - offline
   - meta
-  - mike
+  - mike:
+      deploy_prefix: docs/
+      canonical_version: latest
   - pylode:
       prefixes: testing/prefixes.ttl
       output: modules
