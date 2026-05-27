@@ -9,12 +9,16 @@ description = "Python tool for various maintainance tasks related to the CRIMA o
 readme = "README.md"
 requires-python = ">=3.13.2"
 dependencies = [
-    "click == 8.3.1",
+    "click == 8.4.1",
     "extruct == 0.18.0",
-    "lxml == 6.0.3",
-    "requests == 2.32.5",
-    "rdflib == 7.5.0",
-    "rdfcanon == 1.0.0"
+    "lxml == 6.1.1",
+    "requests == 2.34.2",
+    "rdflib == 7.6.0",
+    "pylode == 3.4.4",
+    "pyshacl == 0.31.0",
+    "beautifulsoup4 == 4.14.3",
+    "mkdocs-material == 9.7.6",
+    "mike==2.2.0"
 ]
 
 [project.optional-dependencies]
@@ -24,6 +28,9 @@ dev = [
 
 [project.scripts]
 crima-vkg-tool = "crima_vkg_tool.__main__:cli"
+
+[project.entry-points."mkdocs.plugins"]
+pylode = "crima_vkg_tool.pylode:PylodePlugin"
 
 [tool.setuptools]
 include-package-data = true

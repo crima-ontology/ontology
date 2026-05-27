@@ -6,12 +6,18 @@ from collections.abc import Generator
 from pathlib import Path
 from typing import Any
 
-from rdfcanon import RDFCanon, RDFCanonTimeTicker
 from rdflib import Dataset, Graph, Namespace, Node, URIRef
 from rdflib.namespace import split_uri
 from rdflib.util import guess_format
 
 type Triple = tuple[Node, Node, Node]
+
+
+try:
+    from rdfcanon import RDFCanon, RDFCanonTimeTicker
+    HAS_RDFCANON = True
+except ImportError:
+    HAS_RDFCANON = False
 
 
 EMPTY_SET = frozenset()
@@ -76,7 +82,7 @@ def rdf_read(graph: Graph, path: str) -> None:
         graph.parse(source=f, format=fmt)
 
 
-def rdf_write(graph: Graph, p: str) -> None:
+def rdf_write(graph: Graph, path: str, *, canonicalize_ntriples: bool = True) -> None:
     """
     Write an RDF graph to the file at the path specified ('-' for stdout, '.ext:' prefix to override format).
 
@@ -85,21 +91,21 @@ def rdf_write(graph: Graph, p: str) -> None:
     :param graph: the RDF graph whose triples and <prefix, namespace> bindings are to be written to file
     :param path: the file path or '-' for stdout, optionally prepended with '.ext:' to override detected RDF format
     """
-    tokens = p.split(":")
-    p = tokens[-1]
-    fmt = guess_format(p if len(tokens) == 1 else "dummy" + tokens[0])
-    if fmt not in ("nt", "ntriples"):
-        with sys.stdout.buffer if p == "-" else gzip.open(p, "wb") if p.endswith(".gz") else Path.open(p, "wb") as f:
-            graph.serialize(destination=f, format=fmt, canon=True)
-    else:
+    tokens = path.split(":")
+    path = tokens[-1]
+    fmt = guess_format(path if len(tokens) == 1 else "dummy" + tokens[0])
+    if HAS_RDFCANON and canonicalize_ntriples and fmt in ("nt", "ntriples"):
         dataset = Dataset()
         for triple in graph:
             dataset.add(triple)
         canonizer = RDFCanon(hash_algorithm="sha256", dataset=dataset, ticker=RDFCanonTimeTicker(30000))
         with _suppress_print():
             serialized_ntriples = canonizer.canonize()
-        with sys.stdout if p == "-" else gzip.open(p, "w") if p.endswith(".gz") else Path.open(p, "w") as f:
+        with sys.stdout if path == "-" else gzip.open(path, "w") if path.endswith(".gz") else Path.open(path, "w") as f:
             f.write(serialized_ntriples)
+    else:
+        with sys.stdout.buffer if path == "-" else gzip.open(path, "wb") if path.endswith(".gz") else Path.open(path, "wb") as f:
+            graph.serialize(destination=f, format=fmt, canon=True)
 
 
 def get_namespace(iri: URIRef) -> str | None:

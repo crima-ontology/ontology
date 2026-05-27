@@ -9,6 +9,7 @@ from crima_vkg_tool.ecv import cli_ecv
 from crima_vkg_tool.hip import cli_hip
 from crima_vkg_tool.merge import cli_merge
 from crima_vkg_tool.mermaid import cli_mermaid
+from crima_vkg_tool.pylode import cli_pylode
 from crima_vkg_tool.sanitize import cli_sanitize
 from crima_vkg_tool.split import cli_split
 
@@ -28,6 +29,7 @@ cli.add_command(cli_hip)
 cli.add_command(cli_cclc)
 cli.add_command(cli_merge)
 cli.add_command(cli_mermaid)
+cli.add_command(cli_pylode)
 cli.add_command(cli_sanitize)
 cli.add_command(cli_split)
 
