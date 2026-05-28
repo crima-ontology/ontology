@@ -108,3 +108,7 @@ extra:
     provider: mike
     default: latest
     alias: true
+
+exclude_docs: |
+  README.md
+  abbreviations.md
