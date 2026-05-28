@@ -15,6 +15,7 @@ type Triple = tuple[Node, Node, Node]
 
 try:
     from rdfcanon import RDFCanon, RDFCanonTimeTicker
+
     HAS_RDFCANON = True
 except ImportError:
     HAS_RDFCANON = False
@@ -104,7 +105,13 @@ def rdf_write(graph: Graph, path: str, *, canonicalize_ntriples: bool = True) ->
         with sys.stdout if path == "-" else gzip.open(path, "w") if path.endswith(".gz") else Path.open(path, "w") as f:
             f.write(serialized_ntriples)
     else:
-        with sys.stdout.buffer if path == "-" else gzip.open(path, "wb") if path.endswith(".gz") else Path.open(path, "wb") as f:
+        with (
+            sys.stdout.buffer
+            if path == "-"
+            else gzip.open(path, "wb")
+            if path.endswith(".gz")
+            else Path.open(path, "wb") as f
+        ):
             graph.serialize(destination=f, format=fmt, canon=True)
 
 

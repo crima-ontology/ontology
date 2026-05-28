@@ -19,7 +19,9 @@ from crima_vkg_tool.util import MOD, VOAF, create_graph, rdf_read
 @click.option(
     "-e", "--extra-content", multiple=True, help="optional additional Mermaid code to inject into the diagram"
 )
-def cli_mermaid(inputs: list[str], output_file: str = "-", voaf: bool = False, extra_content: tuple[str, ...] = ()) -> None:  # noqa: FBT001, FBT002
+def cli_mermaid(
+    inputs: list[str], output_file: str = "-", voaf: bool = False, extra_content: tuple[str, ...] = ()
+) -> None:  # noqa: FBT001, FBT002
     """
     Generate a Markdown + Mermaid diagram of ontology voaf:reliesOn relations.
 
@@ -86,7 +88,7 @@ def _collect_edges(graph: Graph, use_voaf: bool = False) -> dict[URIRef, set[URI
             VOAF.hasDisjunctionsWith,
         )
     else:
-        props = (OWL.imports, )
+        props = (OWL.imports,)
 
     edges = {iri: {o for p in props for o in graph.objects(iri, p) if o in node_iris and o != iri} for iri in node_iris}
 
