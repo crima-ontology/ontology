@@ -15,7 +15,7 @@ from pylode.profiles.ontpub import OntPub
 from rdflib import DCTERMS, OWL, RDF, RDFS, BNode, Graph, Literal, URIRef
 from rdflib.namespace import NamespaceManager
 
-from crima_vkg_tool.util import create_graph, rdf_read, rdf_write
+from crima_ontology_tool.util import create_graph, rdf_read, rdf_write
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ _LOGGER = logging.getLogger(__name__)
 @click.option("-p", "--prefixes-from", help="optionally reuse prefixes from supplied file")
 def cli_pylode(inputs: list[str], output_dir: str = ".", prefixes_from: str | None = None) -> None:
     """
-    Generate publishable artifacts for ontology modules using PyLode to generate Markdown documentation.
+    Generate publishable artifacts for ontology modules, including Markdown documentation via PyLode.
 
     For each input RDF file, a directory under 'output-dir' is created and is populated with the RDF file in different
     RDF formats (.ttl, .rdf, .nt, .json). If the file contains exactly one owl:Ontology, an additional '.md' markdown

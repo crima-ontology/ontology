@@ -1,7 +1,7 @@
 import click
 from rdflib import OWL, Literal
 
-from crima_vkg_tool.util import create_graph, rdf_read, rdf_write
+from crima_ontology_tool.util import create_graph, rdf_read, rdf_write
 
 
 @click.command(name="merge")

@@ -9,7 +9,7 @@ from textwrap import dedent
 import click
 from rdflib import OWL, Graph, URIRef
 
-from crima_vkg_tool.util import MOD, VOAF, create_graph, rdf_read
+from crima_ontology_tool.util import MOD, VOAF, create_graph, rdf_read
 
 
 @click.command(name="mermaid")
@@ -23,7 +23,7 @@ def cli_mermaid(
     inputs: list[str], output_file: str = "-", voaf: bool = False, extra_content: tuple[str, ...] = ()
 ) -> None:  # noqa: FBT001, FBT002
     """
-    Generate a Markdown + Mermaid diagram of ontology voaf:reliesOn relations.
+    Generate a Markdown + Mermaid diagram of ontology owl:imports or voaf:reliesOn relations.
 
     Identifies owl:Ontologies with mod:hasSerialization metadata in specified RDF/OWL files, which becomes nodes of a
     graph having voaf:reliesOn relations edges. The graph is encoded as a Mermaid flowchart, with nodes grouped by the

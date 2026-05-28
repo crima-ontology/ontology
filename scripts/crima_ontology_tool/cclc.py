@@ -5,7 +5,7 @@ from zipfile import ZIP_DEFLATED, ZipFile
 import click
 from rdflib import DCTERMS, URIRef
 
-from crima_vkg_tool.util import create_graph, rdf_read
+from crima_ontology_tool.util import create_graph, rdf_read
 
 
 @click.group(name="cclc")

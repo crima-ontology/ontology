@@ -2,22 +2,22 @@ import logging
 
 import click
 
-from crima_vkg_tool.catalog import cli_catalog
-from crima_vkg_tool.cclc import cli_cclc
-from crima_vkg_tool.download import cli_download
-from crima_vkg_tool.ecv import cli_ecv
-from crima_vkg_tool.hip import cli_hip
-from crima_vkg_tool.merge import cli_merge
-from crima_vkg_tool.mermaid import cli_mermaid
-from crima_vkg_tool.pylode import cli_pylode
-from crima_vkg_tool.sanitize import cli_sanitize
-from crima_vkg_tool.split import cli_split
+from crima_ontology_tool.catalog import cli_catalog
+from crima_ontology_tool.cclc import cli_cclc
+from crima_ontology_tool.download import cli_download
+from crima_ontology_tool.ecv import cli_ecv
+from crima_ontology_tool.hip import cli_hip
+from crima_ontology_tool.merge import cli_merge
+from crima_ontology_tool.mermaid import cli_mermaid
+from crima_ontology_tool.pylode import cli_pylode
+from crima_ontology_tool.sanitize import cli_sanitize
+from crima_ontology_tool.split import cli_split
 
 
 @click.group(context_settings={"show_default": True, "max_content_width": 120})
 @click.option("-v", "--verbose", is_flag=True, help="log debug information to stderr")
 def cli(*, verbose: bool = False) -> None:
-    """Utility tool to maintain CRIMA ontology and mapping."""  # noqa: D401
+    """Utility tool to maintain the CRIMA ontology."""  # noqa: D401
     logging.basicConfig(format="%(asctime)s (%(levelname).1s) %(message)s", datefmt="%H:%M:%S")
     logging.getLogger().setLevel(logging.DEBUG if verbose else logging.INFO)
 

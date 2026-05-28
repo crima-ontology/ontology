@@ -14,7 +14,7 @@ import requests
 from lxml import html
 from rdflib import DCTERMS, OWL, RDF, RDFS, SKOS, XSD, Graph, Literal, Namespace, URIRef
 
-from crima_vkg_tool.util import BIBO, PROV, create_graph, get_namespace, rdf_read, rdf_write, replace_terms
+from crima_ontology_tool.util import BIBO, PROV, create_graph, get_namespace, rdf_read, rdf_write, replace_terms
 
 _LOGGER = logging.getLogger(__name__)
 

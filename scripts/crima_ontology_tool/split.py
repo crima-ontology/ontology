@@ -8,7 +8,17 @@ import click
 from rdflib import OWL, RDF, RDFS, BNode, Graph, IdentifiedNode, Node, URIRef
 from rdflib.collection import Collection
 
-from crima_vkg_tool.util import EMPTY_SET, MOD, SWRL, VOAF, Triple, create_graph, get_namespace, rdf_read, rdf_write
+from crima_ontology_tool.util import (
+    EMPTY_SET,
+    MOD,
+    SWRL,
+    VOAF,
+    Triple,
+    create_graph,
+    get_namespace,
+    rdf_read,
+    rdf_write,
+)
 
 
 @click.command(name="split")
@@ -17,10 +27,11 @@ from crima_vkg_tool.util import EMPTY_SET, MOD, SWRL, VOAF, Triple, create_graph
 @click.option("-l", "--leftover-file", help="RDF file where to save leftover triples (optional)")
 def cli_split(inputs: list[str], output_dir: str = "./", leftover_file: str | None = None) -> None:
     """
-    Split merged RDF data about multiple ontologies into multiple output RDF files, one per ontology.
+    Split merged RDF data about multiple ontologies into separate output RDF files, one per ontology.
 
     Input data is read from specified input files (use '-' for stdin, prepend '.ext:' to force a different RDF format).
     Look for owl:Ontology IRIs in the input, read their annotations, and based on them emits a file for each ontology.
+    (This utility was used to modularize the ontology, starting from a single file version.)
     """
     graph = create_graph()
     for input in inputs or [".ttl:-"]:

@@ -8,7 +8,7 @@ import click
 from rdflib import OWL, RDF, URIRef
 from rdflib.util import guess_format
 
-from crima_vkg_tool.util import create_graph
+from crima_ontology_tool.util import create_graph
 
 _LOGGER = logging.getLogger(__name__)
 

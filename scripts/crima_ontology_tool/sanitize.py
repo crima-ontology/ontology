@@ -7,7 +7,7 @@ import click
 from rdflib import RDF, RDFS, Graph, Literal, Node, URIRef
 from rdflib.namespace import split_uri
 
-from crima_vkg_tool.util import create_graph, rdf_read, rdf_write
+from crima_ontology_tool.util import create_graph, rdf_read, rdf_write
 
 
 @click.command(name="sanitize")

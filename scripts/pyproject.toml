@@ -3,9 +3,9 @@ requires = ["setuptools >= 77.0.3", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "crima-vkg-tool"
+name = "crima-ontology-tool"
 version = "0.1.0"
-description = "Python tool for various maintainance tasks related to the CRIMA ontology and mappings"
+description = "Python tool for various maintainance tasks related to the CRIMA ontology"
 readme = "README.md"
 requires-python = ">=3.13.2"
 dependencies = [
@@ -18,7 +18,7 @@ dependencies = [
     "pyshacl == 0.31.0",
     "beautifulsoup4 == 4.14.3",
     "mkdocs-material == 9.7.6",
-    "mike==2.2.0"
+    "mike == 2.2.0"
 ]
 
 [project.optional-dependencies]
@@ -27,10 +27,10 @@ dev = [
 ]
 
 [project.scripts]
-crima-vkg-tool = "crima_vkg_tool.__main__:cli"
+crima-ontology-tool = "crima_ontology_tool.__main__:cli"
 
 [project.entry-points."mkdocs.plugins"]
-pylode = "crima_vkg_tool.pylode:PylodePlugin"
+pylode = "crima_ontology_tool.pylode:PylodePlugin"
 
 [tool.setuptools]
 include-package-data = true
