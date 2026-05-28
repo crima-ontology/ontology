@@ -3,15 +3,16 @@ import shutil
 from pathlib import Path
 from textwrap import dedent
 from time import time
-from typing import Self
+from typing import Any, Self
 
 import click
+import markdown
 from bs4 import BeautifulSoup, NavigableString
 from mkdocs.config import config_options
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.plugins import BasePlugin
 from pylode.profiles.ontpub import OntPub
-from rdflib import DCTERMS, OWL, RDF, RDFS, Graph, Literal, URIRef
+from rdflib import DCTERMS, OWL, RDF, RDFS, BNode, Graph, Literal, URIRef
 from rdflib.namespace import NamespaceManager
 
 from crima_vkg_tool.util import create_graph, rdf_read, rdf_write
@@ -134,13 +135,11 @@ def generate_artifact(input_file: Path, output_parent_dir: Path, ns_manager: Nam
 
 def generate_markdown(graph: Graph, ontology_iri: URIRef, name: str) -> str:
 
-    # Add dcterms:title triple as required by pylode
+    # Derive #-based ontology namespace for URI, for assigning anchors in the page
     ontology_ns = str(ontology_iri) + "#" if not ontology_iri.endswith("#") else str(ontology_iri)
-    if (ontology_iri, DCTERMS.title, None) not in graph:
-        graph.add((ontology_iri, DCTERMS.title, Literal(name)))
 
     # Generate HTML using pylode
-    html = generate_pylode(graph)
+    html = generate_pylode(graph, ontology_iri, name)
 
     # Parse HTML using BeautifulSoup
     soup = BeautifulSoup(html, "html.parser")
@@ -162,6 +161,8 @@ def generate_markdown(graph: Graph, ontology_iri: URIRef, name: str) -> str:
             <a class="md-button" target="_blank" href="{name}.rdf">rdf</a>
             <a class="md-button" target="_blank" href="{name}.nt">nt</a>
             <a class="md-button" target="_blank" href="{name}.json">json</a>
+            &nbsp;
+            <a class="md-button" target="_blank" href="https://service.tib.eu/webvowl/#iri={ontology_iri}">WebVOWL</a>
         </div>
         """).strip())
 
@@ -196,9 +197,32 @@ def generate_markdown(graph: Graph, ontology_iri: URIRef, name: str) -> str:
     return "\n\n".join(markdown)
 
 
-def generate_pylode(graph: Graph) -> str:
+def generate_pylode(graph: Graph, ontology_iri: URIRef, name: str) -> str:
 
-    # Save the original function NamespaceManager.compute_qname and define a safe patched version
+    # PyLode is currently unable to render restrictions where the object on owl:onProperty, owl:someValuesFrom,
+    # owl:allValuesFrom is a BNode (i.e., an inverse property, or a complex concept expression). PyLode will try
+    # to render these BNodes as if they are property/class IRIs, with the result that a None:<bnode-id> string
+    # is rendered. Therefore, we filter these restrictions out for the time being. A fix should go to pylode/utils.py
+    # in function rdf_obj_html > _rdf_obj_single_html > _restriction_html (should call _bn_html recursively instead
+    # of _hyperlink_html, or something like that)
+    excluded_restrictions = {
+        t[0]
+        for p in (OWL.onProperty, OWL.someValuesFrom, OWL.allValuesFrom)
+        for t in graph.triples((None, p, None))
+        if isinstance(t[2], BNode)
+    }
+
+    # Patch the RDF graph by adding a default dcterms:title (using module name) if missing and by prepending a
+    # whitespace to every literal starting with 'http', to avoid PyLode rendering the whole literal as a link
+    # (if there is a URL, it will still be rendered as link by pymdownx.magiclink)
+    pylode_graph = create_graph(namespaces_from=graph)
+    for (s, p, o) in graph:
+        if s not in excluded_restrictions:
+            pylode_graph.add((s, p, Literal(" " + o) if isinstance(o, Literal) and o.startswith("http") else o))
+    if (ontology_iri, DCTERMS.title, None) not in pylode_graph:
+        pylode_graph.add((ontology_iri, DCTERMS.title, Literal(name)))
+
+    # Setup monkey patching of NamespaceManager.compute_qname to avoid failing in case a QName cannot be derived
     compute_qname_original = NamespaceManager.compute_qname
     def compute_qname_patched(self: Self, uri: str, generate: bool = True) -> tuple[str, URIRef, str]:  # noqa: FBT001, FBT002
         try:
@@ -206,14 +230,29 @@ def generate_pylode(graph: Graph) -> str:
         except ValueError:
             return (None, uri, str(uri))
 
+    # Setup monkey patching of markdown.markdown to include by default extension pymdownx.magiclink
+    markdown_original = markdown.markdown
+    def markdown_patched(*args: Any, **kwargs: Any) -> str:
+        extensions = list(kwargs.get("extensions", []))
+        for extension in ("extra", "sane_lists", "pymdownx.magiclink", "pymdownx.inlinehilite"):
+            if extension not in extensions:
+                extensions.append(extension)
+        kwargs["extensions"] = extensions
+        return markdown_original(*args, **kwargs)
+
     try:
-        # Install patched version of NamespaceManager.compute_qname and invoke PyLode, returning generated HTML
+        # Apply monkey patching
         NamespaceManager.compute_qname = compute_qname_patched
-        od = OntPub(ontology=graph, sort_subjects=True)
+        markdown.markdown = markdown_patched
+
+        # Invoke PyLode, returning generated HTML
+        od = OntPub(ontology=pylode_graph, sort_subjects=True)
         return od.make_html(include_css=True)
+
     finally:
-        # Ensure to restore the original NamespaceManager.compute_qname function
+        # Ensure to undo monkey patching
         NamespaceManager.compute_qname = compute_qname_original
+        markdown.markdown = markdown_original
 
 
 def generate_mermaid(graph: Graph, iri: URIRef) -> str | None:
