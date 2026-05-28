@@ -35,10 +35,14 @@ div.pylode ul {
     margin: 0px!important;
 }
 div.pylode ul li {
-    margin: 0px!important;
+    margin-left: 0px!important;
 }
 div.pylode ul p {
     margin: 0px;
+}
+div.pylode ul li:has(> p) + li:has(> p),
+div.pylode ul p + p {
+    margin-top: .75em;
 }
 div.pylode .hover_property {
     cursor: help;
