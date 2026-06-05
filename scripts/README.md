@@ -10,7 +10,11 @@ pip install -e .             # install the 'crima-ontology-tool' project in edit
 crima-ontology-tool --help   # test whether scripts work (work in any directory as long as environment is activated)
 ```
 
-Once done, run `deactivate` to deactivate the environment, or simply close the shell. To reactivate, enter the scripts directory and run again `source .venv/bin/activate`. To get rid of the environment, deactivate it and delete the created `.venv` directory. Any update to script sources (e.g., resulting from local edits / `git pull` actions) will be immediately effective due to install in editable mode. The tool and the installation procedure listed above should work also on Windows, though development and testing are mostly done in Linux.
+Once done, run `deactivate` to deactivate the environment, or simply close the shell. To reactivate, enter the scripts directory and run again `source .venv/bin/activate`. To get rid of the environment, deactivate it and delete the created `.venv` directory. Any update to script sources (e.g., resulting from local edits / `git pull` actions) will be immediately effective due to install in editable mode. Remarks:
+
+* The tool and the installation procedure listed above should work also on Windows, though development and testing are mostly done in Linux.
+* You may also install the package directly from GitHub, without checking out the repository: `pip install git+https://github.com/crima-ontology/ontology.git@master#subdirectory=scripts`
+* If you intend to edit the scripts, consider installing with `[dev]` qualifier to get also development dependencies, e.g., `pip install -e .[dev]`
 
 Some reference documentation about using the tool is available through command line help (run `crima-ontology-tool <command> --help` for command specific help):
 ```
